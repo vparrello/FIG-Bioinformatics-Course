@@ -9,20 +9,20 @@ This course is meant to give a general background around three topics. Each topi
 
 ## Content
 
-1. Representative Genomes  
-    1. The Secrets of DNA Sequences - Explore the differences between sequences, reads, contigs, and genomes in the context of genome space.
-    2. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
-    3. Singularly Occuring Universal Roles (SOURS) - Understand that a SOUR can act as the unique genome architecture needed to pick out the Representative Genomes
-    4. Create the Representative Genome Set - Compare the genomes in your universe to find the Representative Genomes in your set.
-2. Hammers  
-    1.  Strike the Role! - Choose a single repgen genome and discover how to find out what the names of all the neighboring peer genomes are. How can you prove they are all of the same represented set?
-    2.  Create your own hammer set - Use the role you found to create the hammer set. Experiment with using many roles to create the set.
-    3. Use the hammers - Identify the genomes represented inside of a sample using the hammers from your repgen set. Which repgen set made the hammers most effective?
-3. Projections  
-    1.  Sample Set Creation - Create the sample report needed to feed the hammer output into the xmatrix
-    2.  X-Matrix Battleship - Create the xmatrix necessary to feed into the classifier
-    3.  Creating a Classifier - Create the ancilary data to make a classifier and explore the inner workings of what happens at each stage.
-    4.  Tuning the Classifier - Validation data ensures that the classifier will work out in the real world. Find out what quality testing you can do to make the system more accurate. 
+### 1. Representative Genomes  
+1. The Secrets of DNA Sequences - Explore the differences between sequences, reads, contigs, and genomes in the context of genome space.
+2. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
+3. Singularly Occuring Universal Roles (SOURS) - Understand that a SOUR can act as the unique genome architecture needed to pick out the Representative Genomes
+4. Create the Representative Genome Set - Compare the genomes in your universe to find the Representative Genomes in your set.
+### 2. Hammers  
+1.  Strike the Role! - Choose a single repgen genome and discover how to find out what the names of all the neighboring peer genomes are. How can you prove they are all of the same represented set?
+2.  Create your own hammer set - Use the role you found to create the hammer set. Experiment with using many roles to create the set.
+3. Use the hammers - Identify the genomes represented inside of a sample using the hammers from your repgen set. Which repgen set made the hammers most effective?
+### 3. Projections  
+1.  Sample Set Creation - Create the sample report needed to feed the hammer output into the xmatrix
+2.  X-Matrix Battleship - Create the xmatrix necessary to feed into the classifier
+3.  Creating a Classifier - Create the ancilary data to make a classifier and explore the inner workings of what happens at each stage.
+4.  Tuning the Classifier - Validation data ensures that the classifier will work out in the real world. Find out what quality testing you can do to make the system more accurate. 
 
 ## Tools to Use
 
