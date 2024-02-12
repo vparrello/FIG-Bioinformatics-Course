@@ -22,7 +22,7 @@
 
 12. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. It will prompt you to ask if you trust the authors. I would reccommend yes because I trust myself and you just chose that folder so click "Yes".
 
-13. Open the file "Solution.py" in the "1 - Representative Genomes/Week 1/Solution.py" location. It will prompt you to install the python extension. Click "Install" on the left. This will complete your setup of VSCode.
+13. Open the file "Solution.py" in the "1 - Representative Genomes/Week 1/Solution.py" location. It will prompt you to install the python extension. Click "Install" on the left. 
 
     1. If this does not happen for you, click on the fifth icon on the lefthand side bar of VSCode that is four squares with one flying away. This is the extension tab. If you type "Python" into the search bar at the top of your application, it will take you to the correct extension that you can install from there.
 
