@@ -1,1 +1,32 @@
-Directions to solve the first problem here.
+Objective: Explore the differences between sequences, reads, contigs, and genomes in the context of genome space. 
+
+Single Cell Organisms are a mystery to most. They are functional, alive, and somehow smaller than most eyes can see. This means that studying these organisms and their genetics requires the creation of a framework in which we can "see" how these organisms can relate to each other.
+
+Let's start with the basics. A single celled organism, in our case a bacteria, functions due to the instructions in its DNA. In order to understand that organism, we need to read that DNA. But DNA sequences are long and seemingly patternless. Not to mention when the DNA is processed, it usually comes out in bits and pieces that would need to be put back together. Each stage of this process creates a different type of file that you might see. You might get a fasta file with sequences that are called reads. You might get a fastq file with quality attached to those sequences. Or You might get some contigs that have assembled the sequences into genes.  No matter what you get, the sequence will always have {actg}.
+
+Now in order to reseach genomes, we need to be able to read a sequence and find a specific piece of it. Your goal is to search through the sequences (contigs really but this flow will work for most files) in the datafile provided in the Week 1/Data folder and find the sequence {introducing17mers}.   
+
+Activity 1: Find the secret sequences
+
+Objective: Create a program that searches through a fasta file to find the sequence {introducing17mers} inside Sample1.fasta
+
+
+Steps
+    1. Open findkmers.py
+    2. Add something after the "with open" statement that reads the lines of a file. 
+    3. Find the pattern for the headers of each seqence and exclude them from being considered. There won't be sequences in the metadata.
+    4. Strip the "\n" (new line character) from the header. This will make formatting easier later on.
+    5. Search the file for the sequence: introducing17mers
+        Hint: It shows up more than once.
+    6. Strip away any unwanted pieces of the sequences  
+    8. Print to the terminal the header for the sequence and the bad kmer found inside it.
+
+Self Check-in:
+
+If you were able to find the kmer 17 times, then you found them all! Look in the file and use the find feature (ctrl + F or Command + F) to see if you can find which one you missed. 
+
+
+**BONUS**
+There are 5 different hidden kmers inside the file. Each one shows up the same number of times as the length of the sequence i.e. the 17mer showed up 17 times. All of them are uninterupted by DNA (but they might start with c or t) and include at least 1 number. Using what you know about the header lines, the sequence lines, and the fasta file, can you find all the hidden kmers inside the sample file?
+
+
