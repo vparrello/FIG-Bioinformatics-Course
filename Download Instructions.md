@@ -1,4 +1,4 @@
-1. Go to the git repository "https://github.com/vparrello/FIG-Bioinformatics-Course/tree/master" and look for the green "<> Code" button. It can be found on the righthand side of the page between the "Add File" button and the "About" section.
+1. Login to github. Go to the git repository "https://github.com/vparrello/FIG-Bioinformatics-Course/tree/master" and look for the green "<> Code" button. It can be found on the righthand side of the page between the "Add File" button and the "About" section.
 
 2. Once you click on the button, you will find a "Download zip" button that contains all the files in the repository. Click on "Download Zip" to download the repository.
 
