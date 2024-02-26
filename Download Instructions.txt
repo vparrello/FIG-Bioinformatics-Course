@@ -2,28 +2,16 @@
 
 2. Once you click on the button, you will find a "Download zip" button that contains all the files in the repository. Click on "Download Zip" to download the repository.
 
-3. Find the file in your downloads folder and upzip it into a Project folder. It will create an empty folder in that space called "FIG-Bioinformatics-Course-master". Take note of where this folder is as you will need to navigate there in vscode.
+3. Find the file in your downloads folder and upzip it into a Project folder. It will create a folder in that space called "FIG-Bioinformatics-Course-master". Take note of where this folder is as you will need to navigate there in vscode.
 
-4. Download vscode from "https://code.visualstudio.com/download" according to your operating system.
+4. If you have already downloaded VSCode, then skip to step 11. Otherwise, download vscode from "https://code.visualstudio.com/download" according to your operating system.
 
-5. Find the file in your downloads folder and execute the file to start the installation.
+5. Find the file you just downloaded in your downloads folder and execute the file to start the installation.
 
-6. Accept the agreement when prompted.
+6. Follow the instructions for the installation wizard until it goes to finish. All the default values used are acceptable for our purposes. If it does not automatically start VSCode when it finishes, search for it in your programs and apps to launch it.
 
-7. Choose the location of the program. The default place works for our purposes.
+7. When vscode launches, find "File" in the far left hand corner of the application. I'm talking all the way in that corner. Right next to the logo in windows or "Code" on Mac machines.
 
-8. The Start menu folder is also ok at default.
+8. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. This is the file from Step 3. It will prompt you to ask if you trust the authors. I would reccommend yes because I trust myself but that's up to you.
 
-9. When asked for "Select Additional Tasks" click Next, then Install.
-
-10. When it finishes, click on finish and it will launch vscode.
-
-11. When it launches, choose a theme and then find "File" in the far left hand corner of the application. I'm talking all the way in that corner. Right next to the logo.
-
-12. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. It will prompt you to ask if you trust the authors. I would reccommend yes because I trust myself and you just chose that folder so click "Yes".
-
-13. Open the file "Solution.py" in the "1 - Representative Genomes/Week 1/Solution.py" location. It will prompt you to install the python extension. Click "Install" on the left. 
-
-    1. If this does not happen for you, click on the fifth icon on the lefthand side bar of VSCode that is four squares with one flying away. This is the extension tab. If you type "Python" into the search bar at the top of your application, it will take you to the correct extension that you can install from there.
-
-14. Happy Dance! You are done with your setup! Now go to your first exercise and we will get started.         
+9. Happy Dance! You are done with your setup! Now go to your first exercise under 1 - Representative Genomes to get started.         

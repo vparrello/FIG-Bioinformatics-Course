@@ -1,4 +1,4 @@
-Objective: Explore the differences between sequences, reads, contigs, and genomes in the context of genome space. 
+Objective: Understand a DNA sequence.
 
 Single Cell Organisms are a mystery to most. They are functional, alive, and somehow smaller than most eyes can see. This means that studying these organisms and their genetics requires the creation of a framework in which we can "see" how these organisms can relate to each other.
 
@@ -9,7 +9,6 @@ Now in order to reseach genomes, we need to be able to read a sequence and find 
 Activity 1: Find the secret sequences
 
 Objective: Create a program that searches through a fasta file to find the sequence {introducing17mers} inside Sample1.fasta
-
 
 Steps
     1. Open findkmers.py
