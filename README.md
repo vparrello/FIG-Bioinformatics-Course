@@ -10,7 +10,7 @@ This course is meant to give a general background around three topics. Each topi
 ## Content
 
 ### 1. Representative Genomes  
-1. The Secrets of DNA Sequences - Explore the differences between sequences, reads, contigs, and genomes in the context of genome space.
+1. The Secrets of DNA Sequences - Define the concept of a sequence and a kmer.
 2. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
 3. Singularly Occuring Universal Roles (SOURS) - Understand that a SOUR can act as the unique genome architecture needed to pick out the Representative Genomes
 4. Create the Representative Genome Set - Compare the genomes in your universe to find the Representative Genomes in your set.

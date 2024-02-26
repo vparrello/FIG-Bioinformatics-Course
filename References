@@ -1,0 +1,18 @@
+Glossary
+
+DNA Sequences - 
+query
+compute value
+compute list of values
+
+role
+fasta
+tab separated document
+kmer - a dna sequence of length k 
+Jaccard Distance
+Genome - a bag of contigs for a single organism
+SOURS
+Hammers
+Representative Genome (repgen)
+Metagenomic Binning
+gene - a named region on a contig that has a role
