@@ -2,7 +2,7 @@
 
  Objective: Become familiar with chatgpt and learn the context of Bioinformatics
  
-Chatgpt is an AI model that can help you learn the basics of many topics without needing to look for the information yourself. However it also can make up information to try and fit into the patterns of the language model. Therefore we have you starting in an exercise where you explore the basic concepts of bioinformatics while getting used to the AI tool of chatgpt.
+Chatgpt is an AI model that can help you learn the basics of many topics without needing to look for the information yourself. However it also can make up information to try and fit into the patterns of the language model. Therefore we have you starting in an exercise where you explore the basic concepts of bioinformatics while getting used to the AI tool of chatgpt. This tool will be useful in helping you to write code. 
 
 #### Materials: 
 
