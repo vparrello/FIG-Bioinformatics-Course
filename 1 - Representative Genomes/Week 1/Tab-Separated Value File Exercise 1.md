@@ -1,9 +1,9 @@
 #### Tab-Separated Value File Exercise 1
 
- Objective: Become familiar with chatgpt and learn the context of Bioinformatics
+ Objective: Become familiar with using ChatGPT, and learn about basic bioinformatics, common data-formats, and use of command-line tools.
  
-ChatGPT is an AI model that can help you learn the basics of many topics and write computer-programs without needing to look for the information or learn a computer-language yourself. ChatGPT comes in many specialized versions; the version that we will be using in these exercises is called "Grimoire".
-(However it also can make up information because it has been trained to be "helpful", so you should be cautious about always taking what it says as accurate.)
+ChatGPT is an AI model that can help you learn the basics of many topics and write computer-programs without needing to look for the information or learn a computer-language yourself. ChatGPT comes in many specialized versions; the version that we will be using in these exercises is called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
+(However, be warned that someimes it will make things up  because it has been trained to be "helpful" even when it doesn't know the answer, so you should be cautious about always taking what it says as accurate.)
 
 The following exercises are intended to get you used to interacting with "Grimoire", while also introducings some basic types and formats of bioinformatic data.
 
