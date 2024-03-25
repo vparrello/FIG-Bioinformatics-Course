@@ -44,7 +44,7 @@ Follow these directions to download and use this course.
 
 3. Find the file in your downloads folder and upzip it into a Project folder. It will create a folder in that space called "FIG-Bioinformatics-Course-master". Take note of where this folder is as you will need to navigate there in vscode.
 
-4. If you have already downloaded VSCode, then skip to step 11. Otherwise, download vscode from "https://code.visualstudio.com/download" according to your operating system.
+4. If you have already downloaded VSCode, then skip to step 7. Otherwise, download vscode from "https://code.visualstudio.com/download" according to your operating system.
 
 5. Find the file you just downloaded in your downloads folder and execute the file to start the installation.
 
