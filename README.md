@@ -5,13 +5,14 @@ Last Updated: 2/8/2024
 
 # Introduction
 
-This course is meant to give a general background around three topics. Each topic has been separated into a single month course with a sub topic explored each week. You will find the excercises inside each folder with any data you might need inside the Data folder for that topic. If you need any help or are not sure how to continue, you are encouraged to use AI tools to help you throughout your learning journey.
+This course is meant to give an introduction to AI-assisted code-development via the exploration of three major topics in applied bioinformatics. Each topic has been organized into a module consisting of a number of related subtopics and associated exercises. You will find the exercises inside each topic's folder, along with any data you might need inside that topic's Data-folder. If you need any help or are not sure how to continue, you are encouraged to use AI tools to help you throughout your learning journey.
 
 ## Content
 
 ### 1. Representative Genomes  
-1. The Secrets of DNA Sequences - Define the concept of a sequence and a kmer.
-2. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
+1. Construct and learn to use command-line tools to manipulate tab-separated files.
+2. Construct and use command-line tools to read, process, and write DNA sequence-dat in FASTA format
+3. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
 3. Singularly Occuring Universal Roles (SOURS) - Understand that a SOUR can act as the unique genome architecture needed to pick out the Representative Genomes
 4. Create the Representative Genome Set - Compare the genomes in your universe to find the Representative Genomes in your set.
 ### 2. Hammers  
