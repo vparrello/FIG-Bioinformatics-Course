@@ -1,6 +1,6 @@
-#### Tab-Separated Value File Exercise 2
+#### TSV Exercise 2 - Working with TSV Files
 
- Objective: Use Chatgpt to create a program that reads Tab Separated Files from the Command Line.
+ Objective: Use Grimoire to create a program that reads Tab Separated Files from the Command Line.
 
  This exercise focuses on creating a program that takes in the header of a TSV file and some command line arguments and compares them against each other. You will be going through the normal development process of a programmer which is similar to the process of a writer. They start like Outline, Draft, edit, review, and then publish. We start with Psuedo code, Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell what step you are in as you follow the exercise.
 
