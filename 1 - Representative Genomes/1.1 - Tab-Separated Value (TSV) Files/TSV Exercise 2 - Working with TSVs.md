@@ -2,20 +2,22 @@
 
  Objective: Use Grimoire to create a program that reads Tab Separated Files from the Command Line.
 
- This exercise focuses on creating a program that takes in the header of a TSV file and some command line arguments and compares them against each other. You will be going through the normal development process of a programmer which is similar to the process of a writer. They start like Outline, Draft, edit, review, and then publish. We start with Psuedo code, Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell what step you are in as you follow the exercise.
+ This exercise focuses on creating a program that reads in a list of column-names as command-line-arguments, extracts from an input TSV-file only those columns whose header-names match the names in the argument-list, and writes those columns to output. (For example, suppose that we have a TSV-file that has 15 columns, but we only care about the data contained in 3 of theose columns.)
+
+ You will be going through the normal development process of a programmer, which is similar to the process of a writer, namely, Outline, Draft, Edit, Review, and then Publish. We will start with a description of the program, express that description as "Pseudo-code", Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell which step you are in as you do the exercise.
 
 #### Materials: 
 
-[chat.openai.com](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+[The "Grimoire" ChatGPT variant](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 command_line_kung.py
 command_line_fu.py
 Data/rep200.list.tbl 
 
 #### Exercise: 
 
-1. Ask Grimoire to explain what key word arguments are in terms of the command line.
+1. Ask Grimoire to explain what "arguments of a command-line program" means.
 
-2. Ask Grimoire to write a program that accepts a list of keywords as command-line arguments.
+2. Ask Grimoire to write a program that will accept a list of keywords as its command-line arguments.
 
 3. You will now prompt Grimoire to create a custom Python program to accomplish the following tasks. Create your own prompt to make Grimoire tell you this list of items specifically, then you can accept the code that it creates and paste it into the file "command_line_kung.py". This time also grab the psuedo code Grimoire gives you.
 
