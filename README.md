@@ -5,25 +5,25 @@ Last Updated: 2/8/2024
 
 # Introduction
 
-This course is meant to give an introduction to AI-assisted code-development via the exploration of three major topics in applied bioinformatics. Each topic has been organized into a module consisting of a number of related subtopics and associated exercises. You will find the exercises inside each topic's folder, along with any data you might need inside that topic's Data-folder. If you need any help or are not sure how to continue, you are encouraged to use AI tools to help you throughout your learning journey.
+This course is meant to give an introduction to AI-assisted code-development via the exploration of three major topics in applied bioinformatics. Each topic has been organized into a module consisting of a number of related subtopics and associated exercises. You will find the exercises inside each topic's folder, along with any data that you might need inside that topic's Data-folder, and related code inside that topics "bin" folder. If you need any help or are not sure how to continue, you are encouraged to use AI tools to help you throughout your learning journey.
 
 ## Content
 
 ### 1. Representative Genomes  
 1. Construct and learn to use command-line tools to manipulate tab-separated files.
-2. Construct and use command-line tools to read, process, and write DNA sequence-dat in FASTA format
-3. K-mers Create Jaccard Similarities - Use your knowledge of genome space to create k-mers that can compare two different sequences
-3. Singularly Occuring Universal Roles (SOURS) - Understand that a SOUR can act as the unique genome architecture needed to pick out the Representative Genomes
-4. Create the Representative Genome Set - Compare the genomes in your universe to find the Representative Genomes in your set.
+2. Construct and use command-line tools to read, process, and write DNA sequence-data in FASTA format
+3. K-mers and Jaccard Similarities - Use your knowledge of genome space to construct K-mers that can compare two different sequences
+3. Singly-Occuring Universal Roles (SOURs) - Understand that a set of SOURs can act as unique genome signatures that can be used to pick out the Representative Genomes
+4. Create a Representative Genome Set - Compare the genomes in your universe to find a subset of "Representative Genomes" that "covers" the full set.
 ### 2. Hammers  
-1.  Strike the Role! - Choose a single repgen genome and discover how to find out what the names of all the neighboring peer genomes are. How can you prove they are all of the same represented set?
-2.  Create your own hammer set - Use the role you found to create the hammer set. Experiment with using many roles to create the set.
-3. Use the hammers - Identify the genomes represented inside of a sample using the hammers from your repgen set. Which repgen set made the hammers most effective?
+1.  Strike the Role! - Choose a single repgen genome and discover how to find out what the names of all its neighboring peer genomes are. How can you prove they are all of the same represented set?
+2.  Create your own hammer set - Use the role you found to create a "hammer set" of signatures used to find the nearest repgen genome. Experiment with using many roles to create generalized "hammer sets".
+3. Use the hammers - Identify the genomes contained within a sample using the hammers from your repgen set. Which repgen set made the hammers most effective?
 ### 3. Projections  
-1.  Sample Set Creation - Create the sample report needed to feed the hammer output into the xmatrix
-2.  X-Matrix Battleship - Create the xmatrix necessary to feed into the classifier
+1.  Sample Set Creation - Create the sample report needed to feed the hammer output into an "X-matrix"
+2.  X-Matrix Battleship - Create the X-matrix necessary to feed into a classifier
 3.  Creating a Classifier - Create the ancilary data to make a classifier and explore the inner workings of what happens at each stage.
-4.  Tuning the Classifier - Validation data ensures that the classifier will work out in the real world. Find out what quality testing you can do to make the system more accurate. 
+4.  Tuning the Classifier - Validation data ensures that the classifier should work well on real-world data. Find out what quality testing you can do to make the system more accurate. 
 
 ## Tools to Use
 
@@ -53,6 +53,6 @@ Follow these directions to download and use this course.
 
 7. When vscode launches, find "File" in the far left hand corner of the application. I'm talking all the way in that corner. Right next to the logo in windows or "Code" on Mac machines.
 
-8. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. This is the file from Step 3. It will prompt you to ask if you trust the authors. I would reccommend yes because I trust myself but that's up to you.
+8. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. This is the file from Step 3. It will prompt you to ask if you trust the authors. I would recommend "yes" because I trust myself, but that's up to you. ;-)
 
 9. Happy Dance! You are done with your setup! Now go to your first exercise under 1 - Representative Genomes to get started.         
