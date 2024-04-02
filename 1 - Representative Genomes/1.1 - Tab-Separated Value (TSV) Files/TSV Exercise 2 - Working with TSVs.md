@@ -8,25 +8,34 @@
 
 #### Materials: 
 
-[The "Grimoire" ChatGPT variant](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-command_line_kung.py
-command_line_fu.py
-Data/rep200.list.tbl 
+"Grimoire" at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
+```
+You will also need the files "rep200.list.tbl",
+"command_line_kung.py" and "command_line_fu.py";
+indentation is used to represent directory-levels: 
+    FIG-Bioinformatics-Course/
+        1 - Representative Genomes/
+            Data/rep200.list.tbl
+            1.1 - Tab-Separated Value (TSV) Files/
+                bin/command_line_kung.py
+                bin/command_line_fu.py
+```
 
 #### Exercise: 
 
 1. Ask Grimoire to explain what "arguments of a command-line program" means.
 
 2. Ask Grimoire to write a program that will accept a list of keywords as its command-line arguments.
+Then ask Grimoire to explain the code to you "line-by-line" if it did not do so.
 
 3. You will now prompt Grimoire to create a custom Python program to accomplish the following tasks. Create your own prompt to make Grimoire tell you this list of items specifically, then you can accept the code that it creates and paste it into the file "command_line_kung.py". This time also grab the psuedo code Grimoire gives you.
 
-    * The program should read a tab separated file from STDIN with a header-line as the first line.
-    * it should accept a list of keywords as command-line arguments. 
     * The program should be written in python.
-    * The program should extract the columns that match the keywords and write those columns to the standard output in the same order that they were listed.
-    * The program should warn the user and stop if any keyword does not match the header-line.
-    * The program should print something specific to let you know it has completed it's task.
+    * The program should read a tab-separated file from STDIN with a header-line as the first line.
+    * The program should accept a list of keywords as command-line arguments.
+    * The program should extract the columns whose headers match the keywords, and write those columns to the standard output in the same order that they were listed.
+    * The program should warn the user (via STDERR so as not to pollute STDOUT) if any keyword does not match the header-line, and then exit.
+    * The program should print something specific (again via STDERR) to let you know that it has completed it's task.
 
 4. Take your prompt from above and reorder the steps you gave Grimoire. See how Grimoire changes the code and psuedo code. Paste both into the file "command_line_fu.py"
 
