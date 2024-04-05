@@ -7,13 +7,10 @@ which is is one of the most basic file-formats for storage and exchange of biolo
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 ```
-You will also need the files "bindict.tbl" and "tsv_reader.py";
-indentation is used to represent directory-levels: 
-    FIG-Bioinformatics-Course/
-        1 - Representative Genomes/
-            Data/bindict.tbl
-            1.2 - FastaA Files/
-                FASTA EXERCISE 1 - What is FASTA format.md
+FIG-Bioinformatics-Course/
+    1 - Representative Genomes/
+        1.2 - FastaA Files/
+            FASTA Exercise 1 - What is FASTA format.md
 ```
 
 #### Exercise: 
