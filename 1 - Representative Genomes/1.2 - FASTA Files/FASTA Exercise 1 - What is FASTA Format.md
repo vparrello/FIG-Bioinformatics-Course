@@ -9,7 +9,7 @@ which is is one of the most basic file-formats for storage and exchange of biolo
 ```
 FIG-Bioinformatics-Course/
     1 - Representative Genomes/
-        1.2 - FastaA Files/
+        1.2 - FASTA Files/
             FASTA Exercise 1 - What is FASTA format.md
 ```
 
