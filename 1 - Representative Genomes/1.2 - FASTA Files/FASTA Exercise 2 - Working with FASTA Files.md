@@ -17,7 +17,10 @@ FIG-Bioinformatics-Course/
 
 #### Exercise:
 
-1. Ask Grimoire to write a python program that reads a named FASTA file without using BioPython, and then prints the tab-separated ID and length of each sequence to STDOUT, and the average length of the set of sequences to STDERR.
+1. Ask Grimoire to write a python program that will read a named FASTA file without using BioPython, then print the tab-separated ID and length for each sequence to STDOUT, and finally the number of sequences read and the average length of the set of sequences to STDERR. 
+(WARNING: Grimoire sometimes forgets that the "sequence-ID" stops at the first 
+"whitespace character", and that the rest of the record-header after the
+sequence-ID is considered a "description" of the sequence, not part of its ID.)
 
 2. Copy the pseudocode to the clipboard, and then use VScode to save the pseudocode to the pseudocode section of the program template `bin/fasta_reader.py` within the `1.2 - FASTA Files` directory.
 
