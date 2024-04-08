@@ -28,7 +28,7 @@ This course is meant to give an introduction to AI-assisted code-development via
 ## Tools to Use
 
 Feel free to use any of the following tools to aid you on your journey.   
-[VSCode Download](https://code.visualstudio.com/download)
+[VSCode Download](https://code.visualstudio.com/download) - [Setup Video](https://code.visualstudio.com/docs/setup/setup-overview)
 [Python Installation instructions](https://github.com/PackeTsar/Install-Python)  
 [Bv-brc.org](https://www.bv-brc.org/)  
 [Chatgpt](https://chat.openai.com/)  
