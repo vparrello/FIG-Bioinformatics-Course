@@ -1,3 +1,5 @@
+#### Solutions to Kmer Exercise 1
+
 1. and 2. should hopefully be self-explanatory.
 3. The number of Kmers in a sequence of length `n` is `(n−k+1)`.
 
