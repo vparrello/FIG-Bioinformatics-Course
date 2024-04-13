@@ -19,7 +19,7 @@ def main(kmer_length, fasta_filename):
             kmers1 = generate_kmers(sequences[i].seq, kmer_length)
             kmers2 = generate_kmers(sequences[j].seq, kmer_length)
             jaccard_sim = jaccard_similarity(kmers1, kmers2)
-            print(f"{sequences[i].id}\t{sequences[j].id}\t{jaccard_sim:.4f}")
+            print(f"{sequences[i].id}\t{sequences[j].id}\t{jaccard_sim}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
