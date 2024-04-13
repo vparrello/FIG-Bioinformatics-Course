@@ -8,11 +8,12 @@ Objective: Use Grimoire to write a program that reads and operates on FASTA-form
 ``` 
 FIG-Bioinformatics-Course/
     1 - Representative Genomes/
+        Data/Sample1.fasta
         1.2 - FASTA Files/
             FASTA Exercise 1 - What is FASTA format.md
             bin/fasta_reader.py
             bin/fasta_reader_solution.py
-            Data/Sample1.fasta
+            
 ```
 
 #### Exercise:
