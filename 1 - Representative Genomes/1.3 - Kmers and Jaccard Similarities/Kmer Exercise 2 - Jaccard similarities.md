@@ -39,3 +39,8 @@ The program should use the output-format "f'{id1}\t{id2}\t{jaccard_sim}'", where
 (Grimoire should have shown you how to run the program from a terminal-window, but if it didn't, please ask it to show you how to run the program.)
 
 6. Check your program's output against the output from the solution program.
+
+7. Notice that most of the 20-mer jaccard-similarities are "0.0"; this is not an error --- it means that most of the sequences do not have even a single 20-mer in common.\ 
+Repeat the exercise with `K=10`, and note that now most of the jaccard-similarities are non-zero. This illustrates that there is a tradeoff between "sensitivity" and "specificity": Larger values of `K` yield results that are for more specific (i.e., fewer "hits" with be found, and the pairs of sequences will be "closer" to each other, i.e. "more similar"), but the price to be paid is that a more "specific" value of `K` is less "sensitive", i.e., it may not find anything at all.
+ 
+Please ask Grimoire to explain the difference between the concepts of "sensitivity" and "specificity", and how they are relevant in bioinformatics and in medicine.
