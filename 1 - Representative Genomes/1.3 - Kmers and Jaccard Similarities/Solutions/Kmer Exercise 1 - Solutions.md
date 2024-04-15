@@ -1,6 +1,8 @@
 #### Solutions to Kmer Exercise 1
 
-1. and 2. should hopefully be self-explanatory.
+Solutions start with the number of the step for which they are the solution. If a number is not incuded, there is no solution needed for that piece of the exercise.
+
+
 3. The number of Kmers in a sequence of length `n` is `(n−k+1)`.
 
 4. The sequence 'cttgtatagtattgtcttgtgtatc' is 25 characters long; therefore, the number of 20-mers in this sequence is (25 - 20 + 1) = 6.

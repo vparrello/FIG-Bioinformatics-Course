@@ -12,8 +12,7 @@
             Data/bindict.tbl
             Data/data.tbl
             Data/rep200.list.tbl
-            1.1 - Tab-Separated Value (TSV) Files/
-                bin/tsv_reader.py
+            bin/tsv_reader.py
 ```
 
 #### Exercise: 
@@ -31,53 +30,51 @@ Multiline "block-comment" are most easily constructed by placing three single-qu
 ```
 
 2. In you previous exercises, your program used what are known as "positional arguments", which work like this:
-```
-python3 program_name arg1 arg2 arg3 ...
-```
-Python programs also support "named arguments", which work like this:
-```
-python3 program_name -a argA -b argB -c argC ...
-```
-Named arguments have the advantage over positional arguments that they can be either optional or mandatory, and unlike positional arguments, their order doesn't matter.
 
-Named arguments can have a "long form" as well as a short form; "long form" arguments look like this:
-```
-python3 program_name --nameA argA --nameB argB --nameC argC ...
-```
-Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
+    ``` python3 program_name arg1 arg2 arg3 ... ```
+
+    Python programs also support "named arguments", which work like this:
+
+    ``` python3 program_name -a argA -b argB -c argC ... ```
+
+    Named arguments have the advantage over positional arguments that they can be either optional or mandatory, and unlike positional arguments, their order doesn't matter.
+
+    Named arguments can have a "long form" as well as a short form; "long form" arguments look like this:
+    
+    ``` python3 program_name --nameA argA --nameB argB --nameC argC ... ```
+
+    Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
 
 3. In this exercise you are going to adjust the 'tsv_reader.py' program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
-    * The program should read the input-filename from command-line argument `-i`
+    * The program should read the input-filename from command-line argument ```-i```
     * The program should extract the header-names from the input-file
-    * The program can take an optional argument `-n` to specify how many of the first columns will be printed to standard output. If this argument is not specified, then the program prints all columns
-    * The program can take an optional `-m` argument defining a "skip-factor" by which it will skip over the columns. (e.g., print every 2nd, 4th, or 8th column, for example).
+    * The program can take an optional argument ```-n``` to specify how many of the first columns will be printed to standard output. If this argument is not specified, then the program prints all columns
+    * The program can take an optional ```-m``` argument defining a "skip-factor" by which it will skip over the columns. (e.g., print every 2nd, 4th, or 8th column, for example).
     
 3. Once you have finished, it should be able to take this prompt from the terminal:
-    ' python3 tsv_reader -i ../Data/data.tbl -n 8 -m 4 
-And come back with
-    1042156.4 1121445.4
-This data file has over 2000 columns and can take a long time to load in applications. Bonus points if you can do this entire program without opening the file yourself.
+    
+    ``` python3 tsv_reader -i ../Data/data.tbl -n 8 -m 4 ```
+    
+    And come back with
+    ``` 1042156.4 1121445.4 ```
+    This data file has over 2000 columns and can take a long time to load in applications. Bonus points if you can do this entire program without opening the file yourself.
 
 ## Solution Check instructions:
 If you are successful, you will have the following output for the related commands
 
-```
-python3 tsv_reader -i ../Data/data.tbl -n 7 
-    sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3
-```
+``` python3 tsv_reader -i ../Data/data.tbl -n 7 ```
 
-```
-python3 tsv_reader -i ../Data/data.tbl -n 4 -m 20
-    1496.3893 203120.7 40545.1270 563192.3
-```
+``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
 
-```
-python3 tsv_reader -i ../Data/rep200.list.tbl -n 5 -m 2
-    genome_name genus rep_id distance
-```
+``` python3 tsv_reader -i ../Data/data.tbl -n 4 -m 20 ```
 
-```
-python3 tsv_reader -i ../Data/bindict.tbl 
-    genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50
-```
+``` 1496.3893 203120.7 40545.1270 563192.3 ```
+
+``` python3 tsv_reader -i ../Data/rep200.list.tbl -n 5 -m 2 ```
+
+``` genome_name genus rep_id distance ```
+
+``` python3 tsv_reader -i ../Data/bindict.tbl ```
+
+``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
