@@ -19,8 +19,7 @@ indentation is used to represent directory-levels:
     FIG-Bioinformatics-Course/
         1 - Representative Genomes/
             Data/bindict.tbl
-            1.1 - Tab-Separated Value (TSV) Files/
-                bin/tsv_reader.py
+            bin/tsv_reader.py
 ```
 
 #### Exercise: 
@@ -43,4 +42,5 @@ indentation is used to represent directory-levels:
 
 ## Solution Check instructions:
 If you are successful, you will have the output that matches the 5 columns in the data file.
-"genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50"
+
+```genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50```
