@@ -4,7 +4,7 @@
  
 ChatGPT is an AI model that can instruct you on the basics of many topics and to write computer-programs without needing to look up the information or to learn a computer-language yourself. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer. So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
 Thus, "Trust, but verify"! :-)
 
 The following exercises are intended to get you used to interacting with "Grimoire", while also introducing some basic types and formats of bioinformatic data.
@@ -34,6 +34,8 @@ indentation is used to represent directory-levels:
 4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line"
 
     **Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explaination of everything in the program without it.
+    Similarly, if its explanation of a particular line of code
+    still confuses you, ask it to break down that line "step-by-step". (The key-phrases "line-by-line" and "step-by-step" denote a particular mode of reasoning that "Large Language Models" have been extensivelytrained on.)
 
 5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to "FIG-Bioinformatics-Course", then "1 - Representative Genomes" within the course directory, then "1.1 - Tab-Separated Files", and finally to the directory named "bin" (the traditional name for a directory that contains executable code --- it originally stood for "binary"). Within this "bin" directory, you will see a file named "tsv_reader.py", which will be empty when you open it. Paste the code within your clipboard into that file, then click on "Save" under the "File" menu to save your script to disk. 
 
