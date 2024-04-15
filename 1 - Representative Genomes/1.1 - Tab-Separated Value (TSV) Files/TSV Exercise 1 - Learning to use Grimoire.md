@@ -14,12 +14,12 @@ The following exercises are intended to get you used to interacting with "Grimoi
 "Grimoire", at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
 ```
-You will also need the files "bindict.tbl" and "tsv_reader.py";
+You will also need the files "bindict.tbl" and "tsv_header.py";
 indentation is used to represent directory-levels: 
     FIG-Bioinformatics-Course/
         1 - Representative Genomes/
             Data/bindict.tbl
-            bin/tsv_reader.py
+            bin/tsv_header.py
 ```
 
 #### Exercise: 
@@ -30,15 +30,23 @@ indentation is used to represent directory-levels:
 
 3. Ask Grimoire to explain "STDIN" (Standard Input) and "STDOUT" (Standard Output) means within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
 
-4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line"
+4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line".
+    * Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explaination of everything within the program without it.
 
-    **Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explaination of everything in the program without it.
-    Similarly, if its explanation of a particular line of code
-    still confuses you, ask it to break down that line "step-by-step". (The key-phrases "line-by-line" and "step-by-step" denote a particular mode of reasoning that "Large Language Models" have been extensivelytrained on.)
+    * Similarly, if Grimoire's explanation of a particular line of code
+    still confuses you, ask it to break down that line "step-by-step".
 
-5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to "FIG-Bioinformatics-Course", then "1 - Representative Genomes" within the course directory, then "1.1 - Tab-Separated Files", and finally to the directory named "bin" (the traditional name for a directory that contains executable code --- it originally stood for "binary"). Within this "bin" directory, you will see a file named "tsv_reader.py", which will be empty when you open it. Paste the code within your clipboard into that file, then click on "Save" under the "File" menu to save your script to disk. 
+The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
-6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run "tsv_reader.py" on the file "1 - Representative Genomes/Data/bindict.tbl". (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.)
+5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to "FIG-Bioinformatics-Course", then "1 - Representative Genomes" within the course directory, then "1.1 - Tab-Separated Files", and finally to the directory named "bin" (the traditional name for a directory that contains executable code --- it originally stood for "binary"). Within this "bin" directory, you will see a file named `tsv_header.py` that will be empty when you open it. Paste Grimoire's code that you save to your clipboard into the file `tsv_header.py`, then click on "Save" under the "File" menu to save your script to disk. 
+
+6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run "tsv_header.py" on the file "1 - Representative Genomes/Data/bindict.tbl". (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be something like this:
+
+``` python3 bin/tsv_header.py ../Data/bindict.tbl ```
+
+Under `Windows`, you should instead replace the 'slashes' with 'backslashes', like this:
+
+``` python3 bin\tsv_header.py ..\Data\bindict.tbl ```
 
 ## Solution Check instructions:
 If you are successful, you will have the output that matches the 5 columns in the data file.

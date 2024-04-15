@@ -15,7 +15,7 @@ Now that we have created our program, we will need to adjust it for outside use.
             Data/data.tbl
             Data/rep200.list.tbl
             Data/TSVReaderDocumentation.txt
-            bin/tsv_reader.py
+            bin/tsv_header.py
 ```
 
 #### Exercise: 
@@ -33,7 +33,7 @@ Now that we have created our program, we will need to adjust it for outside use.
 
 5. Inside your terminal in VScode, try accessing the help menu by using the following command:
 
-    ``` python3 tsv_reader --help ```
+    ``` python3 bin/tsv_header.py --help ```
 
     This should display a message of what every variable does and which ones are optional. Copy and paste the output into Grimoire and tell it that you need to adjust the aforementioned code to include help messages inside this output. Use that prompt to adjust your command line help menu.
 
@@ -46,5 +46,5 @@ Now that we have created our program, we will need to adjust it for outside use.
 
 
 ## Solution Check instructions:
-If you are successful, you will have documentation of your program in TSVReaderDocumentation.txt, the ```python3 tsv_reader --help``` menu, and at least 10 comments inside of your code. 
+If you are successful, you will have documentation of your program in TSVReaderDocumentation.txt, the ```python3 tsv_header --help``` menu, and at least 10 comments inside of your code. 
 
