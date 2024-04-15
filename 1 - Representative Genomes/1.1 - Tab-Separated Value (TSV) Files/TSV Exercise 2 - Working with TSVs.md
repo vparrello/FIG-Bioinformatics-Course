@@ -60,13 +60,13 @@ Also try it with the second program but do not worry if this one does not succee
 
 ## Solution Check instructions:
 If you are successful, you will have the output that matches the following:
-Step 5: genome_id genome_name domain genus species rep_id score distance
-Step 6: a warning message like: "Warning: genome is not in the list of column names"
+* Step 5: genome_id genome_name domain genus species rep_id score distance
+* Step 6: a warning message like: "Warning: genome is not in the list of column names"
 
 ## Process - Step: 
 Use this structure to help guide you through the programming process for future prompts
-Psuedo Code - Step 3
-Draft - Step 3 & 4
-Edits - Step 5
-Review - Step 6 & 7
-Publish - Step 8
+* Psuedo Code - Step 3
+* Draft - Step 3 & 4
+* Edits - Step 5
+* Review - Step 6 & 7
+* Publish - Step 8

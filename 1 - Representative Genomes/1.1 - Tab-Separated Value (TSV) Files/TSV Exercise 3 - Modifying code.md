@@ -18,7 +18,7 @@
 
 #### Exercise: 
 
-1. Ask Grimoire to tell you how tsv_reader.py works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to explain the program to you "line-by-line". Insert the most important topics into the beginning of the file as a comment for future reference.\
+1. Ask Grimoire to tell you how `tsv_reader.py` works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to explain the program to you "line-by-line". Insert the most important topics into the beginning of the file as a "comment" for future reference.\
 NOTE: "single-line comments" consist of anything that follows a "#" character.\
 Multiline "block-comment" are most easily constructed by placing three single-quotes or double-quotes by themselves on the lines preceding and following the text of the "block-comment", like this:
 ```
@@ -30,7 +30,24 @@ Multiline "block-comment" are most easily constructed by placing three single-qu
         """
 ```
 
-2. You need to adjust this program for a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
+2. In you previous exercises, your program used what are known as "positional arguments", which work like this:
+```
+python3 program_name arg1 arg2 arg3 ...
+```
+Python programs also support "named arguments", which work like this:
+```
+python3 program_name -a argA -b argB -c argC ...
+```
+Named arguments have the advantage over positional arguments that they can be either optional or mandatory, and unlike positional arguments, their order doesn't matter.
+
+Named arguments can have a "long form" as well as a short form; "long form" arguments look like this:
+```
+python3 program_name --nameA argA --nameB argB --nameC argC ...
+```
+Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
+
+
+3. In this exercise you are going to adjust the 'tsv_reader.py' program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
     * The program should read the input-filename from command-line argument `-i`
     * The program should extract the header-names from the input-file
     * The program can take an optional argument `-n` to specify how many of the first columns will be printed to standard output. If this argument is not specified, then the program prints all columns
