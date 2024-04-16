@@ -12,12 +12,12 @@
             Data/bindict.tbl
             Data/data.tbl
             Data/rep200.list.tbl
-            bin/tsv_header.py
+            bin/tsv_headers.py
 ```
 
 #### Exercise: 
 
-1. Ask Grimoire to tell you how `tsv_header.py` works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the code into "pseudocode", and then explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explaination into the beginning of the file as a "block-comment" for future reference.
+1. Ask Grimoire to tell you how `tsv_headers.py` works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the code into "pseudocode", and then explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explaination into the beginning of the file as a "block-comment" for future reference.
 * NOTE: "single-line comments" consist of anything that follows a "#" character through the end of the current line.
 * Multiline "block-comments" are most easily constructed by placing three single-quotes or double-quotes by themselves on the lines preceding and following the text of the "block-comment", like this:
 ```
@@ -54,7 +54,7 @@
     
 3. Once you have finished, it should be able to take this prompt from the terminal:
     
-    ``` python3 bin/tsv_header.py -i ../Data/data.tbl -n 8 -m 4 ```
+    ``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 8 -m 4 ```
     
     And come back with
     ``` 1042156.4 1121445.4 ```
@@ -63,18 +63,18 @@
 ## Solution Check instructions:
 If you are successful, you will have the following output for the related commands
 
-``` python3 bin/tsv_header.py -i ../Data/data.tbl -n 7 ```
+``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 7 ```
 
 ``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
 
-``` python3 bin/tsv_header.py -i ../Data/data.tbl -n 4 -m 20 ```
+``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 4 -m 20 ```
 
 ``` 1496.3893 203120.7 40545.1270 563192.3 ```
 
-``` python3 bin/tsv_header.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
+``` python3 bin/tsv_headers.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
 
 ``` genome_name genus rep_id distance ```
 
-``` python3 bin/tsv_header.py -i ../Data/bindict.tbl ```
+``` python3 bin/tsv_headers.py -i ../Data/bindict.tbl ```
 
 ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
