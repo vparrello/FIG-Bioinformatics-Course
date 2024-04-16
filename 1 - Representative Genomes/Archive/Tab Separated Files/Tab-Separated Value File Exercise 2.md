@@ -2,7 +2,7 @@
 
  Objective: Use Chatgpt to create a program that reads Tab Separated Files from the Command Line.
 
- This exercise focuses on creating a program that takes in the header of a TSV file and some command line arguments and compares them against each other. You will be going through the normal development process of a programmer which is similar to the process of a writer. They start like Outline, Draft, edit, review, and then publish. We start with Psuedo code, Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell what step you are in as you follow the exercise.
+ This exercise focuses on creating a program that takes in the header of a TSV file and some command line arguments and compares them against each other. You will be going through the normal development process of a programmer which is similar to the process of a writer. They start like Outline, Draft, edit, review, and then publish. We start with pseudo code, Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell what step you are in as you follow the exercise.
 
 #### Materials: 
 
@@ -17,7 +17,7 @@ Data/rep200.list.tbl
 
 2. Ask Grimoire to write a program that accepts a list of keywords as command-line arguments.
 
-3. You will now prompt Grimoire to create a custom Python program to accomplish the following tasks. Create your own prompt to make Grimoire tell you this list of items specifically, then you can accept the code that it creates and paste it into the file "command_line_kung.py". This time also grab the psuedo code Grimoire gives you.
+3. You will now prompt Grimoire to create a custom Python program to accomplish the following tasks. Create your own prompt to make Grimoire tell you this list of items specifically, then you can accept the code that it creates and paste it into the file "command_line_kung.py". This time also grab the pseudo code Grimoire gives you.
 
     * The program should read a tab separated file called "Data\rep200.list.tbl" with headers from keywords in the command line. 
     * The program should be written in python.
@@ -25,7 +25,7 @@ Data/rep200.list.tbl
     * The program should warn the user and stop if any keyword does not match the header-line.
     * The program should print something specific to let you know it has completed it's task.
 
-4. Take your prompt from above and reorder the steps you gave Grimoire. See how Grimoire changes the code and psuedo code. Paste both into the file "command_line_fu.py"
+4. Take your prompt from above and reorder the steps you gave Grimoire. See how Grimoire changes the code and pseudo code. Paste both into the file "command_line_fu.py"
 
 5. Run one of the programs and check to see no errors come up. If there is an error, type the error message into Grimoire and see what solution it can come up with to help you.
     * Note: Grimoire does not know your file system so it might not catch every detail. If you come across a "File Not Found" error, that is because it cannot find the data file. You would need to use the "Absolute Path" of the file. Grimoire can teach you how to find the Absolute Path of the file. You got this!!
@@ -39,12 +39,12 @@ Also try it with the second program but do not worry if this one does not succee
     'python3 command_line_kung genome genome_name representative_id score distance
     * Bonus: Can you write your own similar test for command_line_fu? 
 
-8. Once you have verified that the program succeeded in both 6 and 7, go ahead and save it as "cmd_tsv_reader.py" to remind you that this one uses the ComManD line. Congratulations on making your own program using Grimoire!
+8. Once you have verified that the program succeeded in both 6 and 7, go ahead and save it as "cmd_tsv_header.py" to remind you that this one uses the ComManD line. Congratulations on making your own program using Grimoire!
 
 9. BONUS: Write down the adjustments that you made to your Grimoire prompt to make it more successful.You can use these tricks in future prompts to get to your solution more easily.
     * What problems should you ask Grimoire to take into account in the future? 
     * What words were confusing to Grimoire? 
-    * What words made the psuedo code more understandable?
+    * What words made the pseudo code more understandable?
 
 ## Solution Check instructions:
 If you are successful, you will have the output that matches the following:
@@ -53,7 +53,7 @@ Step 6: a warning message like: "Warning: genome is not in the list of column na
 
 ## Process - Step: 
 Use this structure to help guide you through the programming process for future prompts
-Psuedo Code - Step 3
+pseudo Code - Step 3
 Draft - Step 3 & 4
 Edits - Step 5
 Review - Step 6 & 7
