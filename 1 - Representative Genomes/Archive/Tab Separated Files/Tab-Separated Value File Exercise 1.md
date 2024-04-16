@@ -8,7 +8,7 @@ Chatgpt is an AI model that can help you learn the basics of many topics without
 
 [chat.openai.com](https://chat.openai.com/)
 Data/bindict.tbl
-Week 1/tsv_reader.py
+Week 1/tsv_header.py
 
 #### Exercise: 
 
@@ -20,9 +20,9 @@ Week 1/tsv_reader.py
 
     **Note: Make sure that you explicitly use the term "line-by-line" as Grimoire will not explain everything you need without it.
 
-4. Use Grimoire's "clipboard" icon in its code-window to copy the program to your clipboard.Under the Directory "1 - Representative Genomes/Week 1", you will see a file called "tsv_reader.py" which is empty if you open it.  Then paste the code you have on your clipboard into that file. 
+4. Use Grimoire's "clipboard" icon in its code-window to copy the program to your clipboard.Under the Directory "1 - Representative Genomes/Week 1", you will see a file called "tsv_header.py" which is empty if you open it.  Then paste the code you have on your clipboard into that file. 
 
-6. Run "tsv_reader.py" on the file "1 - Representative Genomes/Data/bindict.tbl". 
+6. Run "tsv_header.py" on the file "1 - Representative Genomes/Data/bindict.tbl". 
 
 ## Solution Check instructions:
 If you are successful, you will have the output that matches the 5 columns in the data file.
