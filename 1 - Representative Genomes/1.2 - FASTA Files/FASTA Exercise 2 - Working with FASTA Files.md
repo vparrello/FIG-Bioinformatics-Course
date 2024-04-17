@@ -2,7 +2,7 @@
 
 Objective: Use Grimoire to write a program that reads and operates on FASTA-formatted sequence-data.
 
-FASTA files are the bulk of the data that scientists use to explore the bioinformatic scientific space. This means that we need to not only understand the data that is inside of the file, but also have an extremely efficient way to sort through that data and pull the needed information from it. This exercise creates a rudimentary program that can read a fasta file efficiently and quickly.
+FASTA files are the bulk of the data that scientists use to explore the bioinformatic scientific space. This means that we need to not only understand the data that is inside of the file, but also have an extremely efficient way to sort through that data and pull the needed information from it. This exercise creates a rudimentary program that can read a FASTA file efficiently and quickly.
 
 #### Materials: 
 
@@ -38,13 +38,16 @@ Use the solution code provided to check your results.
 
 
 # NOTES: 
-    Needs solution code for fasta fasta_reader
-    Need more sample data for fasta
-    What is the purpose for the output of the file?
-    What data should the student really want out of the file?
+    Bullet list for directory tree
+    Add file extension why the file extensions matter to the user and not code 
+    How the two alphabets are different between protein and DNA
+    More samples for Exercise 3
+    Needs solution code for fasta_reader - in the bin directory on Gordon's computer
+    Have a protein and dna sample for data
 
-    Exercises following could be:
-        practices using the program we just made?
-        Can account for which extension is inputed and always gives relevant data back?
-        add kmer creation to the program we just made
+    Exercises following:
+        Read the rep200.seqs.tbl and create a fasta file from that list
+        Extract sequences from tsv_header
+        Need an exercise that explores BioPython and its uses
+
         
