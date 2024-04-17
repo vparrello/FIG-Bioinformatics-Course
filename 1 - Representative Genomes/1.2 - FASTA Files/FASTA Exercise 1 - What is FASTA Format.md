@@ -18,18 +18,23 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
 
 #### Exercise: 
 
-1. Ask Grimoire to explain what the FASTA file-format is, and how FASTA files are used.
+1. Ask Grimoire to explain the three  important types of biological sequences: DNA, RNA, and protein.
+(If Grimoire uses any words or terms that you are not familiar with, please ask it to explain these terms.)
 
-2. Ask Grimoire to tell you the history of the FASTA format. 
+2. Ask Grimoire to explain the "alphabets" that are used to represent DNA, RNA, and protein sequences.
 
-3. Ask Grimoire to list the preferred file-extensions for FASTA-format files, and explain what type of sequence-data each preferred extension is used for.
+3. Ask Grimoire to explain the FASTA file-format used for representing and storing sequences, and how FASTA files are used.
 
-4(Suggestion). Pick one of the sequence-data types that appeals to you. Ask Grimoire to show you what data inside a file of that type would look like. Then pick another and do the same. Notice the differences between the data. 
+4. Ask Grimoire to tell you the history of the FASTA format. 
+
+5. Ask Grimoire to list the preferred file-extensions conventionally used for FASTA-format files, and explain what types of sequence-data each preferred file-extension is used to represent and store.
+
+6(Suggestion). Pick one of the sequence-data types that appeals to you. Ask Grimoire to show you what data inside a file of that type would look like. Then pick another and do the same. Notice the differences between the data. 
     Ask Grimoire what situation or use case would need both types of data
 
-4(Suggestion). Pick one of the sequence-data types that appeals to you.  Ask Grimoire what a scientist could learn from that type of data. 
+6(Suggestion). Pick one of the sequence-data types that appeals to you.  Ask Grimoire what a scientist could learn from that type of data. 
 
-4(Suggestion). Come up with some sample sequence of data that you think fits one of the extension types. Send Grimoire your own sample data and ask it to fix it according to each of the file extensions and how it would look different. 
+6(Suggestion). Come up with some sample sequence of data that you think fits one of the extension types. Send Grimoire your own sample data and ask it to fix it according to each of the file extensions and how it would look different. 
 
 ## Solution Check instructions:
 
@@ -38,4 +43,4 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
     1st and 2nd suggestion to be tested in Grimoire
     Put bullets for all file structures
     Add file extension why the file extensions matter to the user and not code 
-    How the two alphabets are different between protein and DNA
+    DONE: How the two alphabets are different between protein and DNA
