@@ -55,15 +55,20 @@ and then attaching the file "Basics.html" using the "paperclip" icon before clic
 
 
 # Notes:
-    Step 3: Can we expand that? A lot is happening in there without supervision.
+    Step 3: Can we expand that?
+        Add pseudocode step before making the program
+        Add bullets to this step for students to understand what is happening behind the scenes
     Step 4: This zooms in to a very specific detail. What is the purpose of explaining this detail?
+        This is to tell Grimoire to use the fstring
+        Need to add a formating exercise to the TSV unit for output
     Step 5: We have always provided the command line prompt before. Is there a reason we are not including it here?
-    Step 7: Can we get away from the i.e. piece? 
-
+    Step 8: Can we get away from the i.e. piece? 
+        Add to step 7?
+        
     Exercise after this needs to give the students a use case for the program. 
         Can we use it to determine taxonomy? define all close genomes to a single genome?
         Exploration into why we chose 8mers for protiens and 20mers for DNA
         Define a use case in which a 0.0 jaccard similarity is good or in which it is bad. Same for 100% similar cases
-        
-         
+
+
      
