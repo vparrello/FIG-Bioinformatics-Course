@@ -49,3 +49,6 @@ Typically, we will be working with DNA 20-mers and protein 8-mers.
 # NOTES:
   Once we show Grimoire as fallible, should we start the pseudocode?
   We need a self check for terms like: kmer, dna, protein
+  tool that reads a fasta and spits out all the kmers that appear in the file
+  write a tool that reads a FASTA file and writes a two column file with the kmer and the sequence it came from
+    Spit out to standard err any kmers that have a bad character (not inside agct)
