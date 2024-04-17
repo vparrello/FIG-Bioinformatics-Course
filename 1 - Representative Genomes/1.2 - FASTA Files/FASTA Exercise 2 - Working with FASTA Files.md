@@ -2,7 +2,7 @@
 
 Objective: Use Grimoire to write a program that reads and operates on FASTA-formatted sequence-data.
 
-Fasta files are the bulk of the data that scientists use to explore the bioinformatic scientific space. This means that we need to not only understand the data that is inside of the file, but also have an extremely efficient way to sort through that data and pull the needed information from it. This exercise creates a rudimentary program that can read a fasta file efficiently and quickly.
+FASTA files are the bulk of the data that scientists use to explore the bioinformatic scientific space. This means that we need to not only understand the data that is inside of the file, but also have an extremely efficient way to sort through that data and pull the needed information from it. This exercise creates a rudimentary program that can read a fasta file efficiently and quickly.
 
 #### Materials: 
 

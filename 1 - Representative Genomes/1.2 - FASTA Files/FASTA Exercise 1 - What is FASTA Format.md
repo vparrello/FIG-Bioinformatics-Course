@@ -7,13 +7,14 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-```
-FIG-Bioinformatics-Course/
-    1 - Representative Genomes/
-        Data/Sample1.fasta
-        1.2 - FASTA Files/
-            FASTA Exercise 1 - What is FASTA format.md
-```
+
+* FIG-Bioinformatics-Course/
+    * 1 - Representative Genomes/
+        * Data/
+            * Sample1.fasta
+        * 1.2 - FASTA Files/
+            * FASTA Exercise 1 - What is FASTA format.md
+
 
 #### Exercise: 
 
@@ -38,3 +39,4 @@ FIG-Bioinformatics-Course/
     Students should give Grimoire a file type. Can we identify the proper extension?
     This lesson can be dry for those who are less interested in history
     Need a solution or a self check so that students know they got the skill they need from this lesson
+    
