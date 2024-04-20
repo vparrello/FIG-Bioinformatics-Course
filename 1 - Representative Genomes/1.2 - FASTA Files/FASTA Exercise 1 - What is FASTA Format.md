@@ -18,12 +18,23 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
 
 #### Exercise: 
 
-1. Ask Grimoire to explain the three  important types of biological sequences: DNA, RNA, and protein.
+The FASTA file-format is defined as follows:
+
+* A FASTA-file consists of one or more "records".
+
+* A record has the following format:
+    - Each record must begin with "record header" whose first character is a "greater-than" sign `>` and is immediately followed by a sequence-identifer. Sequence-identifiers must not contain spaces.
+
+    - Any text on the record-header following the first space-character through the end of the line is considered to be a "sequence description" or "comment". "Sequence descriptions" are optional.
+    "Sequence descriptions" are often used to describe the function of a sequence, or to indicate which genome the sequence came from.
+
+    - The lines following the "record header" contain sequence-data.
+    Sequence-data may be entered all on one line, or may be broken into multiple lines; however the sequence-data must not contain blank lines.
+
+1. Ask Grimoire to explain the three important types of biological sequences: DNA, RNA, and protein.
 (If Grimoire uses any words or terms that you are not familiar with, please ask it to explain these terms.)
 
 2. Ask Grimoire to explain the "alphabets" that are used to represent DNA, RNA, and protein sequences.
-
-3. Ask Grimoire to explain the FASTA file-format used for representing and storing sequences, and how FASTA files are used.
 
 4. Ask Grimoire to tell you the history of the FASTA format. 
 
