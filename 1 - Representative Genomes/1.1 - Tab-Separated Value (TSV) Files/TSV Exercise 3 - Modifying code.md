@@ -46,7 +46,7 @@
     Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
 
-3. In this exercise you are going to adjust the 'tsv_header.py' program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
+3. In this exercise you are going to adjust the 'tsv_headers.py' program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
     * The program should read the input-filename from command-line argument ```-i```
     * The program should extract the header-names from the input-file
     * The program can take an optional argument ```-n``` to specify how many of the first columns will be printed to standard output. If this argument is not specified, then the program prints all columns

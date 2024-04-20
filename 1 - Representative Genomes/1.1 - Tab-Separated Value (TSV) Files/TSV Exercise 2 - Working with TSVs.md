@@ -52,7 +52,7 @@ indentation is used to represent directory-levels:
     
     ```python3 bin/command_line_kung.py genome genome_name representative_id score distance < Data/rep200.list.tbl ```
     
-    * Bonus: Can you write your own similar test for command_line_fu? 
+    * Bonus: Can you write your own similar test for `command_line_fu.py`? 
 
 8. Once you have verified that the program succeeded in both 6 and 7, go ahead and save it as "cmd_tsv_select_columns.py" to remind you that this one uses the ComManD line. Congratulations on making your own program using Grimoire!
 
