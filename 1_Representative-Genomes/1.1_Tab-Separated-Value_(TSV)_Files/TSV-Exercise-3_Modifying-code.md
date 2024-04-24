@@ -16,6 +16,7 @@
         * Code/
             * tsv_headers.py
 
+
 #### Exercise: 
 
 1. Ask Grimoire to tell you how `tsv_headers.py` works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the code into "pseudocode", and then explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explaination into the beginning of the file as a "block-comment" for future reference.

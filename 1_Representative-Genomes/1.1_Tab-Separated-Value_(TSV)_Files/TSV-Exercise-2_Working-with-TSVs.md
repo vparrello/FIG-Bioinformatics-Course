@@ -13,6 +13,7 @@
 You will also need the files "rep200.list.tbl",
 "command_line_kung.py" and "command_line_fu.py";
 indentation is used to represent directory-levels: 
+
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
     * Data/
