@@ -7,16 +7,17 @@ FASTA files are the bulk of the data that scientists use to explore the bioinfor
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-``` 
-FIG-Bioinformatics-Course/
-    1_Representative-Genomes/
-        Data/Sample1.fasta
-        Code/fasta_reader.py
-        Code/fasta_reader_solution.py
-        1.2_FASTA-Files/
-            FASTA-Exercise-1_What-is-FASTA-format.md
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * Sample1.fasta
+        * Code/
+            * fasta_reader.py
+            * fasta_reader_solution.py
+        * 1.2_FASTA-Files/
+            * FASTA-Exercise-1_What-is-FASTA-format.md
             
-```
 
 #### Exercise:
 

@@ -8,15 +8,18 @@ Now that we have created our program, we will need to adjust it for outside use.
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-```
-    FIG-Bioinformatics-Course/
-        1_Representative-Genomes/
-            Data/bindict.tbl
-            Data/data.tbl
-            Data/rep200.list.tbl
-            Data/TSVReaderDocumentation.txt
-            Code/tsv_headers.py
-```
+
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * bindict.tbl
+            * data.tbl
+            * rep200.list.tbl
+            * TSVReaderDocumentation.txt
+        * Code/
+            * tsv_headers.py
+
 
 #### Exercise: 
 

@@ -6,14 +6,16 @@
 
 #### Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-```
-    FIG-Bioinformatics-Course/
-        1_Representative-Genomes/
-            Data/bindict.tbl
-            Data/data.tbl
-            Data/rep200.list.tbl
-            Code/tsv_headers.py
-```
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * bindict.tbl
+            * data.tbl
+            * rep200.list.tbl
+        * Code/
+            * tsv_headers.py
+
 
 #### Exercise: 
 
