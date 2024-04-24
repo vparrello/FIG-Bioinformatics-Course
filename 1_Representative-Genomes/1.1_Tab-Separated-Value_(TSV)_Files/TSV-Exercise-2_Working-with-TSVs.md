@@ -16,8 +16,8 @@ indentation is used to represent directory-levels:
     FIG-Bioinformatics-Course/
         1 - Representative Genomes/
             Data/rep200.list.tbl
-            bin/command_line_kung.py
-            bin/command_line_fu.py
+            Code/command_line_kung.py
+            Code/command_line_fu.py
 ```
 
 #### Exercise: 
@@ -42,15 +42,15 @@ indentation is used to represent directory-levels:
 
 6. In order to run the program, go to the Terminal Menu at the top of VS code and click on New Terminal to open a new terminal underneath your code. Then you want to type in the following to run your command:
 
-    ``` python3 bin/command_line_kung.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl ```
+    ``` python3 Code/command_line_kung.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl ```
 
     Also try it with the second program but do not worry if this one does not succeed:
     
-    ``` python3 bin/command_line_fu.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl ```
+    ``` python3 Code/command_line_fu.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl ```
 
 7. If your command_line_kung program did not succeed, go back to step 3. If it did, then try it again with this command. This one should throw a warning message and then stop the program completely
     
-    ```python3 bin/command_line_kung.py genome genome_name representative_id score distance < Data/rep200.list.tbl ```
+    ```python3 Code/command_line_kung.py genome genome_name representative_id score distance < Data/rep200.list.tbl ```
     
     * Bonus: Can you write your own similar test for `command_line_fu.py`? 
 

@@ -8,11 +8,11 @@
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 ```
     FIG-Bioinformatics-Course/
-        1 - Representative Genomes/
+        1_Representative-Genomes/
             Data/bindict.tbl
             Data/data.tbl
             Data/rep200.list.tbl
-            bin/tsv_headers.py
+            Code/tsv_headers.py
 ```
 
 #### Exercise: 
@@ -54,7 +54,7 @@
     
 3. Once you have finished, it should be able to take this prompt from the terminal:
     
-    ``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 8 -m 4 ```
+    ``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 8 -m 4 ```
     
     And come back with
     ``` 1042156.4 1121445.4 ```
@@ -63,18 +63,18 @@
 ## Solution Check instructions:
 If you are successful, you will have the following output for the related commands
 
-``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 7 ```
+``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 7 ```
 
 ``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
 
-``` python3 bin/tsv_headers.py -i ../Data/data.tbl -n 4 -m 20 ```
+``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 4 -m 20 ```
 
 ``` 1496.3893 203120.7 40545.1270 563192.3 ```
 
-``` python3 bin/tsv_headers.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
+``` python3 Code/tsv_headers.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
 
 ``` genome_name genus rep_id distance ```
 
-``` python3 bin/tsv_headers.py -i ../Data/bindict.tbl ```
+``` python3 Code/tsv_headers.py -i ../Data/bindict.tbl ```
 
 ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
