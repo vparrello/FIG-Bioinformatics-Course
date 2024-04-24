@@ -10,10 +10,11 @@ A DNA sequences is a sequence comprising of 4 characters (gcta) but famously boo
 ``` 
 FIG-Bioinformatics-Course/
     Basics.html
-    1 - Representative Genomes/
-        1.3 - Kmers and Jaccard Similarities/
-            Kmer Exercise 1 - What are Kmers.md
-            Kmer Exercise 1 - Solutions.md
+    1_Representative-Genomes/
+        1.3_Kmers-and-Jaccard-Similarities/
+            Kmer-Exercise-1_What-are-Kmers.md
+            Solutions/
+                Kmer-Exercise-1_Solutions.md
 ```
 
 #### Exercise:
