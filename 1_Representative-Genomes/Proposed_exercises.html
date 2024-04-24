@@ -1,0 +1,173 @@
+<html>
+<h1>Proposed Exercise</h1>
+<b>NOTE:</b> If you are uncertain how to do something,
+Grimoire can often help you, so please do ask it questions.
+
+<h2>Tab-separated and FASTA file Exercises</h2>
+<ol>
+  <li> Tab-Separated Value (TSV) file exercises.
+    <ol type="A">
+      <li>Ask Grimoire to explain what a tab-separated file with header-line is.
+	    <br><br>
+	
+      <li>If you are not already familiar with the concepts of "STDIN"
+	and "STDOUT", please ask Grimoire to explain them to you.
+	    <br><br>
+	
+      <li>Ask Grimore to write a program that will list the names
+	in a TSV-file's header-line columns, and then explain
+	to you how the program works "line-by-line".
+	    <br>
+	(Make sure that you explicitly use the term "line-by-line",
+	it is a phrase that is meaningful to Grimoire.)
+	    <br><br>
+	
+	Use Grimoire's "clipboard" icon in its code-window to copy
+	the program to your clipboard, then use VScode to save the program
+	to your Projects directory, and to run the program on the TSV file
+	provided in the 'Data' directory.
+	    <br><br>
+	
+      <li>Ask Grimoire to write a program that accepts a list of
+	keywords as command-line arguments.
+	    <br>
+	The program should read a  tab-separated file with headers
+	from STDIN using only Python's built-in capabalities.
+	    <br>
+	It should extract the columns  that match the keywords,
+	and write those columns to STDOUT in the order
+	that they were listed as arguments.
+	    <br>
+	The program should warn the user and abort
+	if any keywords don't match the header-line.
+	    <br><br>
+	Ask Grimoire to explain to you line-by-line how the program works.
+	    <br>
+	Then save the program to you 'Projects' directory as above.
+	    <br><br>
+	
+      <li>Use the program from exercise (C.) to fetch the header-names
+	from the sample TSV file in the module 'Data' directory.
+	<br><br>
+	
+      <li>Use the program from exercise (D.) to extract 3 columns
+	from the sample file.
+	<br><br>
+	
+      <li> Use the program from exercise (D.) to extract two columns in
+	swapped order.
+	<br><br>
+    </ol>
+    
+  <li>FASTA exercises
+    <ol type="A">
+      <li>Ask Grimoire to explain what a FASTA file is.
+	<br><br>
+    
+      <li>Ask Grimoire to write code that reads a named FASTA file,
+	and then prints out the lengths of each sequence,
+	and the average length of the set of sequences.
+	<br>
+	Ask Grimoire how the program works.
+	<br>
+	Then use VScode to save the program to your 'Projects' directory,
+	and to run the code.
+	<br>
+	Use the solution code provided to check your results
+	<br><br>
+	
+      <li>Run your code on the sample FASTA file provided in the 'Data'
+	directory.
+	<br><br>
+    </ol>
+</ol>
+
+<h2>Kmer, Kmers-sets, and Jaccard Similarities</h2>
+Enter the following into Grimoire's "Message Grimoire" box:
+<pre>
+  "I am going to give you some definitions in an attached file;
+  you don't need to respond to them, just learn them.
+  I'm then going to ask you some questions."
+</pre>
+Then click on the "Paperclip" icon, select the file "Basics.html",
+and hit the "Send Message"
+icon (the "Up-arrow" icon at the right of the "Message Grimoire" box).
+<br>
+Grimoire should respond to entering the above with something like
+"Understood" or "Got it".
+<p>
+The following questions should be entered as individual prompts
+(or as Grimore puts them, "Messages"), but should be entered
+as part of the same session as entering the above definitions,
+since Grimoire will need these definitions to establish its "context":
+<ol>
+  <li>How can I know how many Kmers are in a given sequence?
+    <br><br>
+    
+  <li>Let "cttgtatagtattgtcttgtgtatc" be a DNA sequence;
+    please list all of the 20-mers in this sequence.
+    <br>
+    (<b>NOTE:</b> Check how many characters are in Grimoire's answer,
+    because sometimes it miscounts.)
+    <br><br>
+    
+  <li>Is the Kmer "atagctcga" in the sequence "cttgtatagtattgtcttgtgtatc"?
+    <br><br>
+    
+  <li>Is the Kmer "agtattgtc" in the sequence "cttgtatagtattgtcttgtgtatc"?
+    <br><br>
+
+  <li>Ask Grimoire "What is a "Jaccard Similarity?"
+    <br><br>
+
+  <li>Ask Grimoire to write a program that takes a Kmer-length
+    and a FASTA filename as arguments,
+    and print the jaccard-similarities for all pairs of sequences
+    in the FASTA file to STDOUT.
+    <br>
+    The program should use the output-format
+    "f'{id1}\t{id2}\t{jaccard_sim}'",
+    where 'id1' is the identifier of the first sequence in the comparison,
+    'id1' is the identifier of the second sequence,
+    and 'jaccard_sim' is the jaccard-similarity between the sequences.
+    <br>
+    Ask Grimoire to explain to you what the output format-string means.
+    <br>
+    Then use VScode to save the program and run it on the provided example
+    FASTA-file.
+    <br>
+    Then check your answer against the output of the solution program.
+    <br><br>
+</ol>
+
+<h2>Working with Genomes</h2>
+<ol>
+  <li>{Insert P3 excercise(s) for fetching genomes from BV-BRC,<br>
+    and extracting features with a specific function such as PheS.}
+    <br><br>
+
+  <li> Collect 10 diverse, high-quality genomes.<br>
+    Add 5 high-quality Ecoli genomes.<br>
+    Add a Streptococcus genome.<br>
+    Compute the pairwise DNA 20-mer jaccard similarities using the program
+    from the earlier exercise.<br>
+    Use the provided solution program to check your results.<br>
+    <br><br>
+    
+  <li>Construct a set of genomes.<br>
+    Fetch the PheS sequences for the set of genome.<br>
+    Construct the protein 8-mers that occur in the set of PheS sequences.<br>
+    Compute the pairwise Jacard similarities for the PheS sequences.<br>
+    Cluster the set of genomes. {This step needs additional thought.}<br>
+    Use the provided solution program to check your results.
+    <br><br>
+</ol>
+
+<!-- Jaccard distance is already covered above -->
+<!-- genome is partially covered, but maybe needs more -->
+<h2>Roles</h2>
+<h2>SOURs</h2>
+<h2>Hammers</h2>
+<h2>RepGen</h2>
+<h2>Projection and Binning<h2>
+</html>
