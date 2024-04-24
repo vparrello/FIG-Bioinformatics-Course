@@ -13,7 +13,7 @@ FIG-Bioinformatics-Course/
     1 - Representative Genomes/
         Data/Sample1.fasta
         1.3 - Kmers and Jaccard Similarities/
-            bin/kmer_jaccard_similarities.py
+            Code/kmer_jaccard_similarities.py
             Kmer Exercise 2 - Jaccard similarities.md
             Solutions/kmer_jaccard_similarities_solution.py
 ```
@@ -39,10 +39,10 @@ and then attaching the file "Basics.html" using the "paperclip" icon before clic
 
 4. Ask Grimoire to give you a detailed explanation of what the output "f-string" format means.
 
-5. Use VScode to save the generated code into the stub-program `bin/kmer_jaccard_similarities.py`, and then use VScode to open a "terminal" window and run the program on the data-file `Sample1.fasta` using '20' as the value of `K`.
+5. Use VScode to save the generated code into the stub-program `Code/kmer_jaccard_similarities.py`, and then use VScode to open a "terminal" window and run the program on the data-file `Sample1.fasta` using '20' as the value of `K`.
     * Grimoire should have shown you how to run the program from a terminal-window, but if it didn't, please ask it to show you how to run the program.
 
-6. Run the same command for the program 'bin/kmer_jaccard_similarities_solution and check your program's output against the output from the solution program.
+6. Run the same command for the program 'Code/kmer_jaccard_similarities_solution and check your program's output against the output from the solution program.
     * Notice that most of the 20-mer jaccard-similarities are "0.0"; this is not an error --- it means that most of the sequences do not have even a single 20-mer in common and means our sample is diverse.
 
 7. Ask Grimoire to explain the difference between the concepts of "sensitivity" and "specificity", and how they are relevant in bioinformatics and in medicine.
