@@ -7,15 +7,15 @@ A DNA sequences is a sequence comprising of 4 characters (gcta) but famously boo
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-``` 
-FIG-Bioinformatics-Course/
-    Basics.html
-    1_Representative-Genomes/
-        1.3_Kmers-and-Jaccard-Similarities/
-            Kmer-Exercise-1_What-are-Kmers.md
-            Solutions/
-                Kmer-Exercise-1_Solutions.md
-```
+
+* FIG-Bioinformatics-Course/
+    * Basics.html
+    * 1_Representative-Genomes/
+        * 1.3_Kmers-and-Jaccard-Similarities/
+            * Kmer-Exercise-1_What-are-Kmers.md
+            * Solutions/
+                * Kmer-Exercise-1_Solutions.md
+
 
 #### Exercise:
 
