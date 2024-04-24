@@ -9,16 +9,18 @@
 #### Materials: 
 
 "Grimoire" at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
-```
+
 You will also need the files "rep200.list.tbl",
 "command_line_kung.py" and "command_line_fu.py";
 indentation is used to represent directory-levels: 
-    FIG-Bioinformatics-Course/
-        1 - Representative Genomes/
-            Data/rep200.list.tbl
-            Code/command_line_kung.py
-            Code/command_line_fu.py
-```
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+    * Data/
+        * rep200.list.tbl
+    * Code/
+        * command_line_kung.py
+        * Code/command_line_fu.py
 
 #### Exercise: 
 

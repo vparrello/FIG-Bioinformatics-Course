@@ -10,9 +10,9 @@ Objectives:
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
-            * 
+            * rep10.seqs.tbl 
         * 1.2_FASTA-Files/
-            * FASTA-Exercise-2_TSV-to-FASTA-conversion.md
+            * FASTA-Exercise-2_TSV-to-FASTA-translation.md
 
 #### Exercise: 
 
