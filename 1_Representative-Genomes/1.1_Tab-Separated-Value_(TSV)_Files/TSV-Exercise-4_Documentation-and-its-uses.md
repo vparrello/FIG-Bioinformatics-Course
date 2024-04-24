@@ -8,15 +8,16 @@ Now that we have created our program, we will need to adjust it for outside use.
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-```
-    FIG-Bioinformatics-Course/
-        1 - Representative Genomes/
-            Data/bindict.tbl
-            Data/data.tbl
-            Data/rep200.list.tbl
-            Data/TSVReaderDocumentation.txt
-            bin/tsv_headers.py
-```
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * bindict.tbl
+            * data.tbl
+            * rep200.list.tbl
+            * TSVReaderDocumentation.txt
+        * Code/
+            * tsv_headers.py
 
 #### Exercise: 
 
@@ -33,7 +34,7 @@ Now that we have created our program, we will need to adjust it for outside use.
 
 5. Inside your terminal in VScode, try accessing the help menu by using the following command:
 
-    ``` python3 bin/tsv_headers.py --help ```
+    ``` python3 Code/tsv_headers.py --help ```
 
     This should display a message of what every variable does and which ones are optional. Copy and paste the output into Grimoire and tell it that you need to adjust the aforementioned code to include help messages inside this output. Use that prompt to adjust your command line help menu.
 

@@ -8,11 +8,11 @@ Objectives:
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
 * FIG-Bioinformatics-Course/
-    * 1 - Representative Genomes/
+    * 1_Representative-Genomes/
         * Data/
-            * 
-        * 1.2 - FASTA Files/
-            * FASTA Exercise 2 - TSV to FASTA translation.md
+            * rep10.seqs.tbl 
+        * 1.2_FASTA-Files/
+            * FASTA-Exercise-2_TSV-to-FASTA-translation.md
 
 #### Exercise: 
 
