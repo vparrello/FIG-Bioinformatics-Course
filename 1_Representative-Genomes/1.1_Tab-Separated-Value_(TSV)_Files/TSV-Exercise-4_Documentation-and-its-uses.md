@@ -9,6 +9,7 @@ Now that we have created our program, we will need to adjust it for outside use.
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
@@ -18,6 +19,7 @@ Now that we have created our program, we will need to adjust it for outside use.
             * TSVReaderDocumentation.txt
         * Code/
             * tsv_headers.py
+
 
 #### Exercise: 
 

@@ -15,7 +15,8 @@ FIG-Bioinformatics-Course/
         1.3 - Kmers and Jaccard Similarities/
             Code/kmer_jaccard_similarities.py
             Kmer Exercise 2 - Jaccard similarities.md
-            Solutions/kmer_jaccard_similarities_solution.py
+            Solutions/
+                kmer_jaccard_similarities_solution.py
 ```
 
 #### Exercise:

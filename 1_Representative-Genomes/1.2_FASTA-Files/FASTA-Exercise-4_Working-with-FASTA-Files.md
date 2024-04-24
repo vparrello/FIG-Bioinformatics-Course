@@ -7,16 +7,17 @@ FASTA files are the bulk of the data that scientists use to explore the bioinfor
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-``` 
-FIG-Bioinformatics-Course/
-    1 - Representative Genomes/
-        Data/Sample1.fasta
-        Code/fasta_reader.py
-        Code/fasta_reader_solution.py
-        1.2 - FASTA Files/
-            FASTA Exercise 1 - What is FASTA format.md
+
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * Sample1.fasta
+        * Code/
+            * fasta_reader.py
+            * fasta_reader_solution.py
+        * 1.2_FASTA-Files/
+            * FASTA-Exercise-1_What-is-FASTA-format.md
             
-```
 
 #### Exercise:
 
@@ -42,7 +43,7 @@ Use the solution code provided to check your results.
     Add file extension why the file extensions matter to the user and not code 
     How the two alphabets are different between protein and DNA
     More samples for Exercise 3
-    Needs solution code for fasta_reader - in the bin directory on Gordon's computer
+    Needs solution code for fasta_reader - in the Code directory on Gordon's computer
     Have a protein and dna sample for data
 
     Exercises following:
