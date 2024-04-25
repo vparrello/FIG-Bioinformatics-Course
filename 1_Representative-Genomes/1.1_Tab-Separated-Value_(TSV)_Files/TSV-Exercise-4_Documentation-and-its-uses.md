@@ -49,5 +49,5 @@ Now that we have created our program, we will need to adjust it for outside use.
 
 
 ## Solution Check instructions:
-If you are successful, you will have documentation of your program in TSVReaderDocumentation.txt, the ```python3 tsv_header --help``` menu, and at least 10 comments inside of your code. 
+If you are successful, you will have documentation of your program in TSVReaderDocumentation.txt, the ```python3 tsv_header.py --help``` menu, and at least 10 comments inside of your code. 
 
