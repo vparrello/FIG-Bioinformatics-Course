@@ -10,7 +10,7 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 ``` 
 FIG-Bioinformatics-Course/
     Basics.html
-    1 - Representative Genomes/
+    1_Representative-Genomes/
         Data/Sample1.fasta
         1.3 - Kmers and Jaccard Similarities/
             Code/kmer_jaccard_similarities.py
