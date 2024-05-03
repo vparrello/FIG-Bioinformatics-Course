@@ -1,8 +1,8 @@
 #### TSV File Exercise 3
 
- Objective: Adjust former programs for new use cases and inputs
+Objective: Adjust former programs for new use cases and inputs
 
- Editing your tools/programs into different use cases makes your own code more versitile and efficient. It also helps you to edit your own work and help you apply what you have learned to your own work. This exercise focuses on adjusting your first program to apply some of the concepts of the command line as well as those for prompting Grimoire (Chatgpt). This exercise is more hands off to help you apply the review process to your own code.
+Editing your tools/programs into different use cases makes your own code more versitile and efficient. It also helps you to edit your own work and help you apply what you have learned to your own work. This exercise focuses on adjusting your first program to apply some of the concepts of the command line as well as those for prompting Grimoire (Chatgpt). This exercise is more hands off to help you apply the review process to your own code.
 
 #### Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
