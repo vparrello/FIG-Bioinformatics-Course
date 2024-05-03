@@ -33,7 +33,7 @@ which are respectively in the `Data` and `Code` directories underneath the direc
 
 2. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
 
-3. Ask Grimoire to explain what "STDIN" (Standard Input) and "STDOUT" (Standard Output) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
+3. Ask Grimoire to explain what `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
 
 4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line".
     * Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explanation of everything within the program without it.
