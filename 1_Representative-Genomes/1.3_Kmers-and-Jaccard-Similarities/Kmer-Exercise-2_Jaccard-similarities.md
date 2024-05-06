@@ -13,13 +13,12 @@ Comparing and contrasting sequences is the main way that scientists find pattern
     * 1_Representative-Genomes/
         * Data/
             * Sample1.fasta
-        * 1.3_Kmers-and-Jaccard-Similarities/
+        * 1.3 - Kmers and Jaccard Similarities/
             * Code/
                 * kmer_jaccard_similarities.py
-            * Kmer-Exercise-2_Jaccard-similarities.md
             * Solutions/
                 * kmer_jaccard_similarities_solution.py
-
+            * Kmer Exercise 2 - Jaccard similarities.md
 
 #### Exercise:
 

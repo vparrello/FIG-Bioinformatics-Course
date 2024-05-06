@@ -2,9 +2,9 @@
 
 Objective: Become familiar with using ChatGPT, and learn about basic bioinformatics, common data-formats, and use of command-line tools.
  
-ChatGPT is an AI model that can instruct you on the basics of many topics and to write computer-programs without needing to look up the information or to learn a computer-language yourself. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
+ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, and it can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
 Thus, "Trust, but verify"! :-)
 
 The following exercises are intended to get you used to interacting with "Grimoire", while also introducing some basic types and formats of bioinformatic data.
@@ -13,9 +13,9 @@ The following exercises are intended to get you used to interacting with "Grimoi
 
 "Grimoire", at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
-Below is a schematic representation of the "Directory tree" for this section of the course; indentation is used to represent directory-levels, and items that end in '/' mean "directory that has this name". In addition to the file you are currently reading, you will also need the files "bindict.tbl" and "tsv_headers.py",
+Below is a schematic representation of the "Directory tree" for this section of the course; indentation is used to represent directory-levels, and items that end in '/' mean "directory that has this name". In addition to the file you are currently reading, you will also need the files "bindict.tbl" and `tsv_headers.py`,
 which are respectively in the `Data` and `Code` directories underneath the directory
-"1 - Representative Genomes":
+`1_Representative-Genomes/`:
 
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
@@ -33,7 +33,7 @@ which are respectively in the `Data` and `Code` directories underneath the direc
 
 2. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
 
-3. Ask Grimoire to explain what "STDIN" (Standard Input) and "STDOUT" (Standard Output) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
+3. Ask Grimoire to explain what `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
 
 4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line".
     * Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explanation of everything within the program without it.
@@ -43,9 +43,9 @@ which are respectively in the `Data` and `Code` directories underneath the direc
 
 The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
-5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to "FIG-Bioinformatics-Course", then to "1 - Representative Genomes" within the course directory, then to "1.1 - Tab-Separated Files", and finally to the directory named `Code/` (the traditional name for a directory that contains executable code --- it originally stood for "binary"). Within this `Code/` directory, you will see a file named `tsv_headers.py` that will be empty when you open it. Paste Grimoire's code that you save to your clipboard into the file `tsv_headers.py`, then click on "Save" under the "File" menu to save your script to disk. 
+5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to `FIG-Bioinformatics-Course/`, then to `1_Representative-Genomes/` within the course directory, then to "1.1 - Tab-Separated Files", and finally to the directory named `Code/`. Within this `Code/` directory, you will see a file named `tsv_headers.py` that will be empty when you open it. Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py`, then click on "Save" under the "File" menu to save your script to disk. 
 
-6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run "tsv_headers.py" on the file "1 - Representative Genomes/Data/bindict.tbl". (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be something like this:
+6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run `tsv_headers.py` on the file `1_Representative-Genomes/Data/bindict.tbl`. (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be something like this:
 
 ``` python3 Code/tsv_headers.py ../Data/bindict.tbl ```
 
