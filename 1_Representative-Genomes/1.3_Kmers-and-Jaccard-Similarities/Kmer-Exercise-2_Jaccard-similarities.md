@@ -7,17 +7,18 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-``` 
-FIG-Bioinformatics-Course/
-    Basics.html
-    1_Representative-Genomes/
-        Data/Sample1.fasta
-        1.3 - Kmers and Jaccard Similarities/
-            Code/kmer_jaccard_similarities.py
-            Kmer Exercise 2 - Jaccard similarities.md
-            Solutions/
-                kmer_jaccard_similarities_solution.py
-```
+
+* FIG-Bioinformatics-Course/
+    * Basics.html
+    * 1_Representative-Genomes/
+        * Data/
+            * Sample1.fasta
+        * 1.3 - Kmers and Jaccard Similarities/
+            * Code/
+                * kmer_jaccard_similarities.py
+            * Solutions/
+                * kmer_jaccard_similarities_solution.py
+            * Kmer Exercise 2 - Jaccard similarities.md
 
 #### Exercise:
 
