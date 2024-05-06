@@ -1,8 +1,8 @@
 #### TSV File Exercise 3
 
- Objective: Adjust former programs for new use cases and inputs
+Objective: Adjust former programs for new use cases and inputs
 
- Editing your tools/programs into different use cases makes your own code more versitile and efficient. It also helps you to edit your own work and help you apply what you have learned to your own work. This exercise focuses on adjusting your first program to apply some of the concepts of the command line as well as those for prompting Grimoire (Chatgpt). This exercise is more hands off to help you apply the review process to your own code.
+Editing your tools/programs to support various different use-cases makes your own code more versatile and efficient. It also helps you to edit your own work and help you apply what you have learned to your own work. This exercise focuses on adjusting your first program to apply some of the concepts of the command line as well as those for prompting Grimoire (Chatgpt). This exercise is more hands off to help you apply the review process to your own code.
 
 #### Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
@@ -19,7 +19,7 @@
 
 #### Exercise: 
 
-1. Ask Grimoire to tell you how `tsv_headers.py` works by attaching it as a file. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and then click the "enter" icon at the right of the prompt.) If that does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the code into "pseudocode", and then explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explaination into the beginning of the file as a "block-comment" for future reference.
+1. Ask Grimoire to tell you how `tsv_headers.py` works by attaching the file to the prompt. (You "attach" a file to a prompt by saying "I am going to attach a program that I would like to work on with you", and then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), then select the program to upload, and then finally click the "enter" icon at the right of the prompt.) If attaching the file does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the attched code into "pseudocode", and explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explanation into the beginning of the file as a "block-comment" for future reference.
 * NOTE: "single-line comments" consist of anything that follows a "#" character through the end of the current line.
 * Multiline "block-comments" are most easily constructed by placing three single-quotes or double-quotes by themselves on the lines preceding and following the text of the "block-comment", like this:
 ```
@@ -31,7 +31,7 @@
         """
 ```
 
-2. In you previous exercises, your program used what are known as "positional arguments", which work like this:
+2. In your previous exercises, your program used what are known as "positional arguments", which work like this:
 
     ``` python3 program_name arg1 arg2 arg3 ... ```
 
@@ -48,7 +48,7 @@
     Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
 
-3. In this exercise you are going to adjust the 'tsv_headers.py' program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements on your code. 
+3. In this exercise you are going to adjust the `tsv_headers.py` program to add named arguments and a new use case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code. 
     * The program should read the input-filename from command-line argument ```-i```
     * The program should extract the header-names from the input-file
     * The program can take an optional argument ```-n``` to specify how many of the first columns will be printed to standard output. If this argument is not specified, then the program prints all columns
@@ -58,25 +58,25 @@
     
     ``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 8 -m 4 ```
     
-    And come back with
+    and should return the output:
     ``` 1042156.4 1121445.4 ```
-    This data file has over 2000 columns and can take a long time to load in applications. Bonus points if you can do this entire program without opening the file yourself.
+* NOTE: The file `data.tbl` has over 2000 columns and can take a long time to load in applications. Bonus points if you can do this entire program revision without opening up the program file yourself.
 
 ## Solution Check instructions:
-If you are successful, you will have the following output for the related commands
+If you are successful, you should see the following output for each associated command:
 
-``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 7 ```
+* ``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 7 ```
 
-``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
+    ``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
 
-``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 4 -m 20 ```
+* ``` python3 Code/tsv_headers.py -i ../Data/data.tbl -n 4 -m 20 ```
 
-``` 1496.3893 203120.7 40545.1270 563192.3 ```
+    ``` 1496.3893 203120.7 40545.1270 563192.3 ```
 
-``` python3 Code/tsv_headers.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
+* ``` python3 Code/tsv_headers.py -i ../Data/rep200.list.tbl -n 5 -m 2 ```
 
-``` genome_name genus rep_id distance ```
+    ``` genome_name genus rep_id distance ```
 
-``` python3 Code/tsv_headers.py -i ../Data/bindict.tbl ```
+* ``` python3 Code/tsv_headers.py -i ../Data/bindict.tbl ```
 
-``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
+    ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
