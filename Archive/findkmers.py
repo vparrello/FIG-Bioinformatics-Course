@@ -1,13 +1,13 @@
 '''
 @author Victoria Parrello
-Week 1 - Representative Genomes
+Week 1_Representative-Genomes
 Activity 1: Find the secret sequences
 '''
 dna_sequences = "acgt"
 header = ""
 counter = 0
 
-with open("1 - Representative Genomes/Week 1/Data/Sample1.fasta") as datafile:
+with open("1_Representative-Genomes/Week 1/Data/Sample1.fasta") as datafile:
     data = #TODO put something about *readlines* in here
     for line in data:
         if "TODO insert header pattern here" in line:

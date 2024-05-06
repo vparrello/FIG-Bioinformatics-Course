@@ -55,4 +55,4 @@ Follow these directions to download and use this course.
 
 8. Choose Open Folder. Then find the "FIG-Bioinformatics-Course-master" folder you just put onto your computer and select it. This is the file from Step 3. It will prompt you to ask if you trust the authors. I would recommend "yes" because I trust myself, but that's up to you. ;-)
 
-9. Happy Dance! You are done with your setup! Now go to your first exercise under 1 - Representative Genomes to get started.         
+9. Happy Dance! You are done with your setup! Now go to your first exercise under "1_Representative-Genomes/" to get started.         
