@@ -10,15 +10,13 @@ This course is meant to give an introduction to AI-assisted code-development via
 ## Content
 
 ### 1. Representative Genomes  
-1. Construct and learn to use command-line tools to manipulate tab-separated files.
-2. Construct and use command-line tools to read, process, and write DNA sequence-data in FASTA format
-3. K-mers and Jaccard Similarities - Use your knowledge of genome space to construct K-mers that can compare two different sequences
-3. Singly-Occuring Universal Roles (SOURs) - Understand that a set of SOURs can act as unique genome signatures that can be used to pick out the Representative Genomes
-4. Create a Representative Genome Set - Compare the genomes in your universe to find a subset of "Representative Genomes" that "covers" the full set.
+1. Tab Separated Files - Programming Basics and how to read Tab Separated Value Files
+2. FASTA files - The Basics of Bioinformatics and the formats DNA data can come in
+3. Kmers and Jaccard Similarities - How Bioinformatic Scientists find patterns and read DNA for understanding
 ### 2. Hammers  
-1.  Strike the Role! - Choose a single repgen genome and discover how to find out what the names of all its neighboring peer genomes are. How can you prove they are all of the same represented set?
-2.  Create your own hammer set - Use the role you found to create a "hammer set" of signatures used to find the nearest repgen genome. Experiment with using many roles to create generalized "hammer sets".
-3. Use the hammers - Identify the genomes contained within a sample using the hammers from your repgen set. Which repgen set made the hammers most effective?
+1.  Creation of the Hammer Set - Create your own set of hammers based on a single role
+2.  Hammer Worthiness - Determine which Role and how many of them are needed for a quality hammer set
+3.  Using Hammers - Classify the genomes that are present inside of a sample
 ### 3. Projections  
 1.  Sample Set Creation - Create the sample report needed to feed the hammer output into an "X-matrix"
 2.  X-Matrix Battleship - Create the X-matrix necessary to feed into a classifier
