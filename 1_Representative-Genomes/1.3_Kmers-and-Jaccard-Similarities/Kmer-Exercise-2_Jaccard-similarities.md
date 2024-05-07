@@ -72,5 +72,8 @@ and then attaching the file "Basics.html" using the "paperclip" icon before clic
         Exploration into why we chose 8mers for protiens and 20mers for DNA
         Define a use case in which a 0.0 jaccard similarity is good or in which it is bad. Same for 100% similar cases
 
-
+Steps from here to Hammers:
+    Create a Repgen Set
+    Separate the PHEs sequence of each repgen (Do we want to have more than 1 role?)
+    
      
