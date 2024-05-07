@@ -17,18 +17,20 @@ In every program that is written, there is always an error or two that comes up.
             * error_message1.py
             * error_message2.py
             * error_message3.py
+            * error_message4.py
+            * error_message5.py
+            * error_message_final.py
 
 
 #### Exercise: 
 
 1. Ask Grimoire to describe to you the following errors. Ensure that you ask follow up questions and examples for any type of error that you think would be hard to identify.
-* Syntax errors
 * Runtime errors
-    * Name errors
-    * Type errors
     * Index errors
+    * Name errors
     * Attribute errors
-* Logical errors
+    * Type errors
+* Syntax errors
 
 2. Inside the Code directory, there are a few files that are set up to throw error messages. They are all labelled 'error_messageN.py' where N is a number. Open up the first file 'error_message1.py' to find the 3 Syntax Errors present. In order to get more information, run the program and see what error message comes out. 
 
@@ -38,12 +40,11 @@ In every program that is written, there is always an error or two that comes up.
 
 | Error Type      | File Name | Possible Fix |
 | :-------------- | --------- | ------------ |
-| Syntax Error    |           |              |
-| Name Error      |           |              |
-| Type Error      |           |              |
 | Index Error     |           |              |
+| Name Error      |           |              |
 | Attribute Error |           |              |
-| Logical Error   |           |              |
+| Type Error      |           |              |
+| Syntax Error    |           |              |
 
 
 ## Solution Check instructions:
