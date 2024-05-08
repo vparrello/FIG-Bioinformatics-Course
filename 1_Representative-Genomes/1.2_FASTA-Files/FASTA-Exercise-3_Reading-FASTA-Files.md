@@ -40,6 +40,10 @@ FASTA files are a common format used to store and transmit bioinformatic sequenc
     * Grimoire should have given you an example of how to run the program, but if it didn't, please ask it to show you how. 
     * If you are working within a Windows environment, you should specify that in your questions.
 
+8. Ask Grimoire to tell you about the BioPython module and its uses. 
+
+9. Ask Grimoire to rewrite your program to use the BioPython module. 
+
 * Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_protein.faa`. Run `fasta_reader.py` on `rep10.seed_protein.faa`, and save the TSV-output as follows:
 ```
 python3 Code/fasta_reader.py < rep10.seed_protein.faa > rep10.seed_protein.lengths.tab

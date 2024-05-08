@@ -29,17 +29,17 @@ We have mention that there are three fundamental types of biological sequences (
 
 3. Ask Grimoire to explain in pseudocode how to translate from a DNA sequence into a protein sequence.
 
-4. Ask Grimoire to write a program named `translate-DNA.py` that reads a set of FASTA-encoded DNA sequences from STDIN, translates each sequence from DNA to protein, and writes the translated sequences in FASTA format to STDOUT. Use VScode to save the program to the `Code/` directory for this exercise.
+4. Ask Grimoire to write a program named `translate_DNA.py` that reads a set of FASTA-encoded DNA sequences from STDIN, translates each sequence from DNA to protein, and writes the translated sequences in FASTA format to STDOUT. Use VScode to save the program to the `Code/` directory for this exercise.
 
 5. Run the program on the file `Sample1.fasta`:
     ```
-    python3 Code/translate-DNA.py < Data/Sample1.fasta > Sample1.faa
+    python3 Code/translate_DNA.py < Data/Sample1.fasta > Sample1.faa
     ```
 Note that we are recommending a file-extension of `.faa` to remind you that the translation is an Amino-Acid FASTA file.
 
 6. Check your output translation against the file `Solutions/Sample1.faa`.
 
 7. Bonus: Real biology contains many complications, and one of them is that some lifeforms use slightly different versions of the genetic code, and slightly different methods of transcription and translation.
-    A. Ask Grimoire how transcription differs in Bacteria, Archaea, and Eukaryotes.
-    B. Ask Grimoire how translation differs in Bacteria, Archaea, and Eukaryotes.
-    C. Ask Grimoire to explain the differences between the various different genetic codes.
+    * Ask Grimoire how transcription differs in Bacteria, Archaea, and Eukaryotes.
+    * Ask Grimoire how translation differs in Bacteria, Archaea, and Eukaryotes.
+    * Ask Grimoire to explain the differences between the various different genetic codes.
