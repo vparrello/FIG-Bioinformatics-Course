@@ -1,15 +1,15 @@
-#### TSV Exercise 1 - Learning to use Grimoire
+# TSV Exercise 1 - Learning to use Grimoire
 
 Objective: Become familiar with using ChatGPT, and learn about basic bioinformatics, common data-formats, and use of command-line tools.
  
 ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, and it can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up" answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
 Thus, "Trust, but verify"! :-)
 
 The following exercises are intended to get you used to interacting with "Grimoire", while also introducing some basic types and formats of bioinformatic data.
 
-#### Materials: 
+## Materials: 
 
 "Grimoire", at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
@@ -18,13 +18,14 @@ which are respectively in the `Data` and `Code` directories underneath the direc
 `1_Representative-Genomes/`:
 
 * FIG-Bioinformatics-Course/
+    * 1.1_Tab-Separated-Value_(TSV)_Files/
+        * TSV-Exercise-1_Learning-to-use-Grimoire.md
     * 1_Representative-Genomes/
         * Data/
             * bindict.tbl
         * Code/
             * tsv_headers.py
-        * 1.1_Tab-Separated-Value_(TSV)_Files/
-            * TSV-Exercise-1_Learning-to-use-Grimoire.md
+
 
 
 #### Exercise: 
@@ -54,6 +55,6 @@ Under `Windows`, you should instead replace the 'slashes' with 'backslashes', li
 ``` python3 Code\tsv_headers.py ..\Data\bindict.tbl ```
 
 ## Solution Check instructions:
-If you are successful, you will have the output that matches the 5 columns in the data file.
+If you are successful, the program should return output that matches the 5 columns in the data file.
 
 ```genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50```
