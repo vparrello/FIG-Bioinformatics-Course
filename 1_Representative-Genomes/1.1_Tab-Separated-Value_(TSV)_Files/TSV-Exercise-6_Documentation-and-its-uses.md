@@ -1,8 +1,4 @@
-<<<<<<< HEAD:1_Representative-Genomes/1.1_Tab-Separated-Value_(TSV)_Files/TSV-Exercise-5_Documentation-and-its-uses.md
-#### TSV File Exercise 5 - Documentation and its uses
-=======
 # TSV File Exercise 6 - Documentation and its uses
->>>>>>> 6c9d113 (Minor changes to TS-Ex-1 and TSV-Ex-5.):1_Representative-Genomes/1.1_Tab-Separated-Value_(TSV)_Files/TSV-Exercise-6_Documentation-and-its-uses.md
 
 Objective: Create documentation for your program for reference
 
