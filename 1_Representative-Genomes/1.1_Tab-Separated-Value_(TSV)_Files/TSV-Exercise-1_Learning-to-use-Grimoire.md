@@ -19,9 +19,10 @@ which are respectively in the `Data` and `Code` directories underneath the direc
 `1_Representative-Genomes/`:
 
 * FIG-Bioinformatics-Course/
-    * 1.1_Tab-Separated-Value_(TSV)_Files/
-        * TSV-Exercise-1_Learning-to-use-Grimoire.md
     * 1_Representative-Genomes/
+        * 1.1_Tab-Separated-Value_(TSV)_Files/
+            * TSV-Exercise-1_Learning-to-use-Grimoire.md
+
         * Data/
             * bindict.tbl
         * Code/
