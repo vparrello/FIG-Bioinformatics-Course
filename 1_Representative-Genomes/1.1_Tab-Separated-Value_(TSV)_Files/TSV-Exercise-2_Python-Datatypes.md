@@ -1,4 +1,4 @@
-# Tab Separated Value Files Exercise 1.5
+# Tab Separated Value Files Exercise 2
 
 Objective: 
 Genome ID to human readable name.
