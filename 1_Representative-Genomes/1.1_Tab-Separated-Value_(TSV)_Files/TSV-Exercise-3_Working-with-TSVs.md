@@ -43,7 +43,7 @@ indentation is again used to represent directory-levels:
 4. Griomire understands the concept of an "unordered" (or "bulleted") list in which (in most cases) the order of the list-items usually don't matter, and it generates its answers to your prompts by examining all of the preceeding prompts and answers within a "Context Window" that is roughly 8000 words long. Hence, you should be able to shuffle the items within ytheour "bulleted list" prompt you entered in exercise (4.) above, and Grimoire will (usually) still generate functionally-equivalent code. Please try this experiment, to see how (if at all) Grimoire changes its generated pseudocode and code, and then paste both into the template-file `command_line_fu.py`.
 
 5. Run one of the programs and check to see no errors come up. If there is an error, type the error message into Grimoire and see what solution it can come up with to help you.
-    * Note: Grimoire does not know your operating-system and file-system unless you have told it in advance _"I am using macOS"_ or _"I am using Windows"_, so it might not catch every detail regarding writing and running your program. (For example, under Windows, the file-path separator is `\\` instead of `/`.) If your program reports a "File Not Found" error, it means that your computer did not know where to look for the data file; in such cases you may need to use the "Full Path" to the file. Grimoire can teach you how to find the Full Path of the file, it can instruct you on what any error-messages that you receive mean, and it can suggest possible fixes. You got this!!
+    * Note: Grimoire does not know your operating-system and file-system unless you have told it in advance _"I am using macOS"_ or _"I am using Windows"_, so it might not catch every detail regarding generating and running your program. (For example, under Windows, the file-path separator is `\` instead of `/`.) If your program reports a "File Not Found" error, it means that your computer did not know where to look for the data file; in such cases you may need to use the "Full Path" to the file. Grimoire can teach you how to find the Full Path of the file, it can instruct you on what any error-messages that you receive mean, and it can suggest possible fixes. You got this!!
 
 6. In order to run the program, go to the Terminal Menu at the top of VS code and click on "New Terminal" to open a new terminal window underneath your code. Then type in the following to run your command:
 
@@ -69,8 +69,8 @@ indentation is again used to represent directory-levels:
 
 8. Once you have verified that the program succeeded in both 6 and 7, go ahead and save it in `Code/` as `cmd_tsv_select_columns.py`, to remind you that this one uses the ComManD line. Congratulations on making your own program using Grimoire!
 
-9. BONUS: Write down any refinement that you made to your Grimoire prompt to make your code successful. You can use such tricks in future prompts to get to your desired solution more easily.
-    * What problems or error-condition should you tell Grimoire to look out for in the future?
+9. BONUS: Write down any refinements that you needed to make to your Grimoire prompt before the code it generated ran correctly and satisfied all of the features, and functionalities listed in the program requirements. You can use such tricks in future prompts to obtain your desired solution more easily.
+    * What problems or error-conditions should you tell Grimoire to look out for in the future?
     (HINT: you might want to check for missing or invalid arguments, nonexistent data-files, etc.)
     * Were any of your instructions confusing to Grimoire? 
     * Did any of your instructions made the pseudocode more understandable?
