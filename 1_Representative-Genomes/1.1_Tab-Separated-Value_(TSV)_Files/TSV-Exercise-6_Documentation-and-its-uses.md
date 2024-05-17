@@ -8,7 +8,7 @@ Now that we have created our program, we will need to prepare it for outside use
 ## Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
@@ -18,7 +18,19 @@ Now that we have created our program, we will need to prepare it for outside use
             * TSVReaderDocumentation.txt
         * Code/
             * tsv_headers.py
+-->
 
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   ├── bindict.tbl
+    │   ├── data.tbl
+    │   ├── rep200.list.tbl
+    │   └── TSVReaderDocumentation.txt
+    └── Code/
+        └── tsv_headers.py
+```
 
 #### Exercise: 
 
@@ -40,7 +52,7 @@ Now that we have created our program, we will need to prepare it for outside use
     * Troubleshooting recommendations
     * Author credits
 
-Copy the documentation into your clipboard, then go to VScode. Click on `New text file` under the `File` menu, and paste in the documentation. There will be slots in the "Author Credits" section of your name, etc. that you should fill in. Once you are done editing the file, click on `Save as...` under the `File` menu, navigate to the `Data` directory underneath `1_Representative-Genomes`, enter `tsv_reader_documentation.txt` in the "Save as" box at the top of the file-saveing popup, and hit "Save". Congratulations! You have just written and saved a new file using VScode!
+Copy the documentation into your clipboard, then go to VScode. Click on `New text file` under the `File` menu, and paste in the documentation. There will be slots in the "Author Credits" section for your name, etc., that you should fill in. Once you are done editing the documentation file, click on `Save as...` under the `File` menu, navigate to the `Data` directory underneath `1_Representative-Genomes`, enter `tsv_reader_documentation.txt` in the "Save as" box at the top of the file-saving popup, and hit "Save". Congratulations! You have just written and saved a new file using VScode!
 
 ## Solution Check instructions:
 If you are successful, you will have documentation of your program in `tsv_reader_documentation.txt`, and your code will have an added `--help` option that when invoked will explain to a user what the program does and how to use it, plus a set of comments that were inserted into your code which will explain to another programmer what each section of the code does.

@@ -6,14 +6,14 @@ This exercise focuses on creating a program that reads in a list of column-names
 
 You will be going through the normal development process of a programmer, which is similar to the process of a writer, namely, Outline, Draft, Edit, Review, and then Publish. We will start with a description of the program, express that description as "Pseudo-code", Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell which step you are in as you do the exercise.
 
-#### Materials: 
+## Materials: 
 
 "Grimoire" at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
 You will also need the files "rep200.list.tbl",
 "command_line_kung.py" and "command_line_fu.py";
 indentation is again used to represent directory-levels: 
-
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * 1.1_Tab-Separated-Value_(TSV)_Files
@@ -23,8 +23,21 @@ indentation is again used to represent directory-levels:
     * Code/
         * command_line_kung.py
         * command_line_fu.py
+-->
 
-#### Exercise: 
+```
+FIG-Bioinformatics-Course/
+├── 1_Representative-Genomes/
+│   └── 1.1_Tab-Separated-Value_(TSV)_Files
+│       └── TSV-Exercise-2_Working-with-TSVs.md
+├── Data/
+│   └── rep200.list.tbl
+└── Code/
+    ├── command_line_kung.py
+    └── command_line_fu.py
+```
+
+## Exercises: 
 
 1. Ask Grimoire to explain what "arguments of a command-line program" means.
 
