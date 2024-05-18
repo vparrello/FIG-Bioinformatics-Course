@@ -9,7 +9,7 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
 * FIG-Bioinformatics-Course/
-    * Basics.html
+    * Definitions.html
     * 1_Representative-Genomes/
         * Data/
             * Sample1.fasta
@@ -30,7 +30,7 @@ you don't need to respond to them, just learn them.
 I'm then going to ask you some questions.
 ```
 
-and then attaching the file "Basics.html" using the "paperclip" icon before clicking the "Send message" ("Up-arrow") icon.
+and then attaching the file "Definitions.html" using the "paperclip" icon before clicking the "Send message" ("Up-arrow") icon.
 
 1. Ask Grimoire "What is a 'Jaccard Similarity', and how is it used?"
 
