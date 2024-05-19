@@ -76,6 +76,7 @@ The following questions should be entered as individual prompts (or as Grimore p
 6. Ask Grimoire to write a program named `extract_kmers_from_fasta.py` that satisfies the following specifications:
   * Mandatory Kmer-length command-line argument short-form `-K`, long-form `--Kmer`, which must have an integer value
   * Optional command-line argument short-form `-t`, long-form `--type`, whose values may either be `dna` or `protein`
+  * If invoked with an argument `-h` or `--help`, the program should print a "help" message to STDERR describing the program, listing the argument names, showing whether an argument is mandatory or optional, and indicating that the data-file will be read from STDIN, and should then exit
   * The program shall read a FASTA-formated file from STDIN; you are allowed to use BioPython to read, write, and operate on sequences.
   * if the `--type` argument is specified, then if `--type` is `dna` the sequence should be converted to lower-case, else if `--type` is protein the sequence should be converted to upper-case.
   * For each sequence, the program should extract all possible Kmers of length given by the Kmer-length argument, and write to STDOUT a two-column tab-separated file consisting of the Kmer and the sequence-ID that it came from .
