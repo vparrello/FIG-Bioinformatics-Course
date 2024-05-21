@@ -4,7 +4,7 @@ Objective: Become familiar with using ChatGPT, and learn about basic bioinformat
  
 ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, and it can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up" answers are often called "hallucinations"). You should be cautious about assuming that what ChatGPT variants tell you is "100% accurate".
 Thus, "Trust, but verify"! :-)
 
 The following exercises are intended to get you used to interacting with "Grimoire", while also introducing some basic types and formats of bioinformatic data.
