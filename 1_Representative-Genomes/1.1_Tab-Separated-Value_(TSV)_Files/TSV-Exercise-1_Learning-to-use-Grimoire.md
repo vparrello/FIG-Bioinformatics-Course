@@ -4,7 +4,9 @@ Objective: Become familiar with using ChatGPT, and learn about basic bioinformat
  
 ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, and it can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
+
 ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and "fact-check" claims that it makes that seem implausible to you, particularly with regard to non-programming-related issues.
+
 Thus, "Trust, but verify"! :-)
 One of the skills that you will learn during this course will be how to test and debug the software that Grimoire generates for you. We will also provide solutions in each exercise module that you check your results against. And if you find yourself completely wedged, please feel free to contact the course-developers via the Discord Channel.
 
