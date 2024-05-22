@@ -8,13 +8,22 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
             * Sample1.fasta
         * 1.2_FASTA-Files/
             * FASTA-Exercise-1_What-is-FASTA-format.md
-
+-->
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── Sample1.fasta
+    └── 1.2_FASTA-Files/
+        └── FASTA-Exercise-1_What-is-FASTA-format.md
+```
 
 #### Exercise: 
 
