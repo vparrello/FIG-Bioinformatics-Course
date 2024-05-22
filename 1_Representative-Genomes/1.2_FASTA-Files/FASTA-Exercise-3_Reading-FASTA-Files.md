@@ -8,6 +8,7 @@ FASTA files are a common format used to store and transmit bioinformatic sequenc
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
@@ -18,7 +19,19 @@ FASTA files are a common format used to store and transmit bioinformatic sequenc
             * fasta_reader_solution.py
         * 1.2_FASTA-Files/
             * FASTA-Exercise-3_Reading-FASTA-Files.md
-            
+-->
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── Sample1.fasta
+    ├── Code/
+    │   └── fasta_reader.py
+    ├── Solutions/
+    │   └── fasta_reader_solution.py
+    └── 1.2_FASTA-Files/
+        └── FASTA-Exercise-3_Reading-FASTA-Files.md
+```
 
 #### Exercise:
 

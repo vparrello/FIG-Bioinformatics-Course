@@ -4,7 +4,29 @@ Objective: Combining what we have learned to create a program that builds a set 
 
 ## Materials
 
-(Fill this in later.)
+
+[Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+<!--
+* FIG-Bioinformatics-Course/
+    * 1_Representative-Genomes/
+        * Data/
+            * bindict.tbl
+            * data.tbl
+            * rep200.list.tbl
+            * TSVReaderDocumentation.txt
+        * Code/
+            * tsv_headers.py
+-->
+
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── rep200.seqs.tbl
+    └── Code/
+        └── 3col_to_fasta.py
+```
+
 
 1. Attach the `Definitions.html` file as in previous exercises.
 

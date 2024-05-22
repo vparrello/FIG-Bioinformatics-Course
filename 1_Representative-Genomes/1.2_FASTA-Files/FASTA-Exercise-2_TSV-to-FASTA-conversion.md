@@ -7,12 +7,22 @@ Objectives:
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
             * rep10.seqs.tbl 
         * 1.2_FASTA-Files/
             * FASTA-Exercise-2_TSV-to-FASTA-translation.md
+-->
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── rep10.seqs.tbl
+    └── 1.2_FASTA-Files/
+        └── FASTA-Exercise-2_TSV-to-FASTA-translation.md
+```
 
 #### Exercise: 
 
