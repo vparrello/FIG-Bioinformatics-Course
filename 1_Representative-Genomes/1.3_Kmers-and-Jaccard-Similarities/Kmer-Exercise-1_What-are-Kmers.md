@@ -35,17 +35,11 @@ Kmers have many uses in bioinformatics; not only can they be used to simplify se
 
 ```
 FIG-Bioinformatics-Course
-│
 ├── Definitions.html
-│
 └── 1_Representative-Genomes
-    │
     └── 1.3_Kmers-and-Jaccard-Similarities
-        │
         ├── Kmer-Exercise-1_What-are-Kmers.md
-        │
         └── Solutions
-            │
             └── Kmer-Exercise-1_Solutions.md
 ```
 
