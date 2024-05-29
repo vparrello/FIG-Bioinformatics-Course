@@ -1,4 +1,4 @@
-# Kmer Exercise 3 - Finding Nearest Neighbors
+# Kmer Exercise 3 - Find Nearest Reference-Sequence
 
 Objective: Determine which representative sequence is closest to a query sequence.
 
