@@ -39,11 +39,11 @@ FIG-Bioinformatics-Course/
 
 ## Exercises: 
 
-1. Ask Grimoire to explain what "arguments of a command-line program" means.
+1. Ask Grimoire to explain what the phrase "arguments of a command-line program" means.
 
-2. Ask Grimoire to write a program that will accept a list of keywords as its command-line arguments. Then ask Grimoire to explain the code to you "line-by-line" if it did not do so.
+2. Ask Grimoire to write an example-program that will accept a list of keywords as its command-line arguments. Then ask Grimoire to explain its code to you "line-by-line" if it did not do so.
 
-3. You will now prompt Grimoire to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement. Create your own prompt asking Grimoire to implement this list of features and functions for you, then copy the pseudocode and code that Griomoire returns and paste them into the template-file `command_line_kung.py`.
+3. You will now ask Grimoire (or "prompt Grimoire", as it is also called)  to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement; create your own prompt asking Grimoire to implement this list of features and functions for you, then copy the pseudocode and code that Griomoire returns and paste them into the template-file `command_line_kung.py`.
 (If Grimoire skips the step of describing the program in pseudocode, you can explicitly ask Grimoire to translate the code it generated into pseudocode, which will be more "human-readable" and will help you to better understand what the real code is doing.)
 
     * The program should be written in python.

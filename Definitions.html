@@ -78,6 +78,34 @@ subset of U such that
     member of the RepGen set.
 </ul>
 
+<p>
+There are several algorithms for building RepGenSets.
+In this course, we will be using the "Stingy Addition" algorithm.
+The pseudocode for "Stingy Addition" is as follows:
+<br><br>
+<pre>
+  RepGenSet = ()   #... i.e. the "empty list"
+  ToCheck   = U    #... The "Universe of Genomes"
+  Foreach G1 in ToCheck:
+    If no G in RepGenSet is more similar to G1 than MinSim:
+      Add G1 to RepGenSet
+            	
+  Return RepGenSet
+</pre>
+
+<!-- The following is the alternative "Greedy Elimination" algorithm:
+  <pre>
+    IN = {}   #... i.e., the "empty set"
+    ToCheck = all of UofG
+    foreach G1 in ToCheck
+    {
+      add G1 to IN and delete it from ToCheck
+      delete from ToCheck all genomes that are close_within_MinSim to G1
+    }
+  </pre>
+-->
+
+  
 <h2>Hammers</h2>
 A <b>hammer</b> is a 20-character DNA sequence that occurs
 precisely once in precisely one genome within the RepGen set.
@@ -91,21 +119,6 @@ many hammers with a large majority of a genome's SOUR genes that are
 all derived from the same RepGen constitutes extremely strong evidence
 that the genome and that RepGen may have a recent common ancestor.
 
-<p>
-The algorithm for building a RepGenSet with MinSim N is as follows:
-<br><br>
-<pre>
-  IN = {}
-  ToCheck = all of UofG
-  foreach G1 in ToCheck
-      {
-          add G1 to IN and delete it from ToCheck
-
-          delete all genomes that are close_within_MinSim to G1
-              from ToCheck
-      }
-</pre>
-<br><br>
 
 
 <h1>Compute_Hammers</h1>

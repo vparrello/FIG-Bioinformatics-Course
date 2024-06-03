@@ -9,6 +9,7 @@ We have mention that there are three fundamental types of biological sequences (
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+<!--
 * FIG-Bioinformatics-Course/
     * 1_Representative-Genomes/
         * Data/
@@ -19,7 +20,19 @@ We have mention that there are three fundamental types of biological sequences (
             * translate-DNA_solution.py
         * 1.2_FASTA-Files/
             * FASTA-Exercise-4_DNA-toProtein-Translation.md
-            
+-->
+```
+FIG-Bioinformatics-Course/
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── Sample1.fasta
+    ├── Code/
+    │   └── translate-DNA.py
+    ├── Solutions/
+    │   └── translate-DNA_solution.py
+    └── 1.2_FASTA-Files/
+        └── FASTA-Exercise-4_DNA-to-Protein-Translation.md
+```
 
 #### Exercises:
 
