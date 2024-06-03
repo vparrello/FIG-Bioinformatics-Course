@@ -1,13 +1,13 @@
-#### Kmer Exercise 2 - Jaccard Similarities
+# Kmer Exercise 2 - Jaccard Similarities
 
 Objective: Learn about the concept of "Jaccard similarities", and how they are used to compare sequences.
 
 Comparing and contrasting sequences is the main way that scientists find patterns within DNA and protien sequences. The Jaccard Similarity is a formula that we can use to determine how similar two sets (or groups of kmers) are from each other. If two sequences are very similar, they might be from the same species or genus. If they are very different, chances are they are not the same species or genus. This lesson allows you to explore the Jaccard Similarities Formula within the context of kmers.
 
-#### Materials: 
+## Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-
+<!--
 * FIG-Bioinformatics-Course/
     * Definitions.html
     * 1_Representative-Genomes/
@@ -19,8 +19,23 @@ Comparing and contrasting sequences is the main way that scientists find pattern
             * Solutions/
                 * kmer_jaccard_similarities_solution.py
             * Kmer Exercise 2 - Jaccard similarities.md
+-->
 
-#### Exercise:
+```
+FIG-Bioinformatics-Course/
+├── Definitions.html
+└── 1_Representative-Genomes/
+    ├── Data/
+    │   └── Sample1.fasta
+    └── 1.3_Kmers-and-Jaccard-Similarities/
+        ├── Code/
+        │   └── kmer_jaccard_similarities.py
+        ├── Solutions/
+        │   └── kmer_jaccard_similarities_solution.py
+        └── Kmer-Exercise-2_Jaccard-similarities.md
+```
+
+## Exercises:
 
 0. Prepare Grimoire for this session as in the previous exercise by once again entering the prompt:
 
@@ -54,6 +69,8 @@ and then attaching the file "Definitions.html" using the "paperclip" icon before
     * This illustrates that there is a tradeoff between "sensitivity" and "specificity": Larger values of `K` yield results that are for more specific (i.e., fewer "hits" with be found, and the pairs of sequences will be "closer" to each other, i.e. "more similar"), but the price to be paid is that a more "specific" value of `K` is less "sensitive", i.e., it may not find anything at all.
 
 ## Solution Check instructions:
+
+(TBD)
 
 
 # Notes:
