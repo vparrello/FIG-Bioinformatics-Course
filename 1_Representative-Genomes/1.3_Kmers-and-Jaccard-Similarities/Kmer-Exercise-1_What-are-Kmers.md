@@ -12,10 +12,10 @@ Depending on the organism, the DNA sequences composing its genome can be quite l
 
 Proteins are also represented by sequences of characters, but they instead use a 20-character "alphabet", with each of the 20 characters standing for an "amino acid" instead of a "nucleic acid".
 
-In order to make searching for patterns in DNA or proteins more manageable, bioinformaticians will often break up long sequences into a set of short sequences called "Kmers". A "Kmer" is a subsequence (or substring) of length "K"; for example, `atgcgt` would be an example of a DNA "6-mer". 
+In order to make searching for patterns in DNA or proteins more manageable, bioinformaticians will often break up long sequences into a set of short sequences called "Kmers". A "Kmer" is a sequence or string of length "K"; for example, `atgcgt` would be an example of a DNA "6-mer". 
 
-In this course, we will usually be working with DNA 20-mers, and protein 8-mers.
-* Note: Remember when we did FASTA files? Can you remember which file-extensions were commonly used for DNA vs Proteins?
+In this course, we will often be working with DNA 20-mers and protein 8-mers.
+* Review-question: Remember when we did FASTA files? Can you remember which file-extensions were commonly used for DNA vs Proteins?
 
 Kmers have many uses in bioinformatics; not only can they be used to simplify searching for patterns in DNA or protein sequences, but they can be used to quickly identify sequences and to define a measure of "similarity" between two sequences. In this lesson, we will explore how bioinformaticians construct a set of Kmers from a sequence, and examine some of their basic use-cases.
 
@@ -34,13 +34,18 @@ Kmers have many uses in bioinformatics; not only can they be used to simplify se
 -->
 
 ```
-FIG-Bioinformatics-Course
+FIG-Bioinformatics-Course/
 ├── Definitions.html
-└── 1_Representative-Genomes
-    └── 1.3_Kmers-and-Jaccard-Similarities
-        ├── Kmer-Exercise-1_What-are-Kmers.md
-        └── Solutions
-            └── Kmer-Exercise-1_Solutions.md
+└── 1_Representative-Genomes/
+    └── 1.3_Kmers-and-Jaccard-Similarities/
+        ├── Kmer-Exercise-1_What-are-Kmers.md  (You are here)
+        ├── Code/     (where you will save your own code)
+        ├── Data/
+        │   ├── test_dna.fna
+        │   └── test_protein.faa
+        └── Solutions/
+            ├── Kmer-Exercise-1_Solutions.md
+            └── extract_kmers_from_fasta_solution.py
 ```
 
 ## Exercises:
@@ -51,7 +56,7 @@ Exercise Setup -- Please enter the following into Grimoire's "Message Grimoire" 
     you don't need to respond to them, just learn them.
     I'm then going to ask you some questions.
   ```
-Then click on the "Paperclip" icon and select the file `Definitions.html`, and hit the "Send Message" icon (the "Up-arrow" icon at the right of the "Message Grimoire" box). Grimoire should respond to entering the above with something like "Understood" or "Got it". `Definitions.html` contains a list of definitions of terms and concepts specific to this course. We will be using the preceding method to "pre-prompt" Grimoire regarding the "context" for a set of exercises throughout the remainder of this course; you are welcome to look at the file `Definitions.html`, but some of the terms, definitions, and concepts may not make sense in advance of the exercise they are relevant to.
+Then click on the "Paperclip" icon and select the file `Definitions.html`, and hit the "Send Message" icon (the "Up-arrow" icon at the right of the "Message Grimoire" box). Grimoire should respond to your entering the above with something like "Understood" or "Got it". `Definitions.html` contains a list of definitions of terms and concepts specific to this course. We will be using the preceding method to "pre-prompt" Grimoire regarding the "context" for a set of exercises throughout the remainder of this course; you are welcome to look at the file `Definitions.html`, but some of the terms, definitions, and concepts may not make sense in advance of the exercise they are relevant to.
 
 The following questions should be entered as individual prompts (or as Grimore puts them, "Messages"), but should be entered during the same session in which you uploaded the above definitions, since Grimoire will need these definitions to establish its "context", and it cannot remember the contents of one session in a different dession, but will instead fall back on its "default" definitions unless "re-prompted".
 
@@ -77,12 +82,14 @@ The following questions should be entered as individual prompts (or as Grimore p
   * If the `--type` argument is specified, then the Kmer should be checked before output for whether it contains characters that are not in the DNA or Protein alphabets, respectively, and invalid Kmers and the sequence-id they came from should be written to STDERR instead of STDOUT.
   * On exit the program should report to STDERR the number of sequences read, the number of Kmers written to STDOUT, and the number of invalid Kmers found.
 
+Use VScode to save `extract_kmers_from_fasta.py` in the `Code/` subdirectory.
+
 7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `1.3_Kmers-and-Jaccard-Similarities/Data/`. These files are all small, so you should be able to figure out what the output should be in your head. Each of the files will contain one "bad" sequence, i.e., a sequence that contains invalid characters for that file-type.
 
 * test_dna.fna
 * test_protein.faa
 
-Experiment with different values for `K`. Then, see how the output changes  when you specify the `--type` argument.
+Experiment with different values for `-K`. Then, see how the output changes  when you specify the `--type` argument.
 * BONUS: What do you think will happen if you use the 'dna' type for the protein file, or the 'protein' type for the DNA file? Try it, and see if you have guessed correctly.
 
 ## Solution Check instructions:
