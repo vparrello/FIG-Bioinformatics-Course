@@ -1,0 +1,7 @@
+    RepGenSet = ()   #...i.e., the empty list
+    ToCheck   = all of UofG
+    Foreach G1 in ToCheck
+        If no G in RepGenSet is more similar to G1 than min_sim
+            Add G1 to RepGenSet
+
+    Return RepGenSet
