@@ -32,8 +32,8 @@ FIG-Bioinformatics-Course
 2. Ask Grimoire to write a program named `nearest-reference-sequence.py` that implements the following specifications:
     * Accepts a mandatory integer argument, short-name `-K`, long-name `--kmer-length`
     * Accepts a mandatory FASTA filename argument, short-name `-R`, long-name `--RepSet`
-    * Reads in the FASTA RepSet file using BioPython, and stores the sequence-ID, sequence-description, and the sequence
-    * Reads a set of FASTA query-sequences from STDIN, and extracts the query-ID, query-description, and query-sequence
+    * Reads in the FASTA RepSet file using BioPython, then splits the "sequence-description" into "sequence-ID" and "sequence-comment" fields, and stores the sequence-ID, sequence-comment, and sequence.
+    * Reads a set of FASTA query-sequences from STDIN, and extracts the query-ID, query-comment, and query-sequence
     * For each input query-sequence, reports as a TSV the query-ID and the query-description, the most similar RepSet sequence-ID and RepSet-ID's description, and the Kmer jaccard-similarity.
 
 3. Save Grimoire's program as in previous exercises.
