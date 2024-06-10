@@ -64,6 +64,8 @@ The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of r
 
 ``` python3 Code/tsv_headers.py ../Data/bindict.tbl ```
 
+NOTE: The above should be entered as a single line, even if your browser might have wrapped it onto two lines.
+
 Under `Windows`, you should instead replace the 'slashes' with 'backslashes', like this:
 
 ``` python3 Code\tsv_headers.py ..\Data\bindict.tbl ```
