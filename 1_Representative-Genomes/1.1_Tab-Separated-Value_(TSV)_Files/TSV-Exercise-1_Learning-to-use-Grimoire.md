@@ -62,7 +62,7 @@ The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of r
 
 6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run `tsv_headers.py` on the file `1_Representative-Genomes/Data/bindict.tbl`. (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be something like this:
 
-``` python3 Code/tsv_headers.py ../Data/bindict.tbl ```
+``` python3 tsv_headers.py ../Data/bindict.tbl ```
 
 NOTE: The above should be entered as a single line, even if your browser might have wrapped it onto two lines.
 
