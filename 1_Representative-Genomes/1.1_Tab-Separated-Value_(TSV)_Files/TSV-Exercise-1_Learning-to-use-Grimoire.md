@@ -60,7 +60,7 @@ The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of r
 
 5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, click on "Open Folder" under the "File" menu, and navigate down to `FIG-Bioinformatics-Course/`, then to `1_Representative-Genomes/` within the course directory, then to "1.1 - Tab-Separated Files", and finally to the directory named `Code/`. Within this `Code/` directory, you will see a file named `tsv_headers.py` that will be empty when you open it. Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py`, then click on "Save" under the "File" menu to save your script to disk. 
 
-6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run `tsv_headers.py` on the file `1_Representative-Genomes/Data/bindict.tbl`. (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be something like this:
+6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run `tsv_headers.py` on the file `1_Representative-Genomes/Data/bindict.tbl`. (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be:
 
 ``` python3 tsv_headers.py ../Data/bindict.tbl ```
 
