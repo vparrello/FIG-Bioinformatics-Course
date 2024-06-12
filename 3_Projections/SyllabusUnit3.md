@@ -1,6 +1,6 @@
 ## Projections
 
-### 3.1 Sample Set Creation 
+## 3.1 Sample Set Creation 
     * Create a sample report of hammers that lists every repgen genome inside of a sample.
     
 ### 3.2 Data Curation

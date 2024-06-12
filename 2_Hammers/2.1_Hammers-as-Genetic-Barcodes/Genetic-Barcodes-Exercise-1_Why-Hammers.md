@@ -1,14 +1,14 @@
-# Hammer Excercise 1 - Hammers as a "Genetic Barcode"
+# Hammers as Genetic Barcodes Exercise 1 - Why do we need hammers and what are they?
 
-## Objective
+Objective: Define and Describe the idea behind the Genetic Barcode and the Hammer
 
-Understand the concept of a "Genetic Barcode", which includes what we call "Hammers" as a special case.
+At the end of the last unit, you were able to successfully create a representative genome set. This gives you an overall view of what the entire genome space is for your set of genomes. Say you wanted to add a genome to that set. Would you know which genome is their representative? How would you find it? This is where the idea of a "Genetic Barcode" comes in. 
+
+You are probably familiar with the use of "barcodes" to identify a product or to encode a device's serial-number. In bioinformatics, we use readily identifiable sequences of DNA to serve as a "barcode" for a genome.
 
 ## Materials
 
 ## Exercises
-
-You are probably familiar with the use of "barcodes" to identify a product or to encode a device's serial-number. In bioinformatics, we use readily identifiable sequences of DNA to serve as a "barcode" for a genome.
 
 1. Ask Grimoire to tell you what is meant by a "Genetic Barcode".
 
@@ -16,7 +16,7 @@ You are probably familiar with the use of "barcodes" to identify a product or to
 
 3. In exercise (1.), Grimoire probably gave you examples of "barcodes" that are more relevant to plants or animals. If so, ask it what would serve as a "barcode" for Bacteria.
 
-4. In exercise (3.) Grimoire most likely gave you the "16S Ribosomal RN"A as its example for Bacteria. Ask it whether protein-encoding genes can also serve as "barcodes".
+4. In exercise (3.) Grimoire most likely gave you the "16S Ribosomal RNA" as its example for Bacteria. Ask it whether protein-encoding genes can also serve as "barcodes".
 
 5. Ask Grimoire which properties or characteristics of a protein-encoding gene would make that gene a good "genetic barcode".
 
@@ -32,5 +32,4 @@ You are probably familiar with the use of "barcodes" to identify a product or to
 
 The observation of a "Hammer" within a genome serves as strong evidence that it is closely related to the Representative genome from which that hammer was derived. The more hammers from a given representative that a genome contains, the more likely it is that that genome is closely related to that representative.
 
-We will learn how to find SOURs, construct Sets of Representatives, and extract sets of Hammers in later exercises.
 
