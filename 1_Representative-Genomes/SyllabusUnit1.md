@@ -64,10 +64,10 @@ proteins.
 
 ## 1.3 Kmers and Jaccard Similarities
 
-### Kmers-1 What Are Kmers? -
+### Kmers-1 - What Are Kmers? 
 Using DNA subsequences as proxies for an entire sequence
 
-### Kmers-2 Jaccard Similarities -
+### Kmers-2 - Jaccard Similarities 
 Using Kmers to estimate how similar two sequences are
 
 ### Kmers-3 - Finding the Nearest Reference-Sequence
@@ -77,4 +77,7 @@ for each query find the closest reference sequence
 ### Kmers-4 - Protein vs DNA Kmers
 How are protein and DNA similarities related?
 
-## 1.4 - Building Representative Genome-Sets
+## 1.4 - Building Representative Genome Sets
+
+### Building a Representative Genome Set (Repgen set)
+Create your own representative genome set out of your genome universe to classify genomes easily

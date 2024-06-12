@@ -1,6 +1,14 @@
 # Hammers
 
-### 2.1 Hammers as "Genetic Barcodes"
+Hammers are "Genetic Barcodes" that we can use to try and create targeted antibiotics or as a faster way to classify and annotate genomes. In this module, the goal is to create a set of hammers that can be used to quickly identify genomes and use that data to project possible diseases in a human metagenomic sample.
+
+## 2.1 Hammers as "Genetic Barcodes"
+
+### Genetic Barcodes-1 Why do we need hammers and what are they?
+Discover the purpose of having a hammer as a classification tool for unknown genomes
+
+### Genetic Barcodes-2 
+
     * Why do we care about hammers?
         * Problem: We have a new genome and we need to find his closest representative
         * Find PheS and compare it to all the other PheS - Problem comes in if our genome is not annotated (takes a lot of time)
