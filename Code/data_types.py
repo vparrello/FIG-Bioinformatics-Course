@@ -13,10 +13,8 @@ dictionary = {}
 #
 # Notice the index starts at 0 and not at 1. This is true for ALL datatypes in python.
 
-# Open a datafile to parse into the different datatypes.
-with open("../1.1_Tab-Separated-Value_(TSV)_Files/Data/rep200.list.tbl") as data_file: # type: ignore
 # Open a datafile to parse into the different datatypes. Only those without default values are populated.
-with open("1_Representative-Genomes\\Data\\rep200.list.tbl") as data_file: # type: ignore
+with open("Data/rep200.list.tbl") as data_file: # type: ignore
     # Read the data file. Changes the "File" datatype into a "List" datatype
     list = data_file.readlines()
     data = data_file.readlines()
@@ -61,21 +59,20 @@ with open("1_Representative-Genomes\\Data\\rep200.list.tbl") as data_file: # typ
     #Booleans
     if datatype == "boolean":
         print(boolean)
-
+    #Integers
+    elif datatype == "integer":
+        print(integer)
     # Sets
     elif datatype == "set":
         print(set)
         print(_set)
-
     # Tuples
     elif datatype == "tuples":
         print(dictionary)
     elif datatype == "tuple":
         print(tuple)
-
     # Dictionaries
     elif datatype == "dictionary":
         print(dictionary)
-
     else:
         print("You have failed to enter a datatype. Please call the command again.")
