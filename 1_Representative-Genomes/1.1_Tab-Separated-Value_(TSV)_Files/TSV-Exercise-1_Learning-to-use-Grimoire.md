@@ -16,41 +16,35 @@ The following exercises are intended to get you used to interacting with "Grimoi
 
 "Grimoire", at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
-Below is a visual schematic representation of the "Directory tree" for this section of the course. (See the first exercise below if you are unfamiliar with the concept of a "Directory Tree".) Indentation is used to represent subdirectory-levels, and items that end in `/` mean "directory that has this name". In addition to the file you are currently reading, you will also need the files `bindict.tbl` and `tsv_headers.py`,
-which are respectively in the `Data` and `Code` directories underneath the directory
-`1_Representative-Genomes/`:
+Below is a visual schematic representation of the "Directory tree" for this section of the course. (See the first exercise below if you are unfamiliar with the concept of a "Directory Tree".) Indentation is used to represent subdirectory-levels, and items that end in `/` mean "directory that has this name"; otherwise, the item is a program or data file. In addition to the file you are currently reading, you will also need the files `bindict.tbl` and `tsv_headers.py`,
+which are respectively in the `Data/` and `Code/` directories underneath the main directory `FIG-Bioinformatics-Course/`:
 
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * 1.1_Tab-Separated-Value_(TSV)_Files/
-            * TSV-Exercise-1_Learning-to-use-Grimoire.md
-
-        * Data/
-            * bindict.tbl
-        * Code/
-            * tsv_headers.py
--->
 ```
 FIG-Bioinformatics-Course/
+├── Code/
+│   └── tsv_headers.py
+├── Data/
+│   └── bindict.tbl
 └── 1_Representative-Genomes/
-    ├── 1.1_Tab-Separated-Value_(TSV)_Files/
-    │   └── TSV-Exercise-1_Learning-to-use-Grimoire.md
-    ├── Data/
-    │   └── bindict.tbl
-    └── Code/
-        └── tsv_headers.py
+    └── 1.1_Tab-Separated-Value_(TSV)_Files/
+        ├── TSV-Exercise-1_Learning-to-use-Grimoire.md  (you are here)
+        └── Solutions/
+            └── tsv_headers_solution.py
 ```
 
 ## Exercises: 
 
 1. Ask Grimoire to explain the concepts of "Directories", "Directory Trees", and "File Paths" to you. In particular, ask it to explain the concept of the directories "dot" and "double-dot" if it did not already do so.
 
-2. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
+2. It is conventional to end a filename with a "extension" that indicates to the user what kind of file it is and what programs can open it. Ask Grimoire to explain the concept of a "file extension" to you.
 
-3. Ask Grimoire to explain what `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
+NOTE: In this course, most files will have extensions of either `.py` indicating that they are Python-language programs, or `.tbl` indicating that they are a "table" of some type, although we will introduce some other special-purpose file-extensions later in the course.
 
-4. Ask Grimoire to write a program that will list the names in a TSV-file's header-line columns, and then have it explain to you how the program works "line-by-line".
+3. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
+
+4. Ask Grimoire to explain what the terms `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
+
+5. Ask Grimoire to write a Python program that will read a tab-separated-value data-file with header-line from `STDIN`, print the field-names in that TSV-file's header-line columns to `STDOUT`, and then exit; any error-messages should be printed to `STDERR`. Then ask Grimoire to explain to you how this program works "line-by-line".
     * Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explanation of everything within the program without it.
 
     * Similarly, if Grimoire's explanation of a particular line of code
@@ -58,19 +52,42 @@ FIG-Bioinformatics-Course/
 
 The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
-5. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. To the left of VSCode, there are icons in a vertical stack. Click on the top icon that looks like a stack of two pieces of paper that is labelled "File Explorer". Navigate to `1_Representative-Genomes/` within the course directory, then to "1.1 - Tab-Separated Files", and finally to the directory named `Code/`. Within this `Code/` directory, you will see a file named `tsv_headers.py` that will be empty when you open it. Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py`, then click on "Save" under the "File" menu to save your script to disk. 
 
-6. Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode, and then run `tsv_headers.py` on the file `1_Representative-Genomes/Data/bindict.tbl`. (Grimoire should have shown you how to run the program when it created it, so if you are uncertain how to run your program, refer back to your Grimoire-session, and ask questions if there is something you don't feel you understand yet.) Under `macOS` or `LINUX`, the runtime syntax should be:
+6. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following "comment":
+```
+# Paste Grimoire's code below this line,
+# then select and click "Save" under the "File" menu
+```
+Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py` below the comment, then click on "Save" under the "File" menu as instructed, which saves your program to disk. 
 
-``` python3 tsv_headers.py ../Data/bindict.tbl ```
+7. You are now in a position to run your program.
+Grimoire has probably already shown you an example of how to run the program during its summary-discussion of the program, but since Grimoire is ignorant of the details of your operating-system, directory-structure, and the fact that you are using the VScode development-environment (unless it has explicitly been told these things), its example probably will not work verbatim. So, to run the program in your environment, please follow the steps below: 
+* Go back to the "File-Explorer" window and select the top-level directory `FIG-Bioinformatics-Course/`.'
 
-NOTE: The above should be entered as a single line, even if your browser might have wrapped it onto two lines.
+* Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode. Click on the "Terminal" window that VScode just opened, which will switch VScode's "focus" to that window. You can confirm that you are in the correct directory by entering `pwd` (short for "print working-directory") and hitting the `return` key; your computer should respond with a directory-path ending in `FIG-Bioinformatics-Course`.
 
-Under `Windows`, you should instead replace the 'slashes' with 'backslashes', like this:
 
-``` python3 Code\tsv_headers.py ..\Data\bindict.tbl ```
+* To run `tsv_headers.py` on the file `Data/bindict.tbl` under `macOS` or `LINUX`, the runtime syntax should be something like this:
+
+```
+    python3 Code/tsv_headers.py < Data/bindict.tbl
+```
+
+This command asks the `python3` program-interpreter to run the program `Code/tsv_headers.py`, reading its data from the file `Data/bindict.tbl`.
+
+```
+NOTE: The above command should be entered as a single line, even if your browser might have wrapped it onto two lines.
+```
+
+* Under `Windows`, you should instead replace the 'slashes' with 'backslashes', like this:
+
+```
+    python3 Code\tsv_headers.py < Data\bindict.tbl
+```
 
 ## Solution Check instructions:
 If you are successful, the program should return output that matches the 5 columns in the data file.
 
 ```genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50```
+
+In the `Solutions/` subdirectory of this module, we have included the program `tsv_headers_solution.py` that Grimoire wrote for us; this program may perhaps differ in precise detail from the program that Grimoire wrote for you, but it should be functionally equivalent.
