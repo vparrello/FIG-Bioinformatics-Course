@@ -52,6 +52,7 @@ NOTE: In this course, most files will have extensions of either `.py` indicating
 
 The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
+
 6. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following "comment":
 ```
 # Paste Grimoire's code below this line,
@@ -64,6 +65,7 @@ Grimoire has probably already shown you an example of how to run the program dur
 * Go back to the "File-Explorer" window and select the top-level directory `FIG-Bioinformatics-Course/`.'
 
 * Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode. Click on the "Terminal" window that VScode just opened, which will switch VScode's "focus" to that window. You can confirm that you are in the correct directory by entering `pwd` (short for "print working-directory") and hitting the `return` key; your computer should respond with a directory-path ending in `FIG-Bioinformatics-Course`.
+
 
 * To run `tsv_headers.py` on the file `Data/bindict.tbl` under `macOS` or `LINUX`, the runtime syntax should be something like this:
 
