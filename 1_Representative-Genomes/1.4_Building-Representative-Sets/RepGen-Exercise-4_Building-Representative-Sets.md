@@ -1,6 +1,6 @@
 # RepGen Exercise 4 - Building a Representative Set
 
-Objective: Combining what we have learned to create a program that builds a set of Representative Sequences from an input FAST file.
+Objective: Combining what we have learned to create a program that builds a set of Representative Sequences from an input FASTA file.
 
 ## Materials
 
