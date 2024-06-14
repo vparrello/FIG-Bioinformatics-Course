@@ -2,27 +2,22 @@
 
 Objective: Become familiar with the FASTA file-format. 
 
-FASTA is one of the most basic file-formats for storage and exchange of biological sequences. We use FASTA files constantly when looking at data in the bioinformatics space. In order to use FASTA format, we first need to understand how it came to be, and what information is available within it. A sample FASTA file has been put into the Data folder for you to explore. 
+FASTA is one of the most basic file-formats for storage and exchange of biological sequences. We use FASTA files constantly when looking at data in the bioinformatics space. In order to use FASTA format, we first need to understand how it came to be, and what information is available within it. A sample FASTA file has been put into the Data folder for you to explore.
+
+You will not be creating any code in tbis exercise, you will just be asking Grimoire questions. 
 
 #### Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * Sample1.fasta
-        * 1.2_FASTA-Files/
-            * FASTA-Exercise-1_What-is-FASTA-format.md
--->
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   └── Sample1.fasta
-    └── 1.2_FASTA-Files/
-        └── FASTA-Exercise-1_What-is-FASTA-format.md
+├── 1_Representative-Genomes/
+│   └── 1.2_FASTA-Files/
+│       └── FASTA-Exercise-1_What-is-FASTA-format.md
+└── Data/
+    └── Sample1.fasta
+    
 ```
 
 #### Exercise: 
