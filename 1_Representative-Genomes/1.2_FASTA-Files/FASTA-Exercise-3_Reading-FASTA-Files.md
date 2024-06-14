@@ -8,29 +8,17 @@ FASTA files are a common format used to store and transmit bioinformatic sequenc
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * Sample1.fasta
-        * Code/
-            * fasta_reader.py
-        * Solutions/
-            * fasta_reader_solution.py
-        * 1.2_FASTA-Files/
-            * FASTA-Exercise-3_Reading-FASTA-Files.md
--->
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   └── Sample1.fasta
-    ├── Code/
-    │   └── fasta_reader.py
-    ├── Solutions/
-    │   └── fasta_reader_solution.py
-    └── 1.2_FASTA-Files/
-        └── FASTA-Exercise-3_Reading-FASTA-Files.md
+├── 1_Representative-Genomes/
+│   └── 1.2_FASTA-Files/
+│       ├── FASTA-Exercise-3_Reading-FASTA-Files.md (you are here)
+│       └── Solutions/
+│           └── fasta_reader_solution.py
+├── Code/
+│   └── fasta_reader.py
+└── Data/
+    └── Sample1.fasta
 ```
 
 #### Exercise:
@@ -39,7 +27,7 @@ FIG-Bioinformatics-Course/
 
 2. Ask Grimoire to convert its pseudocode into python code, and then explain to you how the code works line-by-line if it did not already do so.
 
-3. Ask Grimoire to give pseudocode for and then write a python program that will accept a FASTA filename as a command-line argument, read the file, print a tab-separated ID and sequence-length for each record to STDOUT, and finally print the number of sequences read and the average length of the set of sequences to STDERR.
+3. Ask Grimoire to give pseudocode for and then write a python program that will read a FASTA file from STDIN, print a tab-separated ID and sequence-length for each record to STDOUT, and finally print the number of sequences read and the average length of the set of sequences to STDERR.
 
     * WARNING: Grimoire sometimes forgets that the "sequence-ID" stops at the first "whitespace character", and that the rest of the record-header after the sequence-ID is considered a "description" of the sequence, not a part of its ID, so if you see additional text after the sequence-ID in the TSV output-table, you will need to remind Grimoire that it should not include the sequence-description in its TSV output.
 
@@ -59,18 +47,18 @@ FIG-Bioinformatics-Course/
 
 * Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_protein.faa`. Run `fasta_reader.py` on `rep10.seed_protein.faa`, and save the TSV-output as follows:
 ```
-python3 Code/fasta_reader.py < rep10.seed_protein.faa > rep10.seed_protein.lengths.tab
+python3 Code/fasta_reader.py < Data/rep10.seed_protein.faa > Data/rep10.seed_protein.lengths.tab
 ```
 
 * Bonus Exercise 2: Repeat the procedure from FASTA-Ex-2, but this time extract the field `seed_dna` instead of `seed_protein`:
 ```
-python3 ../Code/cmd_tsv_select_columns.py genome_id genome_name seed_dna < ../Data/rep10.seqs.tbl | python3 3col_to_fasta > rep10.seed_dna.fna
+python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta > Data/rep10.seed_dna.fna
 ```
 (Note that this time we have used the file-extension ".fna" instead of ".faa", because we are extracting "nucleic-acid" data instead of "amino-acid" data.)
 
 Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 ```
-python3 Code/fasta_reader.py rep10.seed_dna.fna > rep10.seed_dna.lengths.tab
+python3 Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.lengths.tab
 ```
 Compare the files `rep10.seed_protein.lengths.tab` to `rep10.seed_dna.lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
 
