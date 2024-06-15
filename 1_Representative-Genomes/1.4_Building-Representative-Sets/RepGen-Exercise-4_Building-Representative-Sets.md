@@ -6,34 +6,26 @@ Objective: Combining what we have learned to create a program that builds a set 
 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * bindict.tbl
-            * data.tbl
-            * rep200.list.tbl
-            * TSVReaderDocumentation.txt
-        * Code/
-            * tsv_headers.py
--->
 
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   └── rep200.seqs.tbl
-    └── Code/
-        └── 3col_to_fasta.py
+├── 1_Representative-Genomes/
+│   └── 1.4_Building-Representative-Sets/
+│       └── RepGen-Exercise-4_Building-Representative-Sets.md (you are here)
+├── Code/
+│   └── 3col_to_fasta.py
+└── Data/
+    └── rep200.seqs.tbl
+ 
 ```
 
 
 1. Attach the `Definitions.html` file as in previous exercises.
 
-2. Reformulate the following prompt as a set of program specifications
+2. The following prompt provides the program specification for the representative-set algorithm:
 
 ```
-I am now about to give you a description of the command-line interface for a program to compute a "set of representative sequences" (RepGen set) using "Stingy Addition" as defined in the uploaded definitions-file.
+I will now give you a description of the command-line interface for the program `build_representative_set.py` to compute a "set of representative sequences" (RepGen set) using the "Stingy Addition" algorithm as defined in the uploaded definitions-file.
 
 The script should accept the following mandatory command-line arguments, in both long-form and the specified short-form:
 * Kmer-length  (integer, short argument-name '-k')
