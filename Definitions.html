@@ -66,13 +66,13 @@ A role that is both singly-occurring and universal is called a
 
 
 <h2>Representative Sets</h2>
-Let U be the Universe of genomes being considered.<br>  Let there be
-some measure of similarity between two genomes.<br>  Then a set
-of <b>Representative Genomes</b> or <b>RepGen set</b> for short is a
-subset of U such that
+Let U be the Universe of genomes being considered.<br>
+Let there be some measure of similarity between two genomes.<br>
+Then a set of <b>Representative Genomes</b> or <b>RepGen set</b>
+for short is a subset of U such that
 <ul>
-  <li>no two members of the RepGen set are more similar than some
-    threshold similarity <b>MinSim,</b> and
+  <li>no two members of the RepGen set are more similar
+    than some threshold similarity <b>Sim,</b> and
     
   <li>every member of U is similar to at least one
     member of the RepGen set.
@@ -87,7 +87,7 @@ The pseudocode for "Stingy Addition" is as follows:
   RepGenSet = ()   #... i.e. the "empty list"
   ToCheck   = U    #... The "Universe of Genomes"
   Foreach G1 in ToCheck:
-    If no G in RepGenSet is more similar to G1 than MinSim:
+    If no G in RepGenSet is more similar to G1 than Sim:
       Add G1 to RepGenSet
             	
   Return RepGenSet
