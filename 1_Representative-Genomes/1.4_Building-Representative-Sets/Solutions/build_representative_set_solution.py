@@ -3,51 +3,40 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
-def parse_arguments():
-    parser = argparse.ArgumentParser(description="Compute a set of representative sequences (RepGen set) using the Stingy Addition algorithm.")
-    parser.add_argument('-k', '--kmer-length', type=int, required=True, help="Length of the Kmers")
-    parser.add_argument('-m', '--minsim', type=float, required=True, help="Minimum similarity threshold (percent)")
-    parser.add_argument('-f', '--input-fasta', type=str, required=True, help="Input FASTA file")
-    parser.add_argument('-r', '--output-repseq', type=str, required=True, help="Output Representative Sequences file")
+def parse_args():
+    parser = argparse.ArgumentParser(description="Compute a Representative Set using the Stingy Addition algorithm.")
+    parser.add_argument("-k", "--kmer_length", type=int, required=True, help="Kmer length")
+    parser.add_argument("-s", "--similarity_threshold", type=int, required=True, help="Similarity threshold (number of Kmers in common)")
+    parser.add_argument("-f", "--input_fasta", type=str, required=True, help="Input FASTA file")
+    parser.add_argument("-r", "--output_repseq", type=str, required=True, help="Output RepSeq file")
     return parser.parse_args()
 
-def convert_min_sim(minsim_percent):
-    return minsim_percent / 100.0
+def get_kmers(sequence, k):
+    return {sequence[i:i+k] for i in range(len(sequence) - k + 1)}
 
-def read_fasta_file(input_fasta):
-    return list(SeqIO.parse(input_fasta, "fasta"))
-
-def sort_sequences(sequences):
-    return sorted(sequences, key=lambda x: (-len(x.seq), str(x.seq), x.id))
-
-def compute_jaccard_similarity(seq1, seq2, k):
-    kmers1 = {str(seq1.seq[i:i+k]) for i in range(len(seq1.seq) - k + 1)}
-    kmers2 = {str(seq2.seq[i:i+k]) for i in range(len(seq2.seq) - k + 1)}
-    intersection = kmers1 & kmers2
-    union = kmers1 | kmers2
-    return len(intersection) / len(union)
-
-def stingy_addition(sequences, k, minsim):
-    repgen_set = []
-    for seq1 in sequences:
-        if all(compute_jaccard_similarity(seq1, seq2, k) < minsim for seq2 in repgen_set):
-            repgen_set.append(seq1)
-    return repgen_set
-
-def write_fasta_file(sequences, output_fasta):
-    SeqIO.write(sequences, output_fasta, "fasta")
+def is_similar(seq1_kmers, seq2_kmers, threshold):
+    common_kmers = seq1_kmers.intersection(seq2_kmers)
+    return len(common_kmers) >= threshold
 
 def main():
-    args = parse_arguments()
+    args = parse_args()
     k = args.kmer_length
-    minsim = convert_min_sim(args.minsim)
+    sim_threshold = args.similarity_threshold
     input_fasta = args.input_fasta
     output_repseq = args.output_repseq
     
-    sequences = read_fasta_file(input_fasta)
-    sorted_sequences = sort_sequences(sequences)
-    repgen_set = stingy_addition(sorted_sequences, k, minsim)
-    write_fasta_file(repgen_set, output_repseq)
+    sequences = list(SeqIO.parse(input_fasta, "fasta"))
+    
+    # Sort sequences by decreasing length, then by sequence, then by sequence ID
+    sequences.sort(key=lambda x: (-len(x.seq), str(x.seq), x.id))
+    
+    repgen_set = []
+    for seq_record in sequences:
+        seq_kmers = get_kmers(str(seq_record.seq), k)
+        if all(not is_similar(seq_kmers, get_kmers(str(rep.seq), k), sim_threshold) for rep in repgen_set):
+            repgen_set.append(seq_record)
+    
+    SeqIO.write(repgen_set, output_repseq, "fasta")
 
 if __name__ == "__main__":
     main()
