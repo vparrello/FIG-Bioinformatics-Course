@@ -25,6 +25,8 @@ with open("Data/rep200.list.tbl") as data_file: # type: ignore
         # Split the string into columns by separating by the Tab character. This changes the datatype into a list again.
         list = line.split("\t")
         list.append("Foo")
+        list.append("Foo")
+        list.append("Foo")
         list.append("315")
         list.append("1214")
         # Look for every line except the header line. This keeps meta data out of our data.
@@ -57,6 +59,8 @@ with open("Data/rep200.list.tbl") as data_file: # type: ignore
         print(string)
     elif datatype == "integer":
         print(integer)
+    elif datatype == "list":
+        print(list)
     elif datatype == "set":
         print(_set)
     elif datatype == "tuple":
