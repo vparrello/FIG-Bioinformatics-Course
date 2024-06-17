@@ -7,21 +7,18 @@ Objectives:
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * rep10.seqs.tbl 
-        * 1.2_FASTA-Files/
-            * FASTA-Exercise-2_TSV-to-FASTA-translation.md
--->
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   └── rep10.seqs.tbl
-    └── 1.2_FASTA-Files/
-        └── FASTA-Exercise-2_TSV-to-FASTA-translation.md
+├── 1_Representative-Genomes/
+│   └── 1.2_FASTA-Files/
+│       ├── FASTA-Exercise-2_TSV-to-FASTA-translation.md (you are here)
+│       └── Solutions/
+│           └── 3col_to_fasta_solution.py
+├── Code/
+│   ├── cmd_tsv_select_columns.py
+│   └── tsv_headers.py
+└── Data/
+    └── rep10.seqs.tbl
 ```
 
 #### Exercise: 
@@ -31,7 +28,7 @@ In this exercise, you will first create a program that will reformat a 3-column 
 
 If you use your script `tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
-% python3 ~/bin/tsv_headers.py ../Data/rep10.seqs.tbl 
+% python3 Code/tsv_headers.py Data/rep10.seqs.tbl 
 Field names in the TSV file are:
 genome_id
 genome_name
@@ -42,16 +39,16 @@ seed_dna
 The above means that `rep10.seqs.tbl` is a 5-column TSV file; the first two columns contain a genome-ID and its human-readable biological name, respectively, while the last three columns contain sequence-data.
 
 2. Ask Grimoire to write a program named `3col_to_fasta.py` that:
-    * accepts TSV-data from STDIN,
+    * accepts TSV-data from `STDIN`,
     * skips the header-line,
     * treats the first column as a sequence-ID, the second column as a sequence-description, and the third column as sequence-data,
-    * writes the data to STDOUT in FASTA format.
+    * writes the data to `STDOUT` in FASTA format.
 
-Use VScode to save the program into the `Code/` directory as usual.
+Use VScode to save the program to a file named `3col_to_fasta.py` within the `Code/` directory as usual.
 
 3. Use `cmd_tsv_select_columns.py` from TSV-Ex-2 to select the columns 'genome_id', 'genome_name', and 'seed_protein', and "pipe" the output to `3col_to_fasta.py`:
 ```
-python3 ../Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < ../Data/rep10.seqs.tbl | python3 3col_to_fasta > rep10.seed_protein.faa
+python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta > Data/rep10.seed_protein.faa
 ```
 
 * NOTE: The above should all be entered on a single command-line, even though your browser has probably split this command across several lines.
