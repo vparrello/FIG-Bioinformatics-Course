@@ -1,8 +1,8 @@
-# Hammers as Genetic Barcodes Exercise 2 - New Genome and his Representative
+# Hammers as Genetic Barcodes Exercise 2 - New Genome and its Representative
 
 Objective: Find a "Genetic Barcode" for a genome in order to classify one inside a sample.
 
-Normally when working with bioinformatics data, we are given a genome that has been annotated. This means that it has been compared to the rest of genome space and has been sorted into the most likely genomes for that sample. If a sample has not been annotated, then we need to use our hammers to try and find them.
+Normally when working with bioinformatics data, we are given a sample containing one or more genomes that has been annotated. This means that the sample has been compared to the rest of genome space, it has been sorted into "bins" based on the most likely reference or representative genome or genomes to be compared to, the sample may have been "assembled" into contigs, and the probably gene-regions on the contigs may have be located and had roles assigned to them. If a sample has not been annotated, then we need to use our hammers to try and find which genomes it probably contains.
 
 In this exercise you will be given a sample that has not been annotated. We will then walk you through the steps of finding the hammers from a single representative genome to see if any of those hammers are present in the mystery genome. If they are, that tells us that they also have the same barcodes in their genome and therefore are more likely to be the same genome.
 
@@ -14,16 +14,29 @@ TODO program that will grab 20-mers without killing the memory in most machines
 
 ## Exercises
 
-1. First we need to make a set of hammers that can be used as "barcodes" for at least 1 representative genome. We will do this by taking out all the unique 20-mers from the PheS inside of Rep10.seqs.tbl. Ask Grimoire to write a program that will take a string and create all the unique substrings of that sequence and then print a two column table with the hammers and their representative genome as the two columns. Paste that program into 'hammer_creator.py'.
-    *Hint: Can you remember which datatype can only have unique strings?
+1. First we need to make a set of hammers that can be used as "barcodes" for at least 1 representative genome. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase").
+How do you think one might we do that?
+* Hint: Can you remember which python datatype can only contain a single copy of a string?
 
-2. Next we need to connect that program to the tsv_headers.py program because all of our PheS sequences are in Rep10.seqs.tbl. Ask Grimoire to adjust the tsv_headers.py program to take in a genome name and the file name for the Rep10.seqs.tbl file as command line arguments. It then needs to grab the PheS sequence for that genome and send it to the hammer_creator.py program. 
+Ask Grimoire to write a python program that will:
 
-3. A lot of the times, people will use a Command Line Script (or a bash script) to call more than one program. Other times people will use Object Oriented Programming to connect two programs together through the code itself. Ask Grimoire for explanations of both frameworks and decide which one you are more comfortable with. Then tell Grimoire to adjust tsv_headers.py and hammer_creator.py to follow that framework.
+* Accept a Kmer-length `K` as a mandatory command-line argument;
+* Read a tab-separated list of (genome_id, sequence) pairs from `STDIN`, skipping the header-line;
+* Find all of the Kmers that occur exactly once in exactly one sequence (these Kmers are the "Hammers"), and the `genome_id` that the Kmer occurred in;
+* Print a two column tab-separated table of the hammers and their  `genome_id`, with column-headers of "hammer" and "genome_id".
 
-4. Once you have those programs connected, it is time to create hammers for a specific genome. Using the framework you chose in step 3, create hammers for the first genome in the list. 
+Paste Grimire's program into the code-template `Code/hammer_creator.py`.
+The template also has a "block comment" section reserved for the program's pseudocode, so paste in Grimoire's pseudocde if it generated it, and ask it to generate pseudocode for the program if it didn't. Once you are done copying and pasting, save the code using the "Save" menu-item under the "File" menu.
 
-5. We now need to compare these hammers to the MysteryGenome. Ask Grimoire to make another program. One that will read a sequence, make a 20mer, compare it with the set, and then add to a counter every time it has a match. Paste this code into hammer_compare.py.
+2. Next, we need to extract the (genome_id, sequences) pairs from  `rep10.seqs.tbl`. You already have a program in your "toolkit" that performs this function, it is called `cmd_tsv_select_columns.py`. The relevant columns in `rep10.seqs.tbl` are `genome_id` and `seed_dna`.
+In `FASTA-Exercise-2`, you learned how to "pipe" the output
+from one command to the input of another command, so you have all the tools you need:
+
+```
+python Code/cmd_tsv_select_columns.py genome_id seed_dna | Code/hammer_creator.py -K 20 > Data/rep10.h20.tbl
+``` 
+
+3. We now need to compare the MysteryGenome to your set of hammers. Ask Grimoire to make another program. One that will read a sequence, make a 20mer, compare it with the set, and then add to a counter every time it has a match. Paste this code into hammer_compare.py.
 
 6. Add hammer_compare.py to your framework from Step 3. If you need help, ask Grimoire to adjust the format to include all the programs. 
 
