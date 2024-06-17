@@ -1,4 +1,4 @@
-#### Solutions to Kmer Exercise 1
+# Solutions to Kmer Exercise 1
 
 Solutions start with the number of the step for which they are the solution. If a number is not incuded, there is no solution needed for that piece of the exercise.
 
