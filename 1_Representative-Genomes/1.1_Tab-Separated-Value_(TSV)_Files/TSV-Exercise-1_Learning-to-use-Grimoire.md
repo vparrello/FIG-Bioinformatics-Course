@@ -5,10 +5,26 @@ Objective: Become familiar with using ChatGPT, and learn about basic bioinformat
 ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, merely by expressing what you need you computer to do using either "natural language", or, when a more precise problem-specification is needed, using a more formally-structured language intermediate between "natural" language and a computer-language called "Pseudocode".
 Finally, ChatGPT can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer!
+(Such "made-up" answers are often called "hallucinations".  
+It's worth noting that ChatGPT will become considerably more cautious in its answers and less likely to "hallucinate" if you simply begin each session
+by saying "Please answer all questions accurately, and if you don't know
+the answer, please say `I don't know' instead of making something up".)
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and "fact-check" claims that it makes that seem implausible to you, particularly with regard to non-programming-related issues.<br>
-Thus, "Trust, but verify"! :-)
-One of the skills that you will learn during this course will be how to test and debug the software that Grimoire generates for you. We will also provide solutions in each exercise module that you check your results against. And if you find yourself completely wedged, please feel free to contact the course-developers via the Discord Channel.
+Thus, you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and you should "fact-check" claims that it makes that are "mission-critical" or that seem implausible to you, particularly with regard
+to non-programming or non-science-related issues that are outside of Grimoire's
+primary areas of expertise.<br>
+Or in other words, "Trust, but verify"! ;-)<br>
+
+For this course, we have fact-checked Grimoire's answers to the questions
+that we will be asking you to ask it, and the code that it generates
+in response to problem-specifications.
+Also, one of the skills that you will learn during this course will be
+how to test and debug the software that Grimoire generates for you,
+in the event that it does make an error.
+We will also provide a `Solutions/` directory in each exercise module
+that you check your own results against. And if you find yourself
+completely wedged, please feel free to contact the course-developers via the Discord Channel.
 
 The following exercises are intended to get you used to interacting with "Grimoire" using both "natural language" and "pseudocode", while also introducing some basic types and formats of bioinformatic data.
 
