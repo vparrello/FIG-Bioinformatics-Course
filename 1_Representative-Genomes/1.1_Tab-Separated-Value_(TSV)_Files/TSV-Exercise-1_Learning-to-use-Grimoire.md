@@ -6,10 +6,10 @@ ChatGPT is an AI model that can instruct you on the basics of many topics withou
 Finally, ChatGPT can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
 ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer!
-(Such "made-up" answers are often called "hallucinations".  
+(Such "made-up" answers are often called "hallucinations".)
 It's worth noting that ChatGPT will become considerably more cautious in its answers and less likely to "hallucinate" if you simply begin each session
 by saying "Please answer all questions accurately, and if you don't know
-the answer, please say `I don't know' instead of making something up".)
+the answer, please say `I don't know' instead of making something up".
 
 Thus, you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and you should "fact-check" claims that it makes that are "mission-critical" or that seem implausible to you, particularly with regard
 to non-programming or non-science-related issues that are outside of Grimoire's
