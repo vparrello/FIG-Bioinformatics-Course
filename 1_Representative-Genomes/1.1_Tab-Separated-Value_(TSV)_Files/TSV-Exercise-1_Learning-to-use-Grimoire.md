@@ -2,15 +2,31 @@
 
 Objective: Become familiar with using ChatGPT, and learn about basic bioinformatics, common data-formats, and use of command-line tools.
  
-ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, and it can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
+ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, merely by expressing what you need you computer to do using either "natural language", or, when a more precise problem-specification is needed, using a more formally-structured language intermediate between "natural" language and a computer-language called "Pseudocode".
+Finally, ChatGPT can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
+ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer!
+(Such "made-up" answers are often called "hallucinations".)
+It's worth noting that ChatGPT will become considerably more cautious in its answers and less likely to "hallucinate" if you simply begin each session
+by saying "Please answer all questions accurately, and if you don't know
+the answer, please say `I don't know' instead of making something up".
 
-ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer! (Such "made-up answers are often called "hallucinations".) So you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and "fact-check" claims that it makes that seem implausible to you, particularly with regard to non-programming-related issues.
+Thus, you should be cautious about assuming that what ChatGPT variants tell you is always "100% accurate", and you should "fact-check" claims that it makes that are "mission-critical" or that seem implausible to you, particularly with regard
+to non-programming or non-science-related issues that are outside of Grimoire's
+primary areas of expertise.<br>
+Or in other words, "Trust, but verify"! ;-)<br>
 
-Thus, "Trust, but verify"! :-)
-One of the skills that you will learn during this course will be how to test and debug the software that Grimoire generates for you. We will also provide solutions in each exercise module that you check your results against. And if you find yourself completely wedged, please feel free to contact the course-developers via the Discord Channel.
+For this course, we have fact-checked Grimoire's answers to the questions
+that we will be asking you to ask it, and the code that it generates
+in response to problem-specifications.
+Also, one of the skills that you will learn during this course will be
+how to test and debug the software that Grimoire generates for you,
+in the event that it does make an error.
+We will also provide a `Solutions/` directory in each exercise module
+that you check your own results against. And if you find yourself
+completely wedged, please feel free to contact the course-developers via the Discord Channel.
 
-The following exercises are intended to get you used to interacting with "Grimoire", while also introducing some basic types and formats of bioinformatic data.
+The following exercises are intended to get you used to interacting with "Grimoire" using both "natural language" and "pseudocode", while also introducing some basic types and formats of bioinformatic data.
 
 ## Materials: 
 
@@ -38,13 +54,15 @@ FIG-Bioinformatics-Course/
 
 2. It is conventional to end a filename with a "extension" that indicates to the user what kind of file it is and what programs can open it. Ask Grimoire to explain the concept of a "file extension" to you.
 
-NOTE: In this course, most files will have extensions of either `.py` indicating that they are Python-language programs, or `.tbl` indicating that they are a "table" of some type, although we will introduce some other special-purpose file-extensions later in the course.
+NOTE: In this course, most files will have extensions of either `.py` indicating that they are Python-language programs, or `.tbl` indicating that they are a "data table" of some type, although later in the course we will introduce some special-purpose file-extensions that are specific to files containing bioinformatic data. 
 
-3. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
+3. Ask Grimoire to explain what the terms `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
 
-4. Ask Grimoire to explain what the terms `STDIN` (Standard Input), `STDOUT` (Standard Output), and `STDERR` (Standard Error) mean within the context of a command-line tool. If you are unfamiliar with the concept of a "command line", have Grimoire explain that as well.
+4. Ask Grimoire to explain the concept of "pseudocode" to you, and why one would want to use "pseudocode" to specify a program rather than natural language.
 
-5. Ask Grimoire to write a Python program that will read a tab-separated-value data-file with header-line from `STDIN`, print the field-names in that TSV-file's header-line columns to `STDOUT`, and then exit; any error-messages should be printed to `STDERR`. Then ask Grimoire to explain to you how this program works "line-by-line".
+5. Ask Grimoire to explain what a "tab-separated value (TSV) file" with a header-line is.
+
+6. Ask Grimoire to write a Python program that will read a tab-separated-value data-file with header-line from `STDIN`, print the field-names in that TSV-file's header-line columns to `STDOUT`, and then exit; any error-messages should be printed to `STDERR`. Then ask Grimoire to explain to you how this program works "line-by-line".
     * Note: Make sure that you explicitly use the term "line-by-line", as Grimoire may not give a detailed explanation of everything within the program without it.
 
     * Similarly, if Grimoire's explanation of a particular line of code
@@ -53,15 +71,22 @@ NOTE: In this course, most files will have extensions of either `.py` indicating
 The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
 
-6. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following "comment":
+7. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following series of "comments":
 ```
-# Paste Grimoire's code below this line,
-# then select and click "Save" under the "File" menu
+# This file has been created to contain the code
+# that Grimoire generated for the exercise `tsv_headers.py`.
+# Each line that begins with a '#' character is called a "comment";
+# "comments" are intended for human readers, 
+# and will not be interpreted as "code".
+#
+# Please paste the code that Grimoire generated below
+# and then select and click "Save" under the "File" menu
+# to save the code.
 ```
 Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py` below the comment, then click on "Save" under the "File" menu as instructed, which saves your program to disk. 
 
-7. You are now in a position to run your program.
-Grimoire has probably already shown you an example of how to run the program during its summary-discussion of the program, but since Grimoire is ignorant of the details of your operating-system, directory-structure, and the fact that you are using the VScode development-environment (unless it has explicitly been told these things), its example probably will not work verbatim. So, to run the program in your environment, please follow the steps below: 
+8. You are now in a position to run your program.
+Grimoire has probably already shown you an example of how to run this program during its summary-discussion of the program, but since Grimoire is ignorant of the details of your operating-system, directory-structure, and the fact that you are using the VScode development-environment (unless it has explicitly been told these things), and hence its example probably will not work verbatim. So, to run the program in your environment, please follow the steps below: 
 * Go back to the "File-Explorer" window and select the top-level directory `FIG-Bioinformatics-Course/`.'
 
 * Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode. Click on the "Terminal" window that VScode just opened, which will switch VScode's "focus" to that window. You can confirm that you are in the correct directory by entering `pwd` (short for "print working-directory") and hitting the `return` key; your computer should respond with a directory-path ending in `FIG-Bioinformatics-Course`.
@@ -73,7 +98,7 @@ Grimoire has probably already shown you an example of how to run the program dur
     python3 Code/tsv_headers.py < Data/bindict.tbl
 ```
 
-This command asks the `python3` program-interpreter to run the program `Code/tsv_headers.py`, reading its data from the file `Data/bindict.tbl`.
+The above command asks the `python3` program-interpreter to run the program `Code/tsv_headers.py`, reading its data from the file `Data/bindict.tbl`.
 
 ```
 NOTE: The above command should be entered as a single line, even if your browser might have wrapped it onto two lines.

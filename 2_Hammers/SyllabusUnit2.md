@@ -5,7 +5,7 @@ Hammers are "Genetic Barcodes" that we can use to try and create targeted antibi
 ## 2.1 Hammers as "Genetic Barcodes"
 
 ### Genetic Barcodes-1 Why do we need hammers and what are they?
-Discover the purpose of having a hammer as a classification tool for unknown genomes
+Discover what "hammers" are, and how they can be used to classify a unknown genome
 
 ### Genetic Barcodes-2 New Genome
 Take a new genome and use your new hammer tool to attempt to identify the mystery genome.

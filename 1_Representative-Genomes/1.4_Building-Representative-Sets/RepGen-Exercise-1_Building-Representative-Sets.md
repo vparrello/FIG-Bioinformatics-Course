@@ -34,7 +34,10 @@ We define a "Set of Representatives" as follow:
 
 When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the problem of constructing a set of "Representative Sequences".
 
-Many measures of similarity can be used, but the measure we will use in this exercise is "Number of Kmers in Common". (NOTE: In previous exercises we have worked with data-files having names like `rep10` or `rep200`; each of these files were obtained by constructing a set of representative genomes, and the number in the name was the threshold number of Kmers in common. For example, no two sequences in `rep10` have 10 or more short Kmers in common; no two members of `rep200` have 200 or more short Kmers in common, etc. In our "Production RepGen Sets" we have selected the protein-sequences implementing a particular "Singly-Occurring Universal Role" (SOUR) as the sequence to base our RepGen Sets on, and number of protein 8-mers in common as our measure of similarity.)
+Many measures of similarity can be used, but the measure we will use in this exercise is "Number of Kmers in Common". 
+
+* NOTE: In previous exercises, we have worked with data-files having names like `rep10` or `rep200`; each of these files were obtained by constructing a set of representative genomes, and the number in the name was the threshold number of Kmers in common. For example, no two sequences in `rep10` have 10 or more short Kmers in common; no two members of `rep200` have 200 or more short Kmers in common, etc. In our "Production RepGen Sets" such as `rep20` or `rep200`, we have selected the protein-sequence that implements the role "Phenylalanine tRNA Synthetase" (abbreviated as "PheS") as the sequence to base our RepGen Sets on, and "number of protein 8-mers in common between two sequences" as our measure of similarity.
+"PheS" is an example of a "Singly-Occurring Universal Role" (SOUR), which is a role implemented by exactly one gene (it is "Singly Occuring"), and that can be expected to be found in every genome (it is "Universal").
 
 There are several algorithms for building RepSets. In this course, we will be using the "Stingy Addition" algorithm. The pseudocode for "Stingy Addition" is as follows:
 ```

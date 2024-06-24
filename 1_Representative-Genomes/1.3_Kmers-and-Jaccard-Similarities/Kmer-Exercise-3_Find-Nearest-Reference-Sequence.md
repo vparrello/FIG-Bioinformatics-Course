@@ -34,7 +34,7 @@ FIG-Bioinformatics-Course
     * Accepts a mandatory FASTA filename argument, short-name `-R`, long-name `--RepSet`
     * Reads in the FASTA RepSet file using BioPython, then splits the "sequence-description" into "sequence-ID" and "sequence-comment" fields, and stores the sequence-ID, sequence-comment, and sequence.
     * Reads a set of FASTA query-sequences from STDIN, and extracts the query-ID, query-comment, and query-sequence
-    * For each input query-sequence, reports as a TSV the query-ID and the query-description, the most similar RepSet sequence-ID and RepSet-ID's description, and the Kmer jaccard-similarity.
+    * Write out a TSV report with header-line that for each input query-sequence lists the query-ID and the query-description, the most similar RepSet sequence-ID and RepSet-ID's description, the number of Kmers the two sequences have in common, and the Kmer jaccard-similarity.
 
 3. Save Grimoire's program as in previous exercises.
 
