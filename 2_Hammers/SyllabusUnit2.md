@@ -7,61 +7,35 @@ Hammers are "Genetic Barcodes" that we can use to try and create targeted antibi
 ### Genetic Barcodes-1 Why do we need hammers and what are they?
 Discover what "hammers" are, and how they can be used to classify a unknown genome
 
-### Genetic Barcodes-2 
+### Genetic Barcodes-2 New Genome
+Take a new genome and use your new hammer tool to attempt to identify the mystery genome.
 
-* Why do we care about hammers?
+### Genetic Barcodes-3 Using the Hammers
+Compare your new genome to multiple representative genomes at once to attempt to identify the genome
 
-    * Problem: We have a new genome, and we need to find the closest representative genome (RepGen) within a given RepGen Set.
+## 2.2 Hammer Tuning
 
-    * We could find the new genome's PheS and compare it to all the other PheSs - Problem comes in if our new genome is not yet annotated (takes a lot of time)
+### Hammer Tuning-1 Precision
+Make sure the hammer doesn't occur in other representative genomes
 
-    * Suppose I have a given RepGen; is our new genome close to this Repgen?
+### Hammer Tuning-2 Accuracy
+Picking the correct roles mean that the hammers are more accurate for your purpose.  
 
-    * We can avoid first locating the PheS by instead looking for a "hammer",
-    which is a type of "genetic barcode".
-    A "Hammer" is a 20-mer that is found:
+### Hammer Tuning-3 Worthiness
+How many peer genomes that are represented are hit by the hammer you choose?
+** Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
+** Hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
 
-        * within a PheS gene (or in general within a gene implementing a member from a set of SOURs)
+## 2.3 Creation of the Hammer Set
 
-        * occurs exactly once in exactly one representative genome,
+### Creation-1 Create a hammer set
+Create a set for all available repgen genomes to use for both classification, and antibiotics
 
-        * is found nowhere else in any other representative genome.
+### Creation-2 Use Case: Classification
+Use the hammer set to classify genomes inside of a sample.
 
-    If we find a hammer in a new genome, then it provides strong evidence that we have found a PheS gene that is similar to the PheS gene in the representative genome that the hammer came from, because a 20-mer is a highly specific DNA pattern.
+### Creation-3 Use Case: Antibiotics
+Use the hammer set to target a group for antibiotics
 
-    * We find these hammers and see how many are in the new one - We don't really know what this number means
-
-    * Grab a couple other genomes and see how many hammers hit. We should grab some that we know are close and some that we know are far. 
-
-### 2.2 Hammer Tuning
-    * Precision - Make sure the hammer doesn't occur in other representative genomes
-
-        * Do some fancy dancy stuff so it doesn't take too long (subset of repgens)
-
-    * Accuracy - Picking the correct roles
-
-        * PHEs is our go to. What do the others do?
-
-        * Run the hammer program to look for hammers inside the roles
-
-        * We know they are bad if they find everyone or noone - check against jaccard similarities of the repgens
-
-        * We made the list for you because we're awesome
-
-    * Worthiness - How fraction of of a regen's peers are hit by the hammer
-
-        * Different use cases for different hammer counts. 
-
-        * Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
-
-        * hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
-
-
-### 2.3 Creation of the Hammer Set
-    * take everything you've learned, and create the hammer set for all the repgens. 
-
-    * Use case for classification
-
-    * Use case for antibiotics
-
-    * Use case for closest genome
+### Creation-4 Use Case: Closest Genome
+Use the hammer set to find the genome closest to the mystery genome
