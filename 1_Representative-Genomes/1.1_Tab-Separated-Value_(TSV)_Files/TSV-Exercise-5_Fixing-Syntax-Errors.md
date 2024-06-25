@@ -6,36 +6,22 @@ In almost every program that is written by a human, there will usually be an err
 
 ## Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * bindict.tbl
-            * data.tbl
-            * rep200.list.tbl
-        * Code/
-            * error_message1.py
-            * error_message2.py
-            * error_message3.py
-            * error_message4.py
-            * error_message5.py
-            * error_message_final.py
--->
 
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   ├── bindict.tbl
-    │   ├── data.tbl
-    │   └── rep200.list.tbl
-    └── Code/
-        ├── error_message1.py
-        ├── error_message2.py
-        ├── error_message3.py
-        ├── error_message4.py
-        ├── error_message5.py
-        └── error_message_final.py
+├── 1_Representative-Genomes/
+│   └── TSV-Exercise-5_Fixing-Syntax-Errors.md   (you are here)
+├── Code/
+│   ├── error_message1.py
+│   ├── error_message2.py
+│   ├── error_message3.py
+│   ├── error_message4.py
+│   ├── error_message5.py
+│   └── error_message_final.py
+└── Data/
+    ├── bindict.tbl
+    ├── data.tbl
+    └── rep200.list.tbl   
 ```
 
 ## Exercise: 

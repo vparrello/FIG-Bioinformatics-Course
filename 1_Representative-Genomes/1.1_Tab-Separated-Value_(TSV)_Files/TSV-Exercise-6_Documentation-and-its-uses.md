@@ -8,28 +8,18 @@ Now that we have created our program, we will need to prepare it for outside use
 ## Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-<!--
-* FIG-Bioinformatics-Course/
-    * 1_Representative-Genomes/
-        * Data/
-            * bindict.tbl
-            * data.tbl
-            * rep200.list.tbl
-            * TSVReaderDocumentation.txt
-        * Code/
-            * tsv_headers.py
--->
 
 ```
 FIG-Bioinformatics-Course/
-└── 1_Representative-Genomes/
-    ├── Data/
-    │   ├── bindict.tbl
-    │   ├── data.tbl
-    │   ├── rep200.list.tbl
-    │   └── TSVReaderDocumentation.txt
-    └── Code/
-        └── tsv_headers.py
+├── 1_Representative-Genomes/
+│   └── TSV-Exercise-6_Documentation-and-its-uses.md (you are here)
+├── Code/
+│   └── tsv_headers.py
+└── Data/
+    ├── bindict.tbl
+    ├── data.tbl
+    ├── rep200.list.tbl
+    └── TSVReaderDocumentation.txt 
 ```
 
 ## Exercise: 
