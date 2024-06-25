@@ -21,3 +21,5 @@ Feel free to use any of the following tools to aid you on your journey.
 **Note: Git is only required if you are planning on using the versioning functionality of the repository
 
 * [Bv-brc.org](https://www.bv-brc.org/)  (A source of genomic data)
+
+* [Discord Server](https://discord.gg/2VCU2YVH8j) 
