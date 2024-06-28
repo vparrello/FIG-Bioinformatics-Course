@@ -26,28 +26,32 @@ We can gain knowledge about which genomes are present in a sample by comparing t
 The set `rep200` is our highest-resolution "production" RepGenSet; it allows identification of genomes down to the "species" level. Similarly, `rep100` allows identification down to the "Genus" level.
 Our coarsest set of representatives is `rep10`, which allows identification to within broad families of genomes.
 
-In this exercise, you will first install the BV-BRC Command-Line Toolkit (also referred to as the "P3 Commands" for historical reasons), which will allow you to fetch the data and metadata for nearly a million sequenced genomes.
-You will used the CLI to fetch the PhlseS sequence for a "Mystery Genome" and then compare it to the `rep200` data using the tool `find_nearest_reference.py` that you constructed in Kmer-Ex-3. You will then fetch the actual identity of this genome from BV-BRC and compare it to the nearest representative that your tool selected.
+In this exercise, you will first install the `BV-BRC Command-Line Interface` Toolkit (`BV-BRC CLI`, also referred to as the "P3 Commands" for historical reasons), which will allow you to fetch the data and metadata for nearly a million sequenced genomes.
+You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then compare it to the `rep200` data using the tool `find_nearest_reference.py` that you constructed in Kmer-Exercise-3. You will then fetch the actual biological name of the "Mystery Genome" from BV-BRC and compare it to the biological name of nearest representative genomne that your tool selected.
 
 ## Exercises:
 
 1. In order to access the data at BV-BRC, you will first need to register. Please go to
 https://www.bv-brc.org/docs/quick_references/registration.html,
-then click on the appropriate link within the left-sidebar or scroll down to the section for your operating-system (i.e., macOS, LINUX, or Windows) and follow the installation instructions within that section.
+and follow the istructions.
 
 2. Once you have registered, you will need to download and install the Command-Line Interface toolkit as documented here:<br>
-https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#cli-installation
+https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#cli-installation<br>
+BV-BRC supports three operating-systems; detailed installation-instructions for each OS may be found here:
+    * [macOS](https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#installation-on-macos)
+    * [LINUX](https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#installation-on-debian-ubuntu-mint-linux)
+    * [Windows](https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#installation-on-windows)
 
-3. Once installed, under `macOS` and `Windows` launch the `BV-BRC.app` by double-clicking on the app icon. (Under LINUX, the app commands will be installed on your default `PATH`, so just open a shell window and start typing commands)
+3. Once installed, launch the `BV-BRC.app` under `macOS` and `Windows` by double-clicking on the app's icon. (Under LINUX, the app commands will be installed on your default `PATH`, so just open a new terminal window and start typing commands.)
 
 4. Login to BV-BRC using this command:
 ```
-    p3-login yourBVBRCusername
+    p3-login your_BVBRC_username
 ```
 which will prompt you for your BV-BRC password;
 once logged in, you can issue any P3-command.
 
-5. Get the PheS sequence for "Mystery Genome 1491.662" using the following incantation:
+5. Get the PheS sequence for "Mystery Genome-ID 1491.662" using the following incantation:
 ```
     p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id > Data/mystery_PheS.faa
 ```
@@ -55,7 +59,7 @@ once logged in, you can issue any P3-command.
 
 6. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `rep10`:
 ```
-    pyhthon3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seqs.seed_protein.faa < Data/mystery_PheS.faa
+    python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seqs.seed_protein.faa < Data/mystery_PheS.faa
 ```
 Which representative genome was reported in the RepSet-description column?
 
