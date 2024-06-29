@@ -75,3 +75,91 @@ The above is a greatly simplified "cartoon version" of how one may go about iden
 In a later exercise, you will learn about a type of "Genetic Barcode" called a "Hammer", which allows one to skip the intermediate steps to go directly from raw sequencer-data to a genome identification.
 
 ## Breaking down the steps in the "P3 incantations"
+
+Earlier, we used the following "incantation":
+```
+p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id > Data/mystery_PheS.faa
+```
+The above complex command is an example of a "command pipeline": A sequence of commands with modifying arguments separated by the symbol `|`, which is pronounced as "pipe" because it connects (or "pipes") the `STDOUT` from one command to the `STDIN` of the following command.
+You can use a "pipeline" to construct an arbitrarily complex command or filter operation out of simple commands.
+
+Let's break tis incantation down step-by-step to see what it does.
+
+The first step is `p3-echo PheS`. If you type this command by itself, you will see the following output:
+```
+id
+PheS
+```
+The above illustrates two points:
+* P3-commands all generate "Tab-separated output with header-line", which is sent to STDOUT 
+
+* the `p3-echo` command accepts one (or more) values as arguments,
+and "echoes" them one after the other following the column-name.
+The utility of `p3-echo` is to create TSV data that will be sent
+to subsequent P3-commands
+
+In the absence of an argument, `p3-echo` uses a "default" column-name of `id`. In cases where a different column-name is required, it can be specified using the `-t` argument (which you may think of as short for "column-title"), so for example:
+```
+p3-echo -t feature_id 'fig|1491.662.peg.1715'
+```
+will generate:
+```
+feature_id
+fig|1491.662.peg.1715
+```
+It is possible (but cumbersome) to generate multiple-column TSV files using `p3-echo`, but this capability is rarely needed. Most often, you will use `p3-echo` to create single-column output as follows:
+```
+p3-echo -t columnName value1 value2 value3
+```
+which results in:
+```
+columnName
+value1
+value2
+value3
+```
+
+The next step is to "pipe" the output of `p3-echo` to the input of `p3-find-features` as follows:
+```
+p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene
+```
+which produces:
+```
+id	feature.patric_id	feature.product
+PheS	fig|1491.662.peg.1715	Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)
+```
+Note that the output has acquire two new columns named `feature.patric_id`	and `feature.product`; the portion `feature` before the dot specifies the `type` of the data-column, while the portion after the dot specifies the "attributes" of the data-type that were selected in the command by the argument `--attr patric_id,product`.
+
+This mechanism of appending columns to the end of each line allows us to incrementally build up arbitrarly complex data-tables via a sequence of commands. 
+
+the final step is:
+```
+p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id
+```
+which yields:
+```
+>fig|1491.662.peg.1715 Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)
+MRQKLEDIKNSAINELKTTLSKDQLEAIRVKYLGKKGELTQILRGMGALSQEERPIVGKVANEVRSYIEETIKEAFSDIKNKEKSIRLENETIDITMPGKKQAVGKRHPLDLTLESMKDIFISMGFTIEEGPEVELDKYNFEALNIPKNHPARGEQDTFYINDNLVLRTQTSPIQIRTMENQKPPIKMIAPGKVYRSDSVDATHSPIFYQMEGLVVDKGITFSDLKGTLELFAKRMFGDKVKTKFRPHHFPFTEPSAEMDATCFVCNGEGCKVCKGSGWIELLGCGMVHPQVLRNCNIDPEVYSGFAFGFGVDRMVMMKYGIDDIRLLYESDMRFLNQF
+```
+The above illustrates a final point, which is that in general,
+most P3-commands will use one of the columns as the "key"
+that it will use to look up data-values, and the "key" column-name
+can be specied using the `--col` (short for "column") command-argument. In this case, we used `--col feature.patric_id` to specify that the
+`feature.patric_id` column-value should be used as the data lookup-key
+to be used by `p3-get-feature-sequence`.
+
+In the absence of a `--col` argument, P3-commands default to using
+the _last_ column of their input-table as their "key", which often simplifies incrementally building up an arbitrarily complex table by using the last attribute looked up as the "key" to look up the next data-item.
+
+Finally, note that every P3-command accepts a `--help` argument
+that will list and describe the arguments that the command accepts,
+and that most commands also accept a `--fields` argument that lists
+the data-attributes that they can access.
+
+A detailed tutorial on how to use P3-commands can be found at:<br>
+https://www.bv-brc.org/docs/cli_tutorial/cli_getting_started.html
+
+A catalogue of the P3-commands may be found at:<br>
+https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html<br>
+Clicking on a command-name will go to the `--help` output for that command.
+
