@@ -28,8 +28,9 @@ print(f"List: {list_example}")
 tuple_example = (1, 2, 3, 4, 5)
 print(f"Tuple: {tuple_example}")
 
-# Set
-set_example = {1, 2, 3, 4, 5}
+# Set -- Note that adding an element multiple times
+# does not add copies
+set_example = {1, 2, 3, 4, 5, 2, 2}
 print(f"Set: {set_example}")
 
 # Dictionary

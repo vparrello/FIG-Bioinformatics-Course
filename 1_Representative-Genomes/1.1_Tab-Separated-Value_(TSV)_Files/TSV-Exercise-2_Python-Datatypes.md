@@ -2,9 +2,11 @@
 
 Objective: Recognize Python Datatypes
 
-Python is a programming language that lends itself to the large consumption of data. In this exercise, we will explore the different types of data python uses within its code. Most of these data types are common to all programming languages, but a few are unique to Python itself. 
+The programs that you will be creating in this course will be written in the `Python` computer-language.
+In this exercise, we will explore the different types of data Python uses within its code. Most of these data types are common to all programming languages, but a few are unique to Python itself. 
 
-The program `data_types.py` has been created to help you explore these data types while also practicing the use of the command line. Before you begin, ensure that you have a Terminal window open of the GitBash profile. If you are unsure of how to find this setting, please refer to the "Download Instructions" around Git to make it a default setting for VSCode.
+The program `data_types.py` has been created to help you explore these data types while also practicing the use of the command line. Before you begin, ensure that you have a Terminal window open that uses the `bash` profile (macOS and LINUX) or `GitBash` (Windows) profile.
+If you are unsure of how to find this setting, please refer to the "Download Instructions" for Git to make it the default setting for VSCode.
 
 ## Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
@@ -47,10 +49,11 @@ FIG-Bioinformatics-Course/
 
 NOTE: The words that follow a program's name are called `arguments`. The `arguments` of a program are passed to the program to control its behavior or to provide it with necessary information. If you are unfamiliar with the concept of a "program argument", please ask Grimoire to explain it to you.
 
-4. When you run the program `data_types.py`, it reads the file that it is given and turns that file into a list. That list is then looped through one by one and separated into its own individual columns. We can do this because the file is in the Tab Separated Value (TSV) format. We also added some extra data at the end to help show the difference between lists and sets. Print that list by calling the `data_types.py` program on the datatype "list". Notice that the list has a duplicate data point. 
+4. When you run the program `data_types.py`, it reads the file that it is given and turns that file into a list. That list is then looped through one by one and separated into its own individual columns. We can do this because the file is in the Tab Separated Value (TSV) format. We also added some extra data at the end to help show the difference between lists and sets. Print that list by calling the `data_types.py` program with an argument of `list`.
+Notice that the list has a duplicate data point. 
     * Hint: You can access previous commands in the command line by using the arrow keys on your keyboard.
 
-5. Next the program takes that list and inserted it into a `set`. See if you can spot the difference between a `list` and a `set`. Print the set by calling the `data_types.py` program using the datatype-argument `set`, just as you did for the previous three datatypes. Notice that at this point, no data is duplicated.
+5. Next the program takes that list and inserts it into a `set`. See if you can spot the difference between a `list` and a `set`. Print the set by calling the `data_types.py` program using the datatype-argument `set`, just as you did for the previous three datatypes. Notice that at this point, no data is duplicated.
 
 6. Ask Grimoire to explain to you the difference between a `list`, a `set`, and a `tuple`. The tuple's main feature is that it is immutable. Ask Grimoire to explain to you what "immutable data" is and why it is important to use within programming code.
 
