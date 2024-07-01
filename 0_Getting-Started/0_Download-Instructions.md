@@ -32,4 +32,6 @@ These are instructions on how to download the course through github. If you have
 
 9. Next type `git checkout ` and then the name of your branch. This creates a personal copy of the material for you.
 
+git branch --set-upstream-to=origin/master <branch>
+
 9. Happy Dance! You are done with your setup! The course syllabus and how to update the course material are located in the folder `0_Getting-Started` along with this document. Go to exercise `TSV-Exercise-1_Learning-to-use-Grimoire` under `1_Representative-Genomes/1_Tab-Separated-Value_(TSV)_Files` to get started on the course.
