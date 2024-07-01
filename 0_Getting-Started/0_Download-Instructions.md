@@ -21,7 +21,7 @@ These are instructions on how to download the course through github. If you have
 
 6. Click in the new terminal and type `git --version` to verify your git bash installation.
 
-7. Next to download the course material, type `git clone https://github.com/vparrello/FIG-Bioinformatics-Course/tree/master` inside your terminal.
+7. Next to download the course material, type `git clone https://github.com/vparrello/FIG-Bioinformatics-Course.git` inside your terminal.
     ** Note: If you get an error saying that you need to configure your name and email in order to use git, then follow these instructions.
     1. Inside the terminal, use the following command. Be sure to put in your own name inside the command instead of FIRST_NAME LAST_NAME. 
         ``` git config --global user.name "FIRST_NAME LAST_NAME"```
@@ -31,5 +31,7 @@ These are instructions on how to download the course through github. If you have
 8. Once that finishes, type `git branch ` and then your name. This will be the name of your branch.  
 
 9. Next type `git checkout ` and then the name of your branch. This creates a personal copy of the material for you.
+
+git branch --set-upstream-to=origin/master <branch>
 
 9. Happy Dance! You are done with your setup! The course syllabus and how to update the course material are located in the folder `0_Getting-Started` along with this document. Go to exercise `TSV-Exercise-1_Learning-to-use-Grimoire` under `1_Representative-Genomes/1_Tab-Separated-Value_(TSV)_Files` to get started on the course.

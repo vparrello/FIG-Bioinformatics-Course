@@ -22,6 +22,8 @@ Feel free to use any of the following tools to aid you on your journey.
 
 * [Bv-brc.org](https://www.bv-brc.org/)  (A source of genomic data)
 
+* [Discord Server](https://discord.gg/2VCU2YVH8j) 
+
 ## References
 
 We recommend the following books as supplemental reading material:
@@ -35,3 +37,4 @@ by Dr. Steven R. Gundry, MD
 
 * ["Artificial Intelligence - A Guide for Thinking Humans"](https://www.google.com/books/edition/Artificial_Intelligence/65iEDwAAQBAJ?hl=en&gbpv=0)
 by Melanie Mitchell
+=======
