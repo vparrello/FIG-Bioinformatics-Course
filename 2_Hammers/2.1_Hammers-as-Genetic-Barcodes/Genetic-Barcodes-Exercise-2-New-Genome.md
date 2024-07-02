@@ -8,9 +8,17 @@ In this exercise you will be given a sample that has not been annotated. We will
 
 ## Materials
 
-MysteryGenome1.fna
-Rep10.list.tbl
-Rep10.seqs.tbl
+FIG-Bioinformatics-Course/
+├── 2_Hammers
+│   └── 2.1_Hammers-as-Genetic-Barcodes/
+│       └── Genetic-Barcodes-Exercise-2-New-Genome.md(you are here)
+└── Data/
+    └── MysteryGenome1.fna
+    └── rep10.list.tbl
+    └── rep10.seqs.tbl
+
+
+
 
 
 ## Exercises

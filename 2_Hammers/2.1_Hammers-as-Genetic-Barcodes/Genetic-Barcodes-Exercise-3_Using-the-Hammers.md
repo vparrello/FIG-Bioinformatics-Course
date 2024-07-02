@@ -8,10 +8,15 @@ Follow the same pattern as the lesson before and find which representative genom
 
 ## Materials
 
-MysteryGenome2.fasta
-Rep10.list.tbl
-Rep10.seqs.tbl 
-rep10.hammers.tbl - output from the last lesson
+FIG-Bioinformatics-Course/
+├── 2_Hammers
+│   └── 2.1_Hammers-as-Genetic-Barcodes/
+│       └── Genetic-Barcodes-Exercise-3_Using-the-Hammers.md (you are here)
+└── Data/
+    └── MysteryGenome2.fna
+    └── rep10.list.tbl
+    └── rep10.seqs.tbl
+    └── rep10.hammers.tbl - output from the last lesson
 
 ## Exercises
 

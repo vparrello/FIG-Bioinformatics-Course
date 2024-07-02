@@ -42,7 +42,7 @@ BV-BRC supports three operating-systems; detailed installation-instructions for 
     * [LINUX](https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#installation-on-debian-ubuntu-mint-linux)
     * [Windows](https://www.bv-brc.org/docs/cli_tutorial/cli_installation.html#installation-on-windows)
 
-3. Once installed, launch the `BV-BRC.app` under `macOS` and `Windows` by double-clicking on the app's icon. (Under LINUX, the app commands will be installed on your default `PATH`, so just open a new terminal window and start typing commands.)
+3. Once installed, launch the `BV-BRC.app` under `macOS` and `Windows` by double-clicking on the app's icon. It should look very similar to a terminal icon. (Under LINUX, the app commands will be installed on your default `PATH`, so just open a new terminal window and start typing commands.)
 
 4. Login to BV-BRC using this command:
 ```
