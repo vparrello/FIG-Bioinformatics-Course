@@ -1,0 +1,103 @@
+def interactive_exercise():
+    import time
+
+    def explain_and_example(data_type, description, example):
+        print(f"\n{data_type}")
+        print(description)
+        input("Press Enter to see an example...")
+        print(example)
+        input("Press Enter to continue...")
+
+    # Boolean
+    explain_and_example(
+        "Boolean",
+        "Booleans represent two values: True or False. Useful for conditional checks.",
+        """
+# Example: Checking if a DNA sequence is valid
+def is_valid_dna(sequence):
+    valid_nucleotides = {'A', 'T', 'C', 'G'}
+    return all(nucleotide in valid_nucleotides for nucleotide in sequence)
+
+dna_sequence = "ATCGTTAGC"
+is_valid = is_valid_dna(dna_sequence)
+print(f"Is the DNA sequence valid? {is_valid}")  # Output: True
+""")
+
+    # Integer
+    explain_and_example(
+        "Integer",
+        "Integers represent whole numbers. Useful for counting or indexing.",
+        """
+# Example: Counting the number of nucleotides in a DNA sequence
+dna_sequence = "ATCGTTAGC"
+nucleotide_count = len(dna_sequence)
+print(f"The number of nucleotides: {nucleotide_count}")  # Output: 9
+""")
+
+    # String
+    explain_and_example(
+        "String",
+        "Strings represent sequences of characters. Useful for storing textual data like DNA sequences.",
+        """
+# Example: Reverse complement of a DNA sequence
+def reverse_complement(sequence):
+    complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+    return ''.join(complement[nucleotide] for nucleotide in reversed(sequence))
+
+dna_sequence = "ATCG"
+reverse_complement_sequence = reverse_complement(dna_sequence)
+print(f"Reverse complement: {reverse_complement_sequence}")  # Output: CGAT
+""")
+
+    # List
+    explain_and_example(
+        "List",
+        "Lists represent ordered collections of items. Useful for storing sequences of data.",
+        """
+# Example: Storing multiple DNA sequences
+dna_sequences = ["ATCG", "CGTA", "TTAGC"]
+for sequence in dna_sequences:
+    print(f"DNA sequence: {sequence}")
+""")
+
+    # Set
+    explain_and_example(
+        "Set",
+        "Sets represent unordered collections of unique items. Useful for ensuring no duplicates.",
+        """
+# Example: Finding unique nucleotides in a DNA sequence
+dna_sequence = "ATCGATTG"
+unique_nucleotides = set(dna_sequence)
+print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'C', 'G', 'T'}
+""")
+
+    # Tuple
+    explain_and_example(
+        "Tuple",
+        "Tuples represent ordered collections of items that are immutable. Useful for fixed collections of data.",
+        """
+# Example: Storing a DNA sequence and its length
+dna_info = ("ATCG", 4)
+sequence, length = dna_info
+print(f"DNA sequence: {sequence}, Length: {length}")  # Output: DNA sequence: ATCG, Length: 4
+""")
+
+    # Dictionary
+    explain_and_example(
+        "Dictionary",
+        "Dictionaries represent collections of key-value pairs. Useful for mapping relationships.",
+        """
+# Example: Mapping nucleotide counts in a DNA sequence
+def count_nucleotides(sequence):
+    counts = {'A': 0, 'T': 0, 'C': 0, 'G': 0}
+    for nucleotide in sequence:
+        counts[nucleotide] += 1
+    return counts
+
+dna_sequence = "ATCGATTG"
+nucleotide_counts = count_nucleotides(dna_sequence)
+print(f"Nucleotide counts: {nucleotide_counts}")  # Output: {'A': 3, 'T': 3, 'C': 1, 'G': 1}
+""")
+
+if __name__ == "__main__":
+    interactive_exercise()
