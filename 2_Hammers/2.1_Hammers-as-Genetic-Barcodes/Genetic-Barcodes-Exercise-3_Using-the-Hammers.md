@@ -17,11 +17,11 @@ rep10.hammers.tbl - output from the last lesson
 
 1. Recall your `Code/cmd_tsv_select_columns.py`, `Code/hammer_compare.py`, and `Code/hammer_creator.py` tools. Review them for their use case and inputs. 
 
-2. Since we have already created the hammer set, we do not necessarily need to use it again. Using `Code\hammer_compare.py` exclusively allows you to save time in the process. Use this program to get an output for `MysteryGenome2.fasta` to help review your process from the previous lesson.
+2. Since we have already created the hammer set, we do not necessarily need to use it again. Using `Code/hammer_compare.py` exclusively allows you to save time in the process. Use this program to get an output for `MysteryGenome2.fasta` to help review your process from the previous lesson.
 
 3. Next we will use this same process to find the hammer counts for a mystery sample from BV-BRC. Review how to use their commmand line tool to download the sample "SRR19064441". Be sure to move it into the `Data` folder so that your programs can more easily access it.
 
-4. Run your `Code\hammer_compare.py` program against the contents of the sample `SRR19064441.fasta`. This will have multiple genomes inside of it so do not eliminate any genomes from consideration when looking at your output.
+4. Run your `Code/hammer_compare.py` program against the contents of the sample `SRR19064441.fasta`. This will have multiple genomes inside of it so do not eliminate any genomes from consideration when looking at your output.
 
 4. Currently we have a few counts of how many hammers we are expecting to be hit from a sample. But without doing this hundreds of times, it would be very hard to have an accurate picture of how many hammer hits you need to verify its presence. Ask Grimoire to explain to you how a genetic barcode might be inaccurate or inconclusive.
 
