@@ -1,7 +1,7 @@
 import sys
 
 def interactive_exercise(data_type=None):
-    valid_data_types = ["boolean", "integer", "string", "list", "set", "tuple", "dictionary"]
+    valid_data_types = ["boolean", "integer", "float", "string", "list", "set", "tuple", "dictionary"]
     python_data_types = ["int", "float", "complex", "bool", "str", "list", "tuple", "range", "dict", "set", "frozenset", "bytes", "bytearray", "memoryview"]
 
     if data_type is None or data_type.lower() == "types":
@@ -30,14 +30,22 @@ def interactive_exercise(data_type=None):
             "Boolean",
             "Booleans represent two values: True or False. Useful for conditional checks.",
             """
-# Example: Checking if a DNA sequence is valid
+# Example 1: Checking if a DNA sequence is valid (returns True)
 def is_valid_dna(sequence):
     valid_nucleotides = {'A', 'T', 'C', 'G'}
-    return all(nucleotide in valid_nucleotides for nucleotide in sequence)
+    for nucleotide in sequence:
+        if nucleotide not in valid_nucleotides:
+            return False
+    return True
 
 dna_sequence = "ATCGTTAGC"
 is_valid = is_valid_dna(dna_sequence)
 print(f"Is the DNA sequence valid? {is_valid}")  # Output: True
+
+# Example 2: Checking if a DNA sequence is valid (returns False)
+invalid_dna_sequence = "ATCGTTAGX"
+is_valid = is_valid_dna(invalid_dna_sequence)
+print(f"Is the DNA sequence valid? {is_valid}")  # Output: False
 """)
 
     elif data_type == "integer":
@@ -114,6 +122,22 @@ def count_nucleotides(sequence):
 dna_sequence = "ATCGATTG"
 nucleotide_counts = count_nucleotides(dna_sequence)
 print(f"Nucleotide counts: {nucleotide_counts}")  # Output: {'A': 3, 'T': 3, 'C': 1, 'G': 1}
+""")
+
+    elif data_type == "float":
+        explain_and_example(
+            "Float",
+            """Floats are numbers with decimals, enabling accurate representation of quantities
+that are not whole numbers, such as scientific measurements, percetages, or averages.""",
+            """
+# Example: Calculating the molecular weight of a DNA sequence
+def calculate_molecular_weight(sequence):
+    molecular_weights = {'A': 331.2, 'T': 322.2, 'C': 307.2, 'G': 347.2}
+    return sum(molecular_weights[nucleotide] for nucleotide in sequence)
+
+dna_sequence = "ATCG"
+molecular_weight = calculate_molecular_weight(dna_sequence)
+print(f"Molecular weight: {molecular_weight:.2f} g/mol")  # Output: 1307.80 g/mol
 """)
 
 if __name__ == "__main__":
