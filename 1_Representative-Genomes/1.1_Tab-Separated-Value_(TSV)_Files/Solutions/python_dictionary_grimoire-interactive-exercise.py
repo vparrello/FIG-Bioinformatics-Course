@@ -1,4 +1,4 @@
-import pprint
+import json
 
 def display_menu():
     print("\nChoose an action:")
@@ -24,14 +24,14 @@ def delete_key(dictionary):
 
 def display_dictionary(dictionary):
     print("\nCurrent dictionary contents:")
-    pprint.pprint(dictionary, sort_dicts=False)
+    print(json.dumps(dictionary, indent=4))
 
 def main():
     print("Welcome to the Python Dictionary Exercise!\n")
     print("A dictionary in Python is a collection of key-value pairs.")
     print("Keys are unique identifiers that you use to access values.")
     print("Values can be any valid python datatype, and can be looked up using their key.")
-    print("A key can only appear in a dictionary once, but two keys can have the same value")
+    print("A key can only appear in a dictionary once, but two keys can have the same value.")
     print("Entering a key with a new value replaces its old value.")
     print("Deleting a key will also delete its value.")
     print("Deleting a key that does not exist will throw an error.\n")
