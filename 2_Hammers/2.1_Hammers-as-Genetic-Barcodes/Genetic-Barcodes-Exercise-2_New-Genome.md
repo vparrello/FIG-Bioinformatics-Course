@@ -38,18 +38,39 @@ for associating a string with the number of times that it occurs?
 python Code/cmd_tsv_select_columns.py genome_id seed_dna | Code/hammer_creator.py -K 20 > Data/rep10.hammers.tbl
 ``` 
 
-3. We now need to compare the `MysteryGenome1.fna` to your set of hammers. Ask Grimoire to make another program. One that will read a sequence, make a 20mer, compare it with the set, and then add to a counter every time it has a match. Paste this code into `Code/hammer_compare.py`.
+3. We now need to compare the DNA sequences in `MysteryGenome1.fna` to your set of hammers.
+Ask Grimoire to write a program that will:
 
-6. Add `Code/hammer_compare.py` to your framework from Step 3. If you need help, ask Grimoire to adjust the format to include all the programs. 
+    * Accept a mandatory TSV "hammers" filename as an argument.
 
-7. Run your script on the `MysteryGenome1.fna`. You should have a count print out of how many hammers were hit for each representative. Take the top number as your result.
+    * Skip the header-line of the hammer-file and then read the first and second columns into a dictionary as a `hammer` and `genome_id`, respectively.
+
+    * Determine the Kmer-length `K` of the hammers from the hammers dictionary.<br>
+    (NOTE: all the hammers in the file will have the same length.)
+
+    * Use BioPython to read the sequences of the genome from `STDIN`.
+
+    * For each sequence, extract all possible Kmers, and if a Kmer is a hammer,
+    increment the score for its associated `genome_id`; then repeat this operation
+    on the reverse-complement of that sequence, since a gene can face in either direction.
+
+    * Print out a TSV file of the `genome_ids` found and their associated scores,
+    sorted by decreasing score.
+    
+    * Finally, please translate the python code into pseudocode.
+
+6. Once Grimoire is done, please paste its pseudocode and code into `Code/hammer_compare.py` and save it as usual.
+
+7. Run your script on the `MysteryGenome1.fna`. The result should be a table of representative genome-IDs followed by how many hammers from that representative hit the "Mystery Genome". Take the genome-ID with the top number of hits as the most probable representative for the "Mystery Genome".
 
 
-Congratulations! You have created the genetic barcodes from the PheS SOUR for the 511145.12 genome. We need to do the same for the rest of the representative genome set and see how the counts differ. Please complete the hammers for all of the representative genomes so that you are prepared for the next exercise.
+Congratulations! You have constructed the genetic barcodes for the PheS SOUR for the set of `rep10` representative genomes, and then used them to identify the `rep10` genome `511145.12` as the most likely representative for your "Mystery Genome"!
+
+
 
 
 ### Self Check
 
 Below are the list of genomes in the representative genome set. Use the counts for the mystery genome to check your work.
 
-Mystery Genome should be 511145.12 Escherichia coli str. K-12 substr. MG1655
+The "Mystery Genome" should have `511145.12` "Escherichia coli str. K-12 substr. MG1655" as its highest-scoring representative genome.
