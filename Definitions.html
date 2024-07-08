@@ -1,0 +1,160 @@
+<h1>Basic Definitions</h1>
+
+The following set of terms represent simplified descriptions
+of a subset of concepts used by biologists and bioinformaticians.<br>
+In this course, we will very loosely view cells as a collection
+or "bag" of abstract "molecular machines".
+<br><br>
+
+
+A <b>DNA sequence</b> is a string in the 4-character alphabet {a,c,g,t}.<br>
+DNA sequences are normally written in lower-case,<br>
+but sometimes upper-case is used to highlight a subsequence.<br>
+Sequences are often refered to indirectly by an associated identifier.
+
+
+<br><br>
+A <b>contig</b> is a DNA sequence.
+<br><br>  
+
+A <b>DNA_K_mer</b> is a DNA sequence  of length K
+    (e.g. a DNA_20_mer is a DNA sequence of length 20)
+<br><br>
+
+A DNA_K_mer X is said to occur in contig Y
+if X is a substring of Y.
+<br><br>
+
+A DNA_K_mer X is said to occur in sample Y if
+X occurs in a contig contained in Y.
+<br><br>
+
+Let S1 and S2 be two sets.<br>
+Let I be the set of members that occur in both S1 and S2
+(i.e., in the intersection of S1 and S2).<br>
+Let U be the union of S1 and S2.  Then the <b>Jaccard similarity</b>
+between sets S1 and S2 is defined as size(I)/size(U).<br>
+One particular instance of a Jaccard similarity would be the similarity computed
+using the sets of DNA_20_mers contained within two sets of sequences S1 and S2.
+<br><br>
+
+A <b>genome</b> is a set of contigs.
+<br><br>
+
+A <b>Sample</b> is a set of Contigs that may contain more than one genome.
+<br><br>  
+
+A <b>gene</b> is a named subsequence of a contig that has been assigned a role.
+<br><br>
+
+A <b>role</b> is an "atomic concept" that describes what a gene does.
+<br><br>
+
+A gene's <b>function</b> consists of one or more roles.
+<br><br>
+
+A role R is said to be <b>singly occurring</b> in genome G
+if exactly one gene in G implements R.
+<br><br>
+
+A role is said to be <b>Universal</b> if it can be expected to occur in every genome.
+<br><br>
+
+A role that is both singly-occurring and universal is called a
+<b>Singly-Occurring Universal Role,</b> abbreviated as a <b>SOUR.</b>
+<br><br>
+
+
+<h2>Representative Sets</h2>
+Let U be the Universe of genomes being considered.<br>
+Let there be some measure of similarity between two genomes.<br>
+Then a set of <b>Representative Genomes</b> or <b>RepGen set</b>
+for short is a subset of U such that
+<ul>
+  <li>no two members of the RepGen set are more similar
+    than some threshold similarity <b>Sim,</b> and
+    
+  <li>every member of U is similar to at least one
+    member of the RepGen set.
+</ul>
+
+<p>
+There are several algorithms for building RepGenSets.
+In this course, we will be using the "Stingy Addition" algorithm.
+The pseudocode for "Stingy Addition" is as follows:
+<br><br>
+<pre>
+  RepGenSet = ()   #... i.e. the "empty list"
+  ToCheck   = U    #... The "Universe of Genomes"
+  Foreach G1 in ToCheck:
+    If no G in RepGenSet is more similar to G1 than Sim:
+      Add G1 to RepGenSet
+            	
+  Return RepGenSet
+</pre>
+
+<!-- The following is the alternative "Greedy Elimination" algorithm:
+  <pre>
+    IN = {}   #... i.e., the "empty set"
+    ToCheck = all of UofG
+    foreach G1 in ToCheck
+    {
+      add G1 to IN and delete it from ToCheck
+      delete from ToCheck all genomes that are close_within_MinSim to G1
+    }
+  </pre>
+-->
+
+  
+<h2>Hammers</h2>
+A <b>hammer</b> is a 20-character DNA sequence that occurs
+precisely once in precisely one genome within the RepGen set.
+It must also occur within a gene implementing a SOUR.
+Thus, a hammer acts as a genomic signature.<br>
+Given a new genome <b>G1</b>,
+if we find an occurrence of hammer <b>H</b> derived from
+RepGen genome <b>G</b> within genome <b>G1</b>,
+then it provides support for <b>G1</b> being similar
+to the RepGen genome <B>G</B> that <b>H</b> was derived from.
+The occurence of many hammers derived from a large majority
+of RepGen genome <b>G's</b> SOUR genes 
+constitutes strong evidence that a genome <b>G1</b>
+and RepGen genome <b>G</b> may have a recent common ancestor.
+
+
+
+<h1>Compute_Hammers</h1>
+Given a RepGen set, find the set of hammers that characteize each representative.
+
+One method is as follows:
+<ol>
+  <li>From the sequences for each SOUR in each RepGen genome,
+      extract all of its Kmers,
+      and write them to a file as a two-column table,
+      (Kmer, Feature_ID). [NOTE: The genome that the SOUR came from
+      can be inferred from its feature-ID.]
+
+  <li>Sort the two-column file on the first column by any of several means.
+    (For example, within the UNIX/LINUX/macOS enviroment, one can invoke
+    the system 'sort' command, which will be faster than coding the sort
+    by hand in most languages.)
+
+  <li>The sorted file will contain all of the occurences of a given Kmer
+    as a contiguous block; the "hammers" are those blocks that contain only
+    a single line, since by definition, a "hammer" is a Kmer that occurs
+    only once in only a single genome from the RepGen set, and a
+    given feature-ID can only occur in a single genome. 
+
+  <li>Once the hammers have been found, extract the lines containing hammers
+    from the original two-column file. (For convenience, one might wish
+    to append a column listing the role of the feature; however, this is
+    redundant information, since one presumably already has a two-column file
+    mapping features to roles.)
+</ol>
+
+<p>
+Each hammer may be associated with a <b>weight</b>.
+The <b>hammer-score</b> for a RepGen is the sum of the weights of the hammers from that RepGen.
+The simplest weight is to count all hammers equally,
+in which case the hammer-score for a RepGen is simply the number of hammers from that RepGen
+that were found in a given genome.
