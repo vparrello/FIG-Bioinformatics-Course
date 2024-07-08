@@ -8,46 +8,52 @@ In this exercise you will be given a sample that has not been annotated. We will
 
 ## Materials
 
-TODO insert a sample data here with planted genomes in it. -  MysteryGenome.fasta
-TODO have a sample representative genome sample for creating hammers. - Rep10.list.tbl, Rep10.seqs.tbl, genomeid.fasta
-TODO program that will grab 20-mers without killing the memory in most machines
+FIG-Bioinformatics-Course/
+├── 2_Hammers
+│   └── 2.1_Hammers-as-Genetic-Barcodes/
+│       └── Genetic-Barcodes-Exercise-2-New-Genome.md(you are here)
+└── Data/
+    └── MysteryGenome1.fna
+    └── rep10.list.tbl
+    └── rep10.seqs.tbl
+
+
+
+
 
 ## Exercises
 
-1. First we need to make a set of hammers that can be used as "barcodes" for at least 1 representative genome. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase").
-How do you think one might we do that?
+1. First we need to make a set of hammers that can be used as "barcodes" for at least 1 representative genome. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase"). How do you think one might do that?
 * Hint: Can you remember which python datatype can only contain a single copy of a string?
 
-Ask Grimoire to write a python program that will:
+    Ask Grimoire to write a python program that will:
 
-* Accept a Kmer-length `K` as a mandatory command-line argument;
-* Read a tab-separated list of (genome_id, sequence) pairs from `STDIN`, skipping the header-line;
-* Find all of the Kmers that occur exactly once in exactly one sequence (these Kmers are the "Hammers"), and the `genome_id` that the Kmer occurred in;
-* Print a two column tab-separated table of the hammers and their  `genome_id`, with column-headers of "hammer" and "genome_id".
+        * Accept a Kmer-length `K` as a mandatory command-line argument;
+        * Read a tab-separated list of (genome_id, sequence) pairs from `STDIN`, skipping the header-line;
+        * Find all of the Kmers that occur exactly once in exactly one sequence (these Kmers are the "Hammers"), and the `genome_id` that the Kmer occurred in;
+        * Print a two column tab-separated table of the hammers and their  `genome_id`, with column-headers of "hammer" and "genome_id".
 
-Paste Grimire's program into the code-template `Code/hammer_creator.py`.
-The template also has a "block comment" section reserved for the program's pseudocode, so paste in Grimoire's pseudocde if it generated it, and ask it to generate pseudocode for the program if it didn't. Once you are done copying and pasting, save the code using the "Save" menu-item under the "File" menu.
+    Paste Grimire's program into the code-template `Code/hammer_creator.py`.
+    The template also has a "block comment" section reserved for the program's pseudocode, so paste in Grimoire's pseudocde if it generated it, and ask it to generate pseudocode for the program if it didn't. Once you are done copying and pasting, save the code using the "Save" menu-item under the "File" menu.
 
-2. Next, we need to extract the (genome_id, sequences) pairs from  `rep10.seqs.tbl`. You already have a program in your "toolkit" that performs this function, it is called `cmd_tsv_select_columns.py`. The relevant columns in `rep10.seqs.tbl` are `genome_id` and `seed_dna`.
-In `FASTA-Exercise-2`, you learned how to "pipe" the output
-from one command to the input of another command, so you have all the tools you need:
+2. Next, we need to extract the (genome_id, sequences) pairs from  `rep10.seqs.tbl`. You already have a program in your "toolkit" that performs this function, it is called `Code/cmd_tsv_select_columns.py`. The relevant columns in `rep10.seqs.tbl` are `genome_id` and `seed_dna`. In `FASTA-Exercise-2`, you learned how to "pipe" the output from one command to the input of another command, so you have all the tools you need:
 
 ```
-python Code/cmd_tsv_select_columns.py genome_id seed_dna | Code/hammer_creator.py -K 20 > Data/rep10.h20.tbl
+python Code/cmd_tsv_select_columns.py genome_id seed_dna | Code/hammer_creator.py -K 20 > Data/rep10.hammers.tbl
 ``` 
 
-3. We now need to compare the MysteryGenome to your set of hammers. Ask Grimoire to make another program. One that will read a sequence, make a 20mer, compare it with the set, and then add to a counter every time it has a match. Paste this code into hammer_compare.py.
+3. We now need to compare the `MysteryGenome1.fna` to your set of hammers. Ask Grimoire to make another program. One that will read a sequence, make a 20mer, compare it with the set, and then add to a counter every time it has a match. Paste this code into `Code/hammer_compare.py`.
 
-6. Add hammer_compare.py to your framework from Step 3. If you need help, ask Grimoire to adjust the format to include all the programs. 
+6. Add `Code/hammer_compare.py` to your framework from Step 3. If you need help, ask Grimoire to adjust the format to include all the programs. 
 
-7. Run your script on the MysteryGenome.fasta. You should have a count print out of how many hammers were hit. 
+7. Run your script on the `MysteryGenome1.fna`. You should have a count print out of how many hammers were hit for each representative. Take the top number as your result.
 
 
-Congratulations! You have created the genetic barcodes from the PheS SOUR for the TODO REPGEN NUMBER HERE genome. We need to do the same for the rest of the representative genome set and see how the counts differ. Please complete the hammers for all of the representative genomes so that you are prepared for the next exercise.
+Congratulations! You have created the genetic barcodes from the PheS SOUR for the 511145.12 genome. We need to do the same for the rest of the representative genome set and see how the counts differ. Please complete the hammers for all of the representative genomes so that you are prepared for the next exercise.
 
 
 ### Self Check
 
 Below are the list of genomes in the representative genome set. Use the counts for the mystery genome to check your work.
 
-TODO put answers here
+Mystery Genome should be 511145.12 Escherichia coli str. K-12 substr. MG1655
