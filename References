@@ -16,3 +16,6 @@ Hammers
 Representative Genome (repgen)
 Metagenomic Binning
 gene - a named region on a contig that has a role
+psuedo code - Plain english description of a program before writing
+Use Case - The instance or event in which the program would be useful
+Inputs - The data that is inserted into a program
