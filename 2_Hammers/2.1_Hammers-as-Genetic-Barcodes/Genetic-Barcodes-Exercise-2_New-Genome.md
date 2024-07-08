@@ -35,7 +35,7 @@ for associating a string with the number of times that it occurs?
 2. Next, we need to extract the (genome_id, sequences) pairs from  `rep10.seqs.tbl`. You already have a program in your "toolkit" that performs this function, it is called `Code/cmd_tsv_select_columns.py`. The relevant columns in `rep10.seqs.tbl` are `genome_id` and `seed_dna`. In `FASTA-Exercise-2`, you learned how to "pipe" the output from one command to the input of another command, so you have all the tools you need:
 
 ```
-python Code/cmd_tsv_select_columns.py genome_id seed_dna | Code/hammer_creator.py -K 20 > Data/rep10.hammers.tbl
+python Code/cmd_tsv_select_columns.py genome_id seed_dna < Data/rep10.seqs.tbl | Code/hammer_creator.py -K 20 > Data/rep10.hammers.tbl
 ``` 
 
 3. We now need to compare the DNA sequences in `MysteryGenome1.fna` to your set of hammers.
