@@ -23,3 +23,18 @@ Feel free to use any of the following tools to aid you on your journey.
 * [Bv-brc.org](https://www.bv-brc.org/)  (A source of genomic data)
 
 * [Discord Server](https://discord.gg/2VCU2YVH8j) 
+
+## References
+
+We recommend the following books as supplemental reading material:
+
+* [The Catalyst - RNA and the quest to unlock life's deepest secrets](https://books.google.com/books/about/The_Catalyst_RNA_and_the_Quest_to_Unlock.html?id=TizXEAAAQBAJ)
+by Thomas Cech
+
+
+* ["Gut Check"](https://books.google.com/books/about/Gut_Check.html?id=17S4EAAAQBAJ)
+by Dr. Steven R. Gundry, MD
+
+* ["Artificial Intelligence - A Guide for Thinking Humans"](https://www.google.com/books/edition/Artificial_Intelligence/65iEDwAAQBAJ?hl=en&gbpv=0)
+by Melanie Mitchell
+=======
