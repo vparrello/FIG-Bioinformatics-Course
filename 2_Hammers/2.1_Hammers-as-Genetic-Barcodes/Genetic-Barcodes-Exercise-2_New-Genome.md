@@ -15,21 +15,21 @@ Rep10.seqs.tbl
 
 ## Exercises
 
-1. First we need to make a set of hammers that can be used as "barcodes" for at least 1 representative genome. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase"). How do you think one might do that?
+1. First we need to make a set of hammers that can be used as "barcodes" for at least one SOUR. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase"). How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate
 for associating a string with the number of times that it occurs?
 
-    Ask Grimoire to write a python program that will:
+    Load in the file `Definitions.html` as in previous exercises. Then, ask Grimoire to write a python program that will:
 
-        * Accept a Kmer-length `K` as a mandatory command-line argument;
+        * Accept as '-K' a mandatory Kmer-length command-line argument;
         
-        * Read a tab-separated list of (genome_id, sequence) pairs from `STDIN`, skipping the header-line;
+        * Read a tab-separated-value file from `STDIN`, skip the header-line, strip off the newlines, and parse the first two columns into (genome_id, sequence) pairs
 
         * Find all of the Kmers that occur exactly once in exactly one genome; these Kmers are the "Hammers"
 
         * Print a two column tab-separated table of the hammers and the `genome_id` that the hammer was found in, with column-headers of "hammer" and "genome_id".
 
-    Paste Grimire's program into the code-template `Code/hammer_creator.py`.
+    Paste Grimoire's program into the code-template `Code/hammer_creator.py`.
     The template also has a "block comment" section reserved for the program's pseudocode, so paste in Grimoire's pseudocde if it generated it, and ask it to generate pseudocode for the program if it didn't. Once you are done copying and pasting, save the code using the "Save" menu-item under the "File" menu.
 
 2. Next, we need to extract the (genome_id, sequences) pairs from  `rep10.seqs.tbl`. You already have a program in your "toolkit" that performs this function, it is called `Code/cmd_tsv_select_columns.py`. The relevant columns in `rep10.seqs.tbl` are `genome_id` and `seed_dna`. In `FASTA-Exercise-2`, you learned how to "pipe" the output from one command to the input of another command, so you have all the tools you need:

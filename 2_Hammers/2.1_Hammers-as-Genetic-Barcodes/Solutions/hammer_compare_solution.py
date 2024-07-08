@@ -67,20 +67,24 @@ from Bio.Seq import Seq
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python hammer_compare.py <hammers_file>")
+        print("Usage: python hammer_compare.py hammers_file < query_genome.fna")
         sys.exit(1)
 
     hammers_file = sys.argv[1]
     hammers = {}
 
     # Read hammers file
-    with open(hammers_file, 'r') as file:
+    with open(hammers_file, newline='') as file:
         reader = csv.reader(file, delimiter='\t')
         next(reader)  # Skip header line
-        for row in reader:
-            hammer = row[0]
-            genome_id = row[1]
-            hammers[hammer] = genome_id
+        for line_number, row in enumerate(reader, start=1):
+            try:
+                hammer = row[0]
+                genome_id = row[1]
+                hammers[hammer] = genome_id
+            except IndexError as e:
+                print(f"Error '{e}' processing row {line_number}:\n{row}", file=sys.stderr)
+                sys.exit(1)
 
     # Determine Kmer length K
     k = len(next(iter(hammers.keys())))
