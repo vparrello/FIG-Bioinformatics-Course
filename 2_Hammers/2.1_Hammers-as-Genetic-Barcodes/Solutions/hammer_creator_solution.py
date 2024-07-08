@@ -43,7 +43,7 @@ from collections import defaultdict
 def main():
     # Parse command-line argument
     parser = argparse.ArgumentParser(description='Find hammers in genome sequences.')
-    parser.add_argument('K', type=int, help='Length of the Kmer')
+    parser.add_argument('-K', '--K', type=int, help='Length of the Kmer', required=True)
     args = parser.parse_args()
     K = args.K
     
@@ -66,7 +66,7 @@ def main():
             kmer_genomes[kmer].add(genome_id)
     
     # Find hammers
-    hammers = [(kmer, list(genomes)[0]) for kmer, count in kmer_counts.items() if count == 1 and len(kmer_genomes[kmer]) == 1]
+    hammers = [(kmer, list(kmer_genomes[kmer])[0]) for kmer, count in kmer_counts.items() if count == 1 and len(kmer_genomes[kmer]) == 1]
     
     # Print results
     print("hammer\tgenome_id")
