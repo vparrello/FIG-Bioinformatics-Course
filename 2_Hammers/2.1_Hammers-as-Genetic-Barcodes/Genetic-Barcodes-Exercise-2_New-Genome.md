@@ -1,10 +1,10 @@
 # Hammers as Genetic Barcodes Exercise 2 - New Genome and its Representative
 
-Objective: Find a "Genetic Barcode" for a genome in order to classify one inside a sample.
+Objective: Find the "Genetic Barcodes" for a set of represetative genomes in order to classify the genomes within a sample.
 
-Normally when working with bioinformatics data, we are given a sample containing one or more genomes that has been annotated. This means that the sample has been compared to the rest of genome space, it has been sorted into "bins" based on the most likely reference or representative genome or genomes to be compared to, the sample may have been "assembled" into contigs, and the gene-containing regions on the contigs may have been located and had roles assigned to them. If a sample has not yet been annotated, then we can use our hammers to try and find which genomes it probably contains.
+Normally when working with bioinformatics data, we are given a sample containing one or more genomes that has been annotated. By "annotated", we mean that the sample has been compared to the rest of genome space, it has been sorted into "bins" based on the most likely reference or representative genome or genomes to be compared to, the sample may have been "assembled" into contigs, and the gene-containing regions on the contigs may have been located and had roles assigned to them. If a sample has not yet been annotated, then we can use our hammers to try and find which genomes it probably contains.
 
-In this exercise you will be given a sample that has not been annotated. We will then walk you through the steps of finding the hammers from a single representative genome to see if any of those hammers are present in the mystery genome. If they are, that tells us that they also have the same barcodes in their genome and therefore are more likely to be the same genome.
+In this exercise you will be given a sample that has not been annotated. We will then walk you through the steps of finding the hammers associated with the genes for a single SOUR for a representative set of genomes, and finally we will search a "Mystery Genome" to see if it contains any hammers. If the "Mystery Genome" contains many of the same barcodes as a representative genome, and very few barcodes for any other representative genome, then this indicates that there is a high probability that the "Mystery Genome" and the represenative genome that contributed the largest number of "hammer hits" are related.
 
 ## Materials
 
@@ -19,11 +19,11 @@ Rep10.seqs.tbl
 * Hint: Can you remember which datatype would be appropriate
 for associating a string with the number of times that it occurs?
 
-    Load in the file `Definitions.html` as in previous exercises. Then, ask Grimoire to write a python program that will:
+    Load in the file `Definitions.html` as in previous exercises. Then, ask Grimoire to write a python program named `hammer_creator.py` that will:
 
         * Accept as '-K' a mandatory Kmer-length command-line argument;
         
-        * Read a tab-separated-value file from `STDIN`, skip the header-line, strip off the newlines, and parse the first two columns into (genome_id, sequence) pairs
+        * Read a tab-separated-value file from `STDIN`, skip the header-line, parse the first two columns into (genome_id, sequence) pairs, and strip off any newlines that might have been attached to the sequence
 
         * Find all of the Kmers that occur exactly once in exactly one genome; these Kmers are the "Hammers"
 
