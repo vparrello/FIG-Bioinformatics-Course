@@ -27,18 +27,24 @@ FIG-Bioinformatics-Course/
 ## Exercise: 
 
 1. Ask Grimoire to describe to you each of the following errors. Make sure that you ask follow up questions and request examples for each type of error that you think would be hard to identify.
+* Syntax errors
 * Runtime errors
     * Index errors
     * Name errors
     * Attribute errors
     * Type errors
-* Syntax errors
 
 2. Inside the Code directory, we have include a set of files that are designed to throw specific error-messages. Each filename has the form `error_messageN.py` where `N` is a number. Open up the first file `error_message1.py`, which contains 3 syntax errors; run this program to see which error messages are reported. 
 
 3. Copy each error-message and paste it into Grimoire. Then ask Grimoire to explain each associated error to you and to recommend how you can fix it. Apply these fixes to your code and run it again. If you get another error message, follow the same workflow by pasting the message into Grimoire and asking it to help you fix it. Feel free to try and fix the errors on your own as an extra challenge.
 
-4. Each file has been constructed to throw a different error. Use the table below to keep track of which errors appeared and how to fix them. You can use this table as "quick reference" when debugging future programs.
+4. Each file has been constructed to throw a different error. Most of them require a data file argument when being called from the command line. If you get a message that looks like:
+```
+Usage: python tsv_headers.py <filename>
+```
+then add `Data/data.tbl` to the end of your command to see if the program now works. Use the table below to keep track of which errors appeared and how to fix them. You can use this table as "quick reference" when debugging future programs.
+
+** NOTE: If you are getting an error that says "[Errno 2] No such file or directory" for the error_message.py file you are working on. Try killing your terminal and opening a new one to ensure the error is coming from the program and not from your operating system.
 
 | Error Type      | File Name | Possible Fix |
 | :-------------- | --------- | ------------ |
