@@ -3,9 +3,13 @@ import sys
 import os
 from pathlib import Path
 
-def install_sra_toolkit_user():
+def install_sra_toolkit_user(top_dir):
     """Install the SRA Toolkit and EDirect in user mode if they are not already installed."""
-    bin_dir = Path.home() / "bin"
+    bin_dir = Path(top_dir)
+    if not bin_dir.is_dir():
+        print(f"Directory '{top_dir}' does not exist", file=sys.stderr)
+        exit(1)
+    
     sra_toolkit_dir = bin_dir / "sratoolkit"
     fastq_dump_path = sra_toolkit_dir / "bin" / "fastq-dump"
     edirect_dir = bin_dir / "edirect"
@@ -49,7 +53,8 @@ def install_sra_toolkit_user():
         print("EDirect tools installed successfully.")
 
 def main():
-    install_sra_toolkit_user()
+    bin_dir = sys.argv[1]
+    install_sra_toolkit_user(bin_dir)
 
 if __name__ == "__main__":
     main()
