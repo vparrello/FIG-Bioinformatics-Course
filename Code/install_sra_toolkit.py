@@ -53,8 +53,8 @@ def install_sra_toolkit_user(top_dir):
         print("EDirect tools installed successfully.")
 
 def main():
-    bin_dir = sys.argv[1]
-    install_sra_toolkit_user(bin_dir)
+    top_dir = sys.argv[1]
+    install_sra_toolkit_user(top_dir)
 
 if __name__ == "__main__":
     main()
