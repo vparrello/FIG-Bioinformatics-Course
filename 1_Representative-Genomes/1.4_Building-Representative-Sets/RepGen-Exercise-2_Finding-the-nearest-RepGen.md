@@ -26,25 +26,27 @@ We can gain knowledge about which genomes are present in a sample by comparing t
 The set `rep200` is our highest-resolution "production" RepGenSet; it allows identification of genomes down to the "species" level. Similarly, `rep100` allows identification down to the "Genus" level.
 Our coarsest set of representatives is `rep10`, which allows identification to within broad families of genomes.
 
-In this exercise, you will first install the `BV-BRC Command-Line Interface` Toolkit (`BV-BRC CLI`, also referred to as the "P3 Commands" for historical reasons), which will allow you to fetch the data and metadata for nearly a million sequenced genomes.
+In this exercise, you will be using the `BV-BRC Command-Line Interface` application (`BV-BRC CLI`, also referred to as the "P3 Commands" for historical reasons), which will allow you to fetch the data and metadata for nearly a million sequenced genomes.
 You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then compare it to the `rep200` data using the tool `find_nearest_reference.py` that you constructed in Kmer-Exercise-3. You will then fetch the actual biological name of the "Mystery Genome" from BV-BRC and compare it to the biological name of nearest representative genomne that your tool selected.
 
 ## Exercises:
+1. Please install the `BV-BRC Command-Line Interface` application if you have not already done so.
+Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.
+You will also need to run `Code/install_sra_toolkit.py` if you have not already done so.
 
-
-5. Get the PheS sequence for "Mystery Genome-ID 1491.662" using the following incantation:
+2. Get the PheS sequence for "Mystery Genome-ID 1491.662" using the following incantation:
 ```
     p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id > Data/mystery_PheS.faa
 ```
 (Again, remember that the above command should be pasted in as a single line, even though it may appear to wrap around onto several lines on the screen.) We will break down this complex command later in this exercise.
 
-6. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `rep10`:
+3. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `rep10`:
 ```
     python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seqs.seed_protein.faa < Data/mystery_PheS.faa
 ```
 Which representative genome was reported in the RepSet-description column?
 
-7. Now let's find out the true identity of the "Mystery Genome":
+4. Now let's find out the true identity of the "Mystery Genome":
 ```
     p3-echo 1491.662 | p3-get-genome-data --attr genome_name
 ```
