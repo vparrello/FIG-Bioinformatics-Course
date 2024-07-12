@@ -31,6 +31,7 @@ FIG-Bioinformatics-Course/
 1. The following is the list of data types that we will be discussing in this lesson. Ask Grimoire to explain each type and its uses to you. Make sure you specify that they are Python Datatypes.
     * Boolean
     * Integer
+    * Float
     * String
     * List
     * Set
@@ -59,11 +60,20 @@ Notice that the list has a duplicate data point.
 
 7. Print the tuple by calling the `data_types.py` program on the datatype `tuple`.
 
-8. The last datatype is called a `dictionary`. This datatype acts like a traditional dictionary because you can "look up" data by using a "key" that will return an associated "value". The "key" in this sense is a string or integer that provides a "name" or "identifier" referring to its associated data. The value can be any other datatype, including another dictionary. Ask Grimoire to explain to you what is meant by "key-value" pairs with a python dictionary. 
+8. The last datatype is called a `dictionary`. This datatype acts like a traditional dictionary because you can "look up" data by using a "key" that will return an associated "value". For our purposes, the "key" in this sense is a string or an integer that provides a "name" or "identifier" that can be used to refer to its associated data-value. (Python does allow some data-types besides strings and integers to be used as "keys", but the rules governing keys are complicated, and will not be needed for this course.) The value associated with a key can be any python datatype, including sets, lists, or even another dictionary, which allows one to build up an arbitrariy complex data-structure. Ask Grimoire to explain to you what is meant by "key-value" pairs with a python dictionary. 
 
 9. Print the dictionary by calling the `data_types.py` program on the datatype `dictionary`. Notice how each "entry" (i.e., key-value pair) is unique.
 
 IMPORTANT: Each "key" can only occur in a dictionary once, but nothing restricts the associated values. For example, in a dictionary listing types of food, the keys "apple" and "pear" can both have the value of "fruit". Example: {"apple": "fruit", "pear": "fruit}
+
+10. Because "dictionaries" are such an important tool for writing programs, we have included a separate interactive exercise on use of dictionaries. Please launch this exercise as follows:
+```
+    python3 Code/dictionary_interactive_exercise.py
+```
+The execise will welcome you, provide a brief description of what a "dictionary" is, and then prompt you regarding whether you wish to `add a key-value pair`, `delete a key`, or `quit`. After each operation that you enter, the program will display the new contents of the dictionary. Please experiment by adding an assortment of key-value pairs, deleting keys (and their associated values),
+and re-adding old keys with new values, and observe how the contents of the dictionary changes after each operation. Once you think you have a good understanding of how the "add" and "delete" operations alter the contents of the dictionary, you can leave the exercise by typeing `q` or `quit`.
+
+We encourage you to open `Code/dictionary_interactive_exercise.py` and have a look inside. if there is any part of the code that you feel you don't understand, you can paste it into Grimoire and ask Grimoire to explain the code to you "line-by-line". If there are parts that you feel you still don't understand, ask Grimoire to explain those lines "step-by-step".
 
 ## Solution Check instructions:
 If you are successful, the program should return output that matches the following.
