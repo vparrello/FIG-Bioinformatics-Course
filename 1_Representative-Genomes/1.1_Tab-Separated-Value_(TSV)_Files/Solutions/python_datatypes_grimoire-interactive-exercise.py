@@ -128,7 +128,7 @@ print(f"Nucleotide counts: {nucleotide_counts}")  # Output: {'A': 3, 'T': 3, 'C'
         explain_and_example(
             "Float",
             """Floats are numbers with decimals, enabling accurate representation of quantities
-that are not whole numbers, such as scientific measurements, percetages, or averages.""",
+that are not whole numbers, such as scientific measurements, percentages, or averages.""",
             """
 # Example: Calculating the molecular weight of a DNA sequence
 def calculate_molecular_weight(sequence):
