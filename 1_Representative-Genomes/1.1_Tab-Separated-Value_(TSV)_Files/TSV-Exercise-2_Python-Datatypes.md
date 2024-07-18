@@ -3,9 +3,9 @@
 Objective: Recognize Python Datatypes
 
 The programs that you will be creating in this course will be written in the `Python` computer-language.
-In this exercise, we will explore the different types of data Python uses within its code. Most of these data types are common to all programming languages, but a few are unique to Python itself. 
+In this exercise, we will explore the different types of data that Python uses within its code. Most of these data types are common to all programming languages.
 
-The program `data_types.py` has been created to help you explore these data types while also practicing the use of the command line. Before you begin, ensure that you have a Terminal window open that uses the `bash` profile (macOS and LINUX) or `GitBash` (Windows) profile.
+The program `python_datatypes_interactive_exercise.py` has been created to help you explore these data types while also practicing the use of the command line. Before you begin, ensure that you have a Terminal window open that uses the `bash` profile (macOS and LINUX) or `GitBash` (Windows) profile.
 If you are unsure of how to find this setting, please refer to the "Download Instructions" for Git to make it the default setting for VSCode.
 
 ## Materials: 
@@ -15,7 +15,7 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 ```
 FIG-Bioinformatics-Course/
 ├── Code/
-│   └── data_types.py
+│   └── python_datatypes_interactive_exercise.py
 ├── Data/
 │   └── rep200.list.tbl
 └── 1_Representative-Genomes/
@@ -38,33 +38,42 @@ FIG-Bioinformatics-Course/
     * Tuple
     * Dictionary
 
-2. A program called `data_types.py` has been provided to help you see how each of these datatypes can be used with bioinformatics data. This program reads the file `rep200.list.tbl`, which contains "metadata" about more than 287,000 genomes, and extracts various elements from it into different python data-types. Open up the data-file to examine its format (WARNING: this file is big!), then look through the program to see what it does. If what any section of the program does is not clear to you, paste that section into Grimoire and ask it to explain the code to you "line-by-line". Likewise, if what any line does is not clear to you, ask Grimoire to explain that line to you "step-by-step".
+2. A program called `python_datatypes_interactive_exercise.py` has been provided that will return the above list, and that for each datatype will provide a short definition for that type of data, followed by a code example that uses that type of data within a bioinformatics contex. You can run this program at any time during the course if you need to refresh you memory regarding a particular datatype and how it is used within the code. If the example provided within any section of this program is not clear to you, you can paste that section into Grimoire and ask it to explain the code to you "line-by-line". Likewise, if what any line does is not clear to you, ask Grimoire to explain that line to you "step-by-step".
 
-3. Three of the most basic data-types are `boolean`, `integer`, and `string`. More complex data-types can be constructed from these basic data-types. Run the program `data_types.py` for each of these three basic datatypes to see examples of the data that they contain:
+3. Three of the most basic data-types are `boolean`, `integer`, and `string`. More complex data-types can be constructed from these basic data-types. Run the program `python_datatypes_interactive_exercise.py` for each of these three basic datatypes to see examples of the data that they contain:
 
-* `python Code/data_types.py boolean`
+* `python Code/python_datatypes_interactive_exercise.py boolean`
 
-* `python Code/data_types.py integer`
+* `python Code/python_datatypes_interactive_exercise.py integer`
 
-* `python Code/data_types.py string`
+* `python Code/python_datatypes_interactive_exercise.py string`
 
 NOTE: The words that follow a program's name are called `arguments`. The `arguments` of a program are passed to the program to control its behavior or to provide it with necessary information. If you are unfamiliar with the concept of a "program argument", please ask Grimoire to explain it to you.
 
-4. When you run the program `data_types.py`, it reads the file that it is given and turns that file into a list. That list is then looped through one by one and separated into its own individual columns. We can do this because the file is in the Tab Separated Value (TSV) format. We also added some extra data at the end to help show the difference between lists and sets. Print that list by calling the `data_types.py` program with an argument of `list`.
-Notice that the list has a duplicate data point. 
-    * Hint: You can access previous commands in the command line by using the arrow keys on your keyboard.
+4. Run the program `python_datatypes_interactive_exercise.py`, with an argument of `list`.
+    * Hint: You can access and move back and forward through the previous commands you have entered onto the command line by using the up-arrow and down-arrow keys on your keyboard, and you can edit a previous command before resubmitting it. This trick will save you lots of typing!
 
-5. Next the program takes that list and inserts it into a `set`. See if you can spot the difference between a `list` and a `set`. Print the set by calling the `data_types.py` program using the datatype-argument `set`, just as you did for the previous three datatypes. Notice that at this point, no data is duplicated.
+Notice that one of the list examples has a duplicated data item,
+and that both instances of the data-item are printed out. 
+    
+
+5. Next invoke the program with an argument of `set`.
+In "Example 1", see if you can spot the difference between a `list` and a `set`. 
+Notice that this time, no data is duplicated.
+Notice also that the `list` is displayed with square brackets,
+while the `set` is displayed with curly brackets.
+"Example 2" shows that a list can be converted to a set using the `set()` function.
 
 6. Ask Grimoire to explain to you the difference between a `list`, a `set`, and a `tuple`. The tuple's main feature is that it is immutable. Ask Grimoire to explain to you what "immutable data" is and why it is important to use within programming code.
 
-7. Print the tuple by calling the `data_types.py` program on the datatype `tuple`.
+7. Print the tuple by calling the `python_datatypes_interactive_exercise.py` program on the datatype `tuple`.
 
 8. The last datatype is called a `dictionary`. This datatype acts like a traditional dictionary because you can "look up" data by using a "key" that will return an associated "value". For our purposes, the "key" in this sense is a string or an integer that provides a "name" or "identifier" that can be used to refer to its associated data-value. (Python does allow some data-types besides strings and integers to be used as "keys", but the rules governing keys are complicated, and will not be needed for this course.) The value associated with a key can be any python datatype, including sets, lists, or even another dictionary, which allows one to build up an arbitrariy complex data-structure. Ask Grimoire to explain to you what is meant by "key-value" pairs with a python dictionary. 
 
-9. Print the dictionary by calling the `data_types.py` program on the datatype `dictionary`. Notice how each "entry" (i.e., key-value pair) is unique.
+9. Print the dictionary by calling the `python_datatypes_interactive_exercise.py` program on the datatype `dictionary`. Notice how each "entry" (i.e., key-value pair) is unique.
 
-IMPORTANT: Each "key" can only occur in a dictionary once, but nothing restricts the associated values. For example, in a dictionary listing types of food, the keys "apple" and "pear" can both have the value of "fruit". Example: {"apple": "fruit", "pear": "fruit}
+IMPORTANT: Key-value pairs are entered into a `dictionary` by entering the "key" and the "value" separated by a colon. Each "key" can only occur in a dictionary once, but nothing restricts the associated values. For example, in a dictionary listing types of food, the keys "apple" and "pear" can both have the value of "fruit". Example: {"apple": "fruit", "pear": "fruit", "carrot": "vegetable"}.
+Reentering an old key with a new value will update the key's value.
 
 10. Because "dictionaries" are such an important tool for writing programs, we have included a separate interactive exercise on use of dictionaries. Please launch this exercise as follows:
 ```
