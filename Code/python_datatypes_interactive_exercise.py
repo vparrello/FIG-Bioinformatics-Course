@@ -5,7 +5,9 @@ def interactive_exercise(data_type=None):
     python_data_types = ["int", "float", "complex", "bool", "str", "list", "tuple", "range", "dict", "set", "frozenset", "bytes", "bytearray", "memoryview"]
 
     if data_type is None or data_type.lower() == "types":
-        print("Datatypes described in this program:")
+        print("\nDatatypes described by this program; "
+            + "invoke this program with a datatype name\n"
+            + "for a description of that datatype, plus examples.")
         for dt in valid_data_types:
             print(f"- {dt.capitalize()}")
         return
@@ -28,7 +30,7 @@ def interactive_exercise(data_type=None):
     if data_type == "boolean":
         explain_and_example(
             "Boolean",
-            "Booleans represent two values: True or False. Useful for conditional checks.",
+            "Booleans represent two values: True or False.\nUseful for conditional checks.",
             """
 # Example 1: Checking if a DNA sequence is valid (returns True)
 def is_valid_dna(sequence):
@@ -51,7 +53,7 @@ print(f"Is the DNA sequence valid? {is_valid}")  # Output: False
     elif data_type == "integer":
         explain_and_example(
             "Integer",
-            "Integers represent whole numbers. Useful for counting or indexing.",
+            "Integers represent whole numbers.\nUseful for counting or indexing.",
             """
 # Example: Counting the number of nucleotides in a DNA sequence
 dna_sequence = "ATCGTTAGC"
@@ -62,7 +64,7 @@ print(f"The number of nucleotides: {nucleotide_count}")  # Output: 9
     elif data_type == "string":
         explain_and_example(
             "String",
-            "Strings represent sequences of characters. Useful for storing textual data like DNA sequences.",
+            "Strings represent sequences of characters.\nUseful for storing textual data like DNA sequences.",
             """
 # Example: Reverse complement of a DNA sequence
 def reverse_complement(sequence):
@@ -77,20 +79,47 @@ print(f"Reverse complement: {reverse_complement_sequence}")  # Output: CGAT
     elif data_type == "list":
         explain_and_example(
             "List",
-            "Lists represent ordered collections of items. Useful for storing sequences of data.",
+            "Lists represent ordered collections of items.\n"
+            + "Useful for storing sequences of data.\n"
+            + "The same data-item can appear in a list more than once.",
             """
 # Example: Storing multiple DNA sequences
-dna_sequences = ["ATCG", "CGTA", "TTAGC"]
-for sequence in dna_sequences:
-    print(f"DNA sequence: {sequence}")
+dna_sequences = ["ATCG", "CGTA", "TTAGC", "CGTA"]
+print(dna_sequences)   # Output: ["ATCG", "CGTA", "TTAGC", "CGTA"]
+
+for index, sequence in enumerate(dna_sequences):
+    print(f"{index}: {sequence}")
+'''
+Outputs:
+0: ATCG
+1: CGTA
+2: TTAGC
+3: CGTA
+'''
 """)
 
     elif data_type == "set":
         explain_and_example(
             "Set",
-            "Sets represent unordered collections of unique items. Useful for ensuring no duplicates.",
+            "Sets represent unordered collections of unique items.\n"
+            + "Useful for ensuring no duplicates.\n"
+            + "Unlike lists, no matter how many times you add the same item to a set,\n"
+            + "it will only appear in the set once.",
             """
-# Example: Finding unique nucleotides in a DNA sequence
+# Example 1: Lists vs. Sets
+dna_list = ["ATCG", "CGTA", "TTAGC", "CGTA"]
+dna_set  = {"ATCG", "CGTA", "TTAGC", "CGTA"}
+print(f"dna_list:\\t{dna_list}\\n"
+      + f"dna_set:\\t{dna_set}\\n")
+# Output:
+dna_list:   ['ATCG', 'CGTA', 'TTAGC', 'CGTA']
+dna_set:    {'CGTA', 'TTAGC', 'ATCG'}
+
+# Example 2: Finding unique nucleotides in a DNA sequence
+dna_sequence = "ATTATA"
+unique_nucleotides = set(dna_sequence)
+print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'T'}
+
 dna_sequence = "ATCGATTG"
 unique_nucleotides = set(dna_sequence)
 print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'C', 'G', 'T'}
@@ -99,10 +128,12 @@ print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'C', 'G', 'T
     elif data_type == "tuple":
         explain_and_example(
             "Tuple",
-            "Tuples represent ordered collections of items that are immutable. Useful for fixed collections of data.",
+            "Tuples represent ordered collections of items that are immutable.\n"
+            + "Useful for fixed collections of data.",
             """
 # Example: Storing a DNA sequence and its length
 dna_info = ("ATCG", 4)
+print(dna_info)    # Output: ('ATCG', 4)
 sequence, length = dna_info
 print(f"DNA sequence: {sequence}, Length: {length}")  # Output: DNA sequence: ATCG, Length: 4
 """)
@@ -110,7 +141,8 @@ print(f"DNA sequence: {sequence}, Length: {length}")  # Output: DNA sequence: AT
     elif data_type == "dictionary":
         explain_and_example(
             "Dictionary",
-            "Dictionaries represent collections of key-value pairs. Useful for mapping relationships.",
+            "Dictionaries represent collections of key-value pairs.\n"
+            + "Useful for mapping relationships.",
             """
 # Example: Mapping nucleotide counts in a DNA sequence
 def count_nucleotides(sequence):
