@@ -8,6 +8,11 @@ You are probably familiar with the use of "barcodes" to identify a product or to
 
 ## Materials
 
+FIG-Bioinformatics-Course/
+├── 2_Hammers
+│   └── 2.1_Hammers-as-Genetic-Barcodes/
+│       └── Genetic-Barcodes-Exercise-3_Why-Hammers.md (you are here)
+
 ## Exercises
 
 1. Ask Grimoire to tell you what is meant by a "Genetic Barcode".
