@@ -87,20 +87,155 @@ We encourage you to open `Code/dictionary_interactive_exercise.py` and have a lo
 ## Solution Check instructions:
 If you are successful, the program should return output that matches the following.
 
-3. ```
-    True
-    41
-    194439.7        Chlorobium tepidum TLS  Bacteria        256319  1097    194439.7        9999    0.00
-    ```
-4. ```
-    ['194439.7', 'Chlorobium tepidum TLS', 'Bacteria', '256319', '1097', '194439.7', '9999', '0.00', 'Foo', 'Foo', 'Foo', '315', '1214']
-    ```
-5. ```
-    {'Chlorobium tepidum TLS', '1097', '315', '256319', '0.00', 'Bacteria', '1214', '9999', '194439.7', 'Foo'}
-    ```
-7. ```
-    ('194439.7', 'Chlorobium tepidum TLS')
-    ```
-9. ```
-    {'511145.12': 'Escherichia coli str. K-12 substr. MG1655', '107806.10': 'Buchnera aphidicola str. APS (Acyrthosiphon pisum)', '685038.3': 'Escherichia coli O83:H1 str. NRG 857C', '1028307.3': 'Enterobacter aerogenes KCTC 2190', '585057.6': 'Escherichia coli IAI39', '99287.12': 'Salmonella enterica subsp. enterica serovar Typhimurium str. LT2', '568707.3': 'Bordetella bronchiseptica 253', '300267.13': 'Shigella dysenteriae Sd197', '160490.10': 'Streptococcus pyogenes M1 GAS', '585056.7': 'Escherichia coli UMN026', '386585.9': 'Escherichia coli O157:H7 str. Sakai', '1133852.3': 'Escherichia coli O104:H4 str. 2011C-3493', '71421.8': 'Haemophilus influenzae Rd KW20', '272947.5': 'Rickettsia prowazekii str. Madrid E', '393305.7': 'Yersinia enterocolitica subsp. enterocolitica 8081', '243274.5': 'Thermotoga maritima MSB8', '220341.7': 'Salmonella enterica subsp. enterica serovar Typhi str. CT18', '171101.6': 'Streptococcus pneumoniae R6', '210007.7': 'Streptococcus mutans UA159', '169963.11': 'Listeria monocytogenes EGD-e', '568814.3': 'Streptococcus suis BM407', '1208660.3': 'Bordetella parapertussis Bpp5', '208435.3': 'Streptococcus agalactiae 2603V/R', '312309.11': 'Vibrio fischeri ES114', '214092.21': 'Yersinia pestis CO92', '194439.7': 'Chlorobium tepidum TLS'}
-    ```
+### 3. Booleans, Integers, Floats, and Strings
+```
+Boolean
+Booleans represent two values: True or False.
+Useful for conditional checks.
+Press Enter to see an example...
+
+# Example 1: Checking if a DNA sequence is valid (returns True)
+def is_valid_dna(sequence):
+    valid_nucleotides = {'A', 'T', 'C', 'G'}
+    for nucleotide in sequence:
+        if nucleotide not in valid_nucleotides:
+            return False
+    return True
+
+dna_sequence = "ATCGTTAGC"
+is_valid = is_valid_dna(dna_sequence)
+print(f"Is the DNA sequence valid? {is_valid}")  # Output: True
+
+# Example 2: Checking if a DNA sequence is valid (returns False)
+invalid_dna_sequence = "ATCGTTAGX"
+is_valid = is_valid_dna(invalid_dna_sequence)
+print(f"Is the DNA sequence valid? {is_valid}")  # Output: False
+```
+
+```
+Integer
+Integers represent whole numbers.
+Useful for counting or indexing.
+Press Enter to see an example...
+
+# Example: Counting the number of nucleotides in a DNA sequence
+dna_sequence = "ATCGTTAGC"
+nucleotide_count = len(dna_sequence)
+print(f"The number of nucleotides: {nucleotide_count}")  # Output: 9
+```
+
+```
+Float
+Floats are numbers with decimals, enabling accurate representation of quantities
+that are not whole numbers, such as scientific measurements, percentages, or averages.
+Press Enter to see an example...
+
+# Example: Calculating the molecular weight of a DNA sequence
+def calculate_molecular_weight(sequence):
+    molecular_weights = {'A': 331.2, 'T': 322.2, 'C': 307.2, 'G': 347.2}
+    return sum(molecular_weights[nucleotide] for nucleotide in sequence)
+
+dna_sequence = "ATCG"
+molecular_weight = calculate_molecular_weight(dna_sequence)
+print(f"Molecular weight: {molecular_weight:.2f} g/mol")  # Output: 1307.80 g/mol
+```
+
+```
+String
+Strings represent sequences of characters.
+Useful for storing textual data like DNA sequences.
+Press Enter to see an example...
+
+# Example: Reverse complement of a DNA sequence
+def reverse_complement(sequence):
+    complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+    return ''.join(complement[nucleotide] for nucleotide in reversed(sequence))
+
+dna_sequence = "ATCG"
+reverse_complement_sequence = reverse_complement(dna_sequence)
+print(f"Reverse complement: {reverse_complement_sequence}")  # Output: CGAT
+```
+
+### 4. Lists
+```
+List
+Lists represent ordered collections of items.
+Useful for storing sequences of data.
+The same data-item can appear in a list more than once.
+Press Enter to see an example...
+
+# Example: Storing multiple DNA sequences
+dna_sequences = ["ATCG", "CGTA", "TTAGC", "CGTA"]
+print(dna_sequences)   # Output: ["ATCG", "CGTA", "TTAGC", "CGTA"]
+
+for index, sequence in enumerate(dna_sequences):
+    print(f"{index}: {sequence}")
+'''
+Outputs:
+0: ATCG
+1: CGTA
+2: TTAGC
+3: CGTA
+'''
+```
+
+### 5. Sets
+```
+Set
+Sets represent unordered collections of unique items.
+Useful for ensuring no duplicates.
+Unlike lists, no matter how many times you add the same item to a set,
+it will only appear in the set once.
+Press Enter to see an example...
+
+# Example 1: Lists vs. Sets
+dna_list = ["ATCG", "CGTA", "TTAGC", "CGTA"]
+dna_set  = {"ATCG", "CGTA", "TTAGC", "CGTA"}
+print(f"dna_list:\t{dna_list}\n"
+      + f"dna_set:\t{dna_set}\n")
+# Output:
+dna_list:   ['ATCG', 'CGTA', 'TTAGC', 'CGTA']
+dna_set:    {'CGTA', 'TTAGC', 'ATCG'}
+
+# Example 2: Finding unique nucleotides in a DNA sequence
+dna_sequence = "ATTATA"
+unique_nucleotides = set(dna_sequence)
+print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'T'}
+
+dna_sequence = "ATCGATTG"
+unique_nucleotides = set(dna_sequence)
+print(f"Unique nucleotides: {unique_nucleotides}")  # Output: {'A', 'C', 'G', 'T'}
+```
+
+### 7. Tuples
+```
+Tuple
+Tuples represent ordered collections of items that are immutable.
+Useful for fixed collections of data.
+Press Enter to see an example...
+
+# Example: Storing a DNA sequence and its length
+dna_info = ("ATCG", 4)
+print(dna_info)    # Output: ('ATCG', 4)
+sequence, length = dna_info
+print(f"DNA sequence: {sequence}, Length: {length}")  # Output: DNA sequence: ATCG, Length: 4
+```
+
+### 8. Dictionaries
+```
+Dictionary
+Dictionaries represent collections of key-value pairs.
+Useful for mapping relationships.
+Press Enter to see an example...
+
+# Example: Mapping nucleotide counts in a DNA sequence
+def count_nucleotides(sequence):
+    counts = {'A': 0, 'T': 0, 'C': 0, 'G': 0}
+    for nucleotide in sequence:
+        counts[nucleotide] += 1
+    return counts
+
+dna_sequence = "ATCGATTG"
+nucleotide_counts = count_nucleotides(dna_sequence)
+print(f"Nucleotide counts: {nucleotide_counts}")  # Output: {'A': 3, 'T': 3, 'C': 1, 'G': 1}
+```
