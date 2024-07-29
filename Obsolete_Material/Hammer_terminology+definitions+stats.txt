@@ -1,0 +1,23 @@
+Hammer Terminology Definitions: Strength, Precision, Worth, Hits
+================================================================
+
+STRENGTH is a measure of how much weight we assign to a hit by the hammer.
+Currently, it is based on the repgen/role combination.  If the combination
+has few hammers, the strength is high.  If the combination has lots of
+hammers, the strength is low.  This keeps changing as we come up with new
+ideas for getting better results.
+
+PRECISION and WORTH are based on the number of neighbor and distant genomes
+hit by the hammer in features annotated with its role.  WORTH is the percent
+of neighbor genomes with the hammer, and PRECISION is the percent of foreign
+genomes without the hammer.  This measurement is done across all occurrences
+of the role in the good-genome list.  A precision of 1.0 means no occurrence
+of the role outside the neighborhood has a hammer hit.  We require high
+precision but do not require high worth.
+
+HITS is the number of times the hammer was found in neighbor genome
+occurrences of the role.
+
+All of these are computed in the initial pass, when the hammer finder looks
+at FASTA files containing all occurrences of each role in the BV-BRC
+good-genome list.
