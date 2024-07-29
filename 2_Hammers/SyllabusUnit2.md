@@ -1,17 +1,17 @@
 # Hammers
 
-Hammers are "Genetic Barcodes" that we can use to try and create targeted antibiotics or as a faster way to classify and annotate genomes. In this module, the goal is to create a set of hammers that can be used to quickly identify genomes and use that data to project possible diseases in a human metagenomic sample.
+A "hammer" is a 20-character DNA sequence that occurs precisely once in precisely one representative genome within a given RepGen set. It must also occur within a gene implementing a SOUR. Thus, a hammer acts as a genomic signature. One may think of a hammer as a type of "Genetic Barcode" that we can use to quickly classify an unknown genome, or to try to create a targeted antibiotic that will kill a pathogen while leaving other microbes alone. In this module, the goal is to create a set of hammers that can be used to quickly identify single genomes, and to determine which genomes are present within a metagenomic sample.
 
 ## 2.1 Hammers as "Genetic Barcodes"
 
 ### Genetic Barcodes-1 Why do we need hammers and what are they?
-Discover what "hammers" are, and how they can be used to classify a unknown genome
+Discover what "hammers" are, and how they can be used to classify an unknown genome
 
 ### Genetic Barcodes-2 New Genome
-Take a new genome and use your new hammer tool to attempt to identify the mystery genome.
+Use your hammer tool to attempt to identify a "mystery genome".
 
 ### Genetic Barcodes-3 Using the Hammers
-Compare your new genome to multiple representative genomes at once to attempt to identify the genome
+Use your hammer tool to identify which genomes are present within a metagenomic sample.
 
 ## 2.2 Hammer Tuning
 
@@ -22,9 +22,11 @@ Make sure the hammer doesn't occur in other representative genomes
 Picking the correct roles mean that the hammers are more accurate for your purpose.  
 
 ### Hammer Tuning-3 Worthiness
-How many peer genomes that are represented are hit by the hammer you choose?
-** Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
-** Hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
+How many "peer genomes" of a representative are hit by the hammer you chose?
+
+* Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
+
+* Hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
 
 ## 2.3 Creation of the Hammer Set
 
