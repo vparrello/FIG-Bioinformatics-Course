@@ -10,7 +10,7 @@ Editing your tools/programs to support various different use-cases makes your ow
 ```
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
-│   └── TSV-Exercise_Modifying-code.md   (you are here)
+│   └── TSV-Exercise-4_Modifying-code.md   (you are here)
 ├── Code/
 │   └── tsv_headers.py
 └── Data/
