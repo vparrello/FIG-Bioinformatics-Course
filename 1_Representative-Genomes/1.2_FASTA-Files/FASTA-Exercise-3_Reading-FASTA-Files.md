@@ -1,10 +1,10 @@
-#### FASTA Exercise 3 - Reading FASTA files.
+# FASTA Exercise 3 - Reading FASTA files.
 
 Objective: Use Grimoire to write a program that reads and operates on FASTA-formatted sequence-data.
 
 FASTA files are a common format used to store and transmit bioinformatic sequence data. This means that we need to not only understand how these data are represented inside the file, but also have an effective way reading FASTA data and extracting information from it. This exercise creates a rudimentary program that can read a FASTA file, and report a set of summary statistics on the file's contents.
 
-#### Materials: 
+# Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
@@ -21,7 +21,7 @@ FIG-Bioinformatics-Course/
     └── Sample1.fasta
 ```
 
-#### Exercise:
+# Exercises:
 
 1. Ask Grimoire to explain in pseudocode how to read and parse the sequence of records within a FASTA-format file into a list containing "ID", "Description", and "Sequence" data.
 
@@ -62,5 +62,5 @@ python3 Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.len
 ```
 Compare the files `rep10.seed_protein.lengths.tab` to `rep10.seed_dna.lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
 
-## Solution Check instructions:
+# Solution Check instructions:
 Use the solution code provided to check your results.

@@ -1,4 +1,4 @@
-#### FASTA Exercise 2 - TSV to FASTA conversion
+# FASTA Exercise 2 - TSV to FASTA conversion
 
 Objectives: 
 1. Create a program that converts a 3-column tab-separated file into a FASTA-formatted file.
@@ -21,7 +21,7 @@ FIG-Bioinformatics-Course/
     └── rep10.seqs.tbl
 ```
 
-#### Exercise: 
+# Exercises: 
 
 1. In bioinformatics we are often faced with the need to extract data from files and convert these data from the format produced by one program to a different format that is needed by some other program.
 In this exercise, you will first create a program that will reformat a 3-column tab-separated file into a FASTA-formatted file. You will then use the program `cmd_tsv_select_columns.py` that you created in `TSV-Ex-2` to extract 3 selected columns from a tab-separated file that contains both genome and sequence-data, and "pipe" them to the program that converts the 3-column data into FASTA format.
