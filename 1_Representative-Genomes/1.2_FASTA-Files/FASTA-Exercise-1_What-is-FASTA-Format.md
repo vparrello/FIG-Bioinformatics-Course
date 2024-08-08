@@ -1,4 +1,4 @@
-#### FASTA Exercise 1 - What is FASTA Format?
+# FASTA Exercise 1 - What is FASTA Format?
 
 Objective: Become familiar with the FASTA file-format. 
 
@@ -6,7 +6,7 @@ FASTA is one of the most basic file-formats for storage and exchange of biologic
 
 You will not be creating any code in tbis exercise, you will just be asking Grimoire questions. 
 
-#### Materials: 
+## Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
@@ -20,7 +20,7 @@ FIG-Bioinformatics-Course/
     
 ```
 
-#### Exercise: 
+## Exercise: 
 
 The FASTA file-format is defined as follows:
 
