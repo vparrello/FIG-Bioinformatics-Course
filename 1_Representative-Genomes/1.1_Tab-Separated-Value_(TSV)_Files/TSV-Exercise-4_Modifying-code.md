@@ -61,7 +61,17 @@ FIG-Bioinformatics-Course/
     ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 8 -m 4 ```
     
     and it should return the output:
-    ``` 1042156.4 1121445.4 ```
+    ``` 
+    sample
+    1105031.3
+    1122152.3
+    1262775.3
+    1423720.3
+    1507.3
+    160490.10
+    1812858.3
+    195103.10
+    ```
 * NOTE: The file `data.tbl` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
 
 ## Solution Check instructions:
@@ -69,16 +79,42 @@ If you are successful at revising your program, you should see the following out
 
 * ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 7 ```
 
-    ``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
+    ``` 
+    sample
+    1033731.3
+    1034345.3
+    1042156.4
+    1105031.3
+    1118060.3
+    1121370.3
+    1121445.4
+    ```
 
 * ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 4 -m 20 ```
 
-    ``` 1496.3893 203120.7 40545.1270 563192.3 ```
+    ``` 
+    sample
+    1507.3
+    203120.7
+    40545.1270
+    563192.3 
+    ```
 
 * ``` python3 Code/tsv_headers.py -i Data/rep200.list.tbl -n 5 -m 2 ```
 
-    ``` genome_name genus rep_id distance ```
+    ``` 
+    genome_id
+    domain
+    species
+    score 
+    ```
 
 * ``` python3 Code/tsv_headers.py -i Data/bindict.tbl ```
 
-    ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
+    ```
+    genome_id
+    genome_name
+    RepGen.200
+    RepGen.100
+    RepGen.50
+    ```
