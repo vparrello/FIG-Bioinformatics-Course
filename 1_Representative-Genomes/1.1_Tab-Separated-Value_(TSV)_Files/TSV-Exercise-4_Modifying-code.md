@@ -69,17 +69,8 @@ FIG-Bioinformatics-Course/
     ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 3 ```
     
     and it should return the output:
-
-    ``` sample  1033731.3   1034345.3 ```
-
-## NOTES:
-
-1. The file `data.tbl` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
-
-2. Grimoire may choose to implement a "vertical" rather than a "horizontal" data-layout. For the purposes of this exercise, we are not worried about the layout.
-
-3. Sometimes Grimoire will misinterpret the `-n` argument to mean the maximum column-index to be printed rather than the total number of columns
-
+    ``` 1042156.4 1121445.4 ```
+* NOTE: The file `data.tbl` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
 
 ## Solution Check instructions:
 
@@ -91,20 +82,12 @@ If you are successful at revising your program, you should see the following out
 
 * ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 4 -m 20 ```
 
-    ``` sample 1507.3 203120.7 40545.1270 ```
+    ``` 1496.3893 203120.7 40545.1270 563192.3 ```
 
 * ``` python3 Code/tsv_headers.py -i Data/rep200.list.tbl -n 5 -m 2 ```
 
-    ``` genome_id   domain  species score ```
-
-    NOTE: only 4 columns are printed, because the file `Data/rep200.list.tbl`
-    only has 8 columns, so the script ran out of data before it had a chance to emit 5 columns
+    ``` genome_name genus rep_id distance ```
 
 * ``` python3 Code/tsv_headers.py -i Data/bindict.tbl ```
 
     ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```
-
-We have included our own Grimoire-generated solution-code for these exercises as
-`1.1_Tab-Separated-Value_\(TSV\)_Files/Solutions/tsv_headers_revised_solution.py`.
-Our solution may differ in detail from the one that Grimoire found for you,
-since Grimoire sometimes makes different choices regarding variable-names and programming-style, but your code and our code should be __functionally-equivalent__.
