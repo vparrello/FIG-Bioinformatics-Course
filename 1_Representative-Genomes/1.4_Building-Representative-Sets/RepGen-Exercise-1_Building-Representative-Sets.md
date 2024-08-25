@@ -68,7 +68,7 @@ The script should accept the following mandatory command-line arguments, in both
 
 The measure of similarity to be used is "Number of Kmers in common".
 
-The program should use BioPython to read the FASTA-file into a list, and then sort the sequence-objects by order of decreasing sequence-length, resolving length-ties by sequence, and then by sequence-ID.
+The program should use BioPython to read the FASTA-file into a list.
 
 The main body of the program should construct a subset of the input sequences that satisfies the provided definition of a "Representative Set" (RepGen set).
 
@@ -85,27 +85,15 @@ python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Dat
 
 Check your result by running:
 ```
-python Code/fasta_reader.py < Data/myrep10.faa
+python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-lengths.txt
 ```
-The result should end with:
+The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 155
-Average sequence length: 363.73
+Number of sequences: 153
+Average sequence length: 356.73
 ```
-
-## COMMENT: Why the Sort?
-
-In the above exercise, we asked Grimoire to sort the sequences into
-a particular order before processing them; you may be wondering,
-why did we do that? The short answer is "reproducibility".
-
-The representative-set algorithm processes the sequences in the order
-that they were read in from the input-file, and at each step decides
-whether to keep or reject a sequence based on how similar it is
-to the sequences that were already accepted as representatives.
-We would like the set of representatives selected to be "stable",
-in the sense that we do not want the set of representatives selected
-to depend on the order that they were seen within the input-file.
-By sorting the sequences before processing them, we ensure that
-the same set of representatives will be selected regardless of the order
-that they appear within the input file.
+You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
+```
+diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.txt
+```
+since there should be no difference between these two files, the `diff` command should emit nothing. (NOTE: once again, the above will probably appear to be "wrapped" onto multiple lines on your screen, but it should all be entered as a single line.)

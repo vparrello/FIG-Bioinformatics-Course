@@ -21,14 +21,14 @@ FIG-Bioinformatics-Course/
     └── rep10.seqs.tbl
 ```
 
-## Exercise: 
+#### Exercise: 
 
 1. In bioinformatics we are often faced with the need to extract data from files and convert these data from the format produced by one program to a different format that is needed by some other program.
 In this exercise, you will first create a program that will reformat a 3-column tab-separated file into a FASTA-formatted file. You will then use the program `cmd_tsv_select_columns.py` that you created in `TSV-Ex-2` to extract 3 selected columns from a tab-separated file that contains both genome and sequence-data, and "pipe" them to the program that converts the 3-column data into FASTA format.
 
 If you use your script `tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
-python3 Code/tsv_headers.py Data/rep10.seqs.tbl 
+% python3 Code/tsv_headers.py Data/rep10.seqs.tbl 
 Field names in the TSV file are:
 genome_id
 genome_name
@@ -48,7 +48,7 @@ Use VScode to save the program to a file named `3col_to_fasta.py` within the `Co
 
 3. Use `cmd_tsv_select_columns.py` from TSV-Ex-2 to select the columns 'genome_id', 'genome_name', and 'seed_protein', and "pipe" the output to `3col_to_fasta.py`:
 ```
-python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta > Data/rep10.seed_protein.faa
+python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta.py > Data/rep10.seed_protein.faa
 ```
 
 * NOTE: The above should all be entered on a single command-line, even though your browser has probably split this command across several lines.
