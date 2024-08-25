@@ -20,7 +20,7 @@ FIG-Bioinformatics-Course/
     
 ```
 
-## Exercise: 
+#### Exercise: 
 
 The FASTA file-format is defined as follows:
 
