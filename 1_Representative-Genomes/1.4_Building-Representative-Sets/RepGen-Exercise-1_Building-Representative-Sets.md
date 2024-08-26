@@ -14,6 +14,17 @@ FIG-Bioinformatics-Course/
 └── Data/
     └── Universe.fasta
 ```
+## Set up:
+
+At the beginning of this course, you downloaded the bv-brc application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the bv-brc.
+```
+open "path/to/application"
+```
+Windows Example:
+```
+open "C:\Users\Default\AppData\Local\bv-brc.exe"
+
+```
 
 ## Overview:
 
