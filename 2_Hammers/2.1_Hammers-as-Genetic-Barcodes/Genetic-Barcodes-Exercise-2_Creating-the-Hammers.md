@@ -22,8 +22,7 @@ FIG-Bioinformatics-Course/
 ## Exercises
 
 1. First we need to make a set of hammers that can be used as "barcodes" for at least one SOUR. We will do this by extracting all the singly-occuring 20-mers from the DNA-sequences of a particular gene with the role-abbreviation of "PheS" (short for "Phenylalanine tRNA Synthase"). How do you think one might do that?
-* Hint: Can you remember which datatype would be appropriate
-for associating a string with the number of times that it occurs?
+* Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
 
     Load in the file `Definitions.html` as in previous exercises. Then, ask Grimoire to write a python program named `hammer_creator.py` that will:
 
