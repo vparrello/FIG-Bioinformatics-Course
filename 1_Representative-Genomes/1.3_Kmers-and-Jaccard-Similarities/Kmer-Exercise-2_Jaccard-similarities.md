@@ -7,19 +7,6 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 ## Materials: 
 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-<!--
-* FIG-Bioinformatics-Course/
-    * Definitions.html
-    * 1_Representative-Genomes/
-        * Data/
-            * Sample1.fasta
-        * 1.3 - Kmers and Jaccard Similarities/
-            * Code/
-                * kmer_jaccard_similarities.py
-            * Solutions/
-                * kmer_jaccard_similarities_solution.py
-            * Kmer Exercise 2 - Jaccard similarities.md
--->
 
 ```
 FIG-Bioinformatics-Course/
@@ -68,7 +55,8 @@ and then attaching the file "Definitions.html" using the "paperclip" icon before
     * This illustrates that there is a tradeoff between "sensitivity" and "specificity": Larger values of `K` yield results that are for more specific (i.e., fewer "hits" with be found, and the pairs of sequences will be "closer" to each other, i.e. "more similar"), but the price to be paid is that a more "specific" value of `K` is less "sensitive", i.e., it may not find anything at all.
 
 9. In bioinformatics, we will often specify similarity-thresholds in terms of the number of Kmers two sequences should have in common rather than in terms of their Jaccard-similarity.
-Ask Grimoire to write a program `num_kmers_vs_jaccard.py` that takes a Kmer-length and a FASTA filename as command-line arguments, and then plots the number of Kmers in common between two sequences vs their jaccard-similarity for all pairs of sequences in the FASTA file that have Kmers in common. Save this program as in exercise (5.), and then run it for various values of `K` to get a feel for how the number of Kmers in common and the jaccard-similarities vary with `K`. As in the previous exercise, you should see that larger `K` will result in fewer pairs of sequences with Kmers in common (also referred to as fewer "hits") and fewer Kmers in common, and a smaller jaccard-similarity, so that larger `K` means smaller sensitivity (smaller scores) but larger specificity (fewer hits).
+
+10. Ask Grimoire to write a program `num_kmers_vs_jaccard.py` that takes a Kmer-length and a FASTA filename as command-line arguments, and then plots the number of Kmers in common between two sequences vs their jaccard-similarity for all pairs of sequences in the FASTA file that have Kmers in common. Save this program as in exercise (5.), and then run it for various values of `K` to get a feel for how the number of Kmers in common and the jaccard-similarities vary with `K`. As in the previous exercise, you should see that larger `K` will result in fewer pairs of sequences with Kmers in common (also referred to as fewer "hits") and fewer Kmers in common, and a smaller jaccard-similarity, so that larger `K` means smaller sensitivity (smaller scores) but larger specificity (fewer hits).
 
 ## Solution Check instructions:
 

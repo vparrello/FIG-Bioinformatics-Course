@@ -1,15 +1,15 @@
-#### Sample Set Creation Exercise 1
+# Sample Set Creation Exercise 1
 
 Objective: 
 
 
-#### Materials: 
+## Materials: 
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
 * FIG-Bioinformatics-Course/
     * 3_Projections/
         * Data/
 
-#### Exercise: 
+## Exercise: 
 
 1. 

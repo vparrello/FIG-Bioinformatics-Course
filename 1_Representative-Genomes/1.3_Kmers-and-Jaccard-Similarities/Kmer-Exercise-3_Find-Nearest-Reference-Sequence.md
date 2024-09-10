@@ -42,6 +42,8 @@ FIG-Bioinformatics-Course
 ```
 python3 nearest-reference-sequence.py -K 8 -R ../Data/rep10.seed_proteins.faa Data/test-nearest.faa > Data/test-nearest.jaccard.tab
 ```
+    **Note: rep10.seed_proteins.faa is a data file that was created in FASTA-Exercise-2. If you get a File Not Found Error, try recreating the file using that exercise.
+     
 5. You can compare your output to the provided solution with the following command:
 ```
 diff Data/test-nearest.jaccard.tab Solutions/test-nearest.jaccard.solutions.tab
