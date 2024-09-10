@@ -1,42 +1,49 @@
 import argparse
 from Bio import SeqIO
-from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
+from collections import Counter
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Compute a Representative Set using the Stingy Addition algorithm.")
-    parser.add_argument("-k", "--kmer_length", type=int, required=True, help="Kmer length")
-    parser.add_argument("-s", "--similarity_threshold", type=int, required=True, help="Similarity threshold (number of Kmers in common)")
-    parser.add_argument("-f", "--input_fasta", type=str, required=True, help="Input FASTA file")
-    parser.add_argument("-r", "--output_repseq", type=str, required=True, help="Output RepSeq file")
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Compute a set of representative sequences using the Stingy Addition algorithm.')
+    parser.add_argument('-k', '--kmer-length', type=int, required=True, help='Length of the K-mers')
+    parser.add_argument('-s', '--similarity-threshold', type=int, required=True, help='Similarity threshold (number of K-mers in common)')
+    parser.add_argument('-f', '--input-fasta', type=str, required=True, help='Input FASTA file')
+    parser.add_argument('-r', '--output-repseq', type=str, required=True, help='Output representative sequences FASTA file')
     return parser.parse_args()
 
-def get_kmers(sequence, k):
-    return {sequence[i:i+k] for i in range(len(sequence) - k + 1)}
+def extract_kmers(sequence, k):
+    return [sequence[i:i+k] for i in range(len(sequence) - k + 1)]
 
-def is_similar(seq1_kmers, seq2_kmers, threshold):
-    common_kmers = seq1_kmers.intersection(seq2_kmers)
-    return len(common_kmers) >= threshold
+def calculate_similarity(seq1_kmers, seq2_kmers):
+    return len(set(seq1_kmers) & set(seq2_kmers))
 
 def main():
-    args = parse_args()
-    k = args.kmer_length
-    sim_threshold = args.similarity_threshold
-    input_fasta = args.input_fasta
-    output_repseq = args.output_repseq
+    args = parse_arguments()
     
-    sequences = list(SeqIO.parse(input_fasta, "fasta"))
+    sequences = list(SeqIO.parse(args.input_fasta, "fasta"))
     
-    # Sort sequences by decreasing length, then by sequence, then by sequence ID
-    sequences.sort(key=lambda x: (-len(x.seq), str(x.seq), x.id))
+    kmer_length = args.kmer_length
+    similarity_threshold = args.similarity_threshold
     
-    repgen_set = []
+    RepGenSet = []
+    
     for seq_record in sequences:
-        seq_kmers = get_kmers(str(seq_record.seq), k)
-        if all(not is_similar(seq_kmers, get_kmers(str(rep.seq), k), sim_threshold) for rep in repgen_set):
-            repgen_set.append(seq_record)
+        sequence_kmers = extract_kmers(str(seq_record.seq), kmer_length)
+        is_representative = True
+        
+        for rep_seq_record in RepGenSet:
+            rep_sequence_kmers = extract_kmers(str(rep_seq_record.seq), kmer_length)
+            similarity = calculate_similarity(sequence_kmers, rep_sequence_kmers)
+            
+            if similarity >= similarity_threshold:
+                is_representative = False
+                break
+        
+        if is_representative:
+            RepGenSet.append(seq_record)
     
-    SeqIO.write(repgen_set, output_repseq, "fasta")
+    with open(args.output_repseq, "w") as output_handle:
+        SeqIO.write(RepGenSet, output_handle, "fasta")
 
 if __name__ == "__main__":
     main()

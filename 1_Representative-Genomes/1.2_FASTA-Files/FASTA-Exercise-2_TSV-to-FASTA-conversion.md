@@ -1,4 +1,4 @@
-#### FASTA Exercise 2 - TSV to FASTA conversion
+# FASTA Exercise 2 - TSV to FASTA conversion
 
 Objectives: 
 1. Create a program that converts a 3-column tab-separated file into a FASTA-formatted file.
@@ -48,7 +48,7 @@ Use VScode to save the program to a file named `3col_to_fasta.py` within the `Co
 
 3. Use `cmd_tsv_select_columns.py` from TSV-Ex-2 to select the columns 'genome_id', 'genome_name', and 'seed_protein', and "pipe" the output to `3col_to_fasta.py`:
 ```
-python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta > Data/rep10.seed_protein.faa
+python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta.py > Data/rep10.seed_proteins.faa
 ```
 
 * NOTE: The above should all be entered on a single command-line, even though your browser has probably split this command across several lines.

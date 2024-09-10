@@ -18,7 +18,7 @@ indentation is again used to represent directory-levels:
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
 │   └── 1.1_Tab-Separated-Value_(TSV)_Files
-│       └── TSV-Exercise-2_Working-with-TSVs.md   (You are here)
+│       └── TSV-Exercise-3_Working-with-TSVs.md   (You are here)
 ├── Data/
 │   └── rep200.list.tbl
 └── Code/
@@ -61,7 +61,7 @@ FIG-Bioinformatics-Course/
 
 * NOTE: Grimoire does not know your operating-system and file-system unless you have told it in advance _"I am using macOS"_ or _"I am using Windows"_, so it might not catch every detail regarding generating and running your program. (For example, under Windows, the file-path separator is `\` instead of `/`.) If your program reports a "File Not Found" error, it means that your computer did not know where to look for the data file; in such cases you may need to use the "Full Path" to the file. Grimoire can teach you how to find the Full Path of the file, it can instruct you on what any error-messages that you receive mean, and it can suggest possible fixes. You got this!!
 
-6. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (The is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 5.)
+6. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (There is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 5.)
 
 7. Once you can get your `command_line_kung.py` program to run without throwing error-messages, try it again with the following command. This invocation should throw a warning message that you've asked for a nonexistent data-field, and then exit.
     
