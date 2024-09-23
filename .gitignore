@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # Mac DSstore ignore
 .DS_Store
+Tmp/hammer-creator_prompt.txt
