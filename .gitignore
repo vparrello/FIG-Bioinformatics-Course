@@ -405,3 +405,6 @@ Tmp/build_representative_set_solution.py
 Tmp/myrep10.faa
 Tmp/foo.faa
 .gitignore
+Tmp/hammer_creator_solution.py
+Tmp/foo.fna
+Tmp/foo.hammers
