@@ -1,0 +1,147 @@
+Query-ID	Query-Description	RepSet-ID	RepSet-Description	Common-Kmers	Jaccard-Similarity
+190485.4	Xanthomonas campestris pv. campestris str. ATCC 33913	611301.289	Xanthomonas citri pv. citri strain JJ009-1	228	0.5365
+634499.3	Erwinia pyrifoliae Ep1/96	511145.12	Escherichia coli str. K-12 substr. MG1655	178	0.3853
+1157951.4	Providencia stuartii MRSN 2154	511145.12	Escherichia coli str. K-12 substr. MG1655	127	0.2476
+2750814.3	Mycobacteroides sp. LB1	36809.5	Mycobacterium abscessus strain ATCC 19977	199	0.4207
+2851888.3	Streptomyces sp. J2-1	100226.15	Streptomyces coelicolor A3(2)	196	0.3657
+907.4	Megasphaera elsdenii DSM 20460	537288.4	Megasphaera sp. DJF_B143	117	0.2123
+427317.9	Sulfolobus islandicus M.14.25	427317.9	Sulfolobus islandicus M.14.25	458	1.0000
+59374.5	Fibrobacter succinogenes subsp. succinogenes S85	1896222.3	Fibrobacter sp. UWS3	129	0.2329
+336407.7	Rickettsia bellii RML369-C	882.5	Desulfovibrio vulgaris str. Hildenborough	18	0.0272
+243161.6	Chlamydia muridarum Nigg	471472.4	Chlamydia trachomatis 434/Bu	176	0.3570
+1427518.3	Xenorhabdus szentirmaii DSM 16338	511145.12	Escherichia coli str. K-12 substr. MG1655	152	0.3115
+267377.15	Methanococcus maripaludis S2	406327.12	Methanococcus vannielii SB	155	0.1863
+2602574.15	Candidatus Aquarickettsia rohweri strain Acer BE 8867	2744556.10	Candidatus Jidaibacter sp. CoA8_M11	23	0.0355
+1288484.3	Deinococcus wulumuqiensis R12	243230.17	Deinococcus radiodurans R1	159	0.3124
+751944.3	Halobacterium sp. DL1	64091.14	Halobacterium sp. NRC-1	164	0.1985
+505682.4	Ureaplasma parvum serovar 3 str. ATCC 27815	42094.4	Ureaplasma diversum strain ATCC 49782	67	0.1139
+580327.4	Thermoanaerobacterium thermosaccharolyticum DSM 571	52689.11	Acetobacterium bakii strain DSM 8239	39	0.0623
+883.4	Desulfovibrio vulgaris str. 'Miyazaki F'	882.5	Desulfovibrio vulgaris str. Hildenborough	146	0.2755
+2053306.78	Ignavibacteria bacterium strain Aved_18-Q3-R54-62_BATAC.785	2053306.72	Ignavibacteria bacterium strain H1_BAC2	57	0.0939
+100901.6	Wolbachia endosymbiont of Onchocerca ochengi strain wOo	1812111.3	Wolbachia endosymbiont of Cruorifilaria tuberocauda strain 55YT	79	0.1295
+2883571.10	Candidatus Microgenomatus sp. strain BE2012_3_53_27	2715251.15	Candidatus Paceibacter sp. strain BE2012_4_43_20	24	0.0334
+637392.3	Microbacterium sp. RB-01 strain SLBN-146	1736483.3	Microbacterium sp. Root180	190	0.4017
+722472.6	Bradyrhizobium lablabi strain GAS499	722472.8	Bradyrhizobium lablabi strain GAS165	193	0.3762
+1903058.8	Candidatus Xiphinematobacter sp. strain P23	1704307.4	Candidatus Xiphinematobacter sp. Idaho Grape	92	0.1628
+52694.7	Acetobacterium wieringae strain JM	52689.11	Acetobacterium bakii strain DSM 8239	165	0.3293
+1936025.3	Kiloniella sp. M146.1 strain M146.1	272943.9	Rhodobacter sphaeroides 2.4.1	28	0.0415
+243273.25	Mycoplasma genitalium G37	272634.6	Mycoplasma pneumoniae M129	35	0.0553
+410358.15	Methanocorpusculum labreanum Z	176309.3	uncultured Methanocorpusculum sp. strain HGM00632	52	0.0716
+1478175.3	Neochlamydia sp. EPS4	716544.4	Waddlia chondrophila WSU 86-1044	54	0.0877
+2666344.11	Candidatus Poseidonia sp. strain BS301-5m-G56	2670412.5	Candidatus Thalassarchaeum sp. strain BS30m-G33	64	0.0700
+2692330.4	Falsirhodobacter sp. PG104	272943.9	Rhodobacter sphaeroides 2.4.1	180	0.3422
+2735565.11	Candidatus Peribacter sp. strain SI072_bin1	1735162.9	Candidatus Peribacter riflensis strain RIFOXYD1_FULL_PER-ii_59_16	47	0.0774
+382464.3	Verrucomicrobiae bacterium DG1235	452637.7	Opitutus terrae PB90-1	26	0.0398
+43131.3	Tissierella praeacuta strain NCTC11158	689904.4	Tissierella carlieri DFI.7.95	182	0.3699
+592015.5	Anaerobaculum hydrogeniformans ATCC BAA-1850	891968.3	Anaerobaculum mobile DSM 13181	147	0.2763
+877466.5	Thermoflexus hugenholtzii JAD2 strain JAD2	229919.9	Anaerolinea thermolimosa strain IMO-1	24	0.0363
+1382306.3	Thermogemmatispora sp. PM5	537288.4	Megasphaera sp. DJF_B143	16	0.0243
+1622073.3	Clostridium sp. mt5	441771.6	Clostridium botulinum A str. Hall	140	0.2672
+186497.12	Pyrococcus furiosus DSM 3638	272844.11	Pyrococcus abyssi GE5	199	0.2532
+191863.72	Chthoniobacter flavus TE-08apr19-170	2665650.3	Candidatus Udaeobacter sp. strain AEW3	23	0.0360
+2026729.17	Cytophagaceae bacterium strain Skiv_18-Q3-R9-52_MAXAC.090	649349.3	Leadbetterella byssophila DSM 17132	119	0.2164
+2715251.13	Candidatus Paceibacter sp. strain BE2012_5_45_13	300852.9	Thermus thermophilus HB8	10	0.0146
+309803.4	Thermotoga neapolitana DSM 4359	243274.5	Thermotoga maritima MSB8	199	0.4554
+333146.12	Ferroplasma acidarmanus fer1	263820.9	Picrophilus torridus DSM 9790	57	0.0638
+500.9	Thermomicrobium roseum strain SpSt-222	479434.6	Sphaerobacter thermophilus DSM 20745	76	0.1256
+553184.4	Atopobium rimae ATCC 49626	521095.6	Atopobium parvulum DSM 20469	195	0.3892
+595460.3	Rhodopirellula sp. SWK7	243090.15	Rhodopirellula baltica SH 1	165	0.3210
+86332.3	Mogibacterium pumilum strain ATCC 700696	1401079.3	Mogibacterium timidum ATCC 33093	199	0.4512
+98785.40	Buchnera aphidicola (Aphis gossypii) KR	1265350.3	Buchnera aphidicola (Aphis glycines) strain BAg	177	0.3790
+1000562.3	Streptococcus phocae C-4	160490.10	Streptococcus pyogenes M1 GAS	198	0.4016
+1121337.3	"[Clostridium] sufflavum DSM 19573"	394503.7	Clostridium cellulolyticum H10	187	0.3856
+1121877.3	Ferrimicrobium acidiphilum DSM 19497	525909.11	Acidimicrobium ferrooxidans DSM 10331	49	0.0744
+1196417.3	Milkweed yellows phytoplasma str. MW1	1163385.3	Peanut witches'-broom phytoplasma NTU2011	28	0.0432
+1217799.31	Dehalogenimonas alkenigignens strain IP3-3	552811.9	Dehalogenimonas lykanthroporepellens BL-DC-9	113	0.2007
+1273541.5	Pyrodictium delaneyi strain Hulk	415426.13	Hyperthermus butylicus DSM 5456	93	0.1047
+1297582.10	Candidatus Portiera aleyrodidarum TV	1206109.5	Candidatus Portiera aleyrodidarum BT-B-HRs	75	0.1318
+1378168.13	Firmicutes bacterium ASF500	2941327.3	Flintibacter sp. DSM 110149 Flintibacter_sp_nov_DSM110149	183	0.3773
+1416803.4	Bordetella genomosp. 9 strain AU14267	568707.3	Bordetella bronchiseptica 253	185	0.3846
+1470067.3	Nitrosopumilus ureiphilus strain PS0	436308.17	Nitrosopumilus maritimus SCM1	188	0.2607
+1562740.4	Anaplasma capra BIME1	234826.6	Anaplasma marginale str. St. Maries	117	0.2042
+1577686.5	Silvibacterium bohemicum strain DSM 103733	1560006.3	Acidipila dinghuensis strain DHOF10	199	0.3762
+1679444.20	Akkermansia glycaniphila strain GP37	349741.6	Akkermansia muciniphila ATCC BAA-835	79	0.1246
+1793724.3	Dictyoglomus sp. ob1-4 strain OB1-4	515635.4	Dictyoglomus turgidum DSM 6724	147	0.2843
+1852365.41	Fusobacterium massiliense strain MGYG-HGUT-01555	190304.8	Fusobacterium nucleatum subsp. nucleatum ATCC 25586	199	0.4298
+2052804.3	Euzebya sp. DSW09	591198.3	Euzebya tangerina strain F10	105	0.1718
+2057799.3	Anaerococcus sp. Marseille-P3915	655811.4	Anaerococcus vaginalis ATCC 51170	136	0.2566
+233100.4	Ectothiorhodosinus mongolicus strain M9	611301.289	Xanthomonas citri pv. citri strain JJ009-1	30	0.0479
+2501609.3	Candidatus Bipolaricaulis sp. Ch78	2026885.4	Candidatus Acetothermia bacterium Ran1 strain BARAN1 MAG	110	0.1978
+2527976.3	Planctomycetes bacterium Enr17	344747.3	Planctomyces maris DSM 8797	181	0.3943
+2571029.3	Brachybacterium sp. SGAir0954 strain not applicable	1064537.3	Brachybacterium paraconglomeratum LC44	198	0.3779
+2732249.3	Gemmatimonas sp. TET16	379066.3	Gemmatimonas aurantiaca T-27	157	0.3134
+2795386.4	Methylacidiphilum sp. IT6	481448.7	Methylacidiphilum infernorum V4	167	0.3205
+463200.5	Stakelama sediminis strain DSM 27203	693978.3	Riemerella anatipestifer ATCC 11845 = DSM 15868	17	0.0256
+482827.8	Thermus arciformis JCM 15153	300852.9	Thermus thermophilus HB8	179	0.3524
+496056.3	Anseongella ginsenosidimutans strain DSM 21100	649349.3	Leadbetterella byssophila DSM 17132	23	0.0355
+59748.8	Candidatus Phytoplasma australiense	37692.4	Candidatus Phytoplasma mali strain AT	29	0.0452
+682179.4	Bacillus luteolus strain DSM 22388	160490.10	Streptococcus pyogenes M1 GAS	38	0.0585
+765177.25	Desulfurococcus mucosus DSM 2162	490899.14	Desulfurococcus kamchatkensis 1221n	130	0.1471
+86106.3	endosymbiont of Acanthamoeba sp. UWC8	2744556.10	Candidatus Jidaibacter sp. CoA8_M11	34	0.0539
+1048830.3	Mycoplasma iowae 695	160490.10	Streptococcus pyogenes M1 GAS	12	0.0179
+1069448.9	Nitriliruptor alkaliphilus DSM 45188	2849650.10	Salsipaludibacter albus AS10	22	0.0343
+1077256.4	Methanosphaera cuniculi strain DSM 4103	339860.19	Methanosphaera stadtmanae DSM 3091	178	0.2053
+1082479.3	Limimonas halophila strain DSM 25584	272943.9	Rhodobacter sphaeroides 2.4.1	24	0.0353
+1123058.4	Riemerella columbina DSM 16469	693978.3	Riemerella anatipestifer ATCC 11845 = DSM 15868	198	0.4304
+1129897.3	Nitrolancetus hollandicus Lb	479434.6	Sphaerobacter thermophilus DSM 20745	93	0.1563
+1227555.3	Pyrobaculum sp. WP30	444157.8	Pyrobaculum neutrophilum V24Sta	171	0.2162
+1259795.3	Coprothermobacter platensis DSM 11748	309798.4	Coprothermobacter proteolyticus DSM 5265	146	0.2824
+1306947.3	candidate division TM6 bacterium JCVI TM6SC1	1306947.3	candidate division TM6 bacterium JCVI TM6SC1	339	1.0000
+1332188.3	Candidatus Saccharimonas aalborgensis	1394711.4	Candidatus Saccharibacteria bacterium RAAC3_TM7_1	45	0.0710
+1385975.3	Algisphaera agarilytica strain DSM 103725	2030824.33	Phycisphaera sp. g3_MAG_00007	127	0.2301
+1408453.3	Mycoplasma alvi ATCC 29626	1408467.3	Mycoplasma pirum ATCC 25960	51	0.0837
+142842.3	Selenihalanaerobacter shriftii strain ATCC BAA-73	537288.4	Megasphaera sp. DJF_B143	22	0.0342
+1448135.3	Mycoplasma leonicaptivi ATCC 49890	272635.4	Mycoplasma pulmonis UAB CTIP	21	0.0352
+1579373.3	archaeon GW2011_AR15	1579378.3	archaeon GW2011_AR20	19	0.0184
+1811685.3	Methanosaeta sp. PtaB.Bin039	349307.15	Methanosaeta thermophila PT	95	0.1093
+1851148.3	Phycisphaerae bacterium SM-Chi-D1 strain SM-Chi-D1	1936003.3	Phycisphaerae bacterium ST-NAGAB-D1 strain ST-NAGAB-D1	53	0.0897
+185139.5	Rubrobacter taiwanensis strain Yellowstone	42256.3	Rubrobacter radiotolerans strain RSPS-4	86	0.1455
+1871034.3	Propionimicrobium sp. Marseille-P3275 strain Marseille-P3275	1203605.3	Propionibacterium sp. oral taxon 192 str. F0372	75	0.1142
+1891280.3	Sulfolobus sp. A20	427317.9	Sulfolobus islandicus M.14.25	73	0.0867
+195250.3	Synechococcus sp. PCC 7336	321332.11	Synechococcus sp. JA-2-3B'a(2-13)	64	0.1100
+1973259.5	Desulfurococcaceae archaeon NZ3(B) strain NZ3(B) strain NZ3(B) strain NZ3(B)	397948.10	Caldivirga maquilingensis IC-167	21	0.0217
+2023191.3	Leptospira sp. FH1-B-B1	189518.3	Leptospira interrogans serovar Lai str. 56601	87	0.1497
+2024824.17	Balneola sp. strain Bin6	1121930.3	Gracilimonas tropica DSM 19535	123	0.2308
+2024890.22	Pedosphaera sp. strain Baikal-deep-G217	1324935.3	Limisphaera ngatamarikiensis strain NGM72.4	87	0.1513
+2030824.22	Phycisphaera sp. strain RI_241	174633.135	Candidatus Kuenenia stuttgartiensis GH-07nov19-223	123	0.2709
+2066024.3	Candidatus Cytomitobacter primus strain 1604LC	2601575.3	Candidatus Cytomitobacter indipagum strain 1605	78	0.1361
+2086583.3	Anaeromassilibacillus sp. Marseille-P3876	165186.17	uncultured Ruminococcus sp. strain 2789STDY5834938	53	0.0867
+2099375.19	Chloracidobacterium sp. SKYG10	2821536.3	Chloracidobacterium sp. D	189	0.3607
+212123.5	Wolbachia endosymbiont of Ctenocephalides felis strain wCfeT	1812111.3	Wolbachia endosymbiont of Cruorifilaria tuberocauda strain 55YT	52	0.0816
+2161813.3	Glaciecola sp. KUL10	511145.12	Escherichia coli str. K-12 substr. MG1655	46	0.0776
+2162486.3	Prochlorococcus sp. AG-409-J16	2162266.3	Prochlorococcus sp. AG-409-B05	59	0.1171
+221953.20	uncultured Brachyspira sp. strain MGBC110401	565034.3	Brachyspira hyodysenteriae WA1	193	0.4098
+2364796.3	Ruminococcus sp. Marseille-P6503	165186.17	uncultured Ruminococcus sp. strain 2789STDY5834938	98	0.1731
+2485925.1405	Oscillospiraceae bacterium strain B35	394503.7	Clostridium cellulolyticum H10	23	0.0355
+2597224.3	Candidatus Acidulodesulfobacterium acidiphilum strain AP4	2026735.213	Deltaproteobacteria bacterium strain AP2	48	0.0769
+2608984.3	Candidatus Nitrosymbiomonas proteolyticus strain 317325-2	1303518.3	Chthonomonas calidirosea T49	15	0.0225
+2608986.3	Candidatus Denitrolinea symbiosum strain 317325-4	229919.9	Anaerolinea thermolimosa strain IMO-1	47	0.0729
+2675776.3	Enterobacteriaceae endosymbiont of Donacia crassipes strain DcraSym	2675781.3	Enterobacteriaceae endosymbiont of Donacia provostii strain DprovSym	85	0.1507
+2714930.3	Erysipelothrix sp. HDW6C	650150.7	Erysipelothrix rhusiopathiae str. Fujisawa	86	0.1468
+2717288.3	Victivallis sp. Marseille-Q1083	1932692.91	Lentisphaerae bacterium strain zth2	95	0.1664
+2719988.3	Spirochaetales bacterium BR193	2719987.3	Spirochaetales bacterium BR208	172	0.3399
+2728024.3	Spirosoma sp. CJU-R4	278208.13	uncultured Spirosoma sp. strain maxbin_SP106_3.024	100	0.2217
+2729629.3	Sulfobacillus sp. DSM 109850	1051632.5	Sulfobacillus acidophilus TPY	55	0.0879
+2732487.3	Nitrosomonadales bacterium Swamp67	1891241.459	Betaproteobacteria bacterium strain Vibo_18-Q3-R45-57_BATAC.298	56	0.0938
+2734902.3	Azospirillum sp. ROY-1-1-2	722472.8	Bradyrhizobium lablabi strain GAS165	24	0.0355
+2819277.7	Candidatus Syntrophosphaera sp. strain KA04	456827.3	Candidatus Cloacamonas acidaminovorans	78	0.1309
+2848114.3	Candidatus Methanogranum sp. U3.2.1	1577791.3	Candidatus Methanoplasma termitum MpT1	101	0.1126
+2849642.3	Helicobacter sp. NHP19-0012	1578720.9	Helicobacter ailurogastricus strain ASB7	139	0.2742
+2862869.3	Oleiharenicola sp. KSB-15	452637.7	Opitutus terrae PB90-1	161	0.3102
+295596.4	Candidatus Hepatoplasma crinochetorum strain Ps	1427984.3	Candidatus Hepatoplasma crinochetorum Av	62	0.0998
+36868.4	Wigglesworthia glossinidia endosymbiont of Glossina morsitans	36868.4	Wigglesworthia glossinidia endosymbiont of Glossina morsitans	326	1.0000
+36870.6	Wigglesworthia glossinidia endosymbiont of Glossina brevipalpis	36868.4	Wigglesworthia glossinidia endosymbiont of Glossina morsitans	25	0.0399
+372072.6	Cohaesibacter gelatinilyticus strain DSM 18289	272943.9	Rhodobacter sphaeroides 2.4.1	30	0.0444
+381751.3	Thermocrinis minervae strain DSM 19557	380749.5	Hydrogenobaculum sp. Y04AAS1	22	0.0343
+395961.9	Cyanothece sp. PCC 7425	693978.3	Riemerella anatipestifer ATCC 11845 = DSM 15868	18	0.0276
+469383.5	Conexibacter woesei DSM 14684	2937800.4	Conexibacter sp. S30A1	47	0.0736
+515440.3	Oceanotoga teriensis strain DSM 24906	2053689.37	Thermotogae bacterium HK-STAS-THER-3	73	0.1241
+648996.5	Thermovibrio ammonificans HB-1	537288.4	Megasphaera sp. DJF_B143	27	0.0420
+671214.3	Oribacterium sp. oral taxon 102 strain W9097	608534.3	Oribacterium sp. oral taxon 078 str. F0262	129	0.2402
+673862.3	delta proteobacterium BABL1	673862.3	delta proteobacterium BABL1	337	1.0000
+743971.3	Mycoplasma flocculare ATCC 27399 Ms42	262719.5	Mycoplasma hyopneumoniae J	99	0.2920
+768198.3	Acidiphilium iwatense KCTC 23505	349163.14	Acidiphilium cryptum JF-5	82	0.1327
+861532.3	Ammoniphilus resinae strain DSM 24738	537288.4	Megasphaera sp. DJF_B143	20	0.0308
+877466.33	Thermoflexus hugenholtzii JAD2 TH-11nov19-82	877466.40	Thermoflexus hugenholtzii JAD2 MH-09jul19-294	108	0.1878
+9.55	Buchnera aphidicola strain BCifornacula	372461.17	Buchnera aphidicola BCc	37	0.0601
+931101.3	Cardinium endosymbiont of Oedothorax gibbosus cOegibbosus-W744x776	247481.57	Candidatus Cardinium hertigii strain cHgTN10	47	0.0754
