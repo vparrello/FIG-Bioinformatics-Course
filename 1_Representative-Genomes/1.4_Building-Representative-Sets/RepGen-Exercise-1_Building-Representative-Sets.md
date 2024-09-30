@@ -16,10 +16,16 @@ FIG-Bioinformatics-Course/
 ```
 ## Set up:
 
-At the beginning of this course, you downloaded the bv-brc application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the bv-brc.
+At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the BV-BRC.
 ```
 open "path/to/application"
 ```
+
+macOS example:
+```
+open /Applications/BV-BRC.app
+```
+
 Windows Example:
 ```
 open "C:\Users\Default\AppData\Local\bv-brc.exe"
@@ -28,10 +34,10 @@ open "C:\Users\Default\AppData\Local\bv-brc.exe"
 
 ## Overview:
 
-As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases, and several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
+As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
 There has thus developed a need to construct manageably small sets of "representatives" that capture the diversity of the full set of genomes and genes.
 
-We define a "Set of Representatives" as follow:
+We define a "Set of Representatives" as follows:
 
 * Let U be the Universe of entities being considered (in our case, genomes or sequences).
 
@@ -109,6 +115,8 @@ Save the program that Grimoire generates as `build_representative_set.py`.
 ```
 python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
 ```
+
+## Self-Check
 
 Check your result by running:
 ```
