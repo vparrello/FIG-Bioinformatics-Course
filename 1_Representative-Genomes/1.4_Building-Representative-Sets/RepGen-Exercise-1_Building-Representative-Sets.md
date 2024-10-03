@@ -16,10 +16,16 @@ FIG-Bioinformatics-Course/
 ```
 ## Set up:
 
-At the beginning of this course, you downloaded the bv-brc application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the bv-brc.
+At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the BV-BRC.
 ```
 open "path/to/application"
 ```
+
+macOS example:
+```
+open /Applications/BV-BRC.app
+```
+
 Windows Example:
 ```
 open "C:\Users\Default\AppData\Local\bv-brc.exe"
@@ -28,10 +34,10 @@ open "C:\Users\Default\AppData\Local\bv-brc.exe"
 
 ## Overview:
 
-As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases, and several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
+As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
 There has thus developed a need to construct manageably small sets of "representatives" that capture the diversity of the full set of genomes and genes.
 
-We define a "Set of Representatives" as follow:
+We define a "Set of Representatives" as follows:
 
 * Let U be the Universe of entities being considered (in our case, genomes or sequences).
 
@@ -69,9 +75,14 @@ There are several algorithms for building RepSets. In this course, we will be us
 2. The following prompt provides the program specification for the representative-set algorithm:
 
 ```
-I will now give you a description of the command-line interface for the program `build_representative_set.py` to compute a "set of representative sequences" (RepGen set) using the "Stingy Addition" algorithm as defined in the uploaded definitions-file.
+I will now give you a description of a command-line interface and
+program called `build_representative_set.py` that will compute a
+"set of representative sequences" (RepGen set) using the "Stingy Addition"
+algorithm as defined in the uploaded definitions-file.
 
-The script should accept the following mandatory command-line arguments, in both long-form and the specified short-form:
+The script should accept the following mandatory command-line
+arguments, in both long-form and the specified short-form:
+
 * Kmer-length  (integer, short argument-name '-k')
 * Sim          (similarity threshold, short argument-name '-s')
 * input FASTA-file   (filename, short argument-name '-f')
@@ -79,11 +90,22 @@ The script should accept the following mandatory command-line arguments, in both
 
 The measure of similarity to be used is "Number of Kmers in common".
 
-The program should use BioPython to read the FASTA-file into a list.
+The program should use BioPython to read the FASTA-file.
+The first nonwhitespace portion of each FASTA identifier is a "feature-ID",
+while the remainder is the "genome name".
+Feature-IDs have the format 'fig|X.Y.peg.Z', where 'X', 'Y', and 'Z' are integers,
+and the portions 'fig|' and '.peg.' are literal substrings, not variables.
+The subpattern 'X.Y' within the feature-ID is a "genome-ID";
+you may extract this subpattern using a regular expression.
+Return a dictionary that maps feature-IDs to genome-IDs,
+a dictionary that maps feature-IDs to genome-names,
+and a list of (feature-ID, sequence) pairs.
 
-The main body of the program should construct a subset of the input sequences that satisfies the provided definition of a "Representative Set" (RepGen set).
+The main body of the program should construct a subset of the input sequence list
+that satisfies the provided definition of a "Representative Set" (RepGen set).
 
-When you are done, please write out the representative set to the RepSeq-file in FASTA format.
+When you are done, please write out the representative set to the RepSeq-file in FASTA format,
+where the FASTA identifiers have the form "genome-ID genome-name".
 ```
 
 Save the program that Grimoire generates as `build_representative_set.py`.
@@ -93,6 +115,8 @@ Save the program that Grimoire generates as `build_representative_set.py`.
 ```
 python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
 ```
+
+## Self-Check
 
 Check your result by running:
 ```
