@@ -13,7 +13,7 @@ FIG-Bioinformatics-Course/
 │   └── 1.1_Tab-Separated-Value_\(TSV\)_Files/
 │       ├── TSV-Exercise-4_Modifying-code.md   (you are here)
 │       └── Solutions/
-│           └── tsv_headers_revised_solution.py
+│           └── tsv_headers_Ex4_solution.py
 ├── Code/
 │   └── tsv_headers.py
 └── Data/
@@ -53,14 +53,36 @@ FIG-Bioinformatics-Course/
     Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
 
-3. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code. 
-    * The program should accept its input datafile-name via the command-line argument `-i` (short for "Input"), e.g. `-i datafilename`.
+3. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
 
-    * The program should extract the header-names from the first line of the input datafile.
+```
+I have uploaded a program that I'd like you to modify.
+Please make the following revisions to the uploaded program:
 
-    * The program should accept an optional argument `-n` to specify the "total number of selected data-columns" that will be printed to STDOUT, e.g. `-n 4` means "Print a total of 4 selected columns". If this optional argument is not specified, then the program should print all of the selected columns in the input datafile.
+* The program should accept its input datafile-name
+via the command-line argument '-i' (short for "Input"),
+e.g. '-i datafilename'.
 
-    * The program can take an optional `-m` argument defining a "skip-factor" or "step-factor" by which it will skip over the unselected data-columns, e.g., `-m 10` means "print every 10th column", so that columns [1, 11, 21, 31...] will be selected, up to `-n` total columns.
+* The program should extract the header-names
+from the first line of the input datafile.
+
+* The program can accept an optional '-m' argument
+defining a "skip-factor" or "step-factor" by which
+it will skip over  unselected data-columns,
+e.g., '-m 10' means "print every 10th column",
+so that columns [1, 11, 21, 31...] will be selected.
+
+* The program can accept an optional argument '-n'
+to specify the "total number of selected data-columns
+that will be printed to STDOUT", e.g. -n 4 means
+"Print a TOTAL of 4 selected columns to STDOUT".
+Please note that this argument specifies the TOTAL number of columns
+to be printed to STDOUT --- it does _NOT_ specify the maximum 
+column-number to be printed!
+If this optional argument is not specified,
+then the program should print all of the selected columns
+in the input datafile.
+```
     
 4. Save the modified program as in previous exercises.
 
@@ -82,11 +104,11 @@ If you are successful at revising your program, you should see the following out
 
 * ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 4 -m 20 ```
 
-    ``` 1496.3893 203120.7 40545.1270 563192.3 ```
+    ``` sample  1507.3  203120.7    40545.1270 ```
 
 * ``` python3 Code/tsv_headers.py -i Data/rep200.list.tbl -n 5 -m 2 ```
 
-    ``` genome_name genus rep_id distance ```
+    ```genome_id   domain   species   score ```
 
 * ``` python3 Code/tsv_headers.py -i Data/bindict.tbl ```
 
