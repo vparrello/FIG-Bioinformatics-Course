@@ -12,14 +12,14 @@ A common task in bioinformatics is to determine which sequence in a reference da
 FIG-Bioinformatics-Course
 ├── Definitions.html
 ├── Data/
-│   └── rep10.seqs.faa
+│   └── rep10.seed_proteins.faa
 └── 1_Representative-Genomes
     └── 1.3_Kmers-and-Jaccard-Similarities
         ├── Kmer-Exercise-3_Finding-Nearest-Neighbors.md (you are here)
         ├── Data/
-        │   └── test-sequences.faa
+        │   └── test-nearest.faa
         └── Solutions
-            └── nearest-reference-sequence_solution.py
+            └── find_nearest_reference_solution.py
 ```
 
 ## Exercises
@@ -29,7 +29,7 @@ FIG-Bioinformatics-Course
     I am going to give you some definitions in an attached file; you don't need to respond to them, just learn them. I'm then going to ask you some questions.
     ```
 
-2. Ask Grimoire to write a program named `nearest-reference-sequence.py` that implements the following specifications:
+2. Ask Grimoire to write a program named `find_nearest_reference.py` that implements the following specifications:
     * Accepts a mandatory integer argument, short-name `-K`, long-name `--kmer-length`
     * Accepts a mandatory FASTA filename argument, short-name `-R`, long-name `--RepSet`
     * Reads in the FASTA RepSet file using BioPython, then splits the "sequence-description" into "sequence-ID" and "sequence-comment" fields, and stores the sequence-ID, sequence-comment, and sequence.
@@ -40,13 +40,13 @@ FIG-Bioinformatics-Course
 
 4. Run the program as follows:
 ```
-python3 nearest-reference-sequence.py -K 8 -R ../Data/rep10.seed_proteins.faa Data/test-nearest.faa > Data/test-nearest.jaccard.tab
+python3 find_nearest_reference.py -K 8 -R ../Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
 ```
-    **Note: rep10.seed_proteins.faa is a data file that was created in FASTA-Exercise-2. If you get a File Not Found Error, try recreating the file using that exercise.
+    **Note: `rep10.seed_proteins.faa` is a data file that was created in FASTA-Exercise-2. If you get a `File Not Found Error`, try recreating the file `rep10.seed_proteins.faa` using that exercise.
      
 5. You can compare your output to the provided solution with the following command:
 ```
-diff Data/test-nearest.jaccard.tab Solutions/test-nearest.jaccard.solutions.tab
+diff Data/test-nearest.jaccard.tab Solutions/test-nearest.jaccard.solution.tab
 ```
 `diff` is a command that compares two files. If the files being compared are identical, then `diff` should produce no output; however, if the files are different, then `diff` will list the differences between the two files. So in this case, no result is a good result! :-)
 
@@ -57,6 +57,6 @@ diff Data/test-nearest.jaccard.tab Solutions/test-nearest.jaccard.solutions.tab
 
 ## NOTES:
 
-1.) Need to create the file `rep10.seqs.faa` and the test-sequences.
+1.) DONE: Need to park a copy of the file `rep10.seed_proteins.faa`, and the output files in the `Solutions/` directory.
 
-2.) What is the best way to facilitate the student checking their results? Do we include the sequence-description in the test-file and have Grimoire output the description, so that the student can compare the input description and the RepGenSet description? (In a real-world problem, the sequences will not come "pre-labeled".)
+2.) What is the best way to facilitate the student checking their results? Currently, we are including the sequence-description in the test-file and have asked Grimoire to output the description, so that the student can compare the input description and the RepGenSet description "By Eyeball", but in a real-world problem, the sequences will not come conveniently "pre-labeled". Is there a better way to handle this?
