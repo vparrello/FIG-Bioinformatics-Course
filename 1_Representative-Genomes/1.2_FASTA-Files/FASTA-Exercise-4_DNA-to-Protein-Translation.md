@@ -24,9 +24,9 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
-1. With only a few exceptions (most notably during the replication of "retroviruses" such as HIV), information in cells flows in one direction: From DNA, to RNA to Proteins. This one-way flow of molecular information has become known as the "Fundamental Dogma of Molecular Biology". Ask Grimoire to explain this "Fundamental Dogma" to you in more detail. If Grimoire uses terms that are unfamiliar to you, ask it to explain those terms as well.
+1. With only a few exceptions (most notably during the replication of "retroviruses" such as HIV), information in cells flows in one direction: From DNA, to RNA, to Proteins. This one-way flow of molecular information has become known as the "Fundamental Dogma of Molecular Biology". Ask Grimoire to explain this "Fundamental Dogma" to you in more detail. If Grimoire uses terms that are unfamiliar to you, ask it to explain those terms as well.
 
-2. A protein-encoding DNA sequence is structured as a sequence of 3-character groups known as "codons". Each codon encodes a a single amino-acid. Since DNA uses a 4-character alphabet, there are 4x4x4 = 64 possible codons, which map into 20 possible amino-acids plus a "STOP" signal indicating the end of the gene. Ask Grimoire to show you the mapping from DNA to amino-acids in Bacteria.
+2. A protein-encoding DNA sequence is structured as a sequence of 3-character groups known as "codons". Each codon encodes a single amino-acid. Since DNA uses a 4-character alphabet, there are 4x4x4 = 64 possible codons, which map into 20 possible amino-acids plus a "STOP" signal indicating the end of the gene. Ask Grimoire to show you the mapping from DNA to amino-acids in Bacteria.
 
 3. Ask Grimoire to explain in pseudocode how to translate from a DNA sequence into a protein sequence.
 
