@@ -79,9 +79,3 @@ fastq-dump --split-files SRR12345678
 10. Follow these steps to download and convert your data for the rest of the samples in your search. Note that this process can take a very long time depending on how many samples you have. But the more samples you have, the more accurate your model will be. For now, download and convert 10 samples so that you have enough data to test your programs. Once you are done, make sure that all of your samples are included in the Data directory of this course to make them easier to access later.
 
 
-# TODO
-Separate into control and diseased groups
-Tag samples from the metadata 
-Roughly 1 GB per 10 samples
-Need minimum of 100 samples, 50 from each group. (Can we do this from one paper?)
-Get a hammer report from each of the samples
