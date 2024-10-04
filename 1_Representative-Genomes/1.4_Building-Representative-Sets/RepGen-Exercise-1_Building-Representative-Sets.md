@@ -22,7 +22,7 @@ open "path/to/application"
 ```
 Windows Example:
 ```
-open "C:\Users\Default\AppData\Local\bv-brc.exe"
+start "C:\Users\Default\AppData\Local\bv-brc.exe"
 
 ```
 
