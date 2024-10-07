@@ -1,7 +1,7 @@
 ########################################################################
 #...Prompt that generated this program:
 """
-Please write a program named translate_DNA.py that:
+Please write a program named `translate-DNA_biopython.py` that:
 * Does not make use of any deprecated modules,
 * accepts an optional translation-table-number argument, with default-value '11',
 * reads a set of FASTA-encoded DNA sequences from STDIN using BioPython SeqIO
