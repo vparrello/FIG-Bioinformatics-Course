@@ -32,8 +32,8 @@ FIG-Bioinformatics-Course/
         ├── Kmer-Exercise-1_What-are-Kmers.md  (You are here)
         ├── Code/     (where you will save your own code)
         ├── Data/
-        │   ├── test_dna.fna
-        │   └── test_protein.faa
+        │   ├── good-bad_dna.fna
+        │   └── good-bad_protein.faa
         └── Solutions/
             ├── Kmer-Exercise-1_Solutions.md
             └── extract_kmers_from_fasta_solution.py
@@ -77,8 +77,8 @@ Use VScode to save `extract_kmers_from_fasta.py` in the `Code/` subdirectory.
 
 7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `1.3_Kmers-and-Jaccard-Similarities/Data/`. These files are all small, so you should be able to figure out what the output should be in your head. Each of the files will contain one "bad" sequence, i.e., a sequence that contains invalid characters for that file-type.
 
-* test_dna.fna
-* test_protein.faa
+* good-bad_dna.fna
+* good-bad_protein.faa
 
 Experiment with different values for `-K`. Then, see how the output changes  when you specify the `--type` argument.
 * BONUS: What do you think will happen if you use the 'dna' type for the protein file, or the 'protein' type for the DNA file? Try it, and see if you have guessed correctly.
