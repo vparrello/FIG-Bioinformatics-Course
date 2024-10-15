@@ -7,6 +7,7 @@ Hammers are unique k-mers that occur exactly once in a genome. The precision of 
 ## Materials:
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.2_Hammer-Tuning/
@@ -18,6 +19,7 @@ FIG-Bioinformatics-Course/
     Code/
     └── find_duplicate_hammers.py
     └── hammer_precision.py
+```
 
 ## Exercises:
 

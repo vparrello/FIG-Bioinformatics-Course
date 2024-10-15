@@ -11,10 +11,12 @@ One of these tools is the representative genome set that you created in the firs
 [NCBI](https://www.ncbi.nlm.nih.gov/)
 [SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
 
+```
 FIG-Bioinformatics-Course/
 ├── 3_Projections
     └── 3.1_Sample-Set-Creation/
         └── Sample-Set-Creation Exercise-1_Gather_Data.md (you are here)
+```
 
 ## Exercise
 

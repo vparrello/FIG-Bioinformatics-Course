@@ -13,11 +13,12 @@ Optimally, we will want to create a Hammer Report for each of our samples. Make 
 [BV-BRC](https://bv-brc.org/)
 [BV-BRC CLI Reference Documentation](https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html)
 
+```
 FIG-Bioinformatics-Course/
 ├── 3_Projections
     └── 3.1_Sample-Set-Creation/
         └── Sample-Set-Creation Exercise-3_Hammer_Report.md (you are here)
-
+```
 
 ## Exercise
 
