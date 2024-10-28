@@ -23,7 +23,7 @@ Also, one of the skills that you will learn during this course will be
 how to test and debug the software that Grimoire generates for you,
 in the event that it does make an error.
 We will also provide a `Solutions/` directory in each exercise module
-that you check your own results against. And if you find yourself
+that you can check your own results against. And if you find yourself
 completely wedged, please feel free to contact the course-developers via the Discord Channel.
 
 The following exercises are intended to get you used to interacting with "Grimoire" using both "natural language" and "pseudocode", while also introducing some basic types and formats of bioinformatic data.
@@ -71,7 +71,7 @@ NOTE: In this course, most files will have extensions of either `.py` indicating
 The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of reasoning that "Large Language Models" (LLMs) have been extensively trained for; in "line-by-line" or "step-by-step" mode, an LLM is likely to reason more clearly, and is less likely to jump to conclusions, make mistakes, or "hallucinate".
 
 
-7. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following series of "comments":
+7. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Launch VScode, and click on "Open Folder" under the "File" menu, which opens the "File Explorer". Select the folder `FIG-Bioinformatics-Course/` then click the menu-item `Open`. Within this folder near the bottom of the file-explorer window, you will find a directory named `Code/`. Click on `Code/` to expand this directory-listing. Within this `Code/` directory, you will see a number of files; scroll down to the file named `tsv_headers.py` and click on it, which will open that file in the file-editor. You will see that  `tsv_headers.py` is empty except for the following series of "comments":
 ```
 # This file has been created to contain the code
 # that Grimoire generated for the exercise `tsv_headers.py`.
@@ -86,7 +86,7 @@ The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of r
 Paste Grimoire's code that you saved to your clipboard into the file `tsv_headers.py` below the comment, then click on "Save" under the "File" menu as instructed, which saves your program to disk. 
 
 8. You are now in a position to run your program.
-Grimoire has probably already shown you an example of how to run this program during its summary-discussion of the program, but since Grimoire is ignorant of the details of your operating-system, directory-structure, and the fact that you are using the VScode development-environment (unless it has explicitly been told these things), and hence its example probably will not work verbatim. So, to run the program in your environment, please follow the steps below: 
+Grimoire has probably already shown you an example of how to run this program during its summary-discussion of the program, but since Grimoire is ignorant of the details of your operating-system, directory-structure, and the fact that you are using the VScode development-environment (unless it has explicitly been told these things),   its example probably will not work verbatim. So, to run the program in your environment, please follow the steps below: 
 * Go back to the "File-Explorer" window and select the top-level directory `FIG-Bioinformatics-Course/`.'
 
 * Click on "New Terminal" under the VScode "Terminal" menu to open a terminal-window within VScode. Click on the "Terminal" window that VScode just opened, which will switch VScode's "focus" to that window. You can confirm that you are in the correct directory by entering `pwd` (short for "print working-directory") and hitting the `return` key; your computer should respond with a directory-path ending in `FIG-Bioinformatics-Course`.
@@ -109,9 +109,12 @@ NOTE: The above command should be entered as a single line, even if your browser
 ```
     python3 Code\tsv_headers.py < Data\bindict.tbl
 ```
+We recommend that under `Windows`, you consider installing`gitbash`, which will make your terminal command-line environment 'look' like the macOS/LINUX environment;
+we have included instructions for how to install `gitbash` within the `0_Getting-Started` module.
+
 
 ## Solution Check instructions:
-If you are successful, the program should return output that matches the 5 columns in the data file.
+If you are successful, the program should return output that matches the 5 column-headings in the data file.
 
 ```genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50```
 

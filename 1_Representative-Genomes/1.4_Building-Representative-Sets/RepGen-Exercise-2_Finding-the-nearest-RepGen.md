@@ -22,7 +22,7 @@ FIG-Bioinformatics-Course/
 ## Overview:
 
 In research and medicine, we will often be confronted with a genetic sample that contains one or more unidentified genomes.
-We can gain knowledge about which genomes are present in a sample by comparing the sample to a "Set of Representative Genomes" (RepGen Set).
+We can gain knowledge about which genomes are present within a sample by comparing the sample to a "Set of Representative Genomes" (RepGen Set).
 The set `rep200` is our highest-resolution "production" RepGenSet; it allows identification of genomes down to the "species" level. Similarly, `rep100` allows identification down to the "Genus" level.
 Our coarsest set of representatives is `rep10`, which allows identification to within broad families of genomes.
 
@@ -51,37 +51,37 @@ Which representative genome was reported in the RepSet-description column?
     p3-echo 1491.662 | p3-get-genome-data --attr genome_name
 ```
 Does the "Mystery Genome" have the same genus and species (first and second name) as the RepGen genome that `find_nearest_reference.py` found?<br>
-Congratulations! you have correctly identified the genus and species of the "Mystery Genome"!
+Congratulations! You have correctly identified the genus and species of the "Mystery Genome"!
 
-The above is a greatly simplified "cartoon version" of how one may go about identifying a completely new genome using a RepGen Set. The actual real-world procedure is more involved; one would first have to sequence and "assemble" the mystery-genome, annotate its genes, extract the sequence for the "Mystery PheS", and then perform the sequence comparison, but the basic concept is the same.
+The above is a greatly simplified "cartoon version" of how one may go about identifying a completely new genome using a RepGen Set. The actual real-world procedure is more involved; one would first need to sequence and "assemble" the mystery-genome, annotate its genes, extract the sequence for the "Mystery PheS", and then perform the sequence comparison, but the basic concept is the same.
 
-In a later exercise, you will learn about a type of "Genetic Barcode" called a "Hammer", which allows one to skip the intermediate steps to go directly from raw sequencer-data to a genome identification.
+In a later exercise, you will learn about a type of "Genetic Barcode" called a "Hammer", which allows one to skip the intermediate steps and go directly from raw sequencer-data to a genome identification.
 
-## Breaking down the steps in the "P3 incantations"
+## Breaking down the steps in the "P3 incantation"
 
 Earlier, we used the following "incantation":
 ```
 p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id > Data/mystery_PheS.faa
 ```
-The above complex command is an example of a "command pipeline": A sequence of commands with modifying arguments separated by the symbol `|`, which is pronounced as "pipe" because it connects (or "pipes") the `STDOUT` from one command to the `STDIN` of the following command.
+The above complex command is an example of a "command pipeline".
+A "command pipeline" is a sequence of commands plus modifying arguments that are separated by the symbol `|`; this symbol is pronounced as "pipe" because it connects (or "pipes") the `STDOUT` from one command to the `STDIN` of the following command.
 You can use a "pipeline" to construct an arbitrarily complex command or filter operation out of simple commands.
+Let's break the above incantation down step-by-step to see what it does.
 
-Let's break tis incantation down step-by-step to see what it does.
-
-The first step is `p3-echo PheS`. If you type this command by itself, you will see the following output:
+1. The first step is `p3-echo PheS`. If you type this command by itself, you will see the following output:
 ```
 id
 PheS
 ```
-The above illustrates two points:
-* P3-commands all generate "Tab-separated output with header-line", which is sent to STDOUT 
+The above illustrates three points:
+* P3-commands all generate "Tab-separated output with a header-line", which is sent to `STDOUT`. 
 
-* the `p3-echo` command accepts one (or more) values as arguments,
+* the `p3-echo` command accepts one or more values as arguments,
 and "echoes" them one after the other following the column-name.
 The utility of `p3-echo` is to create TSV data that will be sent
 to subsequent P3-commands
 
-In the absence of an argument, `p3-echo` uses a "default" column-name of `id`. In cases where a different column-name is required, it can be specified using the `-t` argument (which you may think of as short for "column-title"), so for example:
+* In the absence of an argument, `p3-echo` uses a "default" column-name of `id`. In cases where a different column-name is required, it can be specified using the `-t` argument (which you may think of as short for "column-title"), so for example:
 ```
 p3-echo -t feature_id 'fig|1491.662.peg.1715'
 ```
@@ -102,7 +102,7 @@ value2
 value3
 ```
 
-The next step is to "pipe" the output of `p3-echo` to the input of `p3-find-features` as follows:
+2. The next step is to "pipe" the output of `p3-echo` to the input of `p3-find-features` as follows:
 ```
 p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene
 ```
@@ -111,11 +111,11 @@ which produces:
 id	feature.patric_id	feature.product
 PheS	fig|1491.662.peg.1715	Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)
 ```
-Note that the output has acquire two new columns named `feature.patric_id`	and `feature.product`; the portion `feature` before the dot specifies the `type` of the data-column, while the portion after the dot specifies the "attributes" of the data-type that were selected in the command by the argument `--attr patric_id,product`.
+Note that the output has acquired two new columns named `feature.patric_id`	and `feature.product`; the portion of the column-heading in front of the dot specifies the `type` of the data-column (which in this case is `feature`), while the portion after the dot specifies an "attribute" of the data-type that was selected within the command using the argument `--attr patric_id,product`. Note that more than one attribute of a data-type can be selected by using a comma-delimited list of attributes.
 
-This mechanism of appending columns to the end of each line allows us to incrementally build up arbitrarly complex data-tables via a sequence of commands. 
+The above mechanism of appending new columns to the end of each line of an input file allows us to incrementally build up arbitrarly complex data-tables using a sequence of P3-commands. 
 
-the final step is:
+3. The final step is:
 ```
 p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,1491.662 gene | p3-get-feature-sequence --col feature.patric_id
 ```
@@ -124,15 +124,14 @@ which yields:
 >fig|1491.662.peg.1715 Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)
 MRQKLEDIKNSAINELKTTLSKDQLEAIRVKYLGKKGELTQILRGMGALSQEERPIVGKVANEVRSYIEETIKEAFSDIKNKEKSIRLENETIDITMPGKKQAVGKRHPLDLTLESMKDIFISMGFTIEEGPEVELDKYNFEALNIPKNHPARGEQDTFYINDNLVLRTQTSPIQIRTMENQKPPIKMIAPGKVYRSDSVDATHSPIFYQMEGLVVDKGITFSDLKGTLELFAKRMFGDKVKTKFRPHHFPFTEPSAEMDATCFVCNGEGCKVCKGSGWIELLGCGMVHPQVLRNCNIDPEVYSGFAFGFGVDRMVMMKYGIDDIRLLYESDMRFLNQF
 ```
-The above illustrates a final point, which is that in general,
-most P3-commands will use one of the columns as the "key"
-that it will use to look up data-values, and the "key" column-name
-can be specied using the `--col` (short for "column") command-argument. In this case, we used `--col feature.patric_id` to specify that the
+The above step illustrates a final point, which is that in general
+most P3-commands will select one of the columns (and by default, usually the last column) to use as the "key" to look up the specified set of data-values, and the "key" column-name
+can be explicitly specied using the `--col` (short for "column") command-argument. In this case, we used `--col feature.patric_id` to specify that the
 `feature.patric_id` column-value should be used as the data lookup-key
-to be used by `p3-get-feature-sequence`.
+that will be used by `p3-get-feature-sequence`.
 
-In the absence of a `--col` argument, P3-commands default to using
-the _last_ column of their input-table as their "key", which often simplifies incrementally building up an arbitrarily complex table by using the last attribute looked up as the "key" to look up the next data-item.
+As previously noted, in the absence of a `--col` argument, P3-commands default to using
+the _last_ column of their input-table as their current "key", which often simplifies incrementally building up an arbitrarily complex table by using the last attribute looked up as the "key" to look up the next data-item.
 
 Finally, note that every P3-command accepts a `--help` argument
 that will list and describe the arguments that the command accepts,

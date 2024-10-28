@@ -34,8 +34,8 @@ Learn the different types of data that are supported by the Python
 programming language
 
 ### TSV-3 - Working with TSVs
-Create a program that reads a "tab-separated value" (TSV) data-file
-and extracts selected data-fields from it
+Create a program that will read a "tab-separated value" (TSV) data-file
+and extract selected data-fields from it
 
 ### TSV-4 - Modifying Code
 Take your previous program and adjust it to support a new use case
@@ -65,7 +65,7 @@ proteins.
 ## 1.3 Kmers and Jaccard Similarities
 
 ### Kmers-1 - What Are Kmers? 
-Using DNA subsequences as proxies for an entire sequence
+Using DNA subsequences of length "K" (or "Kmers") as proxies for an entire sequence
 
 ### Kmers-2 - Jaccard Similarities 
 Using Kmers to estimate how similar two sequences are
@@ -79,5 +79,8 @@ How are protein and DNA similarities related?
 
 ## 1.4 - Building Representative Genome Sets
 
-### Building a Representative Genome Set (Repgen set)
-Create your own representative genome set out of your genome universe to classify genomes easily
+### RepGen-1 - Building Representative Sets (RepGen sets)
+Create your own set of "Representative Genomes" to summarize the diversity within a "Genome Universe"
+
+### RepGen-2 - Finding the Nearest RepGen
+Given a new "Mystery Genome", which Representative Genome is it most similar to?
