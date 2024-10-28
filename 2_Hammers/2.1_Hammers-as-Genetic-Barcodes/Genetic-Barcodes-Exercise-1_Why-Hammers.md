@@ -1,8 +1,8 @@
 # Hammers as Genetic Barcodes Exercise 1 - Why do we need hammers and what are they?
 
-Objective: Define and Describe the idea behind the Genetic Barcode and the Hammer
+Objective: Define and Describe the idea behind the "Genetic Barcode" that we call a "Hammer".
 
-At the end of the last unit, you were able to successfully create a representative genome set or "RepGenSet". A "RepGenSet" provides you with a broad overview of your "Universe of Genomes". Say you wanted to add a new genome to that Universe. How would you know which genome is the new genome's nearest representative? How would you find it? This is where the idea of a "Genetic Barcode" comes in. 
+At the end of the last unit, you were able to successfully create a "Representative Genome Set" or "RepGenSet". A "RepGenSet" provides you with a broad overview of your "Universe of Genomes". Suppose that you wanted to add a new genome to your Universe. How would you know which genome is the new genome's nearest representative? How would you find it? This is where the idea of a "Genetic Barcode" comes in. 
 
 You are probably familiar with the use of "barcodes" to identify a product or to encode a device's serial-number. In bioinformatics, we use readily identifiable sequences of DNA to serve as a "barcode" for a genome.
 
@@ -17,11 +17,11 @@ FIG-Bioinformatics-Course/
 
 ## Exercises
 
-1. Ask Grimoire to tell you what is meant by a "Genetic Barcode", with particular emphasis to which sequences provide a good barcode for microbes. (NOTE: If Grimoire uses any terms that you are not familiar with, you can ask it to explain these terms to you.)
+1. Ask Grimoire to tell you what is meant by a "Genetic Barcode", with particular emphasis to which sequences provide a good barcode for Bacteria and Archaea. (NOTE: If Grimoire uses any terms that you are not familiar with, you can ask it to explain these terms to you.)
 
 2. Ask Grimoire what properties and characteristics make a sequence a good "genetic barcode".
 
-3. In exercise (1.) Grimoire most likely cited the "16S Ribosomal RNA" as its example for Bacteria and Archaea. Ask it whether protein-encoding genes can also serve as "barcodes" for Bacteria and Archaea
+3. In exercise (1.) Grimoire most likely cited the "16S Ribosomal RNA" as its example for Bacteria and Archaea. Ask it whether protein-encoding genes can also serve as "barcodes" for Bacteria and Archaea.
 
 4. Ask Grimoire which properties or characteristics of a protein-encoding gene would make that gene a good "genetic barcode", if it has not already done so.
 

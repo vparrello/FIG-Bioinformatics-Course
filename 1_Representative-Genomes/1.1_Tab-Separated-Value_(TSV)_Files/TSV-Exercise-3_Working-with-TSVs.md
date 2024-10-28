@@ -1,6 +1,6 @@
 # TSV Exercise 3 - Working with TSV Files
 
-Objective: Use Grimoire to create a comandline program that reads and operates on Tab-Separated Files.
+Objective: Use Grimoire to create a command-line program that reads and operates on Tab-Separated Files.
 
 This exercise focuses on creating a program that accepts a list of column-names as command-line arguments, reads a TSV-file from STDIN, extracts the columns whose header-names match the argument list, and writes those columns to STDOUT. (For example, suppose that we have a TSV-file that has 15 columns, but we only care about the data contained in 3 of these columns.)
 
@@ -18,7 +18,7 @@ indentation is again used to represent directory-levels:
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
 │   └── 1.1_Tab-Separated-Value_(TSV)_Files
-│       └── TSV-Exercise-2_Working-with-TSVs.md   (You are here)
+│       └── TSV-Exercise-3_Working-with-TSVs.md   (You are here)
 ├── Data/
 │   └── rep200.list.tbl
 └── Code/
@@ -32,7 +32,7 @@ FIG-Bioinformatics-Course/
 
 2. Ask Grimoire to write an example-program that will accept a list of keywords as its command-line arguments. Then ask Grimoire to explain its code to you "line-by-line" if it did not do so.
 
-3. You will now ask Grimoire (or "prompt Grimoire", as it is also called)  to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement; create your own prompt asking Grimoire to implement this list of features and functions for you, then copy the pseudocode and code that Griomoire returns, and paste them into the template-file `command_line_kung.py`.
+3. You will now ask Grimoire (or "prompt" Grimoire, as it is also called)  to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement; create your own prompt asking Grimoire to implement this list of features and functions for you, then copy the pseudocode and code that Griomoire returns, and paste them into the template-file `command_line_kung.py`.
 (If Grimoire skips the step of describing the program in pseudocode, you can explicitly ask Grimoire to translate the code it generated into pseudocode, which will be more "human-readable" and will help you to better understand what the real code is doing.)
 
     * The program should be written in python.
@@ -61,7 +61,7 @@ FIG-Bioinformatics-Course/
 
 * NOTE: Grimoire does not know your operating-system and file-system unless you have told it in advance _"I am using macOS"_ or _"I am using Windows"_, so it might not catch every detail regarding generating and running your program. (For example, under Windows, the file-path separator is `\` instead of `/`.) If your program reports a "File Not Found" error, it means that your computer did not know where to look for the data file; in such cases you may need to use the "Full Path" to the file. Grimoire can teach you how to find the Full Path of the file, it can instruct you on what any error-messages that you receive mean, and it can suggest possible fixes. You got this!!
 
-6. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (The is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 5.)
+6. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (There is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 5.)
 
 7. Once you can get your `command_line_kung.py` program to run without throwing error-messages, try it again with the following command. This invocation should throw a warning message that you've asked for a nonexistent data-field, and then exit.
     
