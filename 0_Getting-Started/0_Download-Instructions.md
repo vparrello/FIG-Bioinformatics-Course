@@ -22,11 +22,6 @@ These are instructions on how to download the course through github. If you have
 6. Click in the new terminal and type `git --version` to verify your git bash installation.
 
 7. Next to download the course material, type `git clone https://github.com/vparrello/FIG-Bioinformatics-Course.git` inside your terminal.
-    ** Note: If you get an error saying that you need to configure your name and email in order to use git, then follow these instructions.
-    1. Inside the terminal, use the following command. Be sure to put in your own name inside the command instead of FIRST_NAME LAST_NAME. 
-        ``` git config --global user.name "FIRST_NAME LAST_NAME"```
-    2. Inside the terminal, use the following command. Be sure to put in your own name inside the command instead of MY_NAME@example.com.  
-        ```git config --global user.email "MY_NAME@example.com"```
 
 8. Once that finishes, type `git branch ` and then your name. This will be the name of your branch.  
 
