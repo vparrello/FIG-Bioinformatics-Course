@@ -14,13 +14,30 @@ FIG-Bioinformatics-Course/
 └── Data/
     └── Universe.fasta
 ```
+## Set up:
+
+At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. 
+
+Under `macOS` you can open the BV-BRC app by either double-clicking on its icon
+in your `/Applications` folder, or by using the following command-line method:
+```
+open /Applications/BV-BRC.app
+```
+
+Under `Windows`, you can double-click on the shortcut icon that the installation-wizard should have created on your desktop.
+=======
+Windows Example:
+```
+start "C:\Users\Default\AppData\Local\bv-brc.exe"
+
+```
 
 ## Overview:
 
-As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases, and several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
+As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
 There has thus developed a need to construct manageably small sets of "representatives" that capture the diversity of the full set of genomes and genes.
 
-We define a "Set of Representatives" as follow:
+We define a "Set of Representatives" as follows:
 
 * Let U be the Universe of entities being considered (in our case, genomes or sequences).
 
@@ -32,7 +49,7 @@ We define a "Set of Representatives" as follow:
 
     - every member of U is similar to at least one member of the RepSet.
 
-When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the problem of constructing a set of "Representative Sequences".
+When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the simpler problem of constructing a set of "Representative Sequences".
 
 Many measures of similarity can be used, but the measure we will use in this exercise is "Number of Kmers in Common". 
 
@@ -58,9 +75,14 @@ There are several algorithms for building RepSets. In this course, we will be us
 2. The following prompt provides the program specification for the representative-set algorithm:
 
 ```
-I will now give you a description of the command-line interface for the program `build_representative_set.py` to compute a "set of representative sequences" (RepGen set) using the "Stingy Addition" algorithm as defined in the uploaded definitions-file.
+I will now give you a description of a command-line interface and
+program called `build_representative_set.py` that will compute a
+"set of representative sequences" (RepGen set) using the "Stingy Addition"
+algorithm as defined in the uploaded definitions-file.
 
-The script should accept the following mandatory command-line arguments, in both long-form and the specified short-form:
+The script should accept the following mandatory command-line
+arguments, in both long-form and the specified short-form:
+
 * Kmer-length  (integer, short argument-name '-k')
 * Sim          (similarity threshold, short argument-name '-s')
 * input FASTA-file   (filename, short argument-name '-f')
@@ -68,11 +90,22 @@ The script should accept the following mandatory command-line arguments, in both
 
 The measure of similarity to be used is "Number of Kmers in common".
 
-The program should use BioPython to read the FASTA-file into a list, and then sort the sequence-objects by order of decreasing sequence-length, resolving length-ties by sequence, and then by sequence-ID.
+The program should use BioPython to read the FASTA-file.
+The first nonwhitespace portion of each FASTA identifier is a "feature-ID",
+while the remainder is the "genome name".
+Feature-IDs have the format 'fig|X.Y.peg.Z', where 'X', 'Y', and 'Z' are integers,
+and the portions 'fig|' and '.peg.' are literal substrings, not variables.
+The subpattern 'X.Y' within the feature-ID is a "genome-ID";
+you may extract this subpattern using a regular expression.
+Return a dictionary that maps feature-IDs to genome-IDs,
+a dictionary that maps feature-IDs to genome-names,
+and a list of (feature-ID, sequence) pairs.
 
-The main body of the program should construct a subset of the input sequences that satisfies the provided definition of a "Representative Set" (RepGen set).
+The main body of the program should construct a subset of the input sequence list
+that satisfies the provided definition of a "Representative Set" (RepGen set).
 
-When you are done, please write out the representative set to the RepSeq-file in FASTA format.
+When you are done, please write out the representative set to the RepSeq-file in FASTA format,
+where the FASTA identifiers have the form "genome-ID genome-name".
 ```
 
 Save the program that Grimoire generates as `build_representative_set.py`.
@@ -83,29 +116,19 @@ Save the program that Grimoire generates as `build_representative_set.py`.
 python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
 ```
 
+## Self-Check
+
 Check your result by running:
 ```
-python Code/fasta_reader.py < Data/myrep10.faa
+python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-lengths.txt
 ```
-The result should end with:
+The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 155
-Average sequence length: 363.73
+Number of sequences: 153
+Average sequence length: 356.73
 ```
-
-## COMMENT: Why the Sort?
-
-In the above exercise, we asked Grimoire to sort the sequences into
-a particular order before processing them; you may be wondering,
-why did we do that? The short answer is "reproducibility".
-
-The representative-set algorithm processes the sequences in the order
-that they were read in from the input-file, and at each step decides
-whether to keep or reject a sequence based on how similar it is
-to the sequences that were already accepted as representatives.
-We would like the set of representatives selected to be "stable",
-in the sense that we do not want the set of representatives selected
-to depend on the order that they were seen within the input-file.
-By sorting the sequences before processing them, we ensure that
-the same set of representatives will be selected regardless of the order
-that they appear within the input file.
+You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
+```
+diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.txt
+```
+since there should be no difference between these two files, the `diff` command should emit nothing. (NOTE: once again, the above will probably appear to be "wrapped" onto multiple lines on your screen, but it should all be entered as a single line.)
