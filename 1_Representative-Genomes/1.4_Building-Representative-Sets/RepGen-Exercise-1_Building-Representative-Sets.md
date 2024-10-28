@@ -25,6 +25,12 @@ open /Applications/BV-BRC.app
 ```
 
 Under `Windows`, you can double-click on the shortcut icon that the installation-wizard should have created on your desktop.
+=======
+Windows Example:
+```
+start "C:\Users\Default\AppData\Local\bv-brc.exe"
+
+```
 
 ## Overview:
 
