@@ -35,7 +35,7 @@ FIG-Bioinformatics-Course/
 
 5. Ask Grimoire to insert a "help block" for your code that will be returned if the code is invoked with a `-h` or `--help` argument.
 
-6. Lastly we need to write up our own documentation of the program inside its own file. Ask Grimoireto write  documentation for the code that describes the following things:
+6. Lastly we need to write up our own documentation of the program inside its own file. Ask Grimoire to write  documentation for the code that describes the following things:
 
     * Purpose of the program
     * Functions of the different variables

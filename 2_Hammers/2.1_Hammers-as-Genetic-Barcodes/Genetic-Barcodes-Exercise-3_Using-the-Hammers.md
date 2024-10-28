@@ -8,6 +8,7 @@ Follow the same pattern as the lesson before and find which representative genom
 
 ## Materials
 
+```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.1_Hammers-as-Genetic-Barcodes/
@@ -17,6 +18,7 @@ FIG-Bioinformatics-Course/
     └── rep10.list.tbl
     └── rep10.seqs.tbl
     └── rep10.hammers.tbl - output from the last lesson
+```
 
 ## Exercises
 
