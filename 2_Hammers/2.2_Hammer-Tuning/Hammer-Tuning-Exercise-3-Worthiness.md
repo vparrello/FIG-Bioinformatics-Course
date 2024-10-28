@@ -9,6 +9,7 @@ This exercise will help you understand how to assess hammer worthiness and how i
 ## Materials:
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.2_Hammer-Tuning/
@@ -16,6 +17,7 @@ FIG-Bioinformatics-Course/
 └── Data/
     ├── rep10.seqs.tbl (containing representative genome sequences)
     └── rep10.hammers.tbl (list of hammers for each representative genome)
+```
 
 ## Exercises:
 

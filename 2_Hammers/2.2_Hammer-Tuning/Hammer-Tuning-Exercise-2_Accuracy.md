@@ -9,6 +9,7 @@ This exercise will help you to understand how we can guarantee the accuracy of t
 ## Materials:
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
+```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.2_Hammer-Tuning/
@@ -16,7 +17,7 @@ FIG-Bioinformatics-Course/
 └── Data/
     ├── rep10.hammers.tbl (from previous exercise)
     └── rep10.seqs.tbl
-
+```
 
 ## Exercises:
 
