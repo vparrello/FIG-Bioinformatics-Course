@@ -52,7 +52,7 @@ We will then walk you through a simplified version of the steps required to find
 1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though it will wrap across multiple lines on your screen.):
 
 ```
-cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selective --nohead --eq gene,PheS --attr patric_id | p3-get-feature-sequence --col 2 > Data/myrep10.PheS.dna_sequences.fna
+cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selective --nohead --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --nohead --dna --col 2 > Data/myrep10.PheS.dna_sequences.fna
 ```
 2. To make a set of hammers for the selected SOUR, we extract all of the DNA 20-mers that occur exactly once in exactly one genome. How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
@@ -60,13 +60,19 @@ cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selecti
     Load in the file `Definitions.html` as in previous exercises. Then, ask Grimoire to write a python program named `hammer_creator.py` that will:
 
 ```
-    * Accept as '-K' a mandatory Kmer-length command-line argument;
+    * Accept as '-K' a mandatory integer Kmer-length command-line argument;
         
-    * Read a FASTA-formated file from `STDIN`, extract the feature-ID portion of each FASTA-header, and build a dictionary mapping feature-IDs to sequences.
+    * Read a FASTA-formatted DNA file from 'STDIN' using BioPython;
+    
+    * The portion of the FASTA header up to the first whitespace-character is the "feature-ID" ('fid'). Please extract the feature-ID and build a dictionary mapping feature-IDs to sequences, after first converting the sequences to lower-case.
 
-    * Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers; the substring 'x.y' is the 'genome_id' for the sequence. Find all of the Kmers that occur exactly once in exactly one 'genome_id'; these Kmers are the "Hammers"
+    * Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers, and the 'fig|' and '.peg' portions are literal strings, not variables. The substring 'x.y' is the 'genome_id' for the sequence; please use a regular expression to extract the genome-ID from the feature-ID. 
+    
+    * Find all of the Kmers that occur exactly once in exactly one 'genome_id'; these Kmers are the "Hammers"
 
-    * Print a two column tab-separated table of the hammers and the feature-ID that the hammer was found in, with column-headers of "hammer" and "fid".
+    * Print a two column tab-separated table to 'STDOUT' of the hammers and the feature-ID that each hammer was found in, with column-headers of "hammer" and "fid".
+
+    * Finally, please print to 'STDERR' the number of sequences that were read, the number of Kmers that were processed, and the number of Kmers that were hammers, and then exit.
 ```
 
 Paste Grimoire's program into the code-template `Code/hammer_creator.py`.
@@ -76,7 +82,7 @@ Note that the template includes a "block comment" section reserved for the progr
 
 ```
 python Code/hammer_creator.py -K 20 < Data/myrep10.PheS.dna_sequences.fna
-> Data/myrep10.hammers.tbl
+> Data/myrep10.PheS.hammers.tbl
 ```
 
 ## Self-Check
