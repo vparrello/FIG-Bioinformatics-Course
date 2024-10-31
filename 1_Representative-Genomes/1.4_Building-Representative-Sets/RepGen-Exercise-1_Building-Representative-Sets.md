@@ -116,6 +116,13 @@ Save the program that Grimoire generates as `build_representative_set.py`.
 python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
 ```
 
+4. Please repeat the previous step with a similarity-threshold of 50,
+as we will need this result in a later exercise:
+
+```
+python Code/build_representative_set.py -k 8 -s 50 -f Data/Universe.fasta -r Data/myrep50.faa
+```
+
 ## Self-Check
 
 Check your result by running:
