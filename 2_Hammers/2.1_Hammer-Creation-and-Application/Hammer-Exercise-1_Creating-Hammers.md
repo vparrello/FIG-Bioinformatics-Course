@@ -15,7 +15,9 @@ FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.1_Hammers-Creation-and-Application/
 │       └── Hammers-Exercise-1_Creating-Hammers.md (you are here)
-└── Data/myrep10.genomes-and-lengths.txt
+└── Data/
+    ├── myrep10.genomes-and-lengths.txt
+    └── myrep50.genomes-and-lengths.txt
 ```
 
 In the Kmer exercises, we used protein and DNA jaccard similarities to compare sequences

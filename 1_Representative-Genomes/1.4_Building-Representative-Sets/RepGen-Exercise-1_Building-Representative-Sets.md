@@ -125,7 +125,9 @@ python Code/build_representative_set.py -k 8 -s 50 -f Data/Universe.fasta -r Dat
 
 ## Self-Check
 
-Check your result by running:
+### myrep10
+
+Check your `myrep10` result by running:
 ```
 python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-lengths.txt
 ```
@@ -136,6 +138,23 @@ Average sequence length: 356.73
 ```
 You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
 ```
-diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.txt
+diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.solution.txt
 ```
 since there should be no difference between these two files, the `diff` command should emit nothing. (NOTE: once again, the above will probably appear to be "wrapped" onto multiple lines on your screen, but it should all be entered as a single line.)
+
+### myrep50
+
+Similarly, you can check your `myrep50` result by running:
+```
+python Code/fasta_reader.py < Data/myrep50.faa > Data/myrep50.genomes-and-lengths.txt
+```
+The result should print the following to STDERR (which in this case will just be the screen):
+```
+Number of sequences: 1036
+Average sequence length: 352.23
+```
+You can make a detailed check by running:
+```
+diff Data/myrep50.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep50.genomes-and-lengths.solution.txt
+```
+Again, `diff` should return nothing if there is no difference between the two files.
