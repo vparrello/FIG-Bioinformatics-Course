@@ -16,7 +16,7 @@ FIG-Bioinformatics-Course/
 ├── Code/
 │   └── find_nearest_reference.py 
 └── Data/
-    └── rep10.seqs.seed_protein.faa
+    └── myrep10.faa
 ```
 
 ## Overview:
@@ -42,7 +42,7 @@ You will also need to run `Code/install_sra_toolkit.py` if you have not already 
 
 3. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `rep10`:
 ```
-    python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seqs.seed_protein.faa < Data/mystery_PheS.faa
+    python3 Code/find_nearest_reference.py -K 8 -R Data/myrep10.faa < Data/mystery_PheS.faa
 ```
 Which representative genome was reported in the RepSet-description column?
 
