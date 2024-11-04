@@ -24,13 +24,8 @@ in your `/Applications` folder, or by using the following command-line method:
 open /Applications/BV-BRC.app
 ```
 
-Under `Windows`, you can double-click on the shortcut icon that the installation-wizard should have created on your desktop.
-=======
-Windows Example:
-```
-start "C:\Users\Default\AppData\Local\bv-brc.exe"
+Under `Windows`, you should instead double-click on the shortcut icon that the installation-wizard should have created on your desktop.
 
-```
 
 ## Overview:
 
@@ -133,8 +128,8 @@ python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-length
 ```
 The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 153
-Average sequence length: 358.28
+Number of sequences: 150
+Average sequence length: 358.19
 ```
 You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
 ```
@@ -150,8 +145,8 @@ python Code/fasta_reader.py < Data/myrep50.faa > Data/myrep50.genomes-and-length
 ```
 The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 1035
-Average sequence length: 352.24
+Number of sequences: 1039
+Average sequence length: 352.15
 ```
 You can make a detailed check by running:
 ```

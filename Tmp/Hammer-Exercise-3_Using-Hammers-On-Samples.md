@@ -1,23 +1,26 @@
-# Hammers as Genetic Barcodes Exercise 3 - Using the Hammer Set
+# Hammers Exercise 3 - Using Hammers on a Metagenomic Sample
 
-Objective: Practice using the hammers against two new genomes and determine if they are close
+Objective: Using Hammers to estimate which genomes are present in a metagenomic sample by finding which representatives contributed hammers that hit the sample.
 
-In the last lesson, we created a set of hammers(genetic barcodes) for a single genome and determined how close it was to your representative. You then found out which genome gets hit the most in terms of hammers and labelled the mystery genome as a neighbor of your representative. 
+In the last lesson, we use a set of hammers to determine which representative an unknown "Mystery Genome" was closest to.
 
-Follow the same pattern as the lesson before and find which representative genome is closest to your mystery genome. Then we give you a sample with multiple genomes in it. Compare your hammer results of what is in the sample to what the solution says to see how accurate your hammers are.
+In this exercise, we will give you a sample containing multiple genomes.
+Such mixed samples are often called "metagenomes".
+By tabulating which representatives contributed hammers that hit this mixture of genomes, you will be able to estimate which genomes are present in the sample, in a process analagous to taking a "poll" or "survey" of the members of a population.
+
 
 ## Materials
 
 ```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
-│   └── 2.1_Hammers-as-Genetic-Barcodes/
-│       └── Genetic-Barcodes-Exercise-3_Using-the-Hammers.md (you are here)
+│   └── 2.1_Hammer-Creation-and-Application/
+│       └── Hammer-Exercise-3_Using-Hammers-on-Samples.md (you are here)
 └── Data/
     └── MysteryGenome2.fna
     └── rep10.list.tbl
     └── rep10.seqs.tbl
-    └── rep10.hammers.tbl - output from the last lesson
+    └── myrep10.hammers.tbl - output from Hammer-Exercise-1
 ```
 
 ## Exercises
