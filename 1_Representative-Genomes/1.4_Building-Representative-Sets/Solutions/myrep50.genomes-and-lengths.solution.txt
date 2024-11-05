@@ -1,3 +1,4 @@
+sequence_id	sequence_length
 511145.12	327
 1177185.3	345
 1183379.4	330
