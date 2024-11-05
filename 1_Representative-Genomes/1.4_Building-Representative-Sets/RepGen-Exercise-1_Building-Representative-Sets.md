@@ -16,16 +16,16 @@ FIG-Bioinformatics-Course/
 ```
 ## Set up:
 
-At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the BV-BRC.
-```
-open "path/to/application"
-```
+At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. 
 
-macOS example:
+Under `macOS` you can open the BV-BRC app by either double-clicking on its icon
+in your `/Applications` folder, or by using the following command-line method:
 ```
 open /Applications/BV-BRC.app
 ```
 
+Under `Windows`, you can double-click on the shortcut icon that the installation-wizard should have created on your desktop.
+=======
 Windows Example:
 ```
 start "C:\Users\Default\AppData\Local\bv-brc.exe"
@@ -34,7 +34,7 @@ start "C:\Users\Default\AppData\Local\bv-brc.exe"
 
 ## Overview:
 
-As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
+As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
 There has thus developed a need to construct manageably small sets of "representatives" that capture the diversity of the full set of genomes and genes.
 
 We define a "Set of Representatives" as follows:
@@ -49,7 +49,7 @@ We define a "Set of Representatives" as follows:
 
     - every member of U is similar to at least one member of the RepSet.
 
-When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the problem of constructing a set of "Representative Sequences".
+When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the simpler problem of constructing a set of "Representative Sequences".
 
 Many measures of similarity can be used, but the measure we will use in this exercise is "Number of Kmers in Common". 
 
