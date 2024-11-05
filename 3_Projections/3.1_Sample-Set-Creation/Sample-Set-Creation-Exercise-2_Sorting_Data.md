@@ -16,7 +16,7 @@ FIG-Bioinformatics-Course/
             └── Sample-Set-Creation Exercise-2_Sorting_Data.md (you are here)
     Data/
 ```
-In previous lessons, we have used FastQ and FastA files when it comes to our data. You might have been wondering what the difference is between the two! 
+In previous lessons, we have used FastQ and FastA files when it comes to our data. You might have been wondering what the difference is between the two! In previous excercises, we read files in FastA format. For sequencing data, we use FastQ format, which contains information about sequence quality in addition to sequence data.
 
 In preperation for this exercise, you will need to check the storage space on your computer. If you are working on Mac, you can click on the Apple incon in the top left of your screen and bring up the "About This Mac" window. If you are working on Windows, (incude windows instructions). To have room for all the samples, you will need approximately 10 GB.
 In addition to the space on your computer, your reading of the FASTQ files will be much eaiser with an extension called Rainbow CSV. If you don't have it already installed, search it up in the extensions tab in your VSCode.
