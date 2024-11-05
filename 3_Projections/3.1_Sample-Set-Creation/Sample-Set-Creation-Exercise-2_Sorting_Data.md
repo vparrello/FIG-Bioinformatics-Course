@@ -1,6 +1,6 @@
 # Sample Set Creation Sorting Data 
 
-Objective: Sort your gathered data into diseased and control groups.
+Objective: Sort your gathered data into diseased and control groups, then gather more samples.
 
 Now that we have gathered all the data we need, it's time to make the data useable for our machine learning model. In order to create an accurate (can't remember the word), the machine learning model will need to know what data is from diseaed patients and what data is a control.
 
@@ -16,21 +16,37 @@ FIG-Bioinformatics-Course/
             └── Sample-Set-Creation Exercise-2_Sorting_Data.md (you are here)
     Data/
 ```
-    
+In previous lessons, we have used FastQ and FastA files when it comes to our data. You might have been wondering what the difference is between the two! 
 
+In preperation for this exercise, you will need to check the storage space on your computer. If you are working on Mac, you can click on the Apple incon in the top left of your screen and bring up the "About This Mac" window. If you are working on Windows, (incude windows instructions). To have room for all the samples, you will need approximately 10 GB.
+In addition to the space on your computer, your reading of the FASTQ files will be much eaiser with an extension called Rainbow CSV. If you don't have it already installed, search it up in the extensions tab in your VSCode.
+
+*Another helpful tool for viewing this course and the files is Word Wrap, which can be toggled under the View setting at the top of your screen.
 
 ## Exercise
 
-1. Explain the difference between fastq and fasta
+1. In this lesson, you will be downloading more data, then sorting it into two categories. You will need places to put all that data you will sort, so you will be creating two folders in the data directory of your course: one folder for 'Diseased' and one folder for 'Controls'. 
 
-2. In this lesson, you will be sorting your data into two categories, and will need places to put all that data you will sort. You will be putting this data into two directories in the data folder of your course: one folder for 'Diseased' and one folder for 'Controls'. 
-To create these directories, click on the data directory so you can see all the files and subdirectpries within (the data directory should also be highlighted). At the top of (what is this called, the directory thingy?), there are two buttons for adding something to your directory: new file and new folder. 
-You will click on New Folder and name it 'Diseased', then create another folder and name it 'Control'. Make sure these two folders are under the Data directory! Wherever your highlight is, that is where the new folder will go under!
+2. To create these directories, click on the data directory so you can see all the files and subdirectpries within (the data directory should also be highlighted). At the top of the menu, there are two buttons for adding something to your directory: new file and new folder.
 
-2. (Command line way) Open your terminal within VSCode. Start by asking Grimoire how to create folders using the command line. Use the prompts (he?it?) gives you to create a 'Diseased' and a 'Controls' folder. To check that they were created, use the command ls and your new folders should appear!
-(possible Grimoire prompt: in visual studio code, how can you create folders using the command line?)
+3. You will click on the button for New Folder and name it 'Diseased', then create another folder and name it 'Control'. Make sure these two folders are under the Data directory! Wherever your highlight is, that is where the new folder will go under!
 
-3. Now that you have downloaded your data, and created the folders it will go in, you need to start sorting it! By now, all your samples should be stored in the Data folder of this course. Open your samples inside VSCode. If you don't already have the extension Rainbow CSV, go to your Extensions tab and install it; this will make combing throught the file much eaiser!
+4. Double check that your two folders went under the Data directory.
+
+Another way to create your folders is using the command line, which you have been learning about throughout this course! If you'd like to try out this option, delete one or both of your folders and give it a shot!
+
+1. Open your terminal within VSCode.
+
+2. Next, use the command "cd" and write the path to your Data directory.
+
+3. Once you are in the Data directory, use the "mkdir" command, followed by the name if your file (Diseased, and Controls).
+
+4. To make sure the files are there, use the command "ls" and look for your "Diseased" and "Control" files.
+
+5. Now that you have created the folders, you need to start sorting it! By now, there should be 10 samples stored in the Data folder of this course. Open each sample and mark it as either Diseased or Control, then put it in the corresponding folder.
+
+6. Once you have sorted your 10 FASTQ files, your task will be to find more samples related to your topic. The goal is to have 100 samples toal, 50 for Diseased and 50 for Controls.
+
 
 # TODO
 Create two directories in the data folder of the course
@@ -40,7 +56,7 @@ Separate into control and diseased groups
     Also could be in the name when doing the search
     Look inside PRJDB9292(BioProject) • DRP008133(SRA Study) • All experiments • All runs( This is what we want)
         MetaData button in here - Consistent data for most projects
-        Side Note: They all get the same name when doanloaded. Rename them ASAP so that you don't lose your data from ambiguous names. MENTION IT AGAIN
+        Side Note: They all get the same name when downloaded. Rename them ASAP so that you don't lose your data from ambiguous names. MENTION IT AGAIN
         Mention word wrap in the view menu and rainbow CSV extension 
 Roughly 1 GB per 10 samples (Have students check their space on their computer)
 Need minimum of 100 samples, 50 from each group. (Can we do this from one paper?)
