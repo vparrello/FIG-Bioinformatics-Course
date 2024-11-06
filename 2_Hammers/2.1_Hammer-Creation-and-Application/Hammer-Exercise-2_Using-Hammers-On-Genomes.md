@@ -9,31 +9,44 @@ In this exercise we will generate code that will search the "Mystery Genome" to 
 ```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers 
-│   └── 2.1_Hammers-as-Genetic-Barcodes/
-│       └── Genetic-Barcodes-Exercise-2-New-Genome.md(you are here)
+│   └── 2.1_Hammer-Creation-and_Application/
+│       └── Hammer-Exercise-2_Using-Hammers-on-Genomes.md (you are here)
 └── Data/
     ├── MysteryGenome1.fna
-    ├── rep10.list.tbl
-    └── rep10.seqs.tbl
+    └── myrep10.PheS.hammers.tbl
 ```
 
 ## Exercises
 
-1. We need to compare the DNA sequences in `MysteryGenome1.fna` to the set of hammers
-you generated in the previous exercise. Ask Grimoire to write a program that will:
+1. We need to compare the DNA sequences in `MysteryGenome1.fna` to the set of hammers that you generated in the previous exercise.
+Ask Grimoire to write a program that will:
 
-    * Accept a mandatory TSV "hammers" filename as an argument.
+    * Accept a mandatory TSV "hammers" filename argument,
+    short name `-H`
 
-    * Skip the header-line of the hammer-file and then read the first and second columns into a dictionary as a `hammer` and `genome_id`, respectively.
+    * Accept a mandatory TSV genome-names filename argument,
+    short name `-G`
+
+    * Skip the header-line of the hammer-file and then read
+    the first and second columns as a `hammer` and `feature_id`,
+    respectively. A `feature_id` has the format 'fig|x.y.peg.z',
+    where 'x', 'y', and 'z' are integers, and 'fig|' and '.peg.'
+    are literal substrings. The portion 'x.y' is the `genome_id`
+    for the 'feature_id'; extract the `genome_id` using a regex,
+    and build a dictionary mapping each hammer to its genome_id.
+
+    * Skip the header-line of the genome-names file and then read
+    the first and second columns into a dictionary as a `genome_id`
+    and `genome_name`, respectively.
 
     * Determine the Kmer-length `K` of the hammers from the hammers dictionary.
-        (NOTE: all the hammers in the file will have the same length.)
+    (NOTE: all the hammers in the file will have the same length.)
 
     * Use BioPython to read the sequences of the genome from `STDIN`.
 
     * For each sequence, extract all possible Kmers, and if a Kmer is a hammer, increment the score for its associated `genome_id`; then repeat this operation on the reverse-complement of that sequence, since a gene can face in either direction.
 
-    * Print out a TSV file of the `genome_ids` found and their associated scores, sorted by decreasing score.
+    * Print out a TSV file of the genome_ids found and their associated genome_name and score, sorted by decreasing score.
     
     * Finally, please translate the python code into pseudocode.
 
@@ -42,7 +55,7 @@ you generated in the previous exercise. Ask Grimoire to write a program that wil
 3. Run your script on the `MysteryGenome1.fna`. The result should be a table of representative genome-IDs followed by how many hammers from that representative hit the "Mystery Genome". Take the genome-ID with the top number of hits as the most probable representative for the "Mystery Genome".
 
 
-Congratulations! You have constructed the genetic barcodes for the PheS SOUR for the set of `rep10` representative genomes, and then used them to identify the `rep10` genome `511145.12` as the most likely representative for your "Mystery Genome"!
+Congratulations! You have constructed a set of hammers for the PheS SOURs in the `myrep10` set of representative genomes, and then used them to identify the `myrep10` genome `511145.12` as the most likely representative for your "Mystery Genome"!
 
 ## Caveats
 
