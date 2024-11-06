@@ -24,7 +24,11 @@ in your `/Applications` folder, or by using the following command-line method:
 open /Applications/BV-BRC.app
 ```
 
-Under `Windows`, you should instead double-click on the shortcut icon that the installation-wizard should have created on your desktop.
+Under `Windows`, you can either double-click on the shortcut icon that the installation-wizard should have created on your desktop, or use the following command from within the VScode terminal-window in `gitbash` mode:
+```
+wt cmd //k "c:/Program Files/PATRIC/SetPATRICEnv.cmd"
+```
+(The above command should be entered all on one line, even if it appears wrapped on your screen; also, please note that there really is a space between `Program` and `Files`.)
 
 
 ## Overview:
