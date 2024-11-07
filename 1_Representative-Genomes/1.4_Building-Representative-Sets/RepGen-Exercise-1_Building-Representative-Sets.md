@@ -76,50 +76,60 @@ There are several algorithms for building RepSets. In this course, we will be us
 ```
 I will now give you a description of a command-line interface and
 program called `build_representative_set.py` that will compute a
-"set of representative sequences" (RepGen set) using the "Stingy Addition"
+"set of representative sequences" (RepGen set) using the "Stingy Addition" 
 algorithm as defined in the uploaded definitions-file.
 
 The script should accept the following mandatory command-line
 arguments, in both long-form and the specified short-form:
 
-* Kmer-length  (integer, short argument-name '-k')
-* Sim          (similarity threshold, short argument-name '-s')
-* input FASTA-file   (filename, short argument-name '-f')
-* output RepSeq-file  (filename, short argument-name '-r')
+* Kmer-length  (integer, short argument-name '-K')
+* Sim          (similarity threshold, short argument-name '-S')
+* input FASTA-file    (filename, short argument-name '-F')
+* output RepSeq-file  (filename, short argument-name '-R')
+* output Genomes-file (filename, short argument-name '-G')
 
 The measure of similarity to be used is "Number of Kmers in common".
 
 The program should use BioPython to read the FASTA-file.
 The first nonwhitespace portion of each FASTA identifier is a "feature-ID",
-while the remainder is the "genome name".
+while the remainder is the "genome-name".
 Feature-IDs have the format 'fig|X.Y.peg.Z', where 'X', 'Y', and 'Z' are integers,
 and the portions 'fig|' and '.peg.' are literal substrings, not variables.
 The subpattern 'X.Y' within the feature-ID is a "genome-ID";
 you may extract this subpattern using a regular expression.
 Return a dictionary that maps feature-IDs to genome-IDs,
-a dictionary that maps feature-IDs to genome-names,
+a dictionary that maps genome-IDs to genome-names,
 and a list of (feature-ID, sequence) pairs.
 
-The main body of the program should construct a subset of the input sequence list
-that satisfies the provided definition of a "Representative Set" (RepGen set).
+The main body of the program should construct a subset of the
+input sequence list that satisfies the provided definition
+of a "Representative Set" (RepGen set).
 
-When you are done, please write out the representative set to the RepSeq-file in FASTA format,
-where the FASTA identifiers have the form "genome-ID genome-name".
+When you are done, please write out the representative set
+to the RepSeq-file in FASTA format, where the FASTA heading
+has the form "genome-ID genome-name".
+Please also write a tab-separated file of representative-set 
+genome-IDs and genome-names to the genome-names file,
+with headings 'genome_id' and 'genome_name'. 
+Then exit the program.
+```
+NOTE: We used the new term "regular expression" in this prompt.
+A "regular expression" (or `regex` for short) is a special method for defining a pattern to be matched or edited.
+The language of "regular expressions" is quite complex, and constructing a regular expression that matches a desired pattern is quite human-error-prone, but fortunately Grimoire is much better at constructing regular expressions than most humans, which means that you can specify the pattern using ordinary language and let Grimoire do the hard work for you! :-)
+
+3. Save the program that Grimoire generates as `build_representative_set.py`.
+
+4. Run the program as follows:
+
+```
+python Code/build_representative_set.py -K 8 -S 10 -F Data/Universe.fasta -R Data/myrep10.faa -G Data/myrep10.genomes.tbl
 ```
 
-Save the program that Grimoire generates as `build_representative_set.py`.
-
-3. Run the program as follows:
-
-```
-python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
-```
-
-4. Please repeat the previous step with a similarity-threshold of 50,
+5. Please repeat the previous step with a similarity-threshold of 50,
 as we will need this result in a later exercise:
 
 ```
-python Code/build_representative_set.py -k 8 -s 50 -f Data/Universe.fasta -r Data/myrep50.faa
+python Code/build_representative_set.py -K 8 -S 50 -F Data/Universe.fasta -R Data/myrep50.faa -G Data/myrep50.genomes.tbl
 ```
 
 ## Self-Check

@@ -18,14 +18,15 @@ FIG-Bioinformatics-Course/
 
 ## Exercises
 
-1. We need to compare the DNA sequences in `MysteryGenome1.fna` to the set of hammers that you generated in the previous exercise.
-Ask Grimoire to write a program that will:
+1. We need to compare the DNA sequences in `MysteryGenome1.fna`
+to the set of hammers that you generated in the previous exercise.
+Ask Grimoire to write a program named `hammer_compare.py` that will:
 
     * Accept a mandatory TSV "hammers" filename argument,
-    short name `-H`
+    short name `-H`, long name `--hammers`.
 
     * Accept a mandatory TSV genome-names filename argument,
-    short name `-G`
+    short name `-G`, long name `--genome-names`.
 
     * Skip the header-line of the hammer-file and then read
     the first and second columns as a `hammer` and `feature_id`,
@@ -44,11 +45,19 @@ Ask Grimoire to write a program that will:
 
     * Use BioPython to read the sequences of the genome from `STDIN`.
 
-    * For each sequence, extract all possible Kmers, and if a Kmer is a hammer, increment the score for its associated `genome_id`; then repeat this operation on the reverse-complement of that sequence, since a gene can face in either direction.
+    * For each sequence, extract all possible Kmers, and if a Kmer is a hammer,
+    increment the score for its associated `genome_id`; then repeat this operation on the reverse-complement of that sequence, since a gene can face in either direction.
 
-    * Print out a TSV file of the genome_ids found and their associated genome_name and score, sorted by decreasing score.
+    * Print to STDOUT a TSV file of the genome_ids found
+    and their associated genome_name and score
+    sorted by decreasing score.
+    Please handle missing genome-names gracefully;
+    if a genome_id does not have an associated genome-name,
+    display the genome_name as 'Unknown sp.' in the output TSV file,
+    and send a warning to STDERR that the name of genome_id was not in
+    the genome-names file.
     
-    * Finally, please translate the python code into pseudocode.
+Finally, please ask Grimoire to translate the python code into pseudocode.
 
 2. Once Grimoire is done, please paste its pseudocode and code into `Code/hammer_compare.py` and save it as usual.
 
