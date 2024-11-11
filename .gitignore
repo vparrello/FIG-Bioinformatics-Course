@@ -399,3 +399,14 @@ FodyWeavers.xsd
 
 # Mac DSstore ignore
 .DS_Store
+Tmp/hammer-creator_prompt.txt
+Tmp/build_representative_set_prompt.txt
+Tmp/build_representative_set_solution.py
+Tmp/myrep10.faa
+Tmp/foo.faa
+.gitignore
+Tmp/hammer_creator_solution.py
+Tmp/foo.fna
+Tmp/foo.hammers
+Data/#Universe.fasta#
+Data/.#Universe.fasta
