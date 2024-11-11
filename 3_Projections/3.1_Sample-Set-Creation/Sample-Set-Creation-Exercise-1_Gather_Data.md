@@ -75,7 +75,7 @@ prefetch SRR12345678
 9. After you have downloaded a single SRA run, you can use the following command to convert the data into a FASTA file **Again, be sure to replace the SRR12345678 with your SRA run accession number**:
 
 ```
-fastq-dump --split-files SRR12345678
+fastq-dump --split-files SRR12345678 
 ```
 
 10. Follow these steps to download and convert your data for the rest of the samples in your search. Note that this process can take a very long time depending on how many samples you have. But the more samples you have, the more accurate your model will be. For now, download and convert 10 samples so that you have enough data to test your programs. Once you are done, make sure that all of your samples are included in the Data directory of this course to make them easier to access later.
