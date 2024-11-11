@@ -4,58 +4,84 @@
 # which will prevent the pseudocode from       #
 # registering as code                          #                             #
 """
-To write a Python program that reads a named FASTA file
-and performs the requested operations, we'll follow these steps
-in the program:
+1. Initialize Variables:
+  * Create variables to store
+    - the total sequence count,
+    - total sequence length,
+    - a list to store sequence records.
 
-1. Open and Read the FASTA File: Parse the FASTA file line by line.
-  A FASTA file starts each new sequence with a line that begins
-  with ">", followed by the sequence ID. The lines that follow,
-  up until the next ">" or the end of the file, are the sequence
-  itself.
+2. Read Input (FASTA Format):
+  * Read the FASTA file line-by-line.
 
-2. Process Each Sequence: We'll store the ID and the sequence
-  length, printing them to standard output (STDOUT) in a
-  tab-separated format.
+  * Identify headers (lines starting with >),
+    and treat the first word in the header as sequence_id,
+    with the rest as description.
 
-3. Calculate the Average Length: Once all sequences are processed,
-  we'll calculate the average length of the sequences and print this
-  to standard error (STDERR).
+  * For subsequent lines, if they do not start with >,
+    treat them as part of the sequence.
 
-4. Error Handling: Add basic error handling for file operations. 
+3. Extract Information:
+  * For each sequence entry, calculate its length.
+  * Store each sequence ID and its length in a list.
+
+4. Output to STDOUT and STDERR:
+  * Print sequence_id and sequence_length as tab-separated values.
+  * Print the number of sequences and average sequence length to STDERR.
+
+5. Exit Program:
+  * Exit cleanly after printing the required details.
 """
 ################################################
 import sys
 
-def process_fasta_file():
+def main():
     sequence_count = 0
     total_length = 0
+    sequences = []
+
     current_id = None
     current_sequence = []
 
+    # Reading from STDIN
     for line in sys.stdin:
         line = line.strip()
-        if line.startswith('>'):
+        
+        if line.startswith('>'):  # Header line
             if current_id is not None:
-                sequence_length = len(''.join(current_sequence))
-                print(f"{current_id}\t{sequence_length}")
+                # Calculate length of current sequence and store result
+                sequence_length = len("".join(current_sequence))
+                sequences.append((current_id, sequence_length))
                 sequence_count += 1
                 total_length += sequence_length
             
-            current_id = line[1:].split()[0]
-            current_sequence = []
-        else:
+            # Parse header
+            header_parts = line[1:].split(maxsplit=1)
+            current_id = header_parts[0]
+            current_sequence = []  # Reset sequence storage
+
+        else:  # Sequence line
             current_sequence.append(line)
     
+    # Process the last sequence in file
     if current_id is not None:
-        sequence_length = len(''.join(current_sequence))
-        print(f"{current_id}\t{sequence_length}")
+        sequence_length = len("".join(current_sequence))
+        sequences.append((current_id, sequence_length))
         sequence_count += 1
         total_length += sequence_length
-    
-    average_length = total_length / sequence_count if sequence_count > 0 else 0
-    print(f"Number of sequences: {sequence_count}", file=sys.stderr)
+
+    # Print results to STDOUT
+    print("sequence_id\tsequence_length")
+    for seq_id, seq_len in sequences:
+        print(f"{seq_id}\t{seq_len}")
+
+    # Calculate average length and print summary to STDERR
+    if sequence_count > 0:
+        average_length = total_length / sequence_count
+    else:
+        average_length = 0
+
+    print(f"{sequence_count} sequences read.", file=sys.stderr)
     print(f"Average sequence length: {average_length:.2f}", file=sys.stderr)
 
 if __name__ == "__main__":
-    process_fasta_file()
+    main()
