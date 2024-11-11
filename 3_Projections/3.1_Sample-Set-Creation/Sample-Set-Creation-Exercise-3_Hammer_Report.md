@@ -30,7 +30,7 @@ FIG-Bioinformatics-Course/
 
 4. Now comes the tricky part. You will need to look at your output and see if you can identify where the genomes that are present in the sample end and where the noise begins in your sample. So we need a true read on what is actually in the sample to help us determine where that boundary is. To do this, we will be using a few tools in the bv-brc software suite. Ensure you have the bv-brc cli installed on your system. 
 
-    #### TODO do we need to create an account to use bv-brc?
+
 
   ** Note: If your data is an AMPLICON data type and not a Whole Genome Shotgun data type, you will be seeing less genomes in your report than our example. This is because your data is processed with a cheaper method and therefore does not capture as much data when it is being processed in the lab. Please keep this in mind when following along with the rest of the lesson.**
 
