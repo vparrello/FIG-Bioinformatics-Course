@@ -4,13 +4,13 @@ A "hammer" is a 20-character DNA sequence that occurs precisely once in precisel
 
 ## 2.1 Hammers as "Genetic Barcodes"
 
-### Genetic Barcodes-1 Why do we need hammers and what are they?
+### Hammers Exercise 1 - What are "Hammers", why do we need them, and how do we build them?
 Discover what "hammers" are, and how they can be used to classify an unknown genome
 
-### Genetic Barcodes-2 New Genome
+### Hammer Exercise 2 - Using Hammers to find the Nearest Representative
 Use your hammer tool to attempt to identify a "mystery genome".
 
-### Genetic Barcodes-3 Using the Hammers
+### Hammer Exercise 3 - Using Hammers to obtain a "census" of a sample
 Use your hammer tool to identify which genomes are present within a metagenomic sample.
 
 ## 2.2 Hammer Tuning

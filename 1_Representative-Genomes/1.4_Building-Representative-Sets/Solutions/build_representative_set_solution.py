@@ -1,230 +1,215 @@
 ########################################################################
-# Prompt that generated 'build_representative_set_solution.py'
+# Prompt that generated 'build_representative_set_solution.py',
+# after first attaching 'Definitions.html'
 """
-I will now give you a description of the command-line interface and
+I will now give you a description of a command-line interface and
 program called `build_representative_set.py` that will compute a
-"set of representative sequences" (RepGen set) using the "Stingy Addition"
+"set of representative sequences" (RepGen set) using the "Stingy Addition" 
 algorithm as defined in the uploaded definitions-file.
 
 The script should accept the following mandatory command-line
 arguments, in both long-form and the specified short-form:
 
-* Kmer-length  (integer, short argument-name '-k')
-* Sim          (similarity threshold, short argument-name '-s')
-* input FASTA-file   (filename, short argument-name '-f')
-* output RepSeq-file  (filename, short argument-name '-r')
+* Kmer-length  (integer, short argument-name '-K')
+* Sim          (similarity threshold, short argument-name '-S')
+* input FASTA-file    (filename, short argument-name '-F')
+* output RepSeq-file  (filename, short argument-name '-R')
+* output Genomes-file (filename, short argument-name '-G')
 
 The measure of similarity to be used is "Number of Kmers in common".
 
 The program should use BioPython to read the FASTA-file.
 The first nonwhitespace portion of each FASTA identifier is a "feature-ID",
-while the remainder is the "genome name".
+while the remainder is the "genome-name".
 Feature-IDs have the format 'fig|X.Y.peg.Z', where 'X', 'Y', and 'Z' are integers,
 and the portions 'fig|' and '.peg.' are literal substrings, not variables.
 The subpattern 'X.Y' within the feature-ID is a "genome-ID";
 you may extract this subpattern using a regular expression.
 Return a dictionary that maps feature-IDs to genome-IDs,
-a dictionary that maps feature-IDs to genome-names,
+a dictionary that maps genome-IDs to genome-names,
 and a list of (feature-ID, sequence) pairs.
 
-The main body of the program should construct a subset of the input sequence list
-that satisfies the provided definition of a "Representative Set" (RepGen set).
+The main body of the program should construct a subset of the
+input sequence list that satisfies the provided definition
+of a "Representative Set" (RepGen set).
 
-When you are done, please write out the representative set to the RepSeq-file in FASTA format,
-where the FASTA identifiers have the form "genome-ID genome-name".
+When you are done, please write out the representative set
+to the RepSeq-file in FASTA format, where the FASTA heading
+has the form "genome-ID genome-name".
+Please also write a tab-separated file of representative-set 
+genome-IDs and genome-names to the genome-names file,
+with headings 'genome_id' and 'genome_name'. 
+Then exit the program.
 """
 ########################################################################
 # Pseudocode for 'build_representative_set_solution.py'
-"""DEFINE FUNCTION parse_fasta(fasta_file):
-    INITIALIZE empty dictionary feature_to_genome
-    INITIALIZE empty dictionary feature_to_name
-    INITIALIZE empty list sequences
-    DEFINE genome_id_pattern as a regular expression for 'fig|X.Y.peg.Z'
-    
-    FOR each record in fasta_file:
-        SET header as the record's description
-        SET seq as the record's sequence
-        
-        SET feature_id as the first portion of header (split by space)
-        
-        IF feature_id matches genome_id_pattern:
-            EXTRACT genome_id from the match
-        ELSE:
-            RAISE error for invalid feature_id format
-        
-        SET genome_name as the rest of the header (after feature_id)
-        
-        ADD genome_id to feature_to_genome[feature_id]
-        ADD genome_name to feature_to_name[feature_id]
-        APPEND (feature_id, seq) to sequences
-    
-    RETURN feature_to_genome, feature_to_name, sequences
+"""
+# Main Execution
+START
 
+DEFINE parse_arguments
+    PARSE command-line arguments for Kmer-length (-K), similarity threshold (-S), input FASTA file (-F), output RepSeq file (-R), and output Genomes file (-G)
+    RETURN parsed arguments
 
-DEFINE FUNCTION compute_kmers(sequence, k):
-    INITIALIZE empty set kmer_set
-    FOR each i from 0 to (length of sequence - k):
-        ADD subsequence of length k from index i to kmer_set
-    RETURN kmer_set
-
-
-DEFINE FUNCTION stingy_addition(sequences, feature_to_genome, k, sim_threshold):
-    INITIALIZE empty list repgen_set
-    INITIALIZE empty list repgen_kmer_sets
+DEFINE parse_genome_data(fasta_file)
+    INITIALIZE dictionaries:
+        feature_to_genome - map from feature-ID to genome-ID
+        genome_to_name - map from genome-ID to genome-name
+    INITIALIZE list:
+        feature_sequences - list of (feature-ID, sequence) pairs
+    SET regex pattern to extract genome-ID from feature-ID
     
-    FOR each (feature_id, seq) in sequences:
-        COMPUTE current_kmers from seq using compute_kmers(seq, k)
+    FOR each record in fasta_file
+        SET header to record's description
+        SET sequence to record's sequence as a string
+        SPLIT header into feature_id (first portion) and genome_name (remainder)
         
-        INITIALIZE is_similar as False
-        FOR each existing_kmers in repgen_kmer_sets:
-            SET common_kmers as intersection of current_kmers and existing_kmers
-            IF size of common_kmers >= sim_threshold:
-                SET is_similar as True
-                BREAK out of loop
-        
-        IF is_similar is False:
-            APPEND (feature_id, seq) to repgen_set
-            APPEND current_kmers to repgen_kmer_sets
+        IF pattern matches feature_id
+            SET genome_id using matched portion
+            MAP feature_id to genome_id in feature_to_genome
+            MAP genome_id to genome_name in genome_to_name
+            ADD (feature_id, sequence) to feature_sequences
+            
+    RETURN feature_to_genome, genome_to_name, feature_sequences
+
+DEFINE extract_kmers(sequence, k)
+    RETURN set of all substrings of length k in sequence
+
+DEFINE compute_repgen_set(feature_sequences, feature_to_genome, kmer_length, sim_threshold)
+    INITIALIZE genome_kmers - map from genome-ID to unique set of K-mers
+    INITIALIZE repgen_set - set of representative genome-IDs
     
+    FOR each (feature_id, sequence) in feature_sequences
+        SET genome_id using feature_to_genome[feature_id]
+        ADD K-mers from sequence to genome_kmers[genome_id]
+        
+    FOR each genome_id, kmers in genome_kmers
+        SET is_representative to TRUE
+        FOR each repgen_id in repgen_set
+            SET common_kmers as intersection of genome_kmers[genome_id] and genome_kmers[repgen_id]
+            IF size of common_kmers is greater than or equal to sim_threshold
+                SET is_representative to FALSE
+                BREAK inner loop
+        IF is_representative is TRUE
+            ADD genome_id to repgen_set
+            
     RETURN repgen_set
 
-
-DEFINE FUNCTION write_fasta(repgen_set, feature_to_genome, feature_to_name, output_file):
-    OPEN output_file for writing
+DEFINE write_output(repgen_set, genome_to_name, feature_sequences, feature_to_genome, repseq_file, genomes_file)
+    OPEN repseq_file for writing
+        FOR each (feature_id, sequence) in feature_sequences
+            SET genome_id using feature_to_genome[feature_id]
+            IF genome_id in repgen_set
+                SET genome_name from genome_to_name[genome_id]
+                WRITE ">genome_id genome_name" and sequence to repseq_file
     
-    FOR each (feature_id, seq) in repgen_set:
-        SET genome_id as feature_to_genome[feature_id]
-        SET genome_name as feature_to_name[feature_id]
-        WRITE ">genome_id genome_name" to output_file
-        WRITE sequence to output_file
-    
-    CLOSE output_file
+    OPEN genomes_file for writing
+        WRITE header "genome_id\tgenome_name"
+        FOR each genome_id in repgen_set
+            SET genome_name from genome_to_name[genome_id]
+            WRITE "genome_id\tgenome_name" to genomes_file
 
-
-DEFINE FUNCTION main():
-    PARSE command-line arguments for kmer length, sim threshold, input fasta file, output fasta file
-    
-    CALL parse_fasta with input fasta file
-    CALL stingy_addition with parsed sequences, feature_to_genome, kmer length, and sim threshold
-    
-    CALL write_fasta with repgen_set, feature_to_genome, feature_to_name, and output fasta file
-
-
-IF __name__ == "__main__":
-    CALL main()
+MAIN
+    CALL parse_arguments to retrieve arguments
+    CALL parse_genome_data(args.fasta_file) to retrieve feature_to_genome, genome_to_name, feature_sequences
+    CALL compute_repgen_set(feature_sequences, feature_to_genome, args.kmer_length, args.similarity_threshold) to retrieve repgen_set
+    CALL write_output(repgen_set, genome_to_name, feature_sequences, feature_to_genome, args.repseq_file, args.genomes_file)
+END
 """
+
 ########################################################################
-# Code for 'build_representative_set.py'
+# Code for 'build_representative_set_solution.py'
+#!/usr/bin/env python3
+
 import argparse
 import re
 from Bio import SeqIO
 from collections import defaultdict
 
-def parse_fasta(fasta_file):
-    """
-    Parse the input FASTA file using BioPython and extract feature-IDs, genome-IDs, and genome names.
-    Return:
-    - A dictionary that maps feature-IDs to genome-IDs.
-    - A dictionary that maps feature-IDs to genome-names.
-    - A list of (feature-ID, sequence) tuples.
-    """
-    feature_to_genome = {}
-    feature_to_name = {}
-    sequences = []
-    
-    genome_id_pattern = re.compile(r'fig\|(\d+\.\d+)\.peg\.\d+')
+# Function to parse the input arguments
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Compute a representative set of sequences (RepGen set) using the Stingy Addition algorithm.")
+    parser.add_argument("-K", "--kmer-length", type=int, required=True, help="Length of K-mers to consider.")
+    parser.add_argument("-S", "--similarity-threshold", type=int, required=True, help="Similarity threshold (Sim).")
+    parser.add_argument("-F", "--fasta-file", type=str, required=True, help="Input FASTA file containing sequences.")
+    parser.add_argument("-R", "--repseq-file", type=str, required=True, help="Output file for the representative sequences in FASTA format.")
+    parser.add_argument("-G", "--genomes-file", type=str, required=True, help="Output file for genome-IDs and genome-names in tab-separated format.")
+    return parser.parse_args()
 
+# Function to parse genome feature IDs and names from FASTA headers
+def parse_genome_data(fasta_file):
+    feature_to_genome = {}       # Maps feature-ID to genome-ID
+    genome_to_name = {}          # Maps genome-ID to genome-name
+    feature_sequences = []       # List of (feature-ID, sequence) pairs
+    
+    pattern = re.compile(r'^fig\|(\d+\.\d+)\.peg\.\d+')
+    
     for record in SeqIO.parse(fasta_file, "fasta"):
         header = record.description
-        seq = str(record.seq)
+        sequence = str(record.seq)
         
-        # Extract the feature-ID (the first non-whitespace portion of the header)
+        # Split header into feature-ID and genome-name
         feature_id = header.split()[0]
+        genome_name = ' '.join(header.split()[1:])
         
-        # Extract the genome-ID using the regular expression
-        genome_id_match = genome_id_pattern.search(feature_id)
-        if genome_id_match:
-            genome_id = genome_id_match.group(1)
-        else:
-            raise ValueError(f"Invalid feature-ID format in {feature_id}")
-        
-        # Extract the genome name (everything after the feature-ID)
-        genome_name = header.split(maxsplit=1)[1]
-        
-        # Store the mappings
-        feature_to_genome[feature_id] = genome_id
-        feature_to_name[feature_id] = genome_name
-        sequences.append((feature_id, seq))
+        # Extract genome-ID using regex
+        match = pattern.match(feature_id)
+        if match:
+            genome_id = match.group(1)
+            feature_to_genome[feature_id] = genome_id
+            genome_to_name[genome_id] = genome_name
+            feature_sequences.append((feature_id, sequence))
+    
+    return feature_to_genome, genome_to_name, feature_sequences
 
-    return feature_to_genome, feature_to_name, sequences
-
-def compute_kmers(sequence, k):
-    """
-    Given a sequence, return the set of K-mers of length k.
-    """
+# Function to extract K-mers from a sequence
+def extract_kmers(sequence, k):
     return {sequence[i:i+k] for i in range(len(sequence) - k + 1)}
 
-def stingy_addition(sequences, feature_to_genome, k, sim_threshold):
-    """
-    Implement the 'Stingy Addition' algorithm to compute a representative set.
-    - sequences: List of (feature-ID, sequence) tuples.
-    - feature_to_genome: Dictionary mapping feature-IDs to genome-IDs.
-    - k: Kmer length.
-    - sim_threshold: Similarity threshold (number of Kmers in common).
+# Main function to compute the representative set using Stingy Addition
+def compute_repgen_set(feature_sequences, feature_to_genome, kmer_length, sim_threshold):
+    genome_kmers = defaultdict(set)   # Maps genome-ID to set of unique K-mers
+    repgen_set = set()                # Set of representative genome-IDs
+
+    # Step 1: Compute K-mers for each genome
+    for feature_id, sequence in feature_sequences:
+        genome_id = feature_to_genome[feature_id]
+        genome_kmers[genome_id].update(extract_kmers(sequence, kmer_length))
     
-    Return the representative set of sequences.
-    """
-    repgen_set = []
-    repgen_kmer_sets = []  # Store Kmer sets for the sequences in the repgen set
-
-    for feature_id, seq in sequences:
-        # Compute the K-mers of the current sequence
-        current_kmers = compute_kmers(seq, k)
-
-        # Check if it is similar to any genome already in the repgen set
-        is_similar = False
-        for existing_kmers in repgen_kmer_sets:
-            common_kmers = current_kmers.intersection(existing_kmers)
+    # Step 2: Construct the RepGen set
+    for genome_id, kmers in genome_kmers.items():
+        is_representative = True
+        for repgen_id in repgen_set:
+            # Measure similarity by counting common K-mers
+            common_kmers = genome_kmers[genome_id].intersection(genome_kmers[repgen_id])
             if len(common_kmers) >= sim_threshold:
-                is_similar = True
+                is_representative = False
                 break
-
-        # If no similar genome is found, add the current sequence to the repgen set
-        if not is_similar:
-            repgen_set.append((feature_id, seq))
-            repgen_kmer_sets.append(current_kmers)
+        if is_representative:
+            repgen_set.add(genome_id)
 
     return repgen_set
 
-def write_fasta(repgen_set, feature_to_genome, feature_to_name, output_file):
-    """
-    Write the representative set to a FASTA file.
-    The format of each FASTA identifier should be 'genome-ID genome-name'.
-    """
-    with open(output_file, 'w') as f:
-        for feature_id, seq in repgen_set:
+# Function to write output files
+def write_output(repgen_set, genome_to_name, feature_sequences, feature_to_genome, repseq_file, genomes_file):
+    # Write the representative sequences to the FASTA file
+    with open(repseq_file, 'w') as fasta_out:
+        for feature_id, sequence in feature_sequences:
             genome_id = feature_to_genome[feature_id]
-            genome_name = feature_to_name[feature_id]
-            f.write(f">{genome_id} {genome_name}\n{seq}\n")
-
-def main():
-    # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="Compute a set of representative sequences using the Stingy Addition algorithm.")
-    parser.add_argument('-k', '--kmer', type=int, required=True, help='Kmer length')
-    parser.add_argument('-s', '--sim', type=int, required=True, help='Similarity threshold (number of Kmers in common)')
-    parser.add_argument('-f', '--fasta', type=str, required=True, help='Input FASTA file')
-    parser.add_argument('-r', '--repseq', type=str, required=True, help='Output representative sequence file')
+            if genome_id in repgen_set:
+                genome_name = genome_to_name[genome_id]
+                fasta_out.write(f">{genome_id} {genome_name}\n{sequence}\n")
     
-    args = parser.parse_args()
+    # Write the genome-IDs and genome-names to the genomes file
+    with open(genomes_file, 'w') as genome_out:
+        genome_out.write("genome_id\tgenome_name\n")
+        for genome_id in repgen_set:
+            genome_name = genome_to_name[genome_id]
+            genome_out.write(f"{genome_id}\t{genome_name}\n")
 
-    # Parse the input FASTA file
-    feature_to_genome, feature_to_name, sequences = parse_fasta(args.fasta)
-    
-    # Compute the representative set using the Stingy Addition algorithm
-    repgen_set = stingy_addition(sequences, feature_to_genome, args.kmer, args.sim)
-    
-    # Write the representative set to the output file
-    write_fasta(repgen_set, feature_to_genome, feature_to_name, args.repseq)
-
+# Main execution
 if __name__ == "__main__":
-    main()
+    args = parse_arguments()
+    feature_to_genome, genome_to_name, feature_sequences = parse_genome_data(args.fasta_file)
+    repgen_set = compute_repgen_set(feature_sequences, feature_to_genome, args.kmer_length, args.similarity_threshold)
+    write_output(repgen_set, genome_to_name, feature_sequences, feature_to_genome, args.repseq_file, args.genomes_file)
