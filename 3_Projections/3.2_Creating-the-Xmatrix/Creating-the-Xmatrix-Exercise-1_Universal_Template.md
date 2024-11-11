@@ -2,7 +2,7 @@
 
 Objective: Create the universal table and template for the data with the columns pre-populated.
 
-Now that you have curated your data, the next step is to create a universal XMatrix template. This template will serve as the foundation for organizing your genomic data in a structured format, which is essential for subsequent analysis and machine learning applications.
+Now that you have curated your data, the next step is to create a universal XMatrix template. This template will serve as the foundation for organizing your genomic data in a structured format, which is essential for subsequent analysis and machine learning applications. Once we have our template and populate it with data, we can begin to explore the data and find patterns that we can use to classify new samples.
 
 ## Materials
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
@@ -46,8 +46,10 @@ Create a blank xmatrix template with the feature set (representative genome set)
 4. We have now created a table of data that includes all of the information that we need to begin our machine learning analysis. Save the file as `xmatrix.tsv`. We will be using this file in the next exercise.
 
 ## Self-Check
-Audit your `xmatrix.tsv` file to ensure that it is populated correctly. Pick 10 of your samples and check that the number of 1s and 0s in the columns are correct. Also check that the first column is labeled correctly and that the last column is labeled correctly.
-
+Audit your `xmatrix.tsv` file to ensure that it is populated correctly. 
+1. Pick 10 of your samples and check that the number of 1s and 0s in the columns are correct. 
+2. Check that the first column is labeled correctly and that the last column is labeled correctly (Samples and Disease Label).
+3. Check that the number of rows in the xmatrix is equal to the number of samples in each directory.
 
 
 

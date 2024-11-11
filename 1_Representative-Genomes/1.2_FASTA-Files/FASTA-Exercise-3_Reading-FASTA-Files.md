@@ -29,7 +29,7 @@ FIG-Bioinformatics-Course/
 
 2. Ask Grimoire to convert its pseudocode into python code, and then explain to you how the code works line-by-line if it did not already do so.
 
-3. Ask Grimoire to give pseudocode for and then write a python program that will read a FASTA file from STDIN, print a tab-separated ID and sequence-length for each record to STDOUT, and finally print the number of sequences read and the average length of the set of sequences to STDERR.
+3. Ask Grimoire to give pseudocode for and then write a python program that will read a FASTA file from STDIN, treating the first nonwhitespace string in the header as a sequence-ID, and the remainder of the header as a "description" or "comment" field. The program should print a tab-separated sequence-ID and sequence-length for each record to STDOUT with column-headings 'sequence_id' and 'sequence_length'. Finally, the program should print the number of sequences read and the average length of the set of sequences to STDERR, and then exit.
 
     * WARNING: Grimoire sometimes forgets that the "sequence-ID" stops at the first "whitespace character", and that the rest of the record-header after the sequence-ID is considered a "description" of the sequence, not a part of its ID, so if you see additional text after the sequence-ID in the TSV output-table, you will need to remind Grimoire that it should not include the sequence-description in its TSV output.
 
@@ -49,7 +49,7 @@ FIG-Bioinformatics-Course/
 
 * Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_protein.faa`. Run `fasta_reader.py` on `rep10.seed_protein.faa`, and save the TSV-output as follows:
 ```
-python3 Code/fasta_reader.py < Data/rep10.seed_protein.faa > Data/rep10.seed_protein.lengths.tab
+python3 Code/fasta_reader.py < Data/rep10.seed_protein.faa > Data/rep10.seed_protein.genomes-and-lengths.tab
 ```
 
 * Bonus Exercise 2: Repeat the procedure from FASTA-Ex-2, but this time extract the field `seed_dna` instead of `seed_protein`:
@@ -60,9 +60,9 @@ python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep
 
 Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 ```
-python3 Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.lengths.tab
+python3 Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.genomes-and-lengths.tab
 ```
-Compare the files `rep10.seed_protein.lengths.tab` to `rep10.seed_dna.lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
+Compare the files `rep10.seed_protein.genomes-and-lengths.tab` to `rep10.seed_dna.genomes-and-lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
 
 # Solution Check instructions:
 Use the solution code provided to check your results.
