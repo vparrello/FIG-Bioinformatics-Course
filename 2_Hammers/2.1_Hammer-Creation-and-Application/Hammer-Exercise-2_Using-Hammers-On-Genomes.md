@@ -70,11 +70,56 @@ Congratulations! You have constructed a set of hammers for the PheS SOURs in the
 
 In this exercise we have presented a greatly simplified "toy version" of the the hammer-creation process to illustrate the basic concepts behind hammers. The "production" version of the code is significantly more complex; we use the sequences for the 20 SOURs that we have found to yield the most reliably informative hammers, and we also cross-check the entire genome in addition to the SOUR sequences to make certain that the hammer does not occur somewhere else within the genome, since by definition a hammer can only occur once within one representative genome and must be contained within a SOUR. We have avoided these additional complexities within this exercise in order to keep this exercise simple, but in a later exercise, you will refine your prompt to take these additional complexities into account.
 
+## Bonus Exercise
 
-## Self Check
+Run `hammer_compare.py` on `MysteryGenome1.fna` using the `myrep50` hammers. How does the output table change?
 
-Below are the list of genomes in the representative genome set. Use the counts for the mystery genome to check your work.
+# Self Check
 
-The "Mystery Genome" should have `511145.12` "Escherichia coli str. K-12 substr. MG1655" as its highest-scoring representative genome.
+The `MysterGenome1.fna` should have `511145.12` "Escherichia coli str. K-12 substr. MG1655" as its highest-scoring representative genome:
 
-### NOTE: Table of counts is still missing !!!
+## Scores using 'myrep10'
+
+| genome_id | genome_name | score |
+| --- | --- | --- |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 948 |
+| 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 4 |
+| 113566.3 | Actinoplanes humidus strain NBRC 14915 | 1 |
+
+Note that while genome `511145.12` has by far the largest score,
+there are very low scores against two other representative genomes.
+There are two reasons for this:
+
+* The farther a genome gets from a representative,
+the more likely it is that it will be hit by a hammer from another representative.
+
+* Because we are using a simplified version of hammer construction,
+we only eliminated Kmers that occured in the `PheS` of another representative. In the "production" version of the hammer code,
+we impose the stricter requirement that a hammer cannot occur **anywhere** in another representative genome, but checking for this
+stricter condition would not only require more time and bookkeeping,
+but would require that you have the complete sequence
+for every representative genome, not just the sequences for
+some set of SOURs --- and that would involve fetching more data
+than we want to impose on you in this introductory course.
+
+## Top 5 scores using 'myrep50'
+
+If you did the bonus exercise, you should have found that
+19 representative genomes were returned instead of 3 representativeas, 
+and that `511145.12` is still the highest-scoring RepGen.
+Here are the top 5 RepGens:
+
+| genome_id | genome_name | score |
+| --- | --- | --- |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 885 |
+| 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 4 |
+| 1008392.4 | Chitinispirillum alkaliphilum strain ACht6-1 | 2 |
+| 476281.3 | Candidatus Ishikawaella capsulata Mpkobe | 2 |
+| 2864219.3 | Hymenobacter sp. KCTC 23674 | 2 |
+
+Note that the score for `511145.12` has dropped from 948 to 855;
+this is because the more specific a RepGen becomes
+(i.e., the larger the similarity-threshold between representatives is required),
+the more tightly spaced the representatives will become,
+and the more Kmers will be eliminated by some representative
+from becoming "Hammers".
