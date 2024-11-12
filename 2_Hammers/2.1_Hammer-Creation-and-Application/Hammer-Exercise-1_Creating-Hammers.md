@@ -87,6 +87,48 @@ python Code/hammer_creator.py -K 20 < Data/myrep10.PheS.dna_sequences.fna
 > Data/myrep10.PheS.hammers.tbl
 ```
 
+4. BONUS: Build hammers for `myrep50`.
+How do the number of hammers compare to `myrep10` ?
+
 ## Self-Check
 
-(TBD)
+For `myrep10`, your `hammer_creator.py` program should print the following summary-report to STDERR:
+
+```
+Number of sequences read: 150
+Number of K-mers processed: 158254
+Number of hammers: 157788
+```
+
+For `myrep50`, your `hammer_creator.py` program should print the following summary-report to STDERR:
+
+```
+Number of sequences read: 1039
+Number of K-mers processed: 1044020
+Number of hammers: 1020991
+```
+
+A few points to note:
+
+* In both cases, nearly every Kmer in the input data turned out to be a "hammer".
+The reason for this is that the sequences in `myrep10` and `myrep50`
+are all very far apart. Recall that the '10' in `myrep10` means that
+none of the PheS protein sequences in `myrep10` have more
+than 10 protein 8-mers out of roughly 350 in common.
+A similar result occurs at the DNA level: Since the PheS DNA sequences
+are very far apart, they have few DNA 20-mers in common,
+and hence few of the DNA 20-mers get eliminated during the hammer-building process.
+
+* By contrast, the sequences in `myrep50` are closer together,
+since they are allowed to have up to 50 protein 8-mers in common,
+and there are many more of them. More similarity at the protein level
+means a higher chance of similarity at the DNA level, and more genomes
+means more opportunities for a DNA 20-mer to be eliminated
+because it was found in more than one genome.
+Both of these factors imply that when constructing hammers
+for a higher similarity-threshold RepGen,
+a larger fraction of Kmers will be eliminated because
+they will not satisfy the hammer condition,
+but the remaining hammers will be more "specific",
+i.e. they will identify a more colosely-related subset of genomes.
+
