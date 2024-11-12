@@ -104,13 +104,7 @@ The above command asks the `python3` program-interpreter to run the program `Cod
 NOTE: The above command should be entered as a single line, even if your browser might have wrapped it onto two lines.
 ```
 
-* Under `Windows`, you should instead replace the 'slashes' with 'backslashes', like this:
-
-```
-    python3 Code\tsv_headers.py < Data\bindict.tbl
-```
-We recommend that under `Windows`, you consider installing`gitbash`, which will make your terminal command-line environment 'look' like the macOS/LINUX environment;
-we have included instructions for how to install `gitbash` within the `0_Getting-Started` module.
+We have included instructions for how to install `gitbash` within the `0_Getting-Started` module.
 
 
 ## Solution Check instructions:
