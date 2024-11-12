@@ -106,6 +106,8 @@ NOTE: The above command should be entered as a single line, even if your browser
 
 We have included instructions for how to install `gitbash` within the `0_Getting-Started` module.
 
+If you come across any problems that you do not know how to fix, please feel free to ask Grimoire for help by describing the steps that you have taken to create the problem and what error messages that you are receiving. It can be surprisingly helpful!
+
 
 ## Solution Check instructions:
 If you are successful, the program should return output that matches the 5 column-headings in the data file.
