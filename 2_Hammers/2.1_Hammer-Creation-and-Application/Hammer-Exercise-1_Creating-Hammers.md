@@ -36,7 +36,7 @@ A "Hammer" is a 20-character DNA sequence that satisfies the following propertie
 
     *  It is "Singly Occurring", which means that a genome contains exactly one gene that implements this function.
 
-    * It serves a "Universal Role", that is, it can be expected to occur within every genome.
+    * It implements a "Universal Role", that is, it can be expected to occur within every genome.
 
 The SOURs are often part of the "Central Machinery" of a cell. Ask Grimoire to tell you what is meant by "Central Machinery of a Cell", with particular emphasis on Bacteria and Archaea.
 
@@ -47,14 +47,15 @@ The observation of a "Hammer" within a genome serves as strong evidence that it 
 ## Exercises
 
 In this exercise, we will work through a simplified "toy problem" that will illustrate the steps involved in constructing a set of hammers.
-You will first fetch the set of `PheS` DNA sequences from BV-BRC, for the RegGenSet `myrep10` that you constructed in `RepGen-Exercise-1`. (Recall that `PheS`, the gene for "Phenylalanine tRNA Synthase", is an instance of a SOUR.)
+You will first fetch the set of `PheS` DNA sequences from BV-BRC, for the RepGenSet `myrep10` that you constructed in `RepGen-Exercise-1`. (Recall that `PheS`, the gene for "Phenylalanine tRNA Synthase", is an instance of a SOUR.)
 We will then walk you through a simplified version of the steps required to find the hammers associated with that single SOUR, and write those hammers to a tab-separated output file.
-(In the next set of exercises, we will use these hammers to identify a "Mystery Genome".)
+In future exercises, we will use these hammers to identify a "Mystery Genome",
+and to identify which genomes are present in a "Metagenomic Sample" (sample containing more than one genome).
 
-1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though it will wrap across multiple lines on your screen.):
+1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though as displayed below it wraps across multiple lines on your screen.):
 
 ```
-cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selective --nohead --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --nohead --dna --col 2 > Data/myrep10.PheS.dna_sequences.fna
+cat  Data/myrep10.genomes.tbl | p3-get-genome-features --selective --nohead --col 1 --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --nohead --dna --col 2 > Data/myrep10.PheS.dna_sequences.fna
 ```
 2. To make a set of hammers for the selected SOUR, we extract all of the DNA 20-mers that occur exactly once in exactly one genome. How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
@@ -70,7 +71,7 @@ cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selecti
 
     * Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers, and the 'fig|' and '.peg' portions are literal strings, not variables. The substring 'x.y' is the 'genome_id' for the sequence; please use a regular expression to extract the genome-ID from the feature-ID. 
     
-    * Find all of the Kmers that occur exactly once in exactly one 'genome_id'; these Kmers are the "Hammers"
+    * Find all of the Kmers that occur exactly once in exactly one genome; these Kmers are the "Hammers"
 
     * Print a two column tab-separated table to 'STDOUT' of the hammers and the feature-ID that each hammer was found in, with column-headers of "hammer" and "fid".
 
@@ -88,7 +89,7 @@ python Code/hammer_creator.py -K 20 < Data/myrep10.PheS.dna_sequences.fna
 ```
 
 4. BONUS: Build hammers for `myrep50`.
-How do the number of hammers compare to `myrep10` ?
+How do the number of hammers found in `myrep50` compare to the number found in `myrep10` ?
 
 ## Self-Check
 
