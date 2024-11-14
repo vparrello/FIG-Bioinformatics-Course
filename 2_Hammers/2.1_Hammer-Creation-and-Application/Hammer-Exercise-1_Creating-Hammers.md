@@ -131,5 +131,5 @@ for a higher similarity-threshold RepGen,
 a larger fraction of Kmers will be eliminated because
 they will not satisfy the hammer condition,
 but the remaining hammers will be more "specific",
-i.e. they will identify a more colosely-related subset of genomes.
+i.e. they will identify a more closely-related subset of genomes.
 
