@@ -17,10 +17,9 @@ FIG-Bioinformatics-Course/
 │   └── 2.1_Hammer-Creation-and-Application/
 │       └── Hammer-Exercise-3_Using-Hammers-on-Samples.md (you are here)
 └── Data/
-    └── MysteryGenome2.fna
-    └── rep10.list.tbl
-    └── rep10.seqs.tbl
-    └── myrep10.hammers.tbl - output from Hammer-Exercise-1
+    ├── MysteryGenome2.fna
+    ├── myrep10.hammers.tbl - output from Hammer-Exercise-1
+    └── myrep10.genomes.tbl
 ```
 
 ## Exercises
