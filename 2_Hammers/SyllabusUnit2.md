@@ -1,6 +1,6 @@
 # Hammers
 
-A "hammer" is a 20-character DNA sequence that occurs precisely once in precisely one representative genome within a given RepGen set. It must also occur within a gene implementing a SOUR. Thus, a hammer acts as a genomic signature. One may think of a hammer as a type of "Genetic Barcode" that we can use to quickly classify an unknown genome, or to try to create a targeted antibiotic that will kill a pathogen while leaving other microbes alone. In this module, the goal is to create a set of hammers that can be used to quickly identify single genomes, and to determine which genomes are present within a metagenomic sample.
+A "hammer" is a 20-character DNA sequence that occurs precisely once in precisely one representative genome within a given RepGen set. It must also occur within a gene implementing a SOUR. Thus, a hammer acts as a genomic signature. One may think of a hammer as a type of "Genetic Barcode" that we can use to quickly classify an unknown genome, or to try to create a targeted antibiotic that will kill a pathogen while leaving other microbes alone. In this module, the goal is to create a set of hammers that can be used to quickly identify the closest representative to a genome, and to determine a set of representatives that characterize a metagenomic sample.
 
 ## 2.1 Hammers Creation and Application
 
