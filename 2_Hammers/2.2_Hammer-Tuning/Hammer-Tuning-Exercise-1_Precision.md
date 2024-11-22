@@ -27,8 +27,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
-1. Hammers have multiple functions. One of their most important applications is that they allow us to identify the nearest representative of a genome. We can make such an identification by noting that if a genome is a peer of a representative genome, then it is likely that it will also have hammers in common with that representive (or as we often say if it is "hit" by the hammers from its representative), and the more hammers that a genome has in common with a representative, the more likely it is to be a peer of that representative.
-However, the converse is not true: If a genome is hit by a hammer from a representative, it is not neccessarily true that it is a peer, as we saw from `MysteryGenome1` also having low-scoring hits against other representatives in `Hammer-Exercise-2` and `Hammer-Exercise-3` in addition to being strongly hit by its nearest representative. 
+1. Hammers have multiple functions. One of their most important applications is that they allow us to identify the nearest representative of a genome. We can make such an identification by noting that if a genome is a peer of a representative genome, then it is likely that it will also have hammers in common with that representive (or as we often say if it is "hit" by hammers from its representative), and the more hammers that a genome has in common with a representative, the more likely it is to be a peer of that representative.
+However, the converse is not true: If a genome is hit by a hammer from a representative, it is not neccessarily true that it is a peer, as we saw in `Hammer-Exercise-2`
+and `Hammer-Exercise-3`, where `MysteryGenome1` also received low-scoring hits
+from more distant representatives in addition to being strongly hit by its nearest representative. 
 
 In this case, we need to know if this occurs since it can skew our data to multiple genomes inside the hammer set. Ask Grimoire how it would determine if duplicate hammers exist in the `rep10.hammers.tbl` file.
 

@@ -1,0 +1,21 @@
+Please write a python program named 'get_contigs_for_genomes.py' that:
+
+* Accepts the follwing two named arguments
+  - Filename of a tab-separated-value list containing genome-IDs
+    short name '-G', long name '--genome-list'
+
+  - Name of an output directory, short name '-D',
+    long-name '--output-data'
+
+* Reads the genome-ID file, skips the header-line,
+and loads the remainder of the first column into a list.
+
+* Creates the output directory if it does not already exist,
+  else warns the user and exits
+
+* Foreach genome-ID in the genome-list, prints a progress-message to STDERR,
+and then executes the command described by the following format:
+
+   f"p3-genome-fasta --contigs {genome_ID} > {Output_Directory}/{genome_ID}.fna"
+
+If the command fails, print an error-message to STDERR, and then exit.
