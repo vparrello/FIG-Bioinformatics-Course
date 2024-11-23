@@ -55,7 +55,7 @@ and to identify which genomes are present in a "Metagenomic Sample" (sample cont
 1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though as displayed below it wraps across multiple lines on your screen.):
 
 ```
-cat  Data/myrep10.genomes.tbl | p3-get-genome-features --selective --nohead --col 1 --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --nohead --dna --col 2 > Data/myrep10.PheS.dna_sequences.fna
+p3-get-genome-features --selective --input Data/myrep10.genomes.tbl --col genome_id --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --dna --col feature.patric_id > Data/myrep10.PheS.dna_sequences.fna
 ```
 2. To make a set of hammers for the selected SOUR, we extract all of the DNA 20-mers that occur exactly once in exactly one genome. How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
