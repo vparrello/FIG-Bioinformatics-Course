@@ -3,7 +3,7 @@
 """
 Please write a python program named 'get_contigs_for_genomes.py' that:
 
-* Accepts the follwing two named arguments
+* Accepts the following two named arguments
   - Filename of	a tab-separated-value list containing genome-IDs
     short name '-G', long name '--genome-list'
 
@@ -19,7 +19,7 @@ and loads the remainder of the first column into	a list.
 * Foreach genome-ID in the	genome-list,	prints a progress-message to STDERR,
 and then executes the command described by the following format:
 
-   f"p3-genome-fasta --contigs {genome_ID} > {Output_Directory}/{genome_ID}.fna"
+   f"p3-genome-fasta --contig {genome_ID} > {Output_Directory}/{genome_ID}.fna"
 
 If the command fails, print an error-message to	STDERR,	and then exit.
 """
@@ -142,7 +142,7 @@ def fetch_contigs(genome_ids, output_dir):
     for genome_id in genome_ids:
         print(f"Processing genome ID: {genome_id}", file=sys.stderr)
         output_file = os.path.join(output_dir, f"{genome_id}.fna")
-        command = f"p3-genome-fasta --contigs {genome_id} > {output_file}"
+        command = f"p3-genome-fasta --contig {genome_id} > {output_file}"
         try:
             result = subprocess.run(command, shell=True, check=True, stderr=subprocess.PIPE)
         except subprocess.CalledProcessError as e:
