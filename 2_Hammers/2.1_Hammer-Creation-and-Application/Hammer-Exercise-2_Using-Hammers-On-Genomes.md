@@ -88,8 +88,8 @@ The `MysterGenome1.fna` should have `511145.12` "Escherichia coli str. K-12 subs
 ## Scores using 'myrep10'
 
 | genome_id | genome_name | score |
-| --- | --- | --- |
-| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 948 |
+| --- | --- | ---: |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 959 |
 | 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 4 |
 | 113566.3 | Actinoplanes humidus strain NBRC 14915 | 1 |
 
@@ -117,8 +117,8 @@ and that `511145.12` is still the highest-scoring RepGen.
 Here are the top 5 RepGens:
 
 | genome_id | genome_name | score |
-| --- | --- | --- |
-| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 885 |
+| --- | --- | ---: |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 898 |
 | 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 4 |
 | 1008392.4 | Chitinispirillum alkaliphilum strain ACht6-1 | 2 |
 | 476281.3 | Candidatus Ishikawaella capsulata Mpkobe | 2 |

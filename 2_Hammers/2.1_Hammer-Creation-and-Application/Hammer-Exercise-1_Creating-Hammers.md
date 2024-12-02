@@ -96,17 +96,17 @@ How do the number of hammers found in `myrep50` compare to the number found in `
 For `myrep10`, your `hammer_creator.py` program should print the following summary-report to STDERR:
 
 ```
-Number of sequences read: 150
-Number of K-mers processed: 158254
-Number of hammers: 157788
+Number of sequences read: 141
+Number of K-mers processed: 149195
+Number of hammers: 148751
 ```
 
 For `myrep50`, your `hammer_creator.py` program should print the following summary-report to STDERR:
 
 ```
-Number of sequences read: 1039
-Number of K-mers processed: 1044020
-Number of hammers: 1020991
+Number of sequences read: 921
+Number of K-mers processed: 923907
+Number of hammers: 903835
 ```
 
 A few points to note:

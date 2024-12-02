@@ -96,12 +96,12 @@ as the top-scoring RepGen.
 here are the top 5 and their scores:
 
 | genome_id | genome_name | score |
-| --- | --- | --- |
-| 321967.11 | Lactobacillus casei ATCC 334 | 831 |
-| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 829 |
+| --- | --- | ---: |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 840 |
 | 206672.9 | Bifidobacterium longum NCC2705 | 691 |
 | 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 6 |
 | 174633.135 | Candidatus Kuenenia stuttgartiensis GH-07nov19-223 | 5 |
+| 192952.21 | Methanosarcina mazei Go1 | 4 |
 
 Note that the top 3 RepGens received scores in the several-hundreds range,
 while all the lower-ranking RepGens received scores that are less than 10.
@@ -110,12 +110,13 @@ while all the lower-ranking RepGens received scores that are less than 10.
 here are the top 5:
 
 | genome_id | genome_name | score |
-| --- | --- | --- |
-| 321967.11 | Lactobacillus casei ATCC 334 | 793 |
-| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 776 |
-| 206672.9 | Bifidobacterium longum NCC2705 | 630 |
-| 2835133.3 | Kineosporia sp. J2-2 | 10 |
+| --- | --- | ---: |
+| 321967.11 | Lactobacillus casei ATCC 334 | 795 |
+| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 789 |
+| 206672.9 | Bifidobacterium longum NCC2705 | 632 |
 | 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 6 |
+| 1314958.3 | Parachlamydiaceae bacterium HS-T3 | 6 |
+
 
 Again, the same 3 RepGens received scores in the several hundreds,
 while all the lower-ranking RepGens received scores of 10 or less.
