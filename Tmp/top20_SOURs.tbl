@@ -1,0 +1,21 @@
+roleID	role_name
+GlutTrnaSynt	Glutamyl-tRNA synthetase (EC 6.1.1.17)
+ThreTrnaSynt	Threonyl-tRNA synthetase (EC 6.1.1.3)
+NLThreSynt	N(6)-L-threonylcarbamoyladenine synthase (EC 2.3.1.234)
+IsolTrnaSynt	Isoleucyl-tRNA synthetase (EC 6.1.1.5)
+LeucTrnaSynt	Leucyl-tRNA synthetase (EC 6.1.1.4)
+TranInitFact2n1	Translation initiation factor 2
+HistTrnaSynt	Histidyl-tRNA synthetase (EC 6.1.1.21)
+PhenTrnaSyntAlph	Phenylalanyl-tRNA synthetase alpha chain (E.C. 6.1.1.20)
+ProtTranSubuSecy	Protein translocase subunit SecY
+SeryTrnaSynt	Seryl-tRNA synthetase (EC 6.1.1.11)
+SignRecoPartProt	Signal recognition particle protein Ffh
+TrnaNMeth3	tRNA (guanine(37)-N(1))-methyltransferase (EC 2.1.1.228)
+MethTrnaSynt	Methionyl-tRNA synthetase (EC 6.1.1.10)
+GtpBindNuclAcidBind	GTP-binding and nucleic acid-binding protein YchF
+ValyTrnaSynt	Valyl-tRNA synthetase (EC 6.1.1.9)
+SignRecoPartRece	Signal recognition particle receptor FtsY
+AlanTrnaSynt	Alanyl-tRNA synthetase (EC 6.1.1.7)
+PhenTrnaSyntBeta	Phenylalanyl-tRNA synthetase beta chain (EC 6.1.1.20)
+TyroTrnaSynt	Tyrosyl-tRNA synthetase (EC 6.1.1.1)
+AspaTrnaSynt	Aspartyl-tRNA synthetase (EC 6.1.1.12)

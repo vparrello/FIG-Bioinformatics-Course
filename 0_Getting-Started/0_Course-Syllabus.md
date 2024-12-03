@@ -41,3 +41,5 @@ by Dr. Steven R. Gundry, MD
 
 * ["Artificial Intelligence - A Guide for Thinking Humans"](https://www.google.com/books/edition/Artificial_Intelligence/65iEDwAAQBAJ?hl=en&gbpv=0)
 by Melanie Mitchell
+
+["Probiotics: A Story About  Hope"](https://books.google.com/books/about/Probiotics.html?id=m7Lf0AEACAAJ) by Gregor Reid
