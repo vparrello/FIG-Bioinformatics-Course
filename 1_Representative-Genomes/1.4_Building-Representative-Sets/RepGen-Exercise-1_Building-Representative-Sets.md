@@ -142,8 +142,8 @@ python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-length
 ```
 The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 150
-Average sequence length: 358.19
+Number of sequences: 141
+Average sequence length: 359.27
 ```
 You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
 ```
@@ -159,8 +159,8 @@ python Code/fasta_reader.py < Data/myrep50.faa > Data/myrep50.genomes-and-length
 ```
 The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 1039
-Average sequence length: 352.15
+Number of sequences: 921
+Average sequence length: 351.25
 ```
 You can make a detailed check by running:
 ```
