@@ -36,7 +36,7 @@ You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then
 ## Exercises:
 1. Please install the `BV-BRC Command-Line Interface` application if you have not already done so.
 Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.
-You will also need to run `Code/install_sra_toolkit.py` if you have not already done so.
+
 
 2. Get the PheS sequence for "Mystery Genome-ID 562.66554" using the following incantation:
 ```
