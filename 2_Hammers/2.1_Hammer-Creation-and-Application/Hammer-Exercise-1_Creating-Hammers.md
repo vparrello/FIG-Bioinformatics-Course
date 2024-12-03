@@ -36,7 +36,7 @@ A "Hammer" is a 20-character DNA sequence that satisfies the following propertie
 
     *  It is "Singly Occurring", which means that a genome contains exactly one gene that implements this function.
 
-    * It serves a "Universal Role", that is, it can be expected to occur within every genome.
+    * It implements a "Universal Role", that is, it can be expected to occur within every genome.
 
 The SOURs are often part of the "Central Machinery" of a cell. Ask Grimoire to tell you what is meant by "Central Machinery of a Cell", with particular emphasis on Bacteria and Archaea.
 
@@ -47,14 +47,15 @@ The observation of a "Hammer" within a genome serves as strong evidence that it 
 ## Exercises
 
 In this exercise, we will work through a simplified "toy problem" that will illustrate the steps involved in constructing a set of hammers.
-You will first fetch the set of `PheS` DNA sequences from BV-BRC, for the RegGenSet `myrep10` that you constructed in `RepGen-Exercise-1`. (Recall that `PheS`, the gene for "Phenylalanine tRNA Synthase", is an instance of a SOUR.)
+You will first fetch the set of `PheS` DNA sequences from BV-BRC, for the RepGenSet `myrep10` that you constructed in `RepGen-Exercise-1`. (Recall that `PheS`, the gene for "Phenylalanine tRNA Synthase", is an instance of a SOUR.)
 We will then walk you through a simplified version of the steps required to find the hammers associated with that single SOUR, and write those hammers to a tab-separated output file.
-(In the next set of exercises, we will use these hammers to identify a "Mystery Genome".)
+In future exercises, we will use these hammers to identify a "Mystery Genome",
+and to identify which genomes are present in a "Metagenomic Sample" (sample containing more than one genome).
 
-1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though it will wrap across multiple lines on your screen.):
+1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though as displayed below it wraps across multiple lines on your screen.):
 
 ```
-cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selective --nohead --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --nohead --dna --col 2 > Data/myrep10.PheS.dna_sequences.fna
+p3-get-genome-features --selective --input Data/myrep10.genomes.tbl --col genome_id --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --dna --col feature.patric_id > Data/myrep10.PheS.dna_sequences.fna
 ```
 2. To make a set of hammers for the selected SOUR, we extract all of the DNA 20-mers that occur exactly once in exactly one genome. How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
@@ -70,7 +71,7 @@ cut -f1  Data/myrep10.genomes-and-lengths.txt | p3-get-genome-features --selecti
 
     * Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers, and the 'fig|' and '.peg' portions are literal strings, not variables. The substring 'x.y' is the 'genome_id' for the sequence; please use a regular expression to extract the genome-ID from the feature-ID. 
     
-    * Find all of the Kmers that occur exactly once in exactly one 'genome_id'; these Kmers are the "Hammers"
+    * Find all of the Kmers that occur exactly once in exactly one genome; these Kmers are the "Hammers"
 
     * Print a two column tab-separated table to 'STDOUT' of the hammers and the feature-ID that each hammer was found in, with column-headers of "hammer" and "fid".
 
@@ -87,6 +88,48 @@ python Code/hammer_creator.py -K 20 < Data/myrep10.PheS.dna_sequences.fna
 > Data/myrep10.PheS.hammers.tbl
 ```
 
+4. BONUS: Build hammers for `myrep50`.
+How do the number of hammers found in `myrep50` compare to the number found in `myrep10` ?
+
 ## Self-Check
 
-(TBD)
+For `myrep10`, your `hammer_creator.py` program should print the following summary-report to STDERR:
+
+```
+Number of sequences read: 141
+Number of K-mers processed: 149195
+Number of hammers: 148751
+```
+
+For `myrep50`, your `hammer_creator.py` program should print the following summary-report to STDERR:
+
+```
+Number of sequences read: 921
+Number of K-mers processed: 923907
+Number of hammers: 903835
+```
+
+A few points to note:
+
+* In both cases, nearly every Kmer in the input data turned out to be a "hammer".
+The reason for this is that the sequences in `myrep10` and `myrep50`
+are all very far apart. Recall that the '10' in `myrep10` means that
+none of the PheS protein sequences in `myrep10` have more
+than 10 protein 8-mers out of roughly 350 in common.
+A similar result occurs at the DNA level: Since the PheS DNA sequences
+are very far apart, they have few DNA 20-mers in common,
+and hence few of the DNA 20-mers get eliminated during the hammer-building process.
+
+* By contrast, the sequences in `myrep50` are closer together,
+since they are allowed to have up to 50 protein 8-mers in common,
+and there are many more of them. More similarity at the protein level
+means a higher chance of similarity at the DNA level, and more genomes
+means more opportunities for a DNA 20-mer to be eliminated
+because it was found in more than one genome.
+Both of these factors imply that when constructing hammers
+for a higher similarity-threshold RepGen,
+a larger fraction of Kmers will be eliminated because
+they will not satisfy the hammer condition,
+but the remaining hammers will be more "specific",
+i.e. they will identify a more closely-related subset of genomes.
+

@@ -80,7 +80,7 @@ def main():
     else:
         average_length = 0
 
-    print(f"{sequence_count} sequences read.", file=sys.stderr)
+    print(f"Number of sequences: {sequence_count}", file=sys.stderr)
     print(f"Average sequence length: {average_length:.2f}", file=sys.stderr)
 
 if __name__ == "__main__":
