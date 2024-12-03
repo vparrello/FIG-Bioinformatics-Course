@@ -2,9 +2,13 @@
 
 Objective: Understand the concept of hammer precision and learn how to evaluate the effectiveness of genetic barcodes (hammers) in identifying specific genomes.
 
-Hammers are unique k-mers that occur exactly once in a genome. The precision of a hammer refers to how specific it's sequence is to the genomes inside of the representative genome's space. A highly precise hammer will only match a single genome or two, while a less precise hammer may match all of the genome peers inside that genome space. This exercise will help you understand how to evaluate and improve the precision of your hammers by comparing them to the other hammers inside of the hammer set. 
+Hammers are unique k-mers that occur exactly once in exactly one representative genome. The precision of a hammer refers to how specific its sequence is to the genomes with a representative genome's "peer group", which is the set of genomes that are closer to that representative by the similarity-measure being used than to any other representative. (Recall that the measure we are using in this course is the number of protein K-mers in common for the `PheS` gene.)
+A highly specific hammer will only match a single peer-genome or two, while a less specific hammer may match all of the genomes within a representative's peer-group.
+
+This exercise will help you understand how to evaluate and improve the precision of your hammers by comparing them to the other hammers inside of the hammer set. 
 
 ## Materials:
+
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
 ```
@@ -12,18 +16,23 @@ FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.2_Hammer-Tuning/
 │       └── Hammer-Tuning-Exercise-1_Precision.md (you are here)
-└── Data/
-    ├── rep10.hammers.tbl (from previous exercise)
-    ├── rep10.seqs.tbl
-    └── test_genomes.fna (new file with multiple test genomes)
-    Code/
-    └── find_duplicate_hammers.py
+├── Data/
+│   ├── myrep10.PheS.hammers.tbl (from Hammer-Exercise-1)
+│   ├── myrep10.seqs.tbl
+│   └── test_genomes.fna (new file with multiple test genomes)
+└── Code/
+    ├── find_duplicate_hammers.py
     └── hammer_precision.py
 ```
 
 ## Exercises:
 
-1. Hammers have multiple functions. One of the most important things is that they allow us to identify genomes. If a genome shares a hammer with its representative genome, we know that it is a neighbor of that genome. But sometimes a genome may share a hammer with another representative genome. In this case, we need to know if this occurs since it can skew our data to multiple genomes inside the hammer set. Ask Grimoire how it would determine if duplicate hammers exist in the `rep10.hammers.tbl` file.
+1. Hammers have multiple functions. One of their most important applications is that they allow us to identify the nearest representative of a genome. We can make such an identification by noting that if a genome is a peer of a representative genome, then it is likely that it will also have hammers in common with that representive (or as we often say if it is "hit" by hammers from its representative), and the more hammers that a genome has in common with a representative, the more likely it is to be a peer of that representative.
+However, the converse is not true: If a genome is hit by a hammer from a representative, it is not neccessarily true that it is a peer, as we saw in `Hammer-Exercise-2`
+and `Hammer-Exercise-3`, where `MysteryGenome1` also received low-scoring hits
+from more distant representatives in addition to being strongly hit by its nearest representative. 
+
+In this case, we need to know if this occurs since it can skew our data to multiple genomes inside the hammer set. Ask Grimoire how it would determine if duplicate hammers exist in the `rep10.hammers.tbl` file.
 
 2. We need to evaluate the precision of our hammers. Ask Grimoire to write a Python script named `hammer_precision.py` that does the following:
    - Reads the `rep10.hammers.tbl` file
@@ -48,3 +57,31 @@ FIG-Bioinformatics-Course/
 
 In the next exercise, we will explore additional factors that contribute to hammer performance and how to incorporate them into our hammer selection process.
 
+## Self-Check
+
+Result of running:
+```
+python3 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.dna-sequences.solution.fna > 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.hammers.solution.tbl
+
+Number of sequences read: 705
+Number of K-mers processed: 1265411
+Number of hammers: 1259711
+```
+(Insert comparison of number of Kmers read vs eliminated in this exercise vs the single-role exercise here)
+
+
+Result of running:
+```
+time python3 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.dna-sequences.solution.fna >  2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.hammers.solution.tbl
+Number of sequences read: 4600
+Number of K-mers processed: 8083245
+Number of hammers: 7923293
+```
+
+(Again, insert comparison of number of Kmers read vs eliminated in this exercise vs the single-role exercise here)
+
+## TODO
+
+Major rewite still needed, since the definition of "hammers" and the hammer-building process used in the current version of course has diverged from the defintions that Tory and Bruce used when they wrote the draft for this module.
+
+Also need to verify that the hammers do not occur more than once in the RepGen contigs as opposed to just the RepGen SOURs.
