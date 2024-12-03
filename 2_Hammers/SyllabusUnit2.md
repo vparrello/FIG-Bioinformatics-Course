@@ -13,10 +13,16 @@ Use your hammer tool to attempt to identify a "mystery genome".
 ### Hammer Exercise 3 - Using Hammers on a Metagenomic Sample
 Use your hammer tool to identify which genomes are present within a "metagenomic sample", i.e., a sample that contains several genomes.
 
+### Hammer Exercise 4 - Filtering out bad hammers
+
+So far we have only looked at the Kmers in the PheS SOUR sequences.
+Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
+
+
 ## 2.2 Hammer Tuning
 
 ### Hammer Tuning-1 Precision
-Make sure the hammer doesn't occur in other representative genomes
+Figure out what to put here, assuming we even cover precision and accuracy at all.
 
 ### Hammer Tuning-2 Accuracy
 Picking the correct roles mean that the hammers are more accurate for your purpose.  
