@@ -12,7 +12,7 @@ These are instructions on how to download the course through github. If you have
     * MacOS-initial-setup-v0_1.zip (Comming Soon)
     * Linux-initial-setup-v0_1.zip (Coming Soon)
 
-3. Launch VSCode. If you have not already chosen a folder, look in the "File" menu at the top left of VSCode and click on "Open Folder". Then use the prompts to choose an empty folder.
+3. Launch VSCode. If you have not already chosen a folder, look in the "File" menu at the top left of VSCode and click on "Open Folder". Then use the prompts to choose a project or documents folder that you would like to keep all of the course material in.
 
 4. Open a Terminal inside VSCode by going to the menu in the top left corner and following File, Edit, Selection, and so on until you find Terminal. Click on it and select New Terminal.
 
