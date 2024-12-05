@@ -1,86 +1,69 @@
 import os
 import sys
-import gzip
 import argparse
-from collections import defaultdict
 from Bio import SeqIO
-from Bio.Seq import Seq
+from collections import defaultdict
 
-
-def read_hammer_file(file_path):
-    """
-    Reads a tab-separated file, possibly gzipped, and loads the first column as keys and the entire line as values.
-    """
+def read_hammer_candidates(input_stream):
+    """Reads the hammer candidate file from STDIN."""
+    header = input_stream.readline().strip()
     hammer_dict = {}
-    with (gzip.open(file_path, 'rt') if file_path.endswith('.gz') else open(file_path, 'r')) as file:
-        header = next(file).strip()  # Save the header line
-        for line in file:
-            parts = line.strip().split("\t")
-            if len(parts) < 1:
-                continue
-            hammer = parts[0]
-            hammer_dict[hammer] = line.strip()
-    hammer_length = len(next(iter(hammer_dict))) if hammer_dict else 0
-    return hammer_length, header, hammer_dict
+    hammer_length = None
 
+    for line in input_stream:
+        fields = line.strip().split("\t")
+        hammer = fields[0]
+        if hammer_length is None:
+            hammer_length = len(hammer)
+        elif len(hammer) != hammer_length:
+            raise ValueError("Inconsistent hammer lengths in input")
+        hammer_dict[hammer] = line.strip()
 
-def find_kmers(sequence, k):
-    """
-    Finds all kmers of length k in a sequence and its reverse complement, converting sequence to lowercase.
-    """
-    sequence = sequence.lower()
-    sequence_rc = str(Seq(sequence).reverse_complement())
-    kmers = []
-    for i in range(len(sequence) - k + 1):
-        kmers.append(sequence[i:i + k])
-        kmers.append(sequence_rc[i:i + k])
-    return kmers
+    return len(hammer_dict), hammer_length, header, hammer_dict
 
+def process_contigs(directory, hammer_length, hammer_dict):
+    """Process contigs and filter hammer candidates."""
+    candidate_counts = defaultdict(int)
+    files = [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
-def count_kmers_in_contigs(contigs_directory, hammer_length):
-    """
-    Counts occurrences of kmers in all FASTA files within the given directory.
-    """
-    kmer_counts = defaultdict(int)
-    for file_name in os.listdir(contigs_directory):
-        file_path = os.path.join(contigs_directory, file_name)
-        if not os.path.isfile(file_path):
-            continue
-        for record in SeqIO.parse(file_path, "fasta"):
-            sequence = str(record.seq)
-            kmers = find_kmers(sequence, hammer_length)
-            for kmer in kmers:
-                kmer_counts[kmer] += 1
-    return kmer_counts
+    for file in files:
+        for record in SeqIO.parse(file, "fasta"):
+            seq = str(record.seq).lower()
+            reverse_complement = str(record.seq.reverse_complement()).lower()
 
+            for i in range(len(seq) - hammer_length + 1):
+                kmer = seq[i:i + hammer_length]
+                if kmer in hammer_dict:
+                    candidate_counts[kmer] += 1
+                    if candidate_counts[kmer] > 1:
+                        del hammer_dict[kmer]
+
+            for i in range(len(reverse_complement) - hammer_length + 1):
+                kmer = reverse_complement[i:i + hammer_length]
+                if kmer in hammer_dict:
+                    candidate_counts[kmer] += 1
+                    if candidate_counts[kmer] > 1:
+                        del hammer_dict[kmer]
 
 def main():
-    parser = argparse.ArgumentParser(description="Filter hammer candidates based on contig sequences.")
-    parser.add_argument("-H", "--hammer-file", required=True, help="Path to the hammer file (can be gzipped).")
-    parser.add_argument("-C", "--contigs-directory", required=True, help="Path to the directory containing FASTA contig files.")
+    parser = argparse.ArgumentParser(description="Filter hammer candidates.")
+    parser.add_argument('-C', '--contigs-directory', required=True, help='Directory containing contigs files')
     args = parser.parse_args()
 
-    hammer_length, header_line, hammer_dict = read_hammer_file(args.hammer_file)
-    if hammer_length == 0:
-        print("Error: No hammers found in the input file.", file=sys.stderr)
-        sys.exit(1)
+    # Read hammer candidates from STDIN
+    num_candidates, hammer_length, header, hammer_dict = read_hammer_candidates(sys.stdin)
 
-    kmer_counts = count_kmers_in_contigs(args.contigs_directory, hammer_length)
+    # Process contigs directory
+    process_contigs(args.contigs_directory, hammer_length, hammer_dict)
 
-    # Print header line
-    print(header_line)
+    # Output accepted hammers
+    print(header)
+    for hammer in sorted(hammer_dict.keys()):
+        print(hammer_dict[hammer])
 
-    # Filter and print hammers
-    printed_count = 0
-    for hammer, value in hammer_dict.items():
-        if kmer_counts[hammer] == 1:
-            print(value)
-            printed_count += 1
-
-    # Print summary to STDERR
-    print(f"Candidates read:  {len(hammer_dict)}", file=sys.stderr)
-    print(f"Hammers accepted: {printed_count}", file=sys.stderr)
-
+    # Output statistics to STDERR
+    print(f"Candidates read: {num_candidates}", file=sys.stderr)
+    print(f"Hammers accepted: {len(hammer_dict)}", file=sys.stderr)
 
 if __name__ == "__main__":
     main()

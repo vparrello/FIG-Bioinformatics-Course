@@ -1,0 +1,41 @@
+Please write a python program named 'filter_hammer_candidates.py'
+that:
+
+* Accepts a mandatory directory-name argument for a directory
+containing a set of FASTA contig files, short name '-C',
+long name '--contigs-directory'.
+
+* Reads a hammer-candidate file as a tab-seperated-value file from STDIN,
+saves the header-line, and loads the remainder of the file into
+a dictionary called the "hammer dictionary",
+with the first field as the key, and the entire line as the value.
+The keys are named "hammer candidates"; note that all hammers have the same length.
+The hammer read-function should return the number of candidates read,
+the hammer-length, the header-line, and the hammer-dictionary.
+
+* Reads the contents of the contigs directory.
+
+* Foreach file in the contigs directory, use BioPython
+to read the file as a set of FASTA-formatted DNA contigs.
+
+* Foreach contig, convert the contig-sequence to lower-case,
+and find all Kmers with length equal to the hammer-length
+on both the forward and reverse-complement sequences.
+
+* For each Kmer extracted from the contig and its reverse-complement:
+  - Check the hammer-dictionary to see if that Kmer is a hammer candidate,
+  
+  - If the Kmer is a hammer candidate, increment the count for that Kmer
+    in the candidate-count dictionary.
+    
+  - If the count for a condidate exceeds '1', delete that candidate's entry
+    from the hammer dictionary.
+
+* Print the saved header-line to STDOUT, sort the remaining keys
+in the hammer-dictionary (now called "Accepted hammers"),
+and then foreach accepted candidate in the hammer-dictionary,
+print its value to STDOUT.
+
+* Finally, print to STDERR the number of candidates read
+and the number of hammers accepted , then exit.
+
