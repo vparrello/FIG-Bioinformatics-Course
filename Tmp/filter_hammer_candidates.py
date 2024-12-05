@@ -32,7 +32,9 @@ def process_contigs(contigs_directory, hammer_length, hammer_dict):
 
         if not os.path.isfile(file_path):
             continue
-
+        else:
+            print(f"Processing file '{filename}'", file=sys.stderr)
+        
         for record in SeqIO.parse(file_path, "fasta"):
             seq = str(record.seq).lower()
             rev_comp = str(Seq(seq).reverse_complement()).lower()

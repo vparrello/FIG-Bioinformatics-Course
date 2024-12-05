@@ -14,8 +14,11 @@ the hammer-length, the header-line, and the hammer-dictionary.
 
 * Reads the contents of the contigs directory.
 
-* Foreach file in the contigs directory, use BioPython
-to read the file as a set of FASTA-formatted DNA contigs.
+* Foreach file in the contigs directory,
+print the progress-message f"Processing '{filename}'" to STDERR,
+where 'filename' is the name of the file, 
+and then use BioPython to read the file as a set of 
+FASTA-formatted DNA contigs.
 
 * Foreach contig, convert the contig-sequence to lower-case,
 and find all Kmers with length equal to the hammer-length
@@ -36,7 +39,8 @@ in the hammer-dictionary (now called "Accepted hammers"),
 and then foreach accepted candidate in the hammer-dictionary,
 print its value to STDOUT.
 
-* Finally, print to STDERR the number of candidates read,
+* Finally, print a blank line to STDERR,
+then the number of candidates read,
 the number of candidates eliminated,
 and the number of hammers accepted, then exit.
 
