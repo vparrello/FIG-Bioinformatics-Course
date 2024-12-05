@@ -1,69 +1,79 @@
 import os
 import sys
 import argparse
-from Bio import SeqIO
 from collections import defaultdict
+from Bio import SeqIO
+from Bio.Seq import Seq
 
-def read_hammer_candidates(input_stream):
+
+def read_hammer_candidates(stdin):
     """Reads the hammer candidate file from STDIN."""
-    header = input_stream.readline().strip()
     hammer_dict = {}
+    header_line = stdin.readline().strip()
     hammer_length = None
 
-    for line in input_stream:
+    for line in stdin:
         fields = line.strip().split("\t")
-        hammer = fields[0]
+        key = fields[0]
         if hammer_length is None:
-            hammer_length = len(hammer)
-        elif len(hammer) != hammer_length:
-            raise ValueError("Inconsistent hammer lengths in input")
-        hammer_dict[hammer] = line.strip()
+            hammer_length = len(key)
+        hammer_dict[key] = line.strip()
 
-    return len(hammer_dict), hammer_length, header, hammer_dict
+    return len(hammer_dict), hammer_length, header_line, hammer_dict
 
-def process_contigs(directory, hammer_length, hammer_dict):
-    """Process contigs and filter hammer candidates."""
-    candidate_counts = defaultdict(int)
-    files = [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
-    for file in files:
-        for record in SeqIO.parse(file, "fasta"):
+def process_contigs(contigs_directory, hammer_length, hammer_dict):
+    """Processes the contig files and identifies hammer candidates."""
+    candidate_count = defaultdict(int)
+    eliminated_count = 0
+
+    for filename in os.listdir(contigs_directory):
+        file_path = os.path.join(contigs_directory, filename)
+
+        if not os.path.isfile(file_path):
+            continue
+
+        for record in SeqIO.parse(file_path, "fasta"):
             seq = str(record.seq).lower()
-            reverse_complement = str(record.seq.reverse_complement()).lower()
+            rev_comp = str(Seq(seq).reverse_complement()).lower()
 
-            for i in range(len(seq) - hammer_length + 1):
-                kmer = seq[i:i + hammer_length]
-                if kmer in hammer_dict:
-                    candidate_counts[kmer] += 1
-                    if candidate_counts[kmer] > 1:
-                        del hammer_dict[kmer]
+            # Generate Kmers for forward and reverse complement
+            kmers = set(seq[i:i + hammer_length] for i in range(len(seq) - hammer_length + 1))
+            kmers.update(rev_comp[i:i + hammer_length] for i in range(len(rev_comp) - hammer_length + 1))
 
-            for i in range(len(reverse_complement) - hammer_length + 1):
-                kmer = reverse_complement[i:i + hammer_length]
+            for kmer in kmers:
                 if kmer in hammer_dict:
-                    candidate_counts[kmer] += 1
-                    if candidate_counts[kmer] > 1:
+                    candidate_count[kmer] += 1
+                    if candidate_count[kmer] > 1:
                         del hammer_dict[kmer]
+                        eliminated_count += 1
+
+    return eliminated_count
+
 
 def main():
     parser = argparse.ArgumentParser(description="Filter hammer candidates.")
-    parser.add_argument('-C', '--contigs-directory', required=True, help='Directory containing contigs files')
+    parser.add_argument("-C", "--contigs-directory", required=True, help="Directory containing FASTA contig files.")
     args = parser.parse_args()
 
     # Read hammer candidates from STDIN
-    num_candidates, hammer_length, header, hammer_dict = read_hammer_candidates(sys.stdin)
+    candidates_read, hammer_length, header_line, hammer_dict = read_hammer_candidates(sys.stdin)
 
-    # Process contigs directory
-    process_contigs(args.contigs_directory, hammer_length, hammer_dict)
+    # Process the contigs directory
+    eliminated_count = process_contigs(args.contigs_directory, hammer_length, hammer_dict)
 
-    # Output accepted hammers
-    print(header)
-    for hammer in sorted(hammer_dict.keys()):
-        print(hammer_dict[hammer])
+    # Print the header line to STDOUT
+    print(header_line)
+    # Sort and print the accepted hammer candidates
+    for key in sorted(hammer_dict.keys()):
+        print(hammer_dict[key])
 
-    # Output statistics to STDERR
-    print(f"Candidates read: {num_candidates}", file=sys.stderr)
-    print(f"Hammers accepted: {len(hammer_dict)}", file=sys.stderr)
+    # Print statistics to STDERR
+    accepted_count = len(hammer_dict)
+    print(f"Candidates read: {candidates_read}", file=sys.stderr)
+    print(f"Candidates eliminated: {eliminated_count}", file=sys.stderr)
+    print(f"Hammers accepted: {accepted_count}", file=sys.stderr)
+
 
 if __name__ == "__main__":
     main()

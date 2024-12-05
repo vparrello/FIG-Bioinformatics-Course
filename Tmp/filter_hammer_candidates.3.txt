@@ -1,5 +1,4 @@
-Please write a python program named 'filter_hammer_candidates.py'
-that:
+Please write a python program named 'filter_hammer_candidates.py' that:
 
 * Accepts a mandatory directory-name argument for a directory
 containing a set of FASTA contig files, short name '-C',
@@ -29,13 +28,15 @@ on both the forward and reverse-complement sequences.
     in the candidate-count dictionary.
     
   - If the count for a condidate exceeds '1', delete that candidate's entry
-    from the hammer dictionary.
+    from the hammer dictionary, and increment a count of the number
+    of candidates eliminated.
 
 * Print the saved header-line to STDOUT, sort the remaining keys
 in the hammer-dictionary (now called "Accepted hammers"),
 and then foreach accepted candidate in the hammer-dictionary,
 print its value to STDOUT.
 
-* Finally, print to STDERR the number of candidates read
-and the number of hammers accepted , then exit.
+* Finally, print to STDERR the number of candidates read,
+the number of candidates eliminated,
+and the number of hammers accepted, then exit.
 
