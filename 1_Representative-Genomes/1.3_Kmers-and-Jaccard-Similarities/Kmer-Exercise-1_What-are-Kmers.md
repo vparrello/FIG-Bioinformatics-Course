@@ -83,7 +83,7 @@ The following questions should be entered as individual prompts (or as Grimore p
 
 Use VScode to save `extract_kmers_from_fasta.py` in the `Code/` subdirectory.
 
-7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `1.3_Kmers-and-Jaccard-Similarities/Data/`. These files are all small, so you should be able to figure out what the output should be in your head. Each of the files will contain one "bad" sequence, i.e., a sequence that contains invalid characters for that file-type.
+7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `Data/`. These files are all small, so you should be able to figure out what the output should be in your head. Each of the files will contain one "bad" sequence, i.e., a sequence that contains invalid characters for that file-type.
 
 * good-bad_dna.fna
 * good-bad_protein.faa
