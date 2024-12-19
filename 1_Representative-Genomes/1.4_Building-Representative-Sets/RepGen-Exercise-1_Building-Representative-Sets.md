@@ -117,9 +117,11 @@ NOTE: We used the new term "regular expression" in this prompt.
 A "regular expression" (or `regex` for short) is a special method for defining a pattern to be matched or edited.
 The language of "regular expressions" is quite complex, and constructing a regular expression that matches a desired pattern is quite human-error-prone, but fortunately Grimoire is much better at constructing regular expressions than most humans, which means that you can specify the pattern using ordinary language and let Grimoire do the hard work for you! :-)
 
-3. Save the program that Grimoire generates as `build_representative_set.py`.
+3. Save the program that Grimoire generates as `build_representative_set.py`. Note that if you do not put any `print()` messages into your program, the terminal will not output anything when you run the program. This might make you think that the computer is frozen or that your program is not doing anything. If you want to know the progress of your program while it is running, add a `print()` message periodically throughout your code so that you can see how far it has gotten. I personally like to add humorous messages to entertain myself while I wait for the program to finish, but that is entirely up to your preference.
 
-4. Run the program as follows:
+4. Before running your program, know that if you input a large file of data, or ask for a large output file, the program might take a while to finish. It can be anywhere from minutes to hours depending on the size of the input and the value of `K` and `S` and your hardware specificiations. If at any time you want to stop the program, you can do so by pressing `Ctrl+C` on Windows or `Cmd+C` on macOS.
+
+Run the program as follows:
 
 ```
 python Code/build_representative_set.py -K 8 -S 10 -F Data/Universe.fasta -R Data/myrep10.faa -G Data/myrep10.genomes.tbl

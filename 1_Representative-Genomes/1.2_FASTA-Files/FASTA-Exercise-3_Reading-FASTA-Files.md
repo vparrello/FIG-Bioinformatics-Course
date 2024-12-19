@@ -37,6 +37,12 @@ FIG-Bioinformatics-Course/
 
 5. Copy the program itself to the clipboard, and then use VScode to save the program to the code section of the template `Code/fasta_reader.py`.
 
+***Note:*** The program may throw an error when you run it if you have not yet installed the BioPython module. You will know if this is necessary if the `import BioPython` line is in your code.If this happens, run the following pip command to install it:
+```
+pip install biopython
+```
+
+
 6. Ask Grimoire to explain line-by-line how the program works.
 
 7. Use the VScode terminal-window to run the program `Code/fasta_reader.py` on the file `Data/Sample1.fasta`.
