@@ -38,7 +38,7 @@ You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then
 Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.
 
 
-2. Get the PheS sequence for "Mystery Genome-ID 562.66554" using the following incantation:
+2. Get the PheS sequence for "Mystery Genome-ID 562.66554" using the following incantation inside of the BV-BRC CLI. If installed correctly, you should be able to also run the command in the Gitbash terminal in VSCode in your normal root directory:
 ```
     p3-echo PheS | p3-find-features --attr patric_id,product --eq genome_id,562.66554 gene | p3-get-feature-sequence --col feature.patric_id > Data/mystery_PheS.faa
 ```
