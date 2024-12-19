@@ -5,7 +5,7 @@ that:
 short name '-H', long name '--hammer-file'.
  
 * Accepts a mandatory directory-name argument for a directory
-containing a set of FASTA contig files, short name '-C',
+containing a set of FASTA contig files, short name '-D',
 long name '--contigs-directory'.
 
 * Reads the hammer-file (which may be gzipped) as a tab seperated file

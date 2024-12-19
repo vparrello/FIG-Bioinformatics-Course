@@ -4,7 +4,7 @@ Python Program: filter_hammer_candidates.py
 Requirements:
 
 1. Accept Arguments:
-   - Accept a mandatory argument `-C` or `--contigs-directory` specifying the path to a directory containing FASTA files.
+   - Accept a mandatory argument `-D` or `--contigs-directory` specifying the path to a directory containing FASTA files.
 
 2. Read Input:
    - Read a tab-separated file from standard input.

@@ -66,7 +66,7 @@ Here is a prompt that will generate the algorithm we have just described:
 Please write a python program named 'filter_hammer_candidates.py' that:
 
 * Accepts a mandatory directory-name argument for a directory
-containing a set of FASTA contig files, short name '-C',
+containing a set of FASTA contig files, short name '-D',
 long name '--contigs-directory'.
 
 * Reads a hammer-candidate file as a tab-separated-value file from STDIN,
@@ -167,7 +167,7 @@ Once you have your set of genome contigs,
 it's time to run the filtering program:
 
 ```
-python Code/filter_hammer_candidates.py -C Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
+python Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
 ```
 (Again, beware line-wrapping!)
 

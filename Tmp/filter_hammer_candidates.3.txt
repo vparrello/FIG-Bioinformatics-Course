@@ -1,7 +1,7 @@
 Please write a python program named 'filter_hammer_candidates.py' that:
 
 * Accepts a mandatory directory-name argument for a directory
-containing a set of FASTA contig files, short name '-C',
+containing a set of FASTA contig files, short name '-D',
 long name '--contigs-directory'.
 
 * Reads a hammer-candidate file as a tab-seperated-value file from STDIN,

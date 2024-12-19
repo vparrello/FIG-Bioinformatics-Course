@@ -55,7 +55,7 @@ def process_contigs(contigs_directory, hammer_length, hammer_dict):
 
 def main():
     parser = argparse.ArgumentParser(description="Filter hammer candidates.")
-    parser.add_argument("-C", "--contigs-directory", required=True, help="Directory containing FASTA contig files.")
+    parser.add_argument("-D", "--contigs-directory", required=True, help="Directory containing FASTA contig files.")
     args = parser.parse_args()
 
     # Read hammer candidates from STDIN
