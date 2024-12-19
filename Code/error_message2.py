@@ -6,7 +6,8 @@ if len(sys.argv) != 2:
     print("Usage: python tsv_headers.py <filename>")
     sys.exit(1)
 
-filename = sys.argv[1]
+# VSCode doesn't know something is missing here. Look below for a yellow squiggly line for a clue as to what variable needs to be started here.
+
 
 try:
     with open(filename, newline='') as file:

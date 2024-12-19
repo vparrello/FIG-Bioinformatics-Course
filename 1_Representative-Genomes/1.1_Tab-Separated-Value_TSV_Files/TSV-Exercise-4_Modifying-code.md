@@ -98,10 +98,6 @@ in the input datafile.
 
 If you are successful at revising your program, you should see the following output from each of the following commands. (NOTE: once again, commands should be entered as a single line, even if they appear to wrap over multiple lines of the screen):
 
-* ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 7 ```
-
-    ``` sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3 ```
-
 * ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 4 -m 20 ```
 
     ``` sample  1507.3  203120.7    40545.1270 ```

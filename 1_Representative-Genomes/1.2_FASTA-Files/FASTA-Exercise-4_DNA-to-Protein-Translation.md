@@ -64,6 +64,13 @@ in this prompt; why is that?
     ```
 Note that we are recommending a file-extension of `.faa` to remind you that the translation is an Amino-Acid FASTA file.
 
+Normally, there is something that outputs into the terminal when you run a program. In this case, the program outputs into a file. That means that if your program is working correctly, you should see the contents of `Data/Result1.faa` in the `Data/` directory and not in your terminal. Instead, the terminal should just show your mouse cursor blinking next to an empty line. If you want your program to output something into the terminal to tell you that it is done, add the following line of code to the end of your program.
+```
+print("Done!")
+```
+Feel free to customize this message to your liking. Half the fun is getting the computer to talk to you!
+
+
 7. Check your output translation against the file `Solutions/Result1.simple.faa`.
 We have also included the code that Grimoire generated as `Solutions/translate-DNA_simple.solution.py`.
 
