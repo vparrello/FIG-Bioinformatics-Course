@@ -1,65 +1,57 @@
 # Hammer Exercise 4 - Hammer Quality-Control
 
-**Objective:** Filter out candidate hammers that also occur elsewhere within the complete sequences of a RepGen genome,
-in addition to the SOUR that the candidate came from.
+**Objective:** Filter out candidate hammers that also occur elsewhere within the complete sequences of a RepGen genome
+besides the SOUR that the candidate came from.
 
-So far we have only looked for Hammer candidates
-within the PheS SOUR sequences from our Universe of Genomes.
-However, PheS is only one gene, and it is only about 
-1000 basepairs long; by contrast, a typical bacterial genome
-contains several thousand genes, and is several million basepairs long.
-Therefore, it is possible that a Kmer that was found exactly once
-in exactly one representative genome when one is only looking
-at the sequences for the PheS SOURs within a RepGen set
-might still occur more than once when one looks at the
-complete contig sequences for the members of that same RepGen set
-— and by definition, a `hammer` can only occur within
-a single RepGen, and it can only occur once within that RepGen.
-Hence, once a set of hammer-candidates has been found,
-we must doublecheck them to filter out any candidates
-that have any additional occurances within any of the representative genomes.
+So far, we have looked for hammer candidates only within the PheS SOUR sequences from our Universe of Genomes.
+However, PheS is just one gene, about 1000 base pairs long,
+while a typical bacterial genome contains thousands of genes
+and spans millions of base pairs.
+A Kmer found only once in one representative genome when analyzing
+just the PheS SOUR sequences might appear more than once
+when considering the complete contig sequences for the same set.
+Since a hammer must be unique to a single RepGen and occur only once within it,
+we must recheck the hammer candidates to eliminate any that occur
+more than once in any representative genome.
+
 
 ## Generating the filter program
 
-By definition, a `hammer` must occur exactly once
-in exactly one representative genome,
-and that single occurence must be within a SOUR.
-When we constructed our set of hammer candidates,
-we only looked at the sequences for the selected SOURs,
-not the complete set of contig sequences for the RepGen set,
-so we need to check the hammer-candidates against the contigs
-to see if any of them are found elsewhere within one of the RepGens before we accept that candidate as a `hammer`.
-If, after checking all of the contigs sequences for the entire RepGen set,
-a given hammer-candidate is still found only once, then it is a valid hammer;
-however, if additional instances of that candidate are found elsewhere within the set of contigs,
-then that candidate does not satisfy the definition of a `hammer`,
-and it must be eliminated.
-We may think of this doublechecking step as a "filtering" process.
+By definition, a hammer must occur exactly once
+in a single representative genome,
+and that occurrence must be within a SOUR gene.
+Since we identified hammer candidates using only the selected SOUR sequences,
+we need to verify them against the complete set of contig sequences
+for the RepGen set.
+If a hammer candidate is still unique after checking all the contigs,
+it is a valid hammer.
+However, if additional occurrences are found,
+it fails to meet the hammer definition and must be discarded.
+This process of verification can be thought of as "filtering."
 
 Since the number of hammer-candidates is small compared
 to the number of Kmers in the set of contigs,
-the strategy we will use is to read the candidates into a dictionary,
-and then foreach genome in the RepGen set, scan the Kmers in its contigs
-to see if any of them are in the dictionary.
-If the number of times we have seen a Kmer that is within the dictionary of candidates
-ever exceeds 1,
-then it cannot be a hammer, and we must delete it from the dictionary.
-Once all of the contigs have been scanned,
-the remaining contents of the dictionary will be valid hammers, and we can write them out to a file.
+
+To verify the hammer candidates, we first load them into a dictionary.
+For each genome in the RepGen set, we scan the Kmers in its contigs
+and check if they match any candidate in the dictionary.
+If a Kmer in the dictionary is found more than once,
+then it cannot be a valid hammer, and should be removed.
+After scanning all contigs, the remaining entries within the dictionary
+are valid hammers, which we then save to an output file.
 
 (It may be helpful at this point to go back and review the interactive exercise on adding and deleting dictionary entries
 in `TSV-Exercise-2_Python-Datatypes`.)
 
-We will organize the set of RepGen contigs
-by storing the each genome's contigs in a FASTA file
-with name-format `genome_id.fna`, 
-and store all of these contig-files within a directory. 
-We read the hammer-candidates from `STDIN`, and load them into a dictionary.
-Next, we read the contents of the genome directory,
-and foreach genome compare its Kmers against the dictionary of candidates,
-removing any dictionary entries that are found more than once within the contigs.
-Finally, after checking all genomes in the directory,
-we write the remaining contents of the candidate dictionary to `STDOUT`.
+Each genome's contigs are stored as a FASTA file
+with name-format `genome_id.fna` within a designated directory.
+Hammer candidates are input from `STDIN` and stored in a dictionary.
+We then iterate through the genomes in the directory,
+checking their Kmers against the dictionary and discarding any candidates
+that appear more than once within the contigs.
+Once all genomes are processed,
+the valid hammers remaining in the dictionary are output to `STDOUT`.
+
 Here is a prompt that will generate the algorithm we have just described:
 
 ```
@@ -146,43 +138,88 @@ If the command fails, print an error-message to STDERR, and then exit.
 Please ask Grimoire to also generate code from this prompt,
 and then again use VScode to save it as usual.
 We are now in a position to fetch your genome contigs.
-You will need to run the following command within
-the BV-BRC app's window.
+
+To fetch the contigs, you will need to run the contig-fetching program
+that Grimoire generated for you from within the BV-BRC app's window,
+not VScode.
 Also, please remember that the BV-BRC app
 opens its window in your home-directory,
 so you will first need to change directory
 to the course directory.
 
 ```
-python Code/get_contigs_for_genomes.py -G Data/myrep10.genomes.tab -D Data/Myrep10_Genomes
+python3 Code/get_contigs_for_genomes.py -G Data/myrep10.genomes.tab -D Data/Myrep10_Genomes
 ```
 
-(Again, remember that all of the above should be entered on a single line, even if it looks like it's wrapped across multiple lines on your screen.)
+(Again, remember that all of the above should be entered on a single line, even if it looks like it's wrapped across multiple lines on your screen.
+also, please note that inside the BV-BRC app, it is necessary to specify
+the `python3` interpretor, because the BV-BRC app defaults to `python version 2`,
+not `python version 3`.)
+
 
 The genome-fetching process will take some time,
-but every 10 or 15 seconds or so you should see a progress message
+but every few seconds or so you should see a progress message
 indicating which genome is currently being fetched.
 
 Once you have your set of genome contigs,
 it's time to run the filtering program:
 
 ```
-python Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
+python3 Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
 ```
 (Again, beware line-wrapping!)
 
 The filtering program will once again take some time,
-but it should print progress-messages every few seconds
+but it should print a progress-message every few seconds
 to let you know that it's running.
 
-Congratulations! You now have a guaranteed valid set of hammers!
+Congratulations! You now have a guaranteed-valid set of hammers!
 
 
 ### Bonus exercise
 
 Repeat the contig-fetching process and filtering process
-of the `myrep50` RepGen set.
+of the `myrep50` RepGen set. 
+Note that `myrep50` is about 10 times larger that `myrep10`,
+so everything is going to take longer.
+
 
 ## Self-Check
 
-(TDB)
+To check that the genome-fetching process ran correctly,
+you can execute the following command:
+
+```
+ls -1 Data/Myrep10_Genomes/ | wc -l
+```
+
+`ls -1` means "List the contents of the directory in single-column format".<br>
+`wc -l` means "Count the number of lines".<br>
+`myrep10` should contain 141 genomes,
+while `myrep50` should contain 921 genomes.
+
+Filtering the `myrep10` hammers should print the following last three lines to `STDERR`:
+
+```
+Candidates read: 148751
+Candidates eliminated: 1522
+Hammers accepted: 147229
+```
+
+Note that most hammers were accepted,
+because the `myrep10` genomes are fairly far apart,
+and therefore have few Kmers in common;
+notwithstanding that, this exercise does prove
+that some of the candidate hammers do occur
+outside of the PheS SOUR in some `myrep10` genome.
+
+Filtering the `myrep50` hammers should print the following last three lines to `STDERR`:
+
+```
+Candidates read: 903835
+Candidates eliminated: 40286
+Hammers accepted: 863549
+```
+Note that a larger fraction of candidates have been eliminated,
+because the `myrep50` genomes are closer together,
+and therefore have a greater chance of having Kmers in common.

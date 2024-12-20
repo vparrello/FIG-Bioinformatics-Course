@@ -80,6 +80,31 @@ Number of hammers: 7923293
 
 (Again, insert comparison of number of Kmers read vs eliminated in this exercise vs the single-role exercise here)
 
+We have included solution-files in the `Solutions/` directory
+for this module, but because they are quite large,
+we have included them in "gzip compressed"
+rather than plaintext format.
+To uncompress them, it should be sufficient
+to double-click on them in your operating system's 
+file-browser. (NOTE: VScode cannot read gzipped files!)
+
+Alternatively, you can uncompress them from the command-line
+using the following example command:
+
+```
+gunzip pathToCompressedFile
+```
+
+where you should replace `pathToCompressedFile`
+with the actual path to the file that you want to decompress,
+e.g. to decompress a file named `bar.gz` in directory `Foo`,
+you would type:
+
+```
+gunzip Foo/bar.gz
+```
+
+
 ## TODO
 
 Major rewite still needed, since the definition of "hammers" and the hammer-building process used in the current version of course has diverged from the defintions that Tory and Bruce used when they wrote the draft for this module.
