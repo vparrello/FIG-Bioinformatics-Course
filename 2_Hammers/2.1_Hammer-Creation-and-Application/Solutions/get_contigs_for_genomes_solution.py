@@ -10,8 +10,8 @@ Please write a python program named 'get_contigs_for_genomes.py' that:
   - Name of an output directory, short name '-D',
     long-name '--output-data'
 
-* Reads	the genome-ID file, skips the	header-line,
-and loads the remainder of the first column into	a list.
+* Reads	the genome-ID file, skips the header-line,
+and loads the remainder of the first column into a list.
 
 * Creates the output directory if it does not already exist,
   else warns the user and exits
