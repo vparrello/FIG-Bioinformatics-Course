@@ -204,7 +204,9 @@ have been completely eliminated,
 leaving only the hit against the correct genome, 511145.12 *E. coli*. The score for *E. coli* has decreased slightly,
 from 898 to 878, but now its signal has become completely clear.
 
-
+Similarly, producing a hammer-report for `MysterySample1.fna`
+using the filtered `MyRep10` hammers reduces the number of "noise" hits
+from 8 to 3.
 
 
 ### Bonus Exercises
@@ -257,3 +259,4 @@ Hammers accepted: 863549
 Note that a larger fraction of candidates have been eliminated,
 because the `myrep50` genomes are closer together,
 and therefore have a greater chance of having Kmers in common.
+
