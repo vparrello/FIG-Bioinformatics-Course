@@ -190,7 +190,7 @@ Congratulations! You should now have a guaranteed-valid set of hammers!<br>
 ### How Filtering has Improved the Hammers
 
 To see how filtering the hammers has improved their quality,
-we will need to repeat the tests in `Hammer-Exercise-2` and `Hammer-Exercise-3` using the filtered hammers.
+let's repeat the tests in `Hammer-Exercise-2` and `Hammer-Exercise-3` using the filtered hammers.
 
 #### Reanalysis of MysteryGenome1
 
@@ -206,7 +206,7 @@ from 898 to 878, but now its signal has become completely clear.
 
 Similarly, producing a hammer-report for `MysterySample1.fna`
 using the filtered `MyRep10` hammers reduces the number of "noise" hits
-from 8 to 3.
+from 8 genomes to 3, while only slightly decreasing the score for the real genomes.
 
 
 ### Bonus Exercises
@@ -222,17 +222,17 @@ compared to Exercises 2 and 3.
 
 ## Self-Check
 
-To check that the genome-fetching process ran correctly,
+To make a quick check that the genome-fetching process ran correctly,
 you can execute the following command:
 
 ```
 ls -1 Data/Myrep10_Genomes/ | wc -l
 ```
 
-`ls -1` means "List the contents of the directory in single-column format".<br>
-`wc -l` means "Count the number of lines".<br>
-`myrep10` should contain 141 genomes,
-while `myrep50` should contain 921 genomes.
+`ls -1` means "List the contents of the directory in single-column format";<br>
+we then pipe the results to `wc -l`, which means "Count the number of lines".<br>
+The directory for `myrep10` should contain 141 genomes,
+while the directory for `myrep50` should contain 921 genomes.
 
 Filtering the `myrep10` hammers should print the following last three lines to `STDERR`:
 
@@ -242,12 +242,12 @@ Candidates eliminated: 1522
 Hammers accepted: 147229
 ```
 
-Note that most hammers were accepted,
-because the `myrep10` genomes are fairly far apart,
-and therefore have few Kmers in common;
-notwithstanding that, this exercise does prove
-that some of the candidate hammers do occur
-outside of the PheS SOUR in some `myrep10` genome.
+Note that only about 1% of the candidates were rejected,
+because the `myrep10` genomes are fairly far apart
+and therefore have few Kmers in common to begin with.
+Nevertheless, we see a dramatic improvement in reported results
+after filtering, since all of the non-*E. coli* hits for `MysteryGenome1`
+have now been eliminated, with only a 2% decrease in the score for *E. coli*.
 
 Filtering the `myrep50` hammers should print the following last three lines to `STDERR`:
 
@@ -256,7 +256,11 @@ Candidates read: 903835
 Candidates eliminated: 40286
 Hammers accepted: 863549
 ```
-Note that a larger fraction of candidates have been eliminated,
-because the `myrep50` genomes are closer together,
+
+Note that this time nearly 4.5% of the candidates have been eliminated;
+this is because the `myrep50` genomes are closer together than the `myrep10` genomes,
 and therefore have a greater chance of having Kmers in common.
+But again, eliminating the few candidates with occurrences
+outside the SOUR has dramatically decreased the number of "noise"
+hits---from 51  down to just 15 in the case of `MysterySample1`.
 
