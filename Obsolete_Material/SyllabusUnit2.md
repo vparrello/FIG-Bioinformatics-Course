@@ -17,3 +17,33 @@ Use your hammer tool to identify which genomes are present within a "metagenomic
 
 So far we have only looked at the Kmers in the PheS SOUR sequences.
 Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
+
+
+## 2.2 Hammer Tuning
+
+### Hammer Tuning-1 Precision
+Figure out what to put here, assuming we even cover precision and accuracy at all.
+
+### Hammer Tuning-2 Accuracy
+Picking the correct roles mean that the hammers are more accurate for your purpose.  
+
+### Hammer Tuning-3 Worthiness
+How many "peer genomes" of a representative are hit by the hammer you chose?
+
+* Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
+
+* Hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
+
+## 2.3 Creation of the Hammer Set
+
+### Creation-1 Create a hammer set
+Create a set for all available repgen genomes to use for both classification, and antibiotics
+
+### Creation-2 Use Case: Classification
+Use the hammer set to classify genomes inside of a sample.
+
+### Creation-3 Use Case: Antibiotics
+Use the hammer set to target a group for antibiotics
+
+### Creation-4 Use Case: Closest Genome
+Use the hammer set to find the genome closest to the mystery genome
