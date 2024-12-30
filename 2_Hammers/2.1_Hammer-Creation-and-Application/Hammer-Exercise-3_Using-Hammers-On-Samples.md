@@ -41,12 +41,13 @@ python Code/hammer_compare.py -H Data/myrep10.hammers.tbl -G Data/myrep10.genome
 * NOTE: The data-file for this exercise is about twice as large as `MysteryGenom1.fna`,
 so it will take significantly longer to run.
 
-To check your results, 10 RepGens should be returned;
+To check your results, 11 RepGens should be returned;
 see the `Self-Check` for a table of the Top 5 hits.
 
-Note that 3 of the RepGens yielded hundreds of hits, as expected for a sample
-known to contain 3 genomes. However, also please note that 7 other representatives were reported (out of 150 genomes total within the RepGenSet),
-albeit each with only  a small number of hits.
+Note that 3 of the RepGens yielded more than 100 hits,
+as expected for a sample
+known to contain 3 genomes. However, also please note that 8 other representatives were reported (out of 141 genomes total within the RepGenSet),
+albeit each with only a small number of hits.
 We briefly discussed why such weak hits might exist in the previous exercise;
 the existence of such hits illustrates the need for a minimum score-threshold
 before we can be confident that a relative of a representative is present in a sample.
@@ -92,28 +93,28 @@ from more than one SOUR from the same representative.
 should have returned 10 RepGens, with `29523.365 [Bacteroides sp. cpbc052018]`
 as the top-scoring RepGen.
 
-2. `MysterySample1.fna` using `myrep10` should also return 10 genomes;
+2. `MysterySample1.fna` using `myrep10` should also return 11 genomes;
 here are the top 5 and their scores:
 
 | genome_id | genome_name | score |
 | --- | --- | ---: |
-| 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 840 |
-| 206672.9 | Bifidobacterium longum NCC2705 | 691 |
-| 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 6 |
+| 390333.7   | Lactobacillus delbrueckii subsp. bulgaricus ATCC 11842 | 1030 |
+| 511145.12  | Escherichia coli str. K-12 substr. MG1655 | 840 |
+| 206672.9   | Bifidobacterium longum NCC2705 | 691 |
+| 1637999.4  | Verrucomicrobia bacterium IMCC26134 | 6 |
 | 174633.135 | Candidatus Kuenenia stuttgartiensis GH-07nov19-223 | 5 |
-| 192952.21 | Methanosarcina mazei Go1 | 4 |
 
 Note that the top 3 RepGens received scores in the several-hundreds range,
 while all the lower-ranking RepGens received scores that are less than 10.
 
-* The Bonus exercise should have returned 62 RepGens;
+* The Bonus exercise should have returned 55 RepGens;
 here are the top 5:
 
 | genome_id | genome_name | score |
 | --- | --- | ---: |
-| 321967.11 | Lactobacillus casei ATCC 334 | 795 |
+| 390333.7  | Lactobacillus delbrueckii subsp. bulgaricus ATCC 11842 | 989 |
 | 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 789 |
-| 206672.9 | Bifidobacterium longum NCC2705 | 632 |
+| 206672.9  | Bifidobacterium longum NCC2705 | 632 |
 | 1637999.4 | Verrucomicrobia bacterium IMCC26134 | 6 |
 | 1314958.3 | Parachlamydiaceae bacterium HS-T3 | 6 |
 

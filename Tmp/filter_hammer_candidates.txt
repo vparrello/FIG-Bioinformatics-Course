@@ -1,0 +1,36 @@
+Please write a python program named 'filter_hammer_candidates.py'
+that:
+
+* Accepts a mandatory filename argumen for a "hammer file",
+short name '-H', long name '--hammer-file'.
+ 
+* Accepts a mandatory directory-name argument for a directory
+containing a set of FASTA contig files, short name '-D',
+long name '--contigs-directory'.
+
+* Reads the hammer-file (which may be gzipped) as a tab seperated file
+saves the header-line, and loads the remainder of the file into
+a dictionary, with the first field as the key, and the entire line
+as the value.
+The keys are named 'hammers'. Note that all hammers have the same length.
+The readin function should return the hammer-length 
+the header-line, and the dictionary.
+
+* Reads the contents of the contigs directory, and for each file,
+uses BioPython to read the file as FASTA-formatted DNA contigs.
+Foreach contig, convert the contig-sequence to lower-case,
+and the find all Kmers with length equal to the hammer-length
+on both the forward and reverse-complement sequences, 
+building a dictionary that accumulates the number of occurrences
+of each Kmer.
+
+* Print the saved header-line to STDOUT, then foreach entry
+in the hammer dictionary, print its value to STDOUT
+if the key only occurs once in the contigs Kmer-dictionary.
+You should also keep a count of the number of hammer-dictionary lines 
+printed.
+
+* Finally, print to STDERR the number of hammers read from the
+hammer-file, and the number of hammers printed to the output,
+then exit.
+

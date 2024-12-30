@@ -1,76 +1,75 @@
 import sys
+import gzip
+from collections import defaultdict
 from Bio import SeqIO
 from Bio.Seq import Seq
-from collections import defaultdict
+
 
 def read_hammer_file(file_path):
     """
-    Reads a tab-separated value file, skips the header, and loads the first and second columns
-    into a dictionary as keys (hammers) and values (feature_ids). Also returns the hammer length.
+    Reads a tab-separated-value file, possibly gzipped, and loads the first and second columns into a dictionary.
     """
     hammer_dict = {}
-    hammer_length = None
-    with open(file_path, 'r') as f:
-        # Skip the header line
-        next(f)
-        for line in f:
-            columns = line.strip().split('\t')
-            hammer, feature_id = columns[0], columns[1]
+    with (gzip.open(file_path, 'rt') if file_path.endswith('.gz') else open(file_path, 'r')) as file:
+        header = next(file)  # Skip the header
+        for line in file:
+            parts = line.strip().split("\t")
+            if len(parts) < 2:
+                continue
+            hammer, feature_id = parts[0], parts[1]
             hammer_dict[hammer] = feature_id
-            if hammer_length is None:
-                hammer_length = len(hammer)
+    hammer_length = len(next(iter(hammer_dict))) if hammer_dict else 0
     return hammer_length, hammer_dict
+
 
 def find_kmers(sequence, k):
     """
-    Finds all Kmers of length k in the given DNA sequence.
+    Finds all kmers of length k in a sequence and its reverse complement.
     """
-    return [sequence[i:i + k] for i in range(len(sequence) - k + 1)]
+    kmers = []
+    sequence_rc = str(Seq(sequence).reverse_complement())
+    for i in range(len(sequence) - k + 1):
+        kmers.append(sequence[i:i + k])
+        kmers.append(sequence_rc[i:i + k])
+    return kmers
 
-def process_fasta_and_count_kmers(hammer_length, hammer_dict):
-    """
-    Processes a FASTA-formatted DNA file from STDIN, finds all Kmers of the hammer length
-    in both the forward and reverse complement sequences, and counts occurrences of each Kmer
-    that is a hammer.
-    """
-    kmer_counts = defaultdict(int)
 
-    # Reading FASTA from stdin
-    for record in SeqIO.parse(sys.stdin, "fasta"):
+def count_hammers(fasta_file, hammer_length, hammer_dict):
+    """
+    Counts occurrences of hammers (kmers) in the DNA sequences from a FASTA file.
+    """
+    hammer_counts = defaultdict(int)
+    for record in SeqIO.parse(fasta_file, "fasta"):
         sequence = str(record.seq)
-        reverse_complement = str(record.seq.reverse_complement())
-
-        # Find kmers in both forward and reverse complement
-        for kmer in find_kmers(sequence, hammer_length) + find_kmers(reverse_complement, hammer_length):
+        kmers = find_kmers(sequence, hammer_length)
+        for kmer in kmers:
             if kmer in hammer_dict:
-                kmer_counts[kmer] += 1
+                hammer_counts[kmer] += 1
+    return hammer_counts
 
-    return kmer_counts
 
-def generate_report(kmer_counts, hammer_dict):
-    """
-    Generates a tab-separated report of hammers found more than once in the DNA sequences,
-    sorted in decreasing order of count. Also includes the associated feature_id.
-    """
-    report_lines = []
-    for hammer, count in sorted(kmer_counts.items(), key=lambda x: x[1], reverse=True):
-        if count > 0:
-            feature_id = hammer_dict[hammer]
-            report_lines.append(f"{hammer}\t{count}\t{feature_id}")
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python report_hammer_counts.py <hammer_file>", file=sys.stderr)
+        sys.exit(1)
+
+    hammer_file = sys.argv[1]
+    hammer_length, hammer_dict = read_hammer_file(hammer_file)
     
-    return report_lines
+    if hammer_length == 0:
+        print("Error: No hammers found in the input file.", file=sys.stderr)
+        sys.exit(1)
+    
+    hammer_counts = count_hammers(sys.stdin, hammer_length, hammer_dict)
+    
+    sorted_hammers = sorted(
+        ((hammer, count, hammer_dict[hammer]) for hammer, count in hammer_counts.items() if count > 1),
+        key=lambda x: -x[1]
+    )
+    
+    for hammer, count, feature_id in sorted_hammers:
+        print(f"{hammer}\t{count}\t{feature_id}")
+
 
 if __name__ == "__main__":
-    # Example hammer file path
-    hammer_file = sys.argv[1]
-
-    # Step 1: Read the hammer file
-    hammer_length, hammer_dict = read_hammer_file(hammer_file)
-
-    # Step 2: Process the FASTA file and count Kmers
-    kmer_counts = process_fasta_and_count_kmers(hammer_length, hammer_dict)
-
-    # Step 3: Generate and print the report
-    report = generate_report(kmer_counts, hammer_dict)
-    print("Hammer\tCount\tFeature_ID")
-    print("\n".join(report))
+    main()
