@@ -29,7 +29,7 @@ FIG-Bioinformatics-Course/
 1. In bioinformatics we are often faced with the need to extract data from files and convert these data from the format produced by one program to a different format that is needed by some other program.
 In this exercise, you will first create a program that will reformat a 3-column tab-separated file into a FASTA-formatted file. You will then use the program `cmd_tsv_select_columns.py` that you created in `TSV-Ex-3` to extract 3 selected columns from a tab-separated file that contains both genome and sequence-data, and "pipe" them to the program that converts the 3-column data into FASTA format.
 
-If you use your script `tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
+If you use your script `Code/tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
 % python3 Code/tsv_headers.py Data/rep10.seqs.tbl 
 Field names in the TSV file are:

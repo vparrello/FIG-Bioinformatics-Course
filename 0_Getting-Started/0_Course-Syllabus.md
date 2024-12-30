@@ -12,11 +12,8 @@
 
 ## 2. Hammers
 
-1. Hammers as Genetic Barcodes - A way to look up what a genome could be without knowing the whole thing.
+1. Hammer Creation and Application - A way to look up what a genome could be without knowing the whole thing.
 
-2. Hammer Tuning- Determine what is important for creating a unique and useful hammer. 
-
-3. Creation of the Hammer Set - Create your own set of hammers based on a single role
 
 ## 3. Projections
 
