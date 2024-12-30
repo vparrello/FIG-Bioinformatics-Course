@@ -18,7 +18,17 @@ BV-BRC supports three operating-systems; detailed installation-instructions for 
 
 4. Login to BV-BRC using this command:
 ```
-    p3-login your_BVBRC_username
+    p3-login replace_this_with_your_BVBRC_username
 ```
-which will prompt you for your BV-BRC password;
+
+For example, if your BV-BRC username is `jdoe@gmail.com`,
+you would enter:
+```
+    p3-login jdoe@gmail.com
+```
+
+
+`p3-login` will then prompt you to enter your BV-BRC password;
 once logged in, you can issue any P3-command.
+
+Occasionally, a P3-command will respond with "login-token expired" rathere than returning data, which means that your P3 session has timed out, and that you need to login to P3 again.
