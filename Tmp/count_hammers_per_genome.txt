@@ -1,0 +1,36 @@
+Please write a python program that accepts the following mandatory arguments:
+
+-H, --hammer-file: Name of a tab-seperated-value file (which may be gzipped)
+    mapping hammer-Kmers to feature-IDs
+
+-G, --genome-file: Name of a tab-seperated-value file mapping genome IDs to genome names.
+
+* The program should read the genome-file by skipping the header-line,
+and then load the first and second columns into a dictionary
+as keys and values.
+The keys are 'genome-IDs' and should matchthe regex r"\d+\.\d+".
+The values are arbitrary strings that can contain whitespace,
+and extend to the end of the line.
+
+* The hammer-file may be large, so the program should determine
+if the hammer-file is gzipped, and then read and process the hammer-file
+as a stream. 
+
+* The program should skip the header-line of the hammer-file,
+then process the remaining lines.
+The first column is called a 'hammer' but you can ignore it.
+The second column is a 'feature_id' or 'fid';
+it should match the regex r"fig\|(\d+\.\d+)\.peg.\d+".
+The portion in the match-group is a genome-ID.
+Count the number of hammers for each genome-ID.
+
+* Print a tab-seperated header line to STDOUT
+with the form f"hammers\tgenome_ID\tgenome_name".
+
+* foreach genome-ID in the hammer-count dictionary sorted by genome-name,
+print a tab-separated line containing the hammer-count, the genome-ID,
+and the genome-name.
+
+* exit the program.
+
+
