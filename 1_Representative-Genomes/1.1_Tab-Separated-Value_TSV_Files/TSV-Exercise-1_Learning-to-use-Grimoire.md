@@ -115,3 +115,26 @@ If you are successful, the program should return output that matches the 5 colum
 ```genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50```
 
 In the `Solutions/` subdirectory of this module, we have included the program `tsv_headers_solution.py` that Grimoire wrote for us; this program may perhaps differ in precise detail from the program that Grimoire wrote for you, but it should be functionally equivalent.
+
+To test out the Solution program, run the following command:
+
+```
+python3 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_Ex1_solution.py < Data/bindict.tbl
+```
+
+If you experience the following error:
+
+```
+$ python3 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.
+```
+You can fix it by changing `python3` to `python` in the command.
+python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
+
+If you experience the following error:
+
+```
+C:\Users\parre\AppData\Local\Programs\Python\Python312\python.exe: can't open file 'C:\\Users\\parre\\OneDrive\\Documents\\Projects\\FIG-Bioinformatics-Course\\1_Representative-Genomes\\1.1_Tab-Separated-Value_TSV_Files\\Solutions\\tsv_headers_solution.py': [Errno 2] No such file or directory
+```
+
+It means that the spelling of one of your file paths is incorrect. Be sure to check your spelling of the files. Using the tab in the commmand line to navigate through the file paths can help you to avoid this error.
