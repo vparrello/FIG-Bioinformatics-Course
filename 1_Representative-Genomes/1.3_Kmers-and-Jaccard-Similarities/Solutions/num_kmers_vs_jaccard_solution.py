@@ -1,4 +1,5 @@
 import sys
+import argparse
 from Bio import SeqIO
 import matplotlib.pyplot as plt
 from itertools import combinations
@@ -18,12 +19,13 @@ def common_kmers(set1, set2):
     return len(set1 & set2)
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: python num_kmers_vs_jaccard.py <kmer-length> <fasta-file>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Usage: python num_kmers_vs_jaccard.py -k <kmer-length> -f <fasta-file>")
+    parser.add_argument("-k", "--kmer_length", type=int, help="Length of the k-mer")
+    parser.add_argument("-f", "--fasta_file", type=str, help="Path to the FASTA file")
+    args = parser.parse_args()
 
-    k = int(sys.argv[1])
-    fasta_file = sys.argv[2]
+    k = args.kmer_length
+    fasta_file = args.fasta_file
 
     sequences = []
     for record in SeqIO.parse(fasta_file, "fasta"):

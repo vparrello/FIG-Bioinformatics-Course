@@ -46,10 +46,15 @@ FIG-Bioinformatics-Course
 
     * Print the number of nonzero protein-similarities and the number of nonzero DNA-similarities to STDERR, then exit.
     ```
+***Note:*** The import statements for this program might require you to install the `matplotlib` module. This is a common module for creating graphs and plots in python. It is a very commonly used by statisticians and data scientists to help with visualizing data. Pandas is another common module for data analysis and might also be required. If you get an error saying that the module is not found, run the following commands to install it:
+```
+pip install matplotlib
+pip install pandas
+```
 
 3. We suggest that you initially run your program with the following arguments:
     ```
-    Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
+    python3 Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
     ```
 
 4. Note that the "scatter-plot" of score-pairs indicates that in general a larger protein jaccard-similarity implies a larger DNA jaccard-similarity, albeit the correlation is not "tight", i.e. the pairs do not all fall close to the same straight line. Also, there are many instances where the protein similarity is zero even though the DNA similarity is nonzero, and vice-versa. 
@@ -62,4 +67,3 @@ Please try running the program with different values of `--protK` and `--dnaK`, 
 
 7. Note that in general, when the number of protein pairs and number of DNA pairs are comparable, `--dnaK` will be larger than `--protK`, i.e., it takes a longer DNA Kmer to achieve the same specificity as a given protein Kmer. Ask Grimoire why this might be.
 
-## Put some sort of self-check, summary, or conclusion here
