@@ -1,0 +1,48 @@
+# File and Directory Commands
+cd /path/to/directory          # Change directory
+ls -la                         # List directory contents (detailed view)
+pwd                            # Print working directory
+mkdir my_folder                # Make a new directory
+rmdir my_folder                # Remove an empty directory
+mv oldname.txt newname.txt     # Move or rename a file/directory
+cp file.txt /destination/      # Copy files or directories
+rm -r directory_name           # Remove files or directories
+find . -name "*.txt"           # Search for files in a directory hierarchy
+locate filename                # Quickly find a file by name
+
+# File Viewing and Manipulation
+cat file.txt                   # Display file content
+less file.txt                  # View file content one screen at a time
+head -n 10 file.txt            # View the first 10 lines of a file
+tail -f logfile.log            # View the last few lines of a file and follow updates
+nano file.txt                  # Edit a file using nano text editor
+vim file.txt                   # Edit a file using vim text editor
+
+# Permissions and Ownership
+chmod 755 script.sh            # Change file permissions
+chown user:group file.txt      # Change file ownership
+
+# Disk and System Monitoring
+df -h                          # Display disk space usage
+du -sh /path/to/dir            # Display directory size
+free -m                        # Show memory usage
+
+# Networking and Connectivity
+ping google.com                # Check network connectivity
+curl http://example.com        # Fetch data from a URL
+wget http://example.com/file.zip # Download files from URLs
+
+# Process Management
+ps aux                         # Display process information
+top                            # Monitor running processes and resource usage
+kill 1234                      # Terminate a process (replace 1234 with process ID)
+jobs                           # List background jobs
+bg                             # Resume a job in the background
+fg                             # Resume a job in the foreground
+
+# Archiving and Compression
+tar -czvf archive.tar.gz /path/to/files # Archive and compress files
+gzip file.txt                  # Compress a file
+gunzip file.txt.gz             # Decompress a file
+zip archive.zip file1 file2    # Create a .zip archive
+unzip archive.zip              # Extract a .zip archive
