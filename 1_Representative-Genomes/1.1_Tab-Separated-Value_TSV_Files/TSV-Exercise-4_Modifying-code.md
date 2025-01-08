@@ -91,7 +91,7 @@ in the input datafile.
     ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 3 ```
     
     and it should return the output:
-    ``` 1042156.4 1121445.4 ```
+    ``` sample  1033731.3       1034345.3 ```
 * NOTE: The file `data.tbl` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
 
 ## Solution Check instructions:
