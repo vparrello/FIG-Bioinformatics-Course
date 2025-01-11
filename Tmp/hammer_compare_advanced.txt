@@ -1,0 +1,62 @@
+write a program named `hammer_compare_advanced.py` that will:
+
+    * Accept a mandatory TSV "hammers" filename argument,
+    short name `-H`, long name `--hammers`.
+
+    * Accept a mandatory TSV genome-names filename argument,
+    short name `-G`, long name `--genome-names`.
+
+    * Accept an optional role-fraction argument,
+    short name `-F`, long name `--role-fraction`, default-value 0.8.
+
+    * Open the hammer-file and perform the following:
+    
+        - Read the header-line and extract the column-names
+    
+        - Foreach subsequent line, read the "hammer" and "fid"
+        columns as `hammer` and `feature_id` variables,
+        respectively.
+
+        - If a "role" column exists, read it as the `role` variable.
+
+        - A `feature_id` has the format 'fig|x.y.peg.z',
+        where 'x', 'y', and 'z' are integers, and 'fig|' and '.peg.'
+        are literal substrings. The portion 'x.y' is the `genome_id`
+        for the 'feature_id'; extract the `genome_id` using a regex,
+        and build a dictionary mapping each hammer to its genome_id.
+
+        - If the hammer-file contains a "role" column,
+        build a role-dictionary mapping the "feature_id" to the "role";
+        else default the "role" to "Unknown".
+
+        - Determine the Kmer-length `K` of the hammers.
+        (NOTE: all the hammers in the file will have the same length.)
+
+        - Return the hammer-length, the list of roles,
+        the hammer-to-genome_id dictionary,
+        and the feature_id-to-role dictionary
+
+    * Open the 'genome-names' file, skip the header-line,
+    and for subsequent lines read the first and second columns
+    into a dictionary as a `genome_id` and `genome_name`, respectively;
+    then return the genome_id-to-genome_names dictionary.
+
+    * Use BioPython to read the sequences of the genome from `STDIN`.
+
+    * For each sequence, extract all possible Kmers, and if a Kmer
+    is a hammer, increment the score for its associated  `genome_id`,
+    and also the score for its role in that `genome_id`;
+    then repeat this operation on the reverse-complement of that sequence, since a gene can face in either direction.
+
+    * Foreach genome_id whose set of roles is greater than or equal
+    to the number of roles times the role-fraction,
+    print to STDOUT a TSV file of the genome_ids found
+    and their associated genome_name and score
+    sorted by decreasing score.
+    If the number of roles exceeds 1, also print the number of roles.
+    Please handle missing genome-names gracefully;
+    if a genome_id does not have an associated genome-name,
+    display the genome_name as 'Unknown sp.' in the output TSV file,
+    and send a warning to STDERR that the name of genome_id was not in
+    the genome-names file.
+    

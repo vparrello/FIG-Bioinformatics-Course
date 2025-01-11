@@ -1,0 +1,29 @@
+Please write a python program named 'hammer_creator_advanced.py' that will:
+
+* Accept as '-K' a mandatory integer Kmer-length command-line argument;
+        
+* Read a FASTA-formatted file from 'STDIN' using BioPython;
+    
+* The portion of the FASTA header up to the first whitespace-character is the
+  "feature-ID" ('fid'). Everything starting with the first non-whitespace character
+  after the whitespace is a "role".
+  Please extract the feature-ID and and the role,
+  convert the sequence to l;ower-case,
+  and build dictionaries mapping feature-IDs to sequences,
+  and feature-IDs to roles.
+
+* Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers,
+  and the 'fig|' and '.peg' portions are literal strings, not variables.
+  The substring 'x.y' is the 'genome_id' for the sequence;
+  please use a regular expression to extract the genome-ID from the feature-ID. 
+    
+* Find all of the Kmers that occur exactly once in exactly one 'genome_id';
+  these Kmers are the "Hammers"
+
+* Print a three-column tab-separated table to 'STDOUT' of the hammers,
+  the feature-ID that each hammer was found in, and its role,
+  with column-headers of "hammer", "fid", and "role".
+
+* Finally, please print to 'STDERR' the number of sequences that were read,
+  the number of Kmers that were processed, and the number of Kmers that were hammers,
+  and then exit.
