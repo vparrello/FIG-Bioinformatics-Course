@@ -31,7 +31,7 @@ In this exercise, you will first create a program that will reformat a 3-column 
 
 If you use your script `Code/tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
-% python3 Code/tsv_headers.py Data/rep10.seqs.tbl 
+% python3 Code/tsv_headers.py -i Data/rep10.seqs.tbl 
 Field names in the TSV file are:
 genome_id
 genome_name

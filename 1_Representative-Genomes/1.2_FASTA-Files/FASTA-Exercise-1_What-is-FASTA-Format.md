@@ -42,7 +42,7 @@ Sequence-data may be entered all on one line, or may be broken into multiple lin
 
 4. Ask Grimoire to tell you the history of the FASTA format. 
 
-5. Bioinformaticians have evolved a set of conventional file-extensions that are used to inform a researcher of what type of sequence-data that a FAST file contains. Ask Grimoire to list the set of commonly-used FASTA file-extensions, and explain which type of sequence-data is associated with each of these commonly-used file-extensions.
+5. Bioinformaticians have evolved a set of conventional file-extensions that are used to inform a researcher of what type of sequence-data that a FASTA file contains. Ask Grimoire to list the set of commonly-used FASTA file-extensions, and explain which type of sequence-data is associated with each of these commonly-used file-extensions.
 
 6. Ask Grimoire to display a example of a protein sequence, a DNA sequence, and an RNA sequence FASTA-record. Notice the differences between each type of data.
 
