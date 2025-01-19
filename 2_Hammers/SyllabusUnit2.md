@@ -17,3 +17,12 @@ Use your hammer tool to identify which genomes are present within a "metagenomic
 
 So far we have only looked at the Kmers in the PheS SOUR sequences.
 Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
+
+# Hammer Exercise 5 - Building Hammers Using More Than One SOUR
+
+So far we have built hammers for a RepGenSet
+using only its PheS SOUR sequences.
+We can obtain more reliable genome assignments by requiring a consensus on which genomes are present
+within a sample, by allowing a "jury" of several different SOURs
+to "vote" on which RepGen genomes are closest
+to a sample.
