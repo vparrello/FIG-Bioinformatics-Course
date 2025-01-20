@@ -25,6 +25,10 @@ In addition to the space on your computer, your reading of the FASTQ files will 
 
 ## Exercise
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. In this lesson, you will be downloading more data, then sorting it into two categories. You will need places to put all that data you will sort, so you will be creating two folders in the data directory of your course: one folder for 'Diseased' and one folder for 'Controls'. 
 
 2. To create these directories, click on the data directory so you can see all the files and subdirectpries within (the data directory should also be highlighted). At the top of the menu, there are two buttons for adding something to your directory: new file and new folder.

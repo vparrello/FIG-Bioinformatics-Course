@@ -69,6 +69,10 @@ There are several algorithms for building RepSets. In this course, we will be us
 
 ## Exercises:
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Attach the `Definitions.html` file as in previous exercises.
 
 2. The following prompt provides the program specification for the representative-set algorithm:
