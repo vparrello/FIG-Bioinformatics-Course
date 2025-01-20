@@ -16,25 +16,24 @@ FIG-Bioinformatics-Course/
 ```
 ## Set up:
 
-At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. You can open it in one of two ways; clicking on the desktop shortcut that looks like a terminal window, or using the following command to open it in vscode. We recommend using the open command in the vscode terminal so you can quickly switch between your own tools and that of the BV-BRC.
-```
-open "path/to/application"
-```
+At the beginning of this course, you downloaded the BV-BRC application. It should have created a desktop shortcut that looks like a terminal window. The following exercises will require that you use this application. 
 
-macOS example:
+Under `macOS` you can open the BV-BRC app by either double-clicking on its icon
+in your `/Applications` folder, or by using the following command-line method:
 ```
 open /Applications/BV-BRC.app
 ```
 
-Windows Example:
+Under `Windows`, you can either double-click on the shortcut icon that the installation-wizard should have created on your desktop, or use the following command from within the VScode terminal-window in `gitbash` mode:
 ```
-start "C:\Users\Default\AppData\Local\bv-brc.exe"
+wt cmd //k "c:/Program Files/PATRIC/SetPATRICEnv.cmd"
+```
+(The above command should be entered all on one line, even if it appears wrapped on your screen; also, please note that there really is a space between `Program` and `Files`.)
 
-```
 
 ## Overview:
 
-As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
+As a result of the rapidly decreasing cost of sequencing genetic data, we are now at the stage where on the order of a million  bacterial genomes have been sequenced and deposited in the public databases along with several billion associated gene-sequences, leading to an abundances of riches that have become difficult to manage.
 There has thus developed a need to construct manageably small sets of "representatives" that capture the diversity of the full set of genomes and genes.
 
 We define a "Set of Representatives" as follows:
@@ -49,7 +48,7 @@ We define a "Set of Representatives" as follows:
 
     - every member of U is similar to at least one member of the RepSet.
 
-When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the problem of constructing a set of "Representative Sequences".
+When the set of entities being represented is a set of genomes, we usually refer to it as a "RepGen Set" for short, and a member of the "RepGen Set" is called a "RepGen". In this exercise, we will look at the simpler problem of constructing a set of "Representative Sequences".
 
 Many measures of similarity can be used, but the measure we will use in this exercise is "Number of Kmers in Common". 
 
@@ -77,58 +76,96 @@ There are several algorithms for building RepSets. In this course, we will be us
 ```
 I will now give you a description of a command-line interface and
 program called `build_representative_set.py` that will compute a
-"set of representative sequences" (RepGen set) using the "Stingy Addition"
+"set of representative sequences" (RepGen set) using the "Stingy Addition" 
 algorithm as defined in the uploaded definitions-file.
 
 The script should accept the following mandatory command-line
 arguments, in both long-form and the specified short-form:
 
-* Kmer-length  (integer, short argument-name '-k')
-* Sim          (similarity threshold, short argument-name '-s')
-* input FASTA-file   (filename, short argument-name '-f')
-* output RepSeq-file  (filename, short argument-name '-r')
+* Kmer-length  (integer, short argument-name '-K')
+* Sim          (similarity threshold, short argument-name '-S')
+* input FASTA-file    (filename, short argument-name '-F')
+* output RepSeq-file  (filename, short argument-name '-R')
+* output Genomes-file (filename, short argument-name '-G')
 
 The measure of similarity to be used is "Number of Kmers in common".
 
 The program should use BioPython to read the FASTA-file.
 The first nonwhitespace portion of each FASTA identifier is a "feature-ID",
-while the remainder is the "genome name".
+while the remainder is the "genome-name".
 Feature-IDs have the format 'fig|X.Y.peg.Z', where 'X', 'Y', and 'Z' are integers,
 and the portions 'fig|' and '.peg.' are literal substrings, not variables.
 The subpattern 'X.Y' within the feature-ID is a "genome-ID";
 you may extract this subpattern using a regular expression.
 Return a dictionary that maps feature-IDs to genome-IDs,
-a dictionary that maps feature-IDs to genome-names,
+a dictionary that maps genome-IDs to genome-names,
 and a list of (feature-ID, sequence) pairs.
 
-The main body of the program should construct a subset of the input sequence list
-that satisfies the provided definition of a "Representative Set" (RepGen set).
+The main body of the program should construct a subset of the
+input sequence list that satisfies the provided definition
+of a "Representative Set" (RepGen set).
 
-When you are done, please write out the representative set to the RepSeq-file in FASTA format,
-where the FASTA identifiers have the form "genome-ID genome-name".
+When you are done, please write out the representative set
+to the RepSeq-file in FASTA format, where the FASTA heading
+has the form "genome-ID genome-name".
+Please also write a tab-separated file of representative-set 
+genome-IDs and genome-names to the genome-names file,
+with headings 'genome_id' and 'genome_name'. 
+Then exit the program.
+```
+NOTE: We used the new term "regular expression" in this prompt.
+A "regular expression" (or `regex` for short) is a special method for defining a pattern to be matched or edited.
+The language of "regular expressions" is quite complex, and constructing a regular expression that matches a desired pattern is quite human-error-prone, but fortunately Grimoire is much better at constructing regular expressions than most humans, which means that you can specify the pattern using ordinary language and let Grimoire do the hard work for you! :-)
+
+3. Save the program that Grimoire generates as `build_representative_set.py`. Note that if you do not put any `print()` messages into your program, the terminal will not output anything when you run the program. This might make you think that the computer is frozen or that your program is not doing anything. If you want to know the progress of your program while it is running, add a `print()` message periodically throughout your code so that you can see how far it has gotten. I personally like to add humorous messages to entertain myself while I wait for the program to finish, but that is entirely up to your preference.
+
+4. Before running your program, know that if you input a large file of data, or ask for a large output file, the program might take a while to finish. It can be anywhere from minutes to hours depending on the size of the input and the value of `K` and `S` and your hardware specificiations. If at any time you want to stop the program, you can do so by pressing `Ctrl+C` on Windows or `Cmd+C` on macOS.
+
+Run the program as follows:
+
+```
+python Code/build_representative_set.py -K 8 -S 10 -F Data/Universe.fasta -R Data/myrep10.faa -G Data/myrep10.genomes.tbl
 ```
 
-Save the program that Grimoire generates as `build_representative_set.py`.
-
-3. Run the program as follows:
+5. Please repeat the previous step with a similarity-threshold of 50,
+as we will need this result in a later exercise:
 
 ```
-python Code/build_representative_set.py -k 8 -s 10 -f Data/Universe.fasta -r Data/myrep10.faa
+python Code/build_representative_set.py -K 8 -S 50 -F Data/Universe.fasta -R Data/myrep50.faa -G Data/myrep50.genomes.tbl
 ```
 
 ## Self-Check
 
-Check your result by running:
+### myrep10
+
+Check your `myrep10` result by running:
 ```
 python Code/fasta_reader.py < Data/myrep10.faa > Data/myrep10.genomes-and-lengths.txt
 ```
 The result should print the following to STDERR (which in this case will just be the screen):
 ```
-Number of sequences: 153
-Average sequence length: 356.73
+Number of sequences: 141
+Average sequence length: 359.27
 ```
 You can make a detailed comparison of your results with the solution results using the `diff` command, which compares two files:
 ```
-diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.txt
+diff Data/myrep10.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep10.genomes-and-lengths.solution.txt
 ```
 since there should be no difference between these two files, the `diff` command should emit nothing. (NOTE: once again, the above will probably appear to be "wrapped" onto multiple lines on your screen, but it should all be entered as a single line.)
+
+### myrep50
+
+Similarly, you can check your `myrep50` result by running:
+```
+python Code/fasta_reader.py < Data/myrep50.faa > Data/myrep50.genomes-and-lengths.txt
+```
+The result should print the following to STDERR (which in this case will just be the screen):
+```
+Number of sequences: 921
+Average sequence length: 351.25
+```
+You can make a detailed check by running:
+```
+diff Data/myrep50.genomes-and-lengths.txt 1_Representative-Genomes/1.4_Building-Representative-Sets/Solutions/myrep50.genomes-and-lengths.solution.txt
+```
+Again, `diff` should return nothing if there is no difference between the two files.

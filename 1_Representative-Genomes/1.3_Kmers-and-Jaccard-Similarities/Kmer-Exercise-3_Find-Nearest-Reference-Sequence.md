@@ -40,23 +40,16 @@ FIG-Bioinformatics-Course
 
 4. Run the program as follows:
 ```
-python3 find_nearest_reference.py -K 8 -R ../Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
+python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
 ```
     **Note: `rep10.seed_proteins.faa` is a data file that was created in FASTA-Exercise-2. If you get a `File Not Found Error`, try recreating the file `rep10.seed_proteins.faa` using that exercise.
      
 5. You can compare your output to the provided solution with the following command:
 ```
-diff Data/test-nearest.jaccard.tab Solutions/test-nearest.jaccard.solution.tab
+diff Data/test-nearest.jaccard.tab 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/test-nearest.jaccard.solution.tab
 ```
 `diff` is a command that compares two files. If the files being compared are identical, then `diff` should produce no output; however, if the files are different, then `diff` will list the differences between the two files. So in this case, no result is a good result! :-)
 
-6. Open the output-file `Data/test-nearest.jaccard.tab` in VScode and scroll through the output. Notice that in many cases, the description of the query-sequence (which is the name of the genome the query came from) is similar to the description of the representative sequence --- and that in the cases where the two descriptions are very different, the jaccard-similarity is often small, indicating that the two sequences are only weakly similar. Bioinformaticians use more sophisticated versions of the tool you have just written to determine whether a sequence or genome is one that they have seen before, or something that is different enough that it is possibly a new species.
+6. Open the output-file `Data/test-nearest.jaccard.tab` in VScode and scroll through the output. Notice that in many cases, the description of the query-sequence (which is the name of the genome the query came from) is similar to the description of the representative sequence --- and that in the cases where the two descriptions are very different, the jaccard-similarity is often small, indicating that the two sequences are only weakly similar. Bioinformaticians use more sophisticated versions of the tool you have just written to determine whether a protein-sequence or a genome's DNA is similar to an example that they have seen before, or if it is something that is different enough that it is possibly a new protein or a new species.
 
 7. BONUS: Re-run step (4.) with smaller and larger values of `K` to observe how the nearest reference sequence and the jaccard-similarity changes. Note that if `K` is too large, most of the jaccard-similarities will collapse to `0.0`, indicating that large `K` is so "specific" that it is not very "sensitive", as discussed in Kmer-Exercise-2.
-
-
-## NOTES:
-
-1.) DONE: Need to park a copy of the file `rep10.seed_proteins.faa`, and the output files in the `Solutions/` directory.
-
-2.) What is the best way to facilitate the student checking their results? Currently, we are including the sequence-description in the test-file and have asked Grimoire to output the description, so that the student can compare the input description and the RepGenSet description "By Eyeball", but in a real-world problem, the sequences will not come conveniently "pre-labeled". Is there a better way to handle this?

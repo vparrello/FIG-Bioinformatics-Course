@@ -1,0 +1,20 @@
+Please write a python program that:
+
+* Reads a named tab-seperated-value file (which may be gzipped),
+skips the header-line, and loads the first and second columns
+into a dictionary as keys and values.
+The keys are named 'hammers', and the values are named 'feature_ids'.
+The readin function should return the hammer-length and the dictionary.
+Note that all hammers have the same length.
+
+* Uses BioPython to read a FASTA-formatted DNA file from STDIN,
+find all Kmers in the DNA-sequences with length equal to the
+hammer-length on both the forward and reverse-complement sequences,
+and builds a dictionary that accumulates the number of occurrences
+of each Kmer that is a hammer.
+
+* Prints a tab-separated report of the count for any hammer
+that was found more than once in the DNA sequences,
+sorted in order of decreasing count,
+and the feature_id associated with the hammer.
+
