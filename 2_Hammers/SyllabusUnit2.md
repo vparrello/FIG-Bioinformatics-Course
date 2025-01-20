@@ -15,5 +15,4 @@ Use your hammer tool to identify which genomes are present within a "metagenomic
 
 ### Hammer Exercise 4 - Hammer Quality-Control
 
-So far we have only looked at the Kmers in the PheS SOUR sequences.
-Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
+So far we have only looked at the Kmers in the PheS SOUR sequences. Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
