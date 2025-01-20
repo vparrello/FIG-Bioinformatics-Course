@@ -25,6 +25,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. The idea of the random forest classifier is that it takes a large number of decision trees and averages their results. Each decision tree looks at a random subset of the data and makes a prediction. The more trees there are, the more accurate the prediction is. This means that we need to give the machine learning algorithm a large set of data so that it can make more decision trees which gives us a more accurate prediction. 
 
 This is where your hammer reports come in. Each report contains a list of genomes that are present in the sample. We need to create a table that contains every possible genome that we have in our dataset so that the machine learning algorithm can use this to make more decision trees. Luckily, we already have a list of all the genomes that could possibly show up in our dataset. This is the power of the representative genome set. We will use the complete list of genomes in our representative genome set as our column headers for the XMatrix. In traditional data science, the columns of the XMatrix are called features. So another name for our representative genome set is the feature set for our model.

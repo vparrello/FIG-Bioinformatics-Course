@@ -25,6 +25,10 @@ FIG-Bioinformatics-Course/
 
 #### Exercise:
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Ask Grimoire to explain in pseudocode how to read and parse the sequence of records within a FASTA-format file into a list containing "ID", "Description", and "Sequence" data.
 
 2. Ask Grimoire to convert its pseudocode into python code, and then explain to you how the code works line-by-line if it did not already do so.

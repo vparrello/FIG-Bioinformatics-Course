@@ -22,6 +22,10 @@ FIG-Bioinformatics-Course/
 
 #### Exercise: 
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 The FASTA file-format is defined as follows:
 
 * A FASTA-file consists of one or more "records".

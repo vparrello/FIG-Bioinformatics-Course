@@ -25,6 +25,11 @@ FIG-Bioinformatics-Course
 
 ## Exercises
 
+
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Attach the `Definitions.html` file as in previous exercises, again using the prompt:
     ```
     I am going to give you some definitions in an attached file; you don't need to respond to them, just learn them. I'm then going to ask you some questions.

@@ -28,6 +28,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Ask Grimoire to explain what the phrase "arguments of a command-line program" means.
 
 2. Ask Grimoire to write an example-program that will accept a list of keywords as its command-line arguments. Then ask Grimoire to explain its code to you "line-by-line" if it did not do so.

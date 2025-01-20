@@ -20,6 +20,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Ask Grimoire to describe the different types of machine learning models that can be used to predict the presence of a disease. Specifically mention classification, random forest, and sample set creation.
 
 2. The machine learning model that we are going to create is a classification model. This model basically takes a set of samples that have been categorized into diseased or healthy groups and uses that as a key to determine what the pattern for each group is. Then is uses the genomes found within a mystery sample to make a prediction about the health status of that sample. Kind of like we were doing in a smaller scale in the previous units, we will be doing it on a larger scale and with a lot more data. This increases the accuracy of the model and allows us to make more accurate predictions. Below are a list of research topics that can be applicable to our objective of classification. Choose one of the topics below. If you would like to choose a different topic, do a little research first to ensure that the gut microbiome has been studied for that specific topic. Otherwise it is possible that your machine learning model will not be able to distinguish between the two groups and will not be able to make accurate predictions.

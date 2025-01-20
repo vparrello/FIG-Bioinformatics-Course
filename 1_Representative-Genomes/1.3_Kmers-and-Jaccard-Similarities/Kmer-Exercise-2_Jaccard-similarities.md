@@ -24,6 +24,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Prepare Grimoire for this session as in the previous exercise by once again entering the prompt:
 
 ```
