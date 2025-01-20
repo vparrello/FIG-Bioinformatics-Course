@@ -25,10 +25,6 @@ FIG-Bioinformatics-Course/
 
 ## Exercises
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
-
 1. If necessary, please review your `Code/hammer_creator.py` tool
 for its inputs and usage.
 If you'd like, you can run it on `Data/MysteryGenome2.fasta`

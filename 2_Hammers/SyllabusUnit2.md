@@ -18,11 +18,7 @@ Use your hammer tool to identify which genomes are present within a "metagenomic
 So far we have only looked at the Kmers in the PheS SOUR sequences.
 Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
 
-<<<<<<< HEAD
-# Hammer Exercise 5 - Building Hammers Using More Than One SOUR
-=======
 ## 2.2 Hammers Using More Than One Role
->>>>>>> 05ec586 (Intermediate save-point. I've split off "Multirole Hammers" into a new unit, "2.2_Hammers-Using-More-Than-One-Role", with corresponding revisions to 'SyllabusUnit2.md'.)
 
 So far we have built hammers for a RepGenSet
 using only its PheS SOUR sequences.
@@ -31,8 +27,6 @@ within a sample, by allowing a "jury" of several different SOURs
 to "vote" on which RepGen genomes are closest
 to a sample.
 
-<<<<<<< HEAD
-=======
 ### Multirole Hammer Sets Exercise 1 - Building Hammers Using More Than One SOUR
 
 Enhancing the Hammer-Creation algorithm to support hammers
@@ -42,4 +36,3 @@ that are signatures of particular roles within a RepGen.
 
 Enhancing the Hammer-Application algorithm to implement
 "Jury Voting" for whether a RepGen is present within a sample.
->>>>>>> 05ec586 (Intermediate save-point. I've split off "Multirole Hammers" into a new unit, "2.2_Hammers-Using-More-Than-One-Role", with corresponding revisions to 'SyllabusUnit2.md'.)
