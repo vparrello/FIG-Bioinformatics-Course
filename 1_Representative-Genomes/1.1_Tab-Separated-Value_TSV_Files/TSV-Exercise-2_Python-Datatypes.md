@@ -16,6 +16,7 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 FIG-Bioinformatics-Course/
 ├── Code/
 │   └── python_datatypes_interactive_exercise.py
+│   └── dictionary_interactive_exercise.py
 └── 1_Representative-Genomes/
     └── 1.1_Tab-Separated-Value_(TSV)_Files/
         ├── TSV-Exercise-Exercise-2_Python-Datatypes.md  (you are here)
