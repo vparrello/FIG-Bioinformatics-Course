@@ -16,9 +16,6 @@ Create a sample report of hammers that lists every repgen genome inside of a sam
 ### XMatrix-1 Universal Template
 Create the table of data with the feature set and target variable explicitly defined.
 
-### XMatrix-2 Scaled for Population
-Create a second x-matrix that is scaled on population
-
 ## 3.3 Machine Learning Classifier
 
 ### ML Classifier-1 Run the Classifier

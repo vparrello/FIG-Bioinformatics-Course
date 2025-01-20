@@ -19,11 +19,9 @@
 
 1. Sample Set Creation - Create the sample report needed to feed the hammer output into an "X-matrix"
 
-2. Data Curation - Create the X-matrix necessary to feed into a classifier
+2. Creating the Xmatrix - Create the ancilary data to make a classifier and explore the inner workings of what happens at each stage
 
-3. Creating the Xmatrix - Create the ancilary data to make a classifier and explore the inner workings of what happens at each stage
-
-4. Machine Learning Classifier - Validation data ensures that the classifier should work well on real-world data. Find out what quality testing you can do to make the system more accurate
+3. Machine Learning Classifier - Validation data ensures that the classifier should work well on real-world data. Find out what quality testing you can do to make the system more accurate
 
 
 ## References
