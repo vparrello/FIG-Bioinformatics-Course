@@ -56,6 +56,12 @@ Type `cd $COURSE_DIR` into your command line to reset your path to the Course di
 
     Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
+    Then create a copy of `tsv_headers.py` and save it as `tsv_headers_OLD.py` by using the following command in your terminal.
+    
+    ``` cp Code/tsv_headers.py Code/tsv_headers_OLD.py ```
+
+    This will act as a "backup" of the original program, in case you need to revert to it.
+
 
 3. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
 
@@ -71,7 +77,7 @@ I have uploaded a program that I'd like you to modify. Please make the following
 * The program can accept an optional argument '-n' to specify the "total number of selected data-columns that will be printed to STDOUT", e.g. -n 4 means "Print a TOTAL of 4 selected columns to STDOUT". Please note that this argument specifies the TOTAL number of columns to be printed to STDOUT --- it does _NOT_ specify the maximum column-number to be printed! If this optional argument is not specified, then the program should print all of the  elected columns in the input datafile.
 ```
     
-4. Save the modified program as in previous exercises.
+4. Save the modified program as in previous exercises. 
 
 5. Once you have finished with these revisions, the program should be able to take the following prompt from the terminal:
     
