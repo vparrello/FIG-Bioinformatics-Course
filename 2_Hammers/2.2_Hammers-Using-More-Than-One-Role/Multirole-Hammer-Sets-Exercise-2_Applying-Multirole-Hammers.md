@@ -1,15 +1,10 @@
-# Hammer Exercise 4 - Building Hammers Using More Than One SOUR
+# Multirole Hammers - Applying Multirole Hammers
 
-**Obejective:** Build a set of hammers starting from a set of sequences that represent more than one SOURs,
-and make more reliable genome assignments by requiring a "consensus" for the assignemnts based on each SOUR.
+**Obejective:** Using the set of multirole hammers created in
+`Multirole Hammer Exercise 1` to obtain more reliable RepGen assignments
+by requiring a "consensus" among the sets of assignemnts made by each SOUR.
 
-So far we have built hammers for a RepGenSet
-using only the PheS SOUR sequences from the RepGens.
-However, we found that in addition to the reliably identified
-highest-scoring RepGens found within the sample,
-there were also a number of low-scoring "noise hits".
-
-In this set of excercise, we will see that the "noise hits"
+In excercise, we will see that the "noise hits"
 can be largely or even completely eliminated by requiring
 a "consensus" on which genomes are present within a sample
 based on hammer evidence from more than one SOUR. 
@@ -31,148 +26,21 @@ it can be reproduced.
 ```
 FIG-Bioinformatics-Course/
 ├── 2_Hammers
-│   └── 2.1_Hammers-Creation-and-Application/
-│       └── Hammers-Exercise-1_Using-Multiple-SOURs.md (you are here)
+│   └── 2.2_Hammers-Using-More-Than_One-Role/
+│       └── Multirole-Hammer-Sets-Exercise-2_Applying-Multirole-Hammers.md (you are here)
 ├── Code/
-│   └── filter_hammer_candidates.py
 └── Data/
-    ├── five_roles.tbl
     ├── myrep10.genomes.tbl
     ├── myrep50.genomes.tbl
-    ├── Myrep10_Genomes/
-    │   └── (141 genome contig-FASTAs)
-    └── Myrep50_Genomes/
-        └── (921 genome contig-FASTAs)
+    ├── myrep10.five_roles_hammers.tbl
+    ├── myrep50.five_roles_hammers.tbl
+    ├── MysteryGenome1.fna
+    └── MysterySample1.fna
 ```
 
 ## Programs to be Generated
 
-* get_seqs_for_roles_and_genomes.py
-
-* hammer_creator_multirole.py
-
 * hammer-compare_multirole.py
-
-
-## Getting the SOUR sequences
-
-In Hammer-Exercise-1, you fetched the sequences for the PheS SOUR
-using a command-line pipeline. While one could in principle
-just repeat this procedure 4 more times to get the sequences
-for the other 4 SOURs used in this excercise, such a process
-will be tedious and error-prone; hence, it is better to ask Grimoire
-to automate fetching the sequences for the specified set of roles
-and the RepGenSet you will be building hammers for.
-As usual, you should upload the file `Definitions.html` to Grimoire
-as in previous exercises, and ask it to learn the definitions in the file.
-Then, enter the following prompt to generate the automated sequence-fetcher:
-```
-Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
-
-* Accepts the following three mandatory named arguments:
-  - Type-flag, short name '-T', long name '--type',
-    allowed values 'dna' or 'protein'.
-    
-  - Filename of a tab-separated-value list containing genome-IDs
-    short name '-G', long name '--genome-list'.
-
-  - Filename of a tab-separated-value list of roles,
-    short name '-R', long-name '--role-list'.
-
-* Reads the role-name file, skips the header-line,
-and loads the remainder of the second column into a list.
-
-* Foreach role in the role-list, print a progress-message to STDERR,
-and then execute the following two commands, piping the output of 'cmd1'
-to the input of 'cmd2', trapping any errors thrown by either command,
-and printing the output of 'cmd2' to STDOUT;
-note that the role can contain whitespace, and so this argument must be quoted:
-
-   cmd1 = f"p3-get-genome-features --selective --input {genomes_filename} --col genome_id --eq product,'{role}' --attr patric_id"
-
-   cmd2 = f"p3-get-feature-sequence --col feature.patric_id --{type}"
-
-If either command fails, print the trapped error-message to STDERR, and then exit.
-```
-Ask Grimoire to generate pseudocode for the script if it has not done so,
-then use VScode to paste the pseudocode and code into the template
-`Code/get_seqs_for_roles_and_genomes.py` and save it.
-
-To run the command for your 'myrep10' genomes, enter the following:
-
-```
-    python Code/get_seqs_for_roles_and_genomes.py -T dna -G Data/myrep10.genome.tbl -R Data/five_roles.tbl > Data/myrep10.five_roles.dna-sequences.fna
-```
-
-This program will take some time to run, but it should start printing progress-messages
-to the screen to let you know it's working.
-
-## Building the Hammers
-
-Building hammers for a set of roles rather than a single role
-will require a slight modification to the prompt you used in Hammer-Exercise-1;
-the following revised prompt will generate the desired code:
-
-```
-Please write a python program named 'hammer_creator_multirole.py' that will:
-
-* Accept as '-K' a mandatory integer Kmer-length command-line argument;
-        
-* Read a FASTA-formatted file from 'STDIN' using BioPython,
-and foreach FASTA entry extract the following:
-
-  - The portion of the FASTA header up to the first whitespace-character is the
-  "feature-ID" ('fid') for the FASTA entry;
-  the remainder of the FASTA header starting with the first non-whitespace character
-  after the whitespace is that feature's "role".
-  There may be more than one whitespace-character separating the feature-ID
-  from its role.
-  Please extract the feature-ID and the role frome the FASTA header,
-  then convert the sequence to lower-case,
-  and build dictionaries mapping feature-IDs to sequences,
-  and feature-IDs to their roles.
-
-  - Each feature-ID has the format 'fig|x.y.peg.z', where 'x', 'y', and 'z' are integers,
-  and the 'fig|' and '.peg' portions are literal strings, not variables.
-  The substring 'x.y' is the 'genome_id' for the feature;
-  please use a regular expression to extract the genome-ID from the feature-ID,
-  and build a dictionary mapping feature-IDs to genome-IDs. 
-
-  - Return the dictionary mapping feature-IDs to genomes,
-  the dictionary mapping feature-IDs to roles,
-  and the dictionary mapping feature-IDs to sequences.
-
-* Print a tab-separated header-line to STDOUT, whose column-names are
-  "hammer", "fid", and "role".
-
-* Create an empty "dictionary of dictionaries" whose outer-keys will be Kmers,
-  inner-keys will be feature-IDs, and inner-values will be integer counts.
-
-* Foreach sequence, find all of its Kmers, and foreach Kmer
-  increment the count for that sequence's feature-ID
-  in the dictionary-of-dictionaries.
-
-* A "hammer" is defined as a Kmer that occur exactly once in exactly one genome-ID.
-  Each feature-ID can only occur in one genome.
-  So if a Kmer occurs with a count of '1' in exactly one feature, 
-  then it must be a "hammer".
-  Find all of the "hammers" in the dictionary-of-dictionaries,
-  and print to STDOUT a three-column table table of "hammer", "feature-ID",
-  and "role" for that feature-ID, sorted by hammer.
-
-* Finally, please print to 'STDERR' the number of sequences that were read,
-  the number of Kmers that were processed, and the number of Kmers that were hammers,
-  then exit.
-```
-
-Again use VScode to paste the pseudocode and code into the template
-`Code/hammer_creator_multirole.py` and save it.
-
-To run the command for your 'myrep10' genomes, enter the following:
-
-```
-    python3 Code/hammer_creator_multirole.py -K 20 < Data/myrep10.five_roles.dna-sequences.fna > Data/myrep10.five_roles.hammers.tbl
-```
 
 ## Using the Hammers
 
