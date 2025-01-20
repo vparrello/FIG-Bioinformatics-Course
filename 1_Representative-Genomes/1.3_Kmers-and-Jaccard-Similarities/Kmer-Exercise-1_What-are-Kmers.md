@@ -33,13 +33,17 @@ FIG-Bioinformatics-Course/
         ├── Code/     (where you will save your own code)
         ├── Data/
         │   ├── good-bad_dna.fna
-        │   └── good-bad_protein.faa
+        │   └── good-bad_proteins.faa
         └── Solutions/
             ├── Kmer-Exercise-1_Solutions.md
             └── extract_kmers_from_fasta_solution.py
 ```
 
 ## Exercises:
+
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
 
 Exercise Setup -- Please enter the following into Grimoire's "Message Grimoire" box:
   ```
@@ -86,14 +90,14 @@ Use VScode to save `extract_kmers_from_fasta.py` in the `Code/` subdirectory.
 7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `Data/`. These files are all small, so you should be able to figure out what the output should be in your head. Each of the files will contain one "bad" sequence, i.e., a sequence that contains invalid characters for that file-type.
 
 * good-bad_dna.fna
-* good-bad_protein.faa
+* good-bad_proteins.faa
 
 Experiment with different values for `-K`. Then, see how the output changes  when you specify the `--type` argument.
 * BONUS: What do you think will happen if you use the 'dna' type for the protein file, or the 'protein' type for the DNA file? Try it, and see if you have guessed correctly.
 
 7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `Data/`.
   * good-bad_dna.fna
-  * good-bad_protein.faa
+  * good-bad_proteins.faa
 
 These files are pretty small and should be easy to see what the kmers will be. If you are not sure, you can run the program with the `-K` argument set to a small value, such as 2 or 3. Below is an example of a command that you can use to run the program with `-K` set to 20 just like the hammers will be:
 
@@ -156,7 +160,7 @@ Invalid Kmers found: 11
 9. Run the same command for the protein file. Use the `-K` argument to set the Kmer length to 20.
 
 ```
-python3 Code/extract_kmers_from_fasta.py -K 20 -t protein < Data/good-bad_protein.faa > Data/protein_kmers_output.tsv
+python3 Code/extract_kmers_from_fasta.py -K 20 -t protein < Data/good-bad_proteins.faa > Data/protein_kmers_output.tsv
 ```
 Find the example output of the above command in the `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions` subdirectory. Regardless of the output file's success, the following data should still be printed to the terminal:
 

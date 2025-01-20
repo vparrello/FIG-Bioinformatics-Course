@@ -22,6 +22,10 @@ as a "filtering operation" on the set of candidate hammers.
 
 ## Exercises
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 ### Generating the filter program
 
 By definition, a hammer must occur exactly once

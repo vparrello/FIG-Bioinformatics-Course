@@ -29,4 +29,33 @@ These are instructions on how to download the course through github. If you have
 
 git branch --set-upstream-to=origin/master <branch>
 
-9. Happy Dance! You are done with your setup! The course syllabus and how to update the course material are located in the folder `0_Getting-Started` along with this document. Go to exercise `TSV-Exercise-1_Learning-to-use-Grimoire` under `1_Representative-Genomes/1_Tab-Separated-Value_(TSV)_Files` to get started on the course.
+10. You are done with your basic setup! Continue to the next document to install a crucial tool for this course. 
+
+## Creating a useful environment variable
+
+In this course, we will be calling programs from the command line. This tool requires that you are in a specific directory, or location, to call those programs in a way that the computer can find them. To make this easier, we are going to create an environment variable, or a shortcut, that points to the Course directory. This way you will have a shortcut command that ensures you start each exercise in the same location.
+
+1. Open up a terminal in VSCode. 
+2. Use pwd to find out where you are. 
+```
+pwd
+```
+You should get a path that looks similar to this: 
+```
+/Users/joeshmoe/Documents/FIG-Bioinformatics-Course
+```
+You know you are in the right place if the path ends with FIG-Bioinformatics-Course. If it does not, close your VSCode and reopen it inside the FIG-Bioinformatics-Course directory from your File Explorer.
+3. Now we can export your path into a variable to create your shortcut. We can take the path command (pwd) and use it to fill our variable. Type the following commandinto the command line to create your variable:
+```
+export COURSE_DIR=`pwd`
+```
+4. Check your variable is populated correctly by typing:
+```
+echo $COURSE_DIR
+```
+This should return the path to the Course directory and should match the same print out you had when you used `pwd`. If these are different, start over from step 1 and try again.
+5. Now you can use the variable to navigate to the Course directory at any time by typing:
+```
+cd $COURSE_DIR
+```
+

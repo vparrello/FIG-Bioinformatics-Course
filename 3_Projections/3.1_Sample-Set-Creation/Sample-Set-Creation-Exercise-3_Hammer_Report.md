@@ -22,6 +22,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. From the data set that you sorted from the previous exercise, choose one control sample that you want to look into. We will be referring to this sample as "Control Sample A" for the purposes of this exercise. It is recommended that you do not change the name of this sample, as it will be used in your model and keeping the SRA ID number in tact will allow you to more easily keep track of its metadata and origins for the model.
 
 2. Open up your `hammer_compare.py` program and look at its input and output requirements. We will be using our sample FASTA file as our input and the output will be a list of genomes that are present in our sample. Give your program to Grimoire and ask it to adjust the program to take a FASTA file as input and output a list of genomes that are present in our sample as a tsv file. 
