@@ -1,33 +1,27 @@
 # Multirole Hammer Sets Exercise 1 - Building Hammers Using More Than One SOUR
 
 **Obejective:** Build a set of hammers starting from a set of sequences that represent more than one SOUR,
-to support more reliable RepGen assignments to a sample,
+to support more reliable RepGen assignments to a sample
 by requiring a "consensus" among the assignemnts made 
 by each SOUR.
 
-So far we have built hammers for a RepGenSet
-using only the PheS SOUR sequences from the RepGens.
-However, we found that in addition to the reliably identified
-highest-scoring RepGens found within the sample,
+So far, we have built hammers for a RepGenSet
+using only the PheS SOUR sequences from its RepGens.
+However, we found that in addition to the reliably-identified
+highest-scoring hits against RepGens that were found within the sample,
 there were also a number of low-scoring "noise hits".
 
-In this set of excercise, we will see that the "noise hits"
-can be largely or even completely eliminated by requiring
-a "consensus" on which genomes are present within a sample
-based on hammer evidence from more than one SOUR. 
-You may think of this consensus-building process as being analogous
-to forming a "jury" composed of several different SOURs,
-and considering their scores to represent "votes"
-on which RepGens are closest to the genome or genomes within a sample.
-For example, suppose that we have built hammers using sequences
-implementing 5 different Singly-Occuring Universal Roles;
-we can require that in order for a RepGen to be asserted
-to be "close" to some genome within the sample, it must have support
-from (for exampl) at least 4 out of the 5 SOURs.
-Such a requirement of support from multiple lines
-of evidence is fundamental to the scientific process;
-for example, we do not consider an experiment to be valid
-unless it can be reproduced.
+In this set of exercises, we will demonstrate how the
+"noise hits" can be significantly reduced—or even completely eliminated—by constructing a "consensus" among the RepGens from the "hits" within the sample. This consensus is built by requiring hammer-evidence from more than one SOUR before we declare that a RepGen has sufficient support.
+You can think of this "consensus" process as analogous to assembling
+a "jury" made up of multiple SOURs,
+with their scores acting as "votes" to determine 
+which RepGens provide the strongest evidence
+for the presence of a related genome within the sample.
+For instance, if we have hammers derived from sequences implementing 5 different SOURs, we can stipulate
+that a RepGen must have support from at least
+4 out of the 5 SOURs to be considered related to any genome within the sample.
+This reliance on multiple lines of evidence mirrors the scientific process, where experiments are not deemed valid unless their results can be reproduced.
 
 ## Materials
 
@@ -60,31 +54,41 @@ FIG-Bioinformatics-Course/
 
 ### 1. Getting the SOUR sequences
 
-In Hammer-Exercise-1, you fetched the sequences for the PheS SOUR
-using a command-line pipeline. While one could in principle
-just repeat this procedure 4 more times to get the sequences
-for the other 4 SOURs used in this excercise, such a process
-will be tedious and error-prone; hence, it is better to ask Grimoire
-to automate fetching the sequences for the specified set of roles
-and the RepGenSet you will be building hammers for.
+In this set of exercises you will be building hammers
+based on the set of 5 roles contained in file `Data/five_roles.tbl`.
+Your first task will be to fetch the sequences for these roles
+from `BV-BRC`.
+
+In `2_Hammers/2.1_Hammer-Creation-and-Application/Hammer-Exercise-1_Creating-Hammers.md`, you fetched the sequences for the PheS SOUR using a command-line pipeline.
+While one could in principle just repeat this procedure
+4 more times to get the sequences for the other 4 SOURs
+used within this excercise, such a process
+would be tedious and error-prone;
+hence, it is better to ask Grimoire to automate fetching
+the sequences that implement the specified set of roles
+within the RepGens that you will be building hammers for.
 As usual, you should upload the file `Definitions.html` to Grimoire
 as in previous exercises, and ask it to learn the definitions in the file.
 Then, enter the following prompt to generate the automated sequence-fetcher:
-```
-Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
 
-* Accepts the following three mandatory named arguments:
-  - Type-flag, short name '-T', long name '--type',
-    allowed values 'dna' or 'protein'.
+```
+Please write a python program named 'get_seqs_for_roles_and_genomes.py'
+that accepts 3 mandatory named arguments.
+The output from the '--help' argument should clearly indicate
+that the program writes FASTA sequence-data to STDOUT.
+
+* The three mandatory named arguments are:
+  - A Type-flag, short name '-T', long name '--type',
+    with allowed values of 'dna' or 'protein'.
     
-  - Filename of a tab-separated-value list containing genome-IDs
+  - The filename of a tab-separated-value list containing genome-IDs,
     short name '-G', long name '--genome-list'.
 
-  - Filename of a tab-separated-value list of roles,
+  - The filename of a tab-separated-value list of roles,
     short name '-R', long-name '--role-list'.
 
-* Reads the role-name file, skips the header-line,
-and loads the remainder of the second column into a list.
+* The program should read the header-line of the role-name file,
+and load the values in its 'role_name' column into a list.
 
 * Foreach role in the role-list, print a progress-message to STDERR,
 and then execute the following two commands, piping the output of 'cmd1'
@@ -98,29 +102,32 @@ note that the role can contain whitespace, and so this argument must be quoted:
 
 If either command fails, print the trapped error-message to STDERR, and then exit.
 ```
-Ask Grimoire to generate pseudocode for the script if it has not done so,
-then use VScode to paste the pseudocode and code into the template
-`Code/get_seqs_for_roles_and_genomes.py` and save it.
 
-Because this script calls two "P3 commands",
+Ask Grimoire to generate pseudocode for its script if it has not done so,
+then use VScode to paste the pseudocode and code into the template
+`Code/get_seqs_for_roles_and_genomes.py` and save it as usual.
+
+Because the sequence-fetching script calls two "P3 commands",
 it will need to be run from within the BV-BRC app's command-window.
-To run the command for your 'myrep10' genomes, 
+To run the command for your `myrep10` genomes, 
 launch the BV-BRC app using the method appropriate
 for your computer's operating-system as discussed in
-earlier exercises such as `RepGen-Exercise-1`,
-enter the `cd` command in the BV-BRC window
-to go to the course-material's folder,
-(for example, if you installed the course-material
-in your `Documents` directory you would enter
-`cd ~/Documents/FIG-Bioinformatics-Course`),
-and enter the following command in the BV-BRC window:
+earlier exercises such as `RepGen-Exercise-1`.
+Recall that the BV-BRC app opens its command-line window
+to your home-directory, so you will first need to switch
+to the course-directory using the `cd` command.
+(For example, if you installed the course-material
+in your `Documents` directory, you would enter
+`cd ~/Documents/FIG-Bioinformatics-Course`.)
+Next, enter the following command into the BV-BRC window:
 
 ```
-    python Code/get_seqs_for_roles_and_genomes.py -T dna -G Data/myrep10.genome.tbl -R Data/five_roles.tbl > Data/myrep10.five_roles.dna-sequences.fna
+python Code/get_seqs_for_roles_and_genomes.py -T dna -G Data/myrep10.genome.tbl -R Data/five_roles.tbl > Data/myrep10.five_roles.dna-sequences.fna
 ```
 
-This program will take some time to run, but it should start printing progress-messages
-to the screen to let you know it's working.
+This program will take some time to run,
+but it should quickly start printing progress-messages
+to the BV-BRC window to let you know that it's working.
 
 ### 2. Building the Hammers
 
@@ -140,8 +147,7 @@ and foreach FASTA entry extract the following:
   "feature-ID" ('fid') for the FASTA entry;
   the remainder of the FASTA header starting with the first non-whitespace character
   after the whitespace is that feature's "role".
-  There may be more than one whitespace-character separating the feature-ID
-  from its role.
+  There may be more than one whitespace-character separating the feature-ID from its role.
   Please extract the feature-ID and the role frome the FASTA header,
   then convert the sequence to lower-case,
   and build dictionaries mapping feature-IDs to sequences,
