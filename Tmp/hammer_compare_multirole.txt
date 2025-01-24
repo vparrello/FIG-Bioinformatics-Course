@@ -1,47 +1,53 @@
-Please write a program named `hammer_compare_advanced.py` that will:
+Please write a program named 'hammer_compare_multirole.py'
+that meets the following requirements. The program must:
 
-* Accept a mandatory TSV "hammers" filename argument,
-short name `-H`, long name `--hammers`.
+* Accept two mandatory arguments and one optional argument, as follows:
 
-* Accept a mandatory TSV genome-names filename argument,
-short name `-G`, long name `--genome-names`.
+-H or --hammers: a TSV-filename argument (mandatory).
+-G or --genome-names: a TSV-filename argument (mandatory).
+-F or --role-fraction: an optional argument with a default value of 0.8.
 
-* Accept an optional "minimum fraction of roles required" argument,
-short name `-F`, long name `--role-fraction`, default-value 0.8.
+* When run with the --help argument, the program must use the following
+as its "description" line:
+    "program for multirole hammer analysis. Reads DNA FASTA from STDIN. Writes TSV report to STDOUT."
+
+The program should:
 
 * Open the hammer-file and perform the following:
     
     - Read the header-line and extract the column-names
     
     - Foreach subsequent line, read the "hammer" and "fid"
-    columns as `hammer` and `feature_id` variables,
+    columns as 'hammer' and 'feature_id' variables,
     respectively, and built a dictionary mapping
     hammers to feature_ids.
 
-    - If a "role" column exists, read it as the `role` variable,
+    - If a "role" column exists, read it as the 'role' variable,
     else the role should default to "Unknown",
     and build a dictionary mapping feature_ids to roles.
 
-    - A `feature_id` has the format 'fig|x.y.peg.z',
+    - A 'feature_id' has the format 'fig|x.y.peg.z',
     where 'x', 'y', and 'z' are integers, and 'fig|' and '.peg.'
-    are literal substrings; the portion 'x.y' is the `genome_id`
-    for that 'feature_id'. Extract the `genome_id` from the `feature_id`
+    are literal substrings; the portion 'x.y' is the 'genome_id'
+    for that 'feature_id'. Extract the 'genome_id' from the 'feature_id'
     using a regex, and build a dictionary mapping feature_id to its genome_id.
 
-    - Determine the Kmer-length `K` of the hammers.
+    - Determine the Kmer-length 'K' of the hammers.
     (NOTE: all the hammers in the file will have the same length.)
 
-    - Return the hammer-length `K`, the list of roles,
+    - Return the hammer-length 'K', the list of roles,
     the hammer-to-feature_id dictionary,
     the feature_id-to-genome_id dictionary,
     and the feature_id-to-role dictionary
 
-* Open the 'genome-names' file, skip the header-line,
-and for subsequent lines read the first and second columns
-into a dictionary as a `genome_id` and `genome_name`, respectively;
-then return the genome_id-to-genome_names dictionary.
+* Open the 'genome-names' file and perform the following: 
 
-* Create an empty directory whose keys will be genome-IDs,
+    - Read the header-line and extract the column-names
+
+    - For subsequent lines, read the 'genome_id' and 'genome_name' columns
+    into the genome_id-to-genome_names dictionary.
+
+* Create an empty dictionary whose keys will be genome-IDs,
 and values will be an integer count of the number of hammers
 found for that genome.
 
@@ -49,11 +55,11 @@ found for that genome.
 inner-keys will be roles, and inner-values will be the integer count
 for the number of hammers found for that role in that genome.
 
-* Use BioPython to read the sequences of the genome from `STDIN`;
+* Use BioPython to read the sequences of the genome from 'STDIN';
 the sequence should then be converted to lower-case.
 
 * For each sequence, extract all possible Kmers, and if a Kmer
-is a hammer, increment the hammer-count for its associated `genome_id`
+is a hammer, increment the hammer-count for its associated 'genome_id'
 in the genome-counts dictionary, and also the hammer-count for that role
 in the genome-to-role-to-counts directory-of-directories;
 then repeat this operation on the reverse-complement of that sequence,
