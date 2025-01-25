@@ -254,5 +254,5 @@ however most operating-systems support uncompressing
 a commpressed file simply by "double-clicking" on them
 in your file-browser.
 
-We have also included soultion "hammer-hits" files
+We have also included solution "hammer-hits" files
 for each of the test-cases in this exercise.

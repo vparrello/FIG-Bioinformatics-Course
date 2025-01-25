@@ -4,7 +4,7 @@
 `Multirole Hammer Exercise 1` to obtain more reliable RepGen assignments
 by requiring a "consensus" among the sets of assignemnts made by each SOUR.
 
-In excercise, we will see that the "noise hits"
+In this excercise, we will see that the "noise hits"
 can be largely or even completely eliminated by requiring
 a "consensus" on which genomes are present within a sample
 based on hammer evidence from more than one SOUR. 
@@ -44,7 +44,7 @@ FIG-Bioinformatics-Course/
 
 ## Using the Hammers
 
-The hammer-application program also needs revision to support multiple roles;
+1. The hammer-application program also needs revision to support multiple roles;
 the following prompt will do it:
 
 ```
@@ -126,10 +126,14 @@ and send a warning to STDERR that the name of genome_id was not in
 the genome-names file.
 ```
 
-To run the program on 'MysteryGenome1.fna', enter the following:
+Upload the `Definitions.html` file to Grimoire as in previous exercises, and the ask Grimoire to generate code and pseudocode for the above prompt.
+Then using VScode, paste the prompt, pseudocode, and code into the code-template for `hammer_compare_multirole.py` and save it as usual.
+
+
+2. To run the program on `MysteryGenome1.fna`, enter the following:
 
 ```
-python3 Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl < DataMysteryGenome1.fna > Data/MysteryGenom1.myrep10.five_roles.hammers.hits
+python3 Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.tbl
 ```
 
 The resulting output table is:
@@ -139,8 +143,18 @@ The resulting output table is:
 | 511145.12 | Escherichia coli str. K-12 substr. MG1655 | 8257 | 5 |
 
 Recall that in `Hammer-Exercise_1`, the program `hammer_compare.py` found several low-scoring "noise genomes" in addition to the correct RepGen `511145.12`, and that in order to remove the "noise hits" we had to "filter" the hammers to remove candidates that had additional occurances outside the SOUR sequences. However, using multirole hammers and requiring at least 4 out of 5 roles to be found before we will accept a RepGen hit, the program returns only correct RepGen and no "noise genomes" even without filtering!
-So requiring multiple confirming-evidences for a repGen does appear to eliminate the "noise problem", even without "filtering". We can confirm the preceeding claim by reruning the program with the minimum role-fraction set to 0
-so that all hits will be accepted;  the resulting top 5 hits are:
+So requiring multiple confirming-evidences for a RepGen does appear to eliminate the "noise problem", even without "filtering". 
+
+3. We can confirm the above claim by rerunning the program
+with the minimum role-fraction set to 0
+so that all hits will be accepted:
+
+```
+python3 Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl -F 0.0 < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.no-threshold.tbl
+```
+
+The output-file contains 35 lines (34 hits plus the header-line);
+the top 5 hits are:
 
 | Genome_ID | Genome_Name | Score | Roles_Found |
 | --- | --- | --- | --- |
@@ -150,6 +164,14 @@ so that all hits will be accepted;  the resulting top 5 hits are:
 | 1062.102 | Rhodobacter sp. strain HK-STAS-PROT-59 | 3 | 2 |
 | 309798.4 | Coprothermobacter proteolyticus DSM 5265 | 3 | 1 |
 
-Note that the low-scoring "noise genomes" only had hits for 1 or 2 roles, so requiring a "4 out of 5 jury" eliminates them.
+Note that the low-scoring "noise genomes" only had hits for 1 or 2 roles, confirming that requiring a "4 out of 5 jury" eliminates the "noise hits", even without "filtering". The lower-ranking hits are all score 3 hits or lower and only score against a single role, so they have been eliminated by the "4 out of 5" jury-mechanism.
 
 
+## Self-Check
+
+2. Since the hammer-hits table only contains a single entry
+that was displayed in full within the exercise,
+no solution-file has been provided.
+
+3. The solution-file for the `-F 0.0` test is named:
+`MysteryGenome1.myrep10.five-role-hammer-hits.no-threshold.solution.tbl`
