@@ -1,6 +1,6 @@
 # Multirole Hammer Sets Exercise 1 - Building Hammers Using More Than One SOUR
 
-**Obejective:** Build a set of hammers starting from a set of sequences that represent more than one SOUR,
+**Objective:** Build a set of hammers starting from a set of sequences that represent more than one SOUR,
 to support more reliable RepGen assignments to a sample
 by requiring a "consensus" among the assignemnts made 
 by each SOUR.
@@ -22,6 +22,27 @@ For instance, if we have hammers derived from sequences implementing 5 different
 that a RepGen must have support from at least
 4 out of the 5 SOURs to be considered related to any genome within the sample.
 This reliance on multiple lines of evidence mirrors the scientific process, where experiments are not deemed valid unless their results can be reproduced.
+
+You may perhaps be wondering why we have specified "4 out of 5 roles".
+When we introduced the concept of a "SOUR", we did not discuss
+how we constructed our set of SOURs. During the actual construction
+of the SOURs, it was necessary to slightly weaken  the concept
+of "Universal role" to "Role that occurs within 80% of the members
+of our Universe of Genomes". This weakening was required because
+the technologies of genome-sequencing, genecalling, and gene-annotation
+all have low but nonzero error-rates, and so some of the members
+of the Universe of Genomes appear to be "missing" genes merely
+because they were not sequenced, called, or annotated properly.
+Thus, in practice there are _no_ roles that appear in every single member
+of the roughly one million sequenced genomes.
+We have found that in practice, requiring a role to appear in 80%
+of the members of our "Universe of Genomes" appears to be a
+reasonable compromise for defining "Universality",
+and therefore it is reasonable to require that hammers from a RepGen
+corresponding to at least 80% of the roles in our list of SOURs
+need to be found in a sample before we assert that the sample
+contains a genome that is "close" to that RepGen.
+
 
 ## Materials
 
