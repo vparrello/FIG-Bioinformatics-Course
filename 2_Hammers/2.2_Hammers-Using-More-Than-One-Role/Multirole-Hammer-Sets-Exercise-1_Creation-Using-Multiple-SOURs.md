@@ -12,36 +12,44 @@ highest-scoring hits against RepGens that were found within the sample,
 there were also a number of low-scoring "noise hits".
 
 In this set of exercises, we will demonstrate how the
-"noise hits" can be significantly reduced—or even completely eliminated—by constructing a "consensus" among the RepGens from the "hits" within the sample. This consensus is built by requiring hammer-evidence from more than one SOUR before we declare that a RepGen has sufficient support.
-You can think of this "consensus" process as analogous to assembling
+"noise hits" can be significantly reduced—or even completely eliminated—by constructing a "consensus" for which RepGens are probably related
+to a genome within the sample based on the "hammer-hits" that are found
+within the sample.
+This consensus is built by requiring hammer-evidence from more than one SOUR before we declare that a RepGen has sufficient support to be related
+to a genome within the sample.
+You can think of this "consensus process" as analogous to assembling
 a "jury" made up of multiple SOURs,
-with their scores acting as "votes" to determine 
+with the set of scores for each role acting as "votes" to determine 
 which RepGens provide the strongest evidence
 for the presence of a related genome within the sample.
 For instance, if we have hammers derived from sequences implementing 5 different SOURs, we can stipulate
 that a RepGen must have support from at least
-4 out of the 5 SOURs to be considered related to any genome within the sample.
-This reliance on multiple lines of evidence mirrors the scientific process, where experiments are not deemed valid unless their results can be reproduced.
+4 out of the 5 SOURs to be considered related to a genome within the sample.
+This requirement for multiple lines of supporting evidence
+mirrors the scientific process, where experiments are not deemed valid unless their results can be reproduced.
 
 You may perhaps be wondering why we have specified "4 out of 5 roles".
-When we introduced the concept of a "SOUR", we did not discuss
-how we constructed our set of SOURs. During the actual construction
-of the SOURs, it was necessary to slightly weaken  the concept
-of "Universal role" to "Role that occurs within 80% of the members
+The "4 out of 5" criterion is closely related to how we originally determined the set of SOURs that we use.
+When we first introduced the concept of a "SOUR" in `RepGen-Exercise-1`,
+we defined a "Singly-Occuring Universal Role" in the abstract as a role that can be _expected_ to be implemented
+by exactly one gene in every genome, but we did not discuss how we
+constructed this set of roles in practice.
+During the actual construction of the SOURs, we found that it was
+necessary to slightly weaken the concept of a "Universal role"
+to "Role that is found in 80% of the members
 of our Universe of Genomes". This weakening was required because
 the technologies of genome-sequencing, genecalling, and gene-annotation
 all have low but nonzero error-rates, and so some of the members
-of the Universe of Genomes appear to be "missing" genes merely
-because they were not sequenced, called, or annotated properly.
-Thus, in practice there are _no_ roles that appear in every single member
-of the roughly one million sequenced genomes.
-We have found that in practice, requiring a role to appear in 80%
-of the members of our "Universe of Genomes" appears to be a
-reasonable compromise for defining "Universality",
-and therefore it is reasonable to require that hammers from a RepGen
-corresponding to at least 80% of the roles in our list of SOURs
-need to be found in a sample before we assert that the sample
-contains a genome that is "close" to that RepGen.
+of the Universe of Genomes appear to be "missing" roles
+that we expect to be there merely because of the nonzero error-rate
+of our sequencing and annotation technology.
+We have found that in practice, requiring a role to be present
+in at least 80% of the members of our "Universe of Genomes"
+appears to be a reasonable compromise for defining "Universality",
+and therefore it is reasonable to require that before a RepGen is asserted
+to have a close relative within a sample, the sample must have
+hammer-hits from that RepGen for at least 80% of the roles in our list of SOURs.
+
 
 
 ## Materials
@@ -88,8 +96,8 @@ would be tedious and error-prone;
 hence, it is better to ask Grimoire to automate fetching
 the sequences that implement the specified set of roles
 within the RepGens that you will be building hammers for.
-As usual, you should upload the file `Definitions.html` to Grimoire
-as in previous exercises, and ask it to learn the definitions in the file.
+As in previous exercises, you should first upload the file `Definitions.html` to Grimoire and ask it to learn the definitions
+in the file without commenting on them.
 Then, enter the following prompt to generate the automated sequence-fetcher:
 
 ```
@@ -229,15 +237,6 @@ have been fetched from BV-BRC, run them through the program
 python3 Code/fasta_reader.py < Data/myrep10.five_roles.dna-sequences.solution.fna > /dev/null
 ```
 
-**NOTE:** In the above command, you are redirecting the data sent to `STDOUT` to a special "device" called `/dev/null`.
-`/dev/null` is a program that silently "eats" any input
-that sent to it;
-if you had left off the `> /dev/null` portion of the command,
-you would have seen the names and lengths of all 705 sequences in the FASTA file
-before seeing the summary-statistics sent to `STDERR`.
-`/dev/null` is useful when you do *not* want to see or save
-output from a program for some reason.
-
 The result printed to `STDERR` should be:
 
 ```
@@ -247,6 +246,17 @@ Average sequence length: 1823.90
 
 Note that "705 sequences" is consistent with fetching
 5 roles each for 141 genomes.
+
+**NOTE:** In the above command, you are redirecting the data sent to `STDOUT` to a special "device" called `/dev/null`.
+`/dev/null` is a program that silently "eats" any input
+that isa sent to it;
+if you had left off the `> /dev/null` portion of the command,
+you would have seen the names and lengths of all 705 sequences in the FASTA file
+before seeing the summary-statistics sent to `STDERR`.
+`/dev/null` is useful when you do *not* want to see or save
+output from a program for some reason.
+
+
 
 ### Exercise 2.
 
