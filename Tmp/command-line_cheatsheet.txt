@@ -1,0 +1,32 @@
+# File and Directory Commands
+cd path/to/directory           # Change to directory 'path/to/directory'
+ls                             # List current directory contents
+ls path/to/directory           # List some other directory's contents
+ls -l                          # List directory contents with dates and owners
+ls -la                         # List directory contents including "hidden" files
+pwd                            # Print working (i.e. current) directory
+mv oldname newname             # Move (i.e. rename) a file or directory
+mv file1 file2 file3 directory # move several files to a directory
+cp filename duplicatefile      # Copy file
+cp file path/to/dir/duplicate  # Copy file (or files) to another directory_name
+rm file                        # Remove (delete) file
+
+# File Viewing and Manipulation
+cat filename                   # Print file contents to screen
+less filename                  # View file content one screen at a time
+head -n 10 filename            # View the first 10 lines of a file
+tail -n 10 filename            # View the last 10 lines of a file
+
+# Disk and System Monitoring
+df -h                          # Display how much diskspace is in use
+du -sh path/to/file/or/dir     # Display size of file or directory contents
+
+# Archiving and Compression
+gzip filename                  # Compress a file and add '.gz' suffix
+gunzip filename.gz             # Decompress a file
+gunzip -c filename.gz          # Decompress a STDOUT
+
+# Advanced Commands
+mkdir my_folder                # Make a new directory
+rmdir my_folder                # Remove an empty directory (directories containg files
+                                 cannot be removed until emptied)
