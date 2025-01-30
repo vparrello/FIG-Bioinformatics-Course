@@ -1,47 +1,67 @@
-# Command Line Foo
+# Command Line Pre-Knowledge
 
 This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
 
 ## Basics to know when working in a command line
-1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely error!
-2. Commands are case-sensitive; your commands will error if the wrong case is used.
+1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely thrown an error!
+2. Commands are case-sensitive; your commands will throw an error if the wrong case is used.
 3. Much like spelling and capitals, spaces are also sensitive when using the command line. A missed space or an added space will likely mess up your command.
 4. Within the bash shell, you only use the forward slash (/) and never the back slash.
-5. Viewing files in VSCode in the editing mode can be hard to read. To change the viewing of the file, use the shortcut 'shift - command - v' on Mac and 'shift - control - v' on Windows.
+5. Viewing files in VSCode in the editing mode can be hard to read. To change the viewing of the file, use the shortcut 'shift + command + v' on Mac and 'shift + control + v' on Windows.
 6. If there is a command you don't understand, just ask Grimoire! Many times Grimoire will give you a very long explanation of a command, but the first couple paragraphs will be the most helpful.
+7. Any command that does not have a file path (we will explain what a file path is later in this document) will assume that you are already in the directory you need to be in. If the file or files you need for your command are in a different directory, your command will need a file path to get there.
 
 # Basic commands to use
+While practice is important, some examples of these commands contain real files and paths. If you want to practice commands, create your own testing files; this is to keep you from removing or losing important files. 
 
 ## File and Directory Commands
-1. List all files and directories
+1. List files and directories in the current directory
 ```
 ls
 ```
-List all files in a specific directory 
+List all files in a specific directory (we will explain what we mean by 'path' later in this document)
 ```
-ls file/path/to/directory
+ls path/to/directory
 ```
-List all the files, including hidden files
+*Example use of this command:*
+```
+ls 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions
+```
+List files and directories in the current directory, including hidden files
 ```
 ls -la
 ```
-2. Navigate between folders
+2. Navigate to the named folder
 ```
-cd file/path/to/directory
+cd path/to/directory
 ```
-3. Show contents of current (working) directory
+*Example:*
+```
+cd FIG-Bioinformatics-Course/0_Getting-Started
+```
+
+3. Show full path to the current (working) directory
 ```
 pwd
 ```
+
 4. Move files to a different directory
 ```
-mv file1.txt file2.txt file4.txt directory_destination
+mv file1 file2 file4 directory_destination
+```
+*Example:*
+```
+mv 0_Course-Syllabus.md 0_Download-Instructions.md FIG-Bioinformatics-Course
 ```
 5. Rename a file or directory
 ```
-mv [oldname.txt] [newname.txt]
+mv oldname newname
 ```
-6. Clear all past commands in terminal
+*Example:*
+```
+mv data.tbl dataNew.tbl
+``` 
+6. Clear all text in the terminal
 ```
 clear
 ```
@@ -49,31 +69,66 @@ clear
 ```
 cp filename duplicatefilename
 ```
+*Example:*
+```
+cp data.tbl datacopy.tbl
+```
 To copy a file to another directory
 ```
-cp file/path/to/directory
+cp path/to/directory
 ```
+*Example:*
+```
+cp FIG-Bioinformatics-Course/Data/data.tbl
+```
+
 8. Delete (remove) a file
 ```
-rm filename.txt
+rm filename
+```
+*Example:*
+```
+rm data.tbl
+```
+
+9. List all commands entered during a session
+```
+history
 ```
 
 ## File Viewing and Manipulation
 1. Display the contents of a file
 ```
-cat filename.txt
+cat filename
+```
+*Example:*
+```
+cat data.tbl
 ```
 2. View file content one screen at a time
 ```
-less filename.txt
+less filename
+```
+*Example:*
+```
+less data.tbl
 ```
 3. View the first 10 lines of a file
 ```
-head -n 10 filename.txt
+head -n 10 filename
 ```
-View the last 10 line of a file
+*Example:*
 ```
-tail -n 10 filename.txt
+head -n 10 data.tbl
+```
+
+4. View the last 10 line of a file
+```
+tail -n 10 filename
+```
+*Example:*
+```
+tail -n 10 data.tbl
 ```
 
 ## Disk and System Monitoring
@@ -81,23 +136,42 @@ tail -n 10 filename.txt
 ```
 df -h
 ```
-Display the size of a file or directory
+2. Display the size of a file or directory
 ```
-df -sh file/path/or/directory.path
+df -sh path/or/directory
+```
+*Example:*
+```
+df -sh FIG-Bioinformatics-Course/0_Getting-Started
 ```
 
+
 ## Archiving and Compression
-1. Compress a file and add a '.gz' suffix
+1. Compress a file and convert to a '.gz' file
 ```
-gzip filename.txt
+gzip filename
 ```
-Decompress a file
+*Example:*
+```
+gzip data.tbl
+```
+
+2. Decompress a file and convert to a different kind of file
 ```
 gunzip filename.gz
 ```
-Decompress a STDOUT
+*Example:*
+```
+gunzip data.gz
+```
+
+3. Decompress a STDOUT
 ```
 gunzip -c filename.gz
+```
+*Example:*
+```
+gunzip -c data.gz
 ```
 
 ## Advanced Commands
@@ -105,9 +179,18 @@ gunzip -c filename.gz
 ```
 mkdir directory_name
 ```
-Remove an empty directory (directories containing files cannoy be removed until emptied)
+*Example:*
+```
+mkdir FIG-Bioinformatics-Course
+```
+
+2. Remove an empty directory (directories containing files cannoy be removed until emptied)
 ```
 rmdir directory_name
+```
+*Example:*
+```
+rmdir FIG-Bioinformatics-Course
 ```
 
 # Creating File Paths
@@ -118,9 +201,9 @@ File paths function as a road map to a specific folder or file. In the same way 
 
 File paths are structured like this:
 ```
-home/user/Documents/file.txt
+home/user/Documents/file
 ```
-Each forward slash acts as a seperator between landmarks. These are the stops on the way to your destination. In this template, 'home' would be the first jump, 'user' the next jump, 'Documents' the third jump, and 'file.txt' being the destination. Let's see what a real file path looks like using the directory tree you are working with.
+Each forward slash acts as a seperator between landmarks. These are the stops on the way to your destination. In this template, 'home' would be the first jump, 'user' the next jump, 'Documents' the third jump, and 'file' being the destination. Let's see what a real file path looks like using the directory tree you are working with.
 
 ## How to use file paths
 In order to get to the course syllabus, you have to drop down the menu of the course, then the 0_Getting-Started directory, then the course syllabus is right in there! This is how we reach it in the Explorer section of VSCode. Reaching it through the terminal is very similar.
