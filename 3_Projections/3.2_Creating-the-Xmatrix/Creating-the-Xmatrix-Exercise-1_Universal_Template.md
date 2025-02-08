@@ -27,7 +27,7 @@ FIG-Bioinformatics-Course/
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 1. The idea of the random forest classifier is that it takes a large number of decision trees and averages their results. Each decision tree looks at a random subset of the data and makes a prediction. The more trees there are, the more accurate the prediction is. This means that we need to give the machine learning algorithm a large set of data so that it can make more decision trees which gives us a more accurate prediction. 
 
