@@ -28,7 +28,15 @@ Type `cd $COURSE_DIR` into your command line to reset your path to the Course di
 
 2. Ask Grimoire how one would construct a metagenomic sample set suitable for training a random-forest model.
 
-3. The machine learning model that we are going to create is a classification model. This model basically takes a set of samples that have been categorized into diseased or healthy groups and uses that as a key to determine what the pattern for each group is. Then is uses the genomes found within a mystery sample to make a prediction about the health status of that sample. Kind of like we were doing in a smaller scale in the previous units, we will be doing it on a larger scale and with a lot more data. This increases the accuracy of the model and allows us to make more accurate predictions. Below are a list of research topics that can be applicable to our objective of classification. Choose one of the topics below. If you would like to choose a different topic, do a little research first to ensure that the gut microbiome has been studied for that specific topic. Otherwise it is possible that your machine learning model will not be able to distinguish between the two groups and will not be able to make accurate predictions.
+3. The machine learning model that we are going to create is a classification model.
+This model basically takes a set of samples that have been categorized into diseased or healthy groups and uses that as a key to determine what the pattern for each group is.
+Then it uses the genomes found within a mystery sample to make a prediction about the health status of that sample.
+Kind of like we were doing on a smaller scale in the previous units, we will be doing it on a larger scale and with a lot more data.
+In general, using more data will lead to a more accurate model and allow us to make more accurate predictions, albeit it is imporatant that the data also be of sufficiently high quality.
+
+   Below are a list of suggested research topics that might be of
+interest as objectives for disease-state prediction using classification.
+Choose one of the topics below. If you would like to choose a different topic, do a little research first to ensure that the gut microbiome has been studied for that specific topic. Otherwise it is possible that your machine learning model will not be able to distinguish between the two groups and will not be able to make accurate predictions.
 
    1. **Obesity**
    2. **Type 2 Diabetes**
@@ -39,38 +47,54 @@ Type `cd $COURSE_DIR` into your command line to reset your path to the Course di
    7. **Alzheimer's Disease**
    8. **Parkinson's Disease**
 
-4. Now that we have chosen a research topic, we need to gather data from the NCBI database. Please go to https://www.ncbi.nlm.nih.gov/ and search for the topic you chose. This will give you a few different things that are relevant to our objective. 
+4. Now that we have chosen a research topic, we need to gather data from the NCBI database. Please go to https://www.ncbi.nlm.nih.gov/ and enter the topic of your choice into the search box. The search-result will look something like the image below, listing the NCBI database-entries that at may be relevant to your search-topic.
 
 ![After searching the NCBI for Parkinson's Disease](NCBISearch.png)
 
-Firstly, we have the Literature section. This section will give you research papers and articles that are relevant to your topic. It can give you a good idea of what is currently known about the topic and can help you understand the current state of research. It can also lead us to where data is available within the Data sections of each academic paper published on the topic. If you want to find data this way, click on "PubMed" and a search with all of the papers relevant to your topic will be published. Make sure you pay attention to the Data Availability section of each paper as well as the authors. Often times an author will use the same data set for multiple publications and if they do you might end up with duplicate data if you use both of their papers.
+First, note the Literature section, which contains links to various indices of research papers and articles that are relevant to your topic.
+A literature search can give you a good idea of what is currently known about your topic and can help you understand the current state of research. You will find that many published papers will contain a "Data" section that links back to NCBI or to some other public data-repository. If you want to find data this way, click on "PubMed", which will display NCBI's index of papers relevant to your search-topic, with links to their abstracts. Make sure you pay attention to the Data Availability section of each paper as well as the authors. Often times an author will use the same data set for multiple publications, and if they do you might end up with duplicate data if you use more than one of their papers.
 
-Secondly we have the Genomes section. This section will give you any and all genomes that have been tagged with your specific topic. Depending on your need, you can choose to look at the BioProject which has all the samples from a full research project, or a BioSample which contains individual samples from one experiment, or the SRA which contains all of the raw data from a single sample. 
+Next we have the Genomes section. This section will give you any and all genomes that have been tagged with your specific topic. Depending on your need, you can choose to look at the `BioProject`, which links to a record of the samples associated with a given research project, or to `BioSample` which links to a record of individual samples from a given experiment, or to `SRA` ("Sequence Reads Archive") which is a repository of all of the raw data from a single sample. 
 
-Click on the SRA heading to see all the data we are looking for.
+Click on the SRA heading to see all the data we are looking for:
 ![alt text](SRA.png)
 
-5. Inside of this search, you will see a list of different SRA samples that are relevant to your topic. Each one has a link, a description of metadata, and an Accession number underneath it. Ask Grimoire to describe what "spots" and "bases" are referring to in terms of a metagenome sample. 
+5. The SRA search-page lists the set of samples that were tagged as relevant to your topic. Each entry has a link, a description of metadata for the sample, and an Accession number underneath it. Ask Grimoire to describe what "spots" and "bases" are referring to in terms of a metagenome sample. 
 
-6. Good Data is important. It keeps our classifier accurate and our predictions useful. However, having an overwhelming abundance of data is the only way to ensure that our model can identify enough of a pattern to make an accurate prediction. In this way, we need to find a balance between the number of samples that we use and the quality of the data that we gather. If you click on any of the links inside of your search, you will find a page with all the metadata associated with that sample. 
+6. Good Data is important. It keeps our classifier accurate and our predictions useful. However, having an overwhelming abundance of data is the only way to ensure that our model can identify enough of a pattern to make an accurate prediction. In this way, we need to find a balance between the number of samples that we use and the quality of the data that we gather. If you click on any of the links inside of your search, you will find a page with all the metadata associated with that sample: 
 
 ![alt text](SRAMetaData.png)
 
-7. Another thing we need to keep in mind is the variables that we create by choosing our data. For example, if we were trying to classify apples as bruised or not bruised, and then never included a green apple, it is possible that our model would not be able to classify the green apple correctly because it does not have any data on green apples. In the same vein, we also need to make sure that we include a diverse set of samples. However too much diversity can be problematic as well. If we included every type of apple as well as every type of banana, it is possible that it would classify all bananas as apples and give us a very inaccurate prediction. Therefore we need to be sure that we keep some variables constant so that we can make accurate predictions. 
+7. Another thing we need to keep in mind is the variables that are associated with our choice of data. For example, if we were trying to classify apples as bruised or not bruised, and then never included a green apple, it is possible that our model would not be able to classify the green apple correctly because it does not have any data on green apples. In the same vein, we also need to make sure that we include a diverse set of samples. However too much diversity can be problematic as well. If we included every type of apple as well as every type of banana, and if there are many more examples of apples than bananas, it is possible that it would classify all bananas as apples and give us a very inaccurate prediction. Therefore we need to be sure that we keep some variables constant so that we can make accurate predictions. 
+We therefore need to keep the metadata variables that are not believed to be directly relevant to our classification task constant.
+In our "fruit" analogy, if we are trying to classify apples as red, green, or yellow, we would not want to mix in bananas.
+If all of our samples are processed the same way, then we filter out all of the "banana" samples and keep our classification to only the apples so as not to confuse our model. Thus, when choosing your data, notice whether it is from the gut microbiome, saliva, blood, or other type of samples; these are all different sources of data and can effect how our model performs. For example, you would not want to mix gut samples with saliva samples, because doing so might cause your classifier to unintentionally learn to distinguish gut-samples from saliva-samples, instead of "diseased" vs "healthy" samples.
+Notice that the Library section of the metadata includes Strategy, Source, Selection, and Layout. We want these variables to also be constant across our samples with Strategy and Layout being the most important. Ask Grimoire to describe what Amplicon vs Whole Genome Shotgun (WGS) Sequencing are, and what the differences are between the two.
+(The amplicon vs WGS distinction is particularly important
+for our approach, because a hammer-analysis will only work on WGS data.)
 
-For this purpose, we will keep many of the metadata variables constant. If all of our samples are processed the same way, then we filter out all of the "banana" samples and keep our classification to only the apples and not confuse our model. So when choosing your data, notice whether it is from the gut microbiome, saliva, blood, or other types of samples. These are all different sources of data and can effect how our model performs. Notice that the Library section of the metadata includes Strategy, Source, Selection, and Layout. We want these variables to also be constant across our samples with Strategy and Layout being the most important. Ask Grimoire to describe what Amplicon vs Whole Genome Shotgun Sequencing is and the differences between the two.
+**Note: Keeping the process constant means that only the genetic material variables will be considered inside of the model. Those are the only variables that we want to be more diverse.**
 
-** Note: Keeping the process constant means that only the genetic material variables will be considered inside of the model. Those are the only variables that we want to be more diverse. **
-
-8. Notice also that each of the SRAs have a Run associated with it. That Run is the metagenomic sample that we are interested in. Click on the Run to see the Sequence Read Archive and the information associated with the run. 
+8. Notice also that each of the SRA entries have a `Run` associated with it. The word `Run` is short for "Sequencing Run", and is synonymous with the metagenomic sample that we are looking at.
+"Runs" typically have "SRR" or "ERR" identification numbers;
+"SRR" means that the sequencing-run was originally deposited at NCBI,
+whereas "ERR" that the sequencing-run was originally deposited
+at NCBI's European analog, "EBI".
+Click on the Run to see the Sequence Read Archive entry,
+and the information associated with the run: 
 
 ![alt text](SRARun.png)
 
-9. It will have a tab inside that page that says "FASTA/FASTQ Download". This is a webpage that will allow you to download a FASTA file that you can then use with your hammer set and representative genome set. It is also the same data you would get through a p3-download command in the command line.
+9. The SRA webpage will have a tab inside that says "FASTA/FASTQ Download". This is a webpage that will allow you to download a FASTA or FASTQ file that you can then use with your hammer set and representative genome set if the sample is from a "Whole-Genome Shotgun" (WGS) run: 
 
 ![alt text](SRAFASTQ.png)
 
-10. Sometimes the FASTQ file is too big to download from the webpage. In that case, you can use the command line to download the data using the SRA run accession number. If you have not already installed the SRA toolkit, now would be a good time to do so. Once you have installed the SRA toolkit, you can use the following command to download the data **Be sure to replace the SRR12345678 with your SRA run accession number**:
+
+10. Sometimes the FASTQ file is too big to download from the webpage. In this latter case you can use the command line to download the data using the SRA run accession number. If you have not already installed the SRA toolkit, now would be a good time to do so.
+
+**NOTE TO DEVELOPERS: WE HAVEN'T YET WRITTEN INSTRUCTIONS FOR INSTALLING THE SRATOOLKIT!!! :-(**
+
+Once you have installed the SRA toolkit, you can use the following command to download the data **Be sure to replace the SRR12345678 with your SRA run accession number**:
 
 ```
 prefetch SRR12345678
