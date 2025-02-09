@@ -76,9 +76,9 @@ for our approach, because a hammer-analysis will only work on WGS data.)
 **Note: Keeping the process constant means that only the genetic material variables will be considered inside of the model. Those are the only variables that we want to be more diverse.**
 
 8. Notice also that each of the SRA entries have a `Run` associated with it. The word `Run` is short for "Sequencing Run", and is synonymous with the metagenomic sample that we are looking at.
-"Runs" typically have "SRR" or "ERR" identification numbers;
+"Runs" are usually assigned either an "SRR" or an "ERR" identification number;
 "SRR" means that the sequencing-run was originally deposited at NCBI,
-whereas "ERR" that the sequencing-run was originally deposited
+whereas "ERR" mean that the sequencing-run was originally deposited
 at NCBI's European analog, "EBI".
 Click on the Run to see the Sequence Read Archive entry,
 and the information associated with the run: 
