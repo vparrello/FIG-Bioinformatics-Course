@@ -1,0 +1,232 @@
+########################################################################
+#...Prompt that generated this program:
+"""
+Assuming that the SRA toolkit is installed in the user's path,
+please write a Python script named 'sra_download.py'
+that takes the following mandatory named inputs:
+
+* -i or --id-file --- Name of a file containing a list of SRA-IDs in its first column.
+
+* -d or --download-directory --- name of an output directory to write processed data-files to.
+
+In addition, the script should support the following optional argument:
+
+* -c or --sra-cache --- name of an optional cache-directory to be used by SRA commands such as 'prefetch'.
+
+Foreach SRA-ID, the script should print a message to STDERR
+indicating that it is fetching that SRA-ID,
+then use the SRA-toolkit's 'prefetch' command to fetch the FASTQ
+or FASTA file associated with that SRA-ID,
+and finally print a message to STDERR indicating
+the size of the downloaded file, whether it was FASTQ or FASTA,
+and whether it was single-ended or paired-end if the download
+was successful, else print a warning-message if the download failed.
+
+Next, if the download was successful, and if the SRA-entry
+is a set of paired-end reads, the script should used SRA-tools
+to split the FASTQ file into left and right reads.
+
+Finally, the script should print to STDERR the number of SRA-entries
+requested, the number of entries where the download succeeded,
+and the numbers of single-ended and paired-end entries downloaded.
+"""
+
+########################################################################
+#...Pseudocode for this program:
+"""
+DEFINE FUNCTION run_command(command: STRING) -> (BOOLEAN, STRING, STRING):
+    TRY:
+        EXECUTE shell command
+        RETURN (command was successful, command output, command error output)
+    CATCH exception AS e:
+        RETURN (False, "", error message)
+
+DEFINE FUNCTION fetch_sra(sra_id: STRING, download_dir: STRING, cache_dir: STRING) -> STRING:
+    PRINT "[INFO] Fetching SRA ID: " + sra_id TO STDERR
+    
+    SET prefetch_cmd = "prefetch " + sra_id
+    IF cache_dir IS NOT NULL:
+        APPEND " --output-directory " + cache_dir TO prefetch_cmd
+    
+    success, stdout, stderr = run_command(prefetch_cmd)
+    
+    IF NOT success:
+        PRINT "[WARNING] Failed to fetch " + sra_id + ". Error: " + stderr TO STDERR
+        RETURN NULL
+
+    SET sra_path = (cache_dir OR "~/.ncbi/public/sra") + "/" + sra_id + ".sra"
+    SET output_path = download_dir + "/" + sra_id
+
+    SET fasterq_cmd = "fasterq-dump " + sra_path + " -O " + output_path + " --split-files"
+    success, stdout, stderr = run_command(fasterq_cmd)
+
+    IF NOT success:
+        PRINT "[WARNING] Failed to convert " + sra_id + " to FASTQ. Error: " + stderr TO STDERR
+        RETURN NULL
+
+    RETURN output_path
+
+DEFINE FUNCTION analyze_download(download_path: STRING) -> (DICT, STRING):
+    SET files = LIST FILES IN download_path
+    SET fastq_files = FILTER files WHERE file ENDS WITH ".fastq"
+
+    IF fastq_files IS EMPTY:
+        PRINT "[WARNING] No FASTQ files found in " + download_path TO STDERR
+        RETURN (NULL, NULL)
+
+    SET file_sizes = {}
+    FOR EACH file IN fastq_files:
+        file_sizes[file] = GET FILE SIZE OF (download_path + "/" + file)
+
+    SET paired = FALSE
+    FOR EACH file IN fastq_files:
+        IF "_1.fastq" IN file OR "_2.fastq" IN file:
+            SET paired = TRUE
+            BREAK
+
+    RETURN (file_sizes, "paired-end" IF paired ELSE "single-end")
+
+DEFINE FUNCTION main():
+    PARSE COMMAND LINE ARGUMENTS:
+        - "-i" OR "--id-file" REQUIRED AS id_file
+        - "-d" OR "--download-directory" REQUIRED AS download_directory
+        - "-c" OR "--sra-cache" OPTIONAL AS sra_cache
+
+    ENSURE download_directory EXISTS
+    IF sra_cache IS NOT NULL:
+        ENSURE sra_cache EXISTS
+
+    READ id_file AND STORE FIRST COLUMN AS sra_ids
+
+    SET total_count = LENGTH OF sra_ids
+    SET success_count = 0
+    SET single_count = 0
+    SET paired_count = 0
+
+    FOR EACH sra_id IN sra_ids:
+        SET download_path = fetch_sra(sra_id, download_directory, sra_cache)
+        IF download_path IS NULL:
+            CONTINUE
+
+        SET (file_sizes, read_type) = analyze_download(download_path)
+        IF file_sizes IS NOT NULL:
+            INCREMENT success_count
+            IF read_type == "single-end":
+                INCREMENT single_count
+            ELSE:
+                INCREMENT paired_count
+            
+            FOR EACH (file, size) IN file_sizes:
+                PRINT "[INFO] Downloaded " + file + ": " + size + " bytes (" + read_type + ")" TO STDERR
+        ELSE:
+            PRINT "[WARNING] No valid files found for " + sra_id TO STDERR
+
+    PRINT "[SUMMARY] Requested: " + total_count + ", Successful: " + success_count + 
+          ", Single-end: " + single_count + ", Paired-end: " + paired_count TO STDERR
+
+IF SCRIPT IS EXECUTED:
+    CALL main()
+"""
+
+########################################################################
+#...Code generated by Grimoire:
+import os
+import sys
+import argparse
+import subprocess
+
+def run_command(command):
+    """Run a shell command and return success status and output."""
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        return result.returncode == 0, result.stdout, result.stderr
+    except Exception as e:
+        return False, "", str(e)
+
+def fetch_sra(sra_id, download_dir, cache_dir):
+    """Fetch SRA entry and return its file path."""
+    print(f"[INFO] Fetching SRA ID: {sra_id}", file=sys.stderr)
+    
+    prefetch_cmd = f"prefetch {sra_id}"
+    if cache_dir:
+        prefetch_cmd += f" --output-directory {cache_dir}"
+    
+    success, stdout, stderr = run_command(prefetch_cmd)
+    
+    if not success:
+        print(f"[WARNING] Failed to fetch {sra_id}. Error: {stderr}", file=sys.stderr)
+        return None
+
+    # Convert SRA to FASTQ format
+    sra_path = os.path.join(cache_dir or os.path.expanduser("~/.ncbi/public/sra"), f"{sra_id}.sra")
+    output_path = os.path.join(download_dir, sra_id)
+    
+    fasterq_cmd = f"fasterq-dump {sra_path} -O {output_path} --split-files"
+    success, stdout, stderr = run_command(fasterq_cmd)
+
+    if not success:
+        print(f"[WARNING] Failed to convert {sra_id} to FASTQ. Error: {stderr}", file=sys.stderr)
+        return None
+
+    return output_path
+
+def analyze_download(download_path):
+    """Determine if the downloaded file is single-end or paired-end."""
+    files = os.listdir(download_path)
+    fastq_files = [f for f in files if f.endswith(".fastq")]
+
+    if not fastq_files:
+        print(f"[WARNING] No FASTQ files found in {download_path}.", file=sys.stderr)
+        return None, None
+    
+    file_sizes = {f: os.path.getsize(os.path.join(download_path, f)) for f in fastq_files}
+    
+    paired = any("_1.fastq" in f or "_2.fastq" in f for f in fastq_files)
+    
+    return file_sizes, "paired-end" if paired else "single-end"
+
+def main():
+    parser = argparse.ArgumentParser(description="Download and process SRA entries using the SRA Toolkit.")
+    parser.add_argument("-i", "--id-file", required=True, help="File containing a list of SRA IDs.")
+    parser.add_argument("-d", "--download-directory", required=True, help="Output directory for downloaded files.")
+    parser.add_argument("-c", "--sra-cache", help="Optional cache directory for SRA Toolkit commands.")
+    
+    args = parser.parse_args()
+
+    # Ensure directories exist
+    os.makedirs(args.download_directory, exist_ok=True)
+    if args.sra_cache:
+        os.makedirs(args.sra_cache, exist_ok=True)
+
+    # Read SRA IDs
+    with open(args.id_file, 'r') as file:
+        sra_ids = [line.strip().split()[0] for line in file if line.strip()]
+
+    total_count = len(sra_ids)
+    success_count = 0
+    single_count = 0
+    paired_count = 0
+
+    for sra_id in sra_ids:
+        download_path = fetch_sra(sra_id, args.download_directory, args.sra_cache)
+        if not download_path:
+            continue
+
+        file_sizes, read_type = analyze_download(download_path)
+        if file_sizes:
+            success_count += 1
+            if read_type == "single-end":
+                single_count += 1
+            else:
+                paired_count += 1
+            
+            for file, size in file_sizes.items():
+                print(f"[INFO] Downloaded {file}: {size} bytes ({read_type})", file=sys.stderr)
+        else:
+            print(f"[WARNING] No valid files found for {sra_id}.", file=sys.stderr)
+
+    # Print summary statistics
+    print(f"[SUMMARY] Requested: {total_count}, Successful: {success_count}, Single-end: {single_count}, Paired-end: {paired_count}", file=sys.stderr)
+
+if __name__ == "__main__":
+    main()
