@@ -110,4 +110,61 @@ fastq-dump --split-files SRR12345678
 
 12. Follow these steps to download and convert your data for the rest of the samples in your search. Note that this process can take a very long time depending on how many samples you have. But the more samples you have, the more accurate your model will be. For now, download and convert 10 samples so that you have enough data to test your programs. Once you are done, make sure that all of your samples are included in the Data directory of this course to make them easier to access later.
 
+13. The above procedure, while straightforward, will become
+quite tedious if you have many samples to download.
+Fortunately, we can ask Grimoire to automate the process for us!
+Enter the following prompt into Grimoire, and then save the prompt,
+pseudocode, and Python code into the template for `sra_download.py`
+as usual:
+
+```
+Assuming that the SRA toolkit is installed in the user's path,
+please write a Python script named 'sra_download.py'
+that takes the following named inputs:
+
+* -i or --id-file --- Name of a file containing a list of SRA-IDs in its first column.
+
+* -o or --output-directory --- name of an output directory to write fetched data-files to.
+
+Foreach SRA-ID, the script should print a message to STDERR
+indicating that it is fetching that SRA-ID,
+then use the SRA-toolkit to fetch the FASTQ or FASTA file associated
+with that SRA-ID, and finally print a message to STDERR indicating
+the size of the downloaded file, whether it was FASTQ or FASTA,
+and whether it was single-ended or paired-end if the download
+was successful, else a warning-message if the download failed.
+
+Next, if the download was successful, and if the SRA-entry
+is a set of paired-end reads, the script should used SRA-tools
+to split the FASTQ file into left and right reads.
+
+Finally, the script should print to STDERR the number of SRA-entries
+requested, the number of entries where the download succeeded,
+and the numbers of single-ended and paired-end entries downloaded.
+```
+
+To test your program, create a file containing a single SRA-ID;
+a convenient way of doing this is as follows:
+
+```
+echo 29057733 > Data/sra_test.tbl
+
+```
+
+Then invoke your download-program as follows:
+
+```
+python3 Code/sra_download -i Data/sra_test.tbl -c SRA_Cache -d Data/SRA_Test
+```
+
+The download may take a long time, possibly several hours,
+but if the program completes successfully, the directory
+`Data/SRA_Test` should contain the following files:
+
+**Insert filesize-data here**
+
+# Self-Check
+
+(TBA)
+
 
