@@ -204,6 +204,10 @@ File paths are structured like this:
 home/user/Documents/file
 ```
 Each forward slash acts as a seperator between landmarks. These are the stops on the way to your destination. In this template, 'home' would be the first jump, 'user' the next jump, 'Documents' the third jump, and 'file' being the destination. Let's see what a real file path looks like using the directory tree you are working with.
+```
+FIG-Bioinformatics-Course/0_Getting-Started/0_Command-Line-PreKnowledge.md
+```
+This would be the file path to get to this document. In the next section, how we made this file path will be explained.
 
 ## How to use file paths
 In order to get to the course syllabus, you have to drop down the menu of the course, then the 0_Getting-Started directory, then the course syllabus is right in there! This is how we reach it in the Explorer section of VSCode. Reaching it through the terminal is very similar.
@@ -214,7 +218,7 @@ To get somewhere, you have to know where you are starting. To know exactly where
 ```
 pwd
 ```
-This will tell you where you are starting. Since this is where you are at, there is no need to include it in your file path; you will start with the next landmark. In the case of the syllabus, if we're starting in FIG-Bioinformatics-Course, we need to go down into 0_Getting-Started. The map part of your file path would look like this:
+This will tell you where you are starting. Since this is where you are at, there is no need to include it in your file path; you will start then with the next landmark. In the case of the syllabus, if we're starting in FIG-Bioinformatics-Course, we need to go down into 0_Getting-Started. The map part of your file path would look like this:
 ```
 0_Getting-Started
 ```
@@ -234,4 +238,18 @@ cat 0_Getting-Started/0_Course-Syllabus.md
 ```
 Remember that you can move into other directories, but you cannot move into files. You can view files, create files, remove files, and many other commands!
 
-If you've run into any error while following along in your terminal, retrace your steps; if you still don't know what went wrong, ask Grimoire!
+## Errors
+A very common error messages you might see while following along is:
+```
+No such file or directory
+```
+The first way to trouble shoot this error is to check your spelling. Many mistakes can come from misspelled words, forgotten punctuation, wrong capitalization, etc.
+
+Another common error you might see is:
+```
+bash: command not found
+```
+This could also be a result of a misspelled command, or wrong command. Check that your command is correct and the punctuation around it is also correct. You can look back on the command cheat sheet at the beginning of this document.
+
+If you've run into any unknown error while following along in your terminal, retrace your steps; if you still don't know what went wrong, ask Grimoire!
+
