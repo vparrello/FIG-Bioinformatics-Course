@@ -238,6 +238,7 @@ cat 0_Getting-Started/0_Course-Syllabus.md
 ```
 Remember that you can move into other directories, but you cannot move into files. You can view files, create files, remove files, and many other commands!
 
+## Errors
 A very common error messages you might see while following along is:
 ```
 No such file or directory
