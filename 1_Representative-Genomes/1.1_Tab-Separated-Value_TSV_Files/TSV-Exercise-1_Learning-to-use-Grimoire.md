@@ -2,7 +2,7 @@
 
 Objective: Become familiar with using ChatGPT, and learn about basic bioinformatics, common data-formats, and use of command-line tools.
  
-ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, merely by expressing what you need you computer to do using either "natural language", or, when a more precise problem-specification is needed, using a more formally-structured language intermediate between "natural" language and a computer-language called "Pseudocode".
+ChatGPT is an AI model that can instruct you on the basics of many topics without needing to look up the information online. ChatGPT can also help you to write computer-programs without first needing to learn a computer-language yourself, merely by expressing what you need your computer to do using either "natural language", or, when a more precise problem-specification is needed, using a more formally-structured language intermediate between "natural" language and a computer-language called "Pseudocode".
 Finally, ChatGPT can often explain to you what went wrong with a program and how to fix it. ChatGPT comes in many specialized versions, but the version that we will be using in these exercises is a "Code-Wizard" called ["Grimoire"](https://chat.openai.com/g/g-n7Rs0IK86-grimoire/).
 
 ChatGPT applications such as Grimoire are very powerful and convenient --- however, do please note that sometimes it will "make things up" because it has been trained to be "helpful" even when it doesn't actually know the answer!
