@@ -102,10 +102,21 @@ prefetch SRR12345678
 
 ![alt text](SRAFASTQtoobig.png)
 
-11. After you have downloaded a single SRA run, you can use the following command to convert the data into a FASTA file **Again, be sure to replace the SRR12345678 with your SRA run accession number**:
+Because sample files are often quite large, a download can take a long time (sometimes even several hours), and if the file-download gets interupted, you might have to start over.
+Therefore, we use `prefetch`, which is a special SRA-command that is designed to pick up interrupted downloads where they left off.
+
+11. After you have downloaded a single paired-end SRA run, you can use the following command to convert the data into a pair of FASTA files **Again, be sure to replace the SRR12345678 with your SRA run accession number**:
 
 ```
-fastq-dump --split-files SRR12345678 
+fastq-dump --fasta 0 --split-files SRR12345678 -O Data/Sample_FASTA
+```
+
+The result should be a pair of FASTA files for each SRA entry that you process, so for the example SRA-ID, useing the `ls` ("list") command
+on the output directory `Data/Sample_FASTA` you would see:
+
+```
+ls Data/Sample_FASTA
+   SRR12345678_1.fasta SRR12345678_2.fasta
 ```
 
 12. Follow these steps to download and convert your data for the rest of the samples in your search. Note that this process can take a very long time depending on how many samples you have. But the more samples you have, the more accurate your model will be. For now, download and convert 10 samples so that you have enough data to test your programs. Once you are done, make sure that all of your samples are included in the Data directory of this course to make them easier to access later.
@@ -118,50 +129,81 @@ pseudocode, and Python code into the template for `sra_download.py`
 as usual:
 
 ```
-Assuming that the SRA toolkit is installed in the user's path,
-please write a Python script named 'sra_download.py'
-that takes the following named inputs:
+Assuming that the SRA Toolkit is installed and available in the user's system PATH, write a Python script named `sra_download_with_prefetch.py` that automates the process of downloading and processing SRA entries. The script should support the following command-line arguments:
 
-* -i or --id-file --- Name of a file containing a list of SRA-IDs in its first column.
+Mandatory arguments:
+- `-i` or `--id-file`: A file containing a list of SRA IDs (one per line).
+- `-d` or `--download-directory`: The directory where the processed FASTQ files should be stored.
 
-* -o or --output-directory --- name of an output directory to write fetched data-files to.
+Optional argument:
+- `-c` or `--sra-cache`: An optional directory to be used as a cache location for `prefetch`.
 
-Foreach SRA-ID, the script should print a message to STDERR
-indicating that it is fetching that SRA-ID,
-then use the SRA-toolkit to fetch the FASTQ or FASTA file associated
-with that SRA-ID, and finally print a message to STDERR indicating
-the size of the downloaded file, whether it was FASTQ or FASTA,
-and whether it was single-ended or paired-end if the download
-was successful, else a warning-message if the download failed.
+### **Script Behavior**
+1. **Read the SRA IDs** from the input file.
+2. **Fetch each SRA entry using `prefetch`**:
+   - If `--sra-cache` is provided, store the `.sra` file inside `<cache_dir>/<sra_id>/`.
+   - Otherwise, store it in the default `~/.ncbi/public/sra/` location.
+3. **Convert the SRA file into FASTQ format using `fasterq-dump`**:
+   - Ensure that `fasterq-dump` reads from the correct `.sra` file location.
+   - Store the resulting FASTQ files in the specified `--download-directory`, inside a subdirectory named after the SRA ID.
+   - Use the `--split-files` option to handle paired-end reads.
+4. **Check and analyze the downloaded files**:
+   - Determine whether the dataset is single-end or paired-end based on the presence of `_1.fastq` and `_2.fastq` files.
+   - Calculate and display file sizes.
+5. **Print a final summary** of:
+   - Total SRA IDs requested.
+   - Number of successful downloads.
+   - Breakdown of single-end vs paired-end datasets.
 
-Next, if the download was successful, and if the SRA-entry
-is a set of paired-end reads, the script should used SRA-tools
-to split the FASTQ file into left and right reads.
+### **Implementation Notes**
+- The script should use `subprocess.run()` to execute shell commands (`prefetch` and `fasterq-dump`).
+- Ensure robust error handling:
+  - If `prefetch` fails, print a warning and continue to the next SRA ID.
+  - If the expected `.sra` file is not found in the cache directory, print an error message.
+  - If `fasterq-dump` fails, print a warning.
+  - If no `.fastq` files are found after conversion, print a warning.
+- The script should log all actions to STDERR for debugging.
+- Use `os.makedirs()` to ensure output directories exist before downloading.
 
-Finally, the script should print to STDERR the number of SRA-entries
-requested, the number of entries where the download succeeded,
-and the numbers of single-ended and paired-end entries downloaded.
+The output should include:
+- Informational messages for each step.
+- Warnings in case of failures.
+- A final summary of download statistics.
+
+Write the full, functional Python script that implements this behavior.
 ```
 
 To test your program, create a file containing a single SRA-ID;
 a convenient way of doing this is as follows:
 
 ```
-echo 29057733 > Data/sra_test.tbl
-
+echo SRR8933535 > Data/sra_test.tbl
 ```
 
 Then invoke your download-program as follows:
 
 ```
-python3 Code/sra_download -i Data/sra_test.tbl -c SRA_Cache -d Data/SRA_Test
+python3 Code/sra_download -i Data/sra_test.tbl -c Data/SRA_Cache -d Data/SRA_Test
 ```
 
-The download may take a long time, possibly several hours,
-but if the program completes successfully, the directory
-`Data/SRA_Test` should contain the following files:
+If the program completes successfully, then the "disk-usage" command
+`du -sh Data/SRA_Test/SRR8933535/*` should return the following:
 
-**Insert filesize-data here**
+```
+du -sh Data/SRA_Test/SRR8933535/*
+928M    Data/SRA_Test/SRR8933535/SRR8933535_1.fasta
+928M    Data/SRA_Test/SRR8933535/SRR8933535_2.fasta
+```
+
+
+14. Please note that for our test, we chose a single fairly small sample.
+However in general, if you are downloading many files,
+or the files are large, or your internet-connection is slow,
+your download could potentially take multiple hours.
+To deal with possible download interruptions, 
+the script generated by the prompt above makes use of the SRA-command
+`prefetch`, which as noted earlier is designed to pick up interrupted downloads where they left off.
+
 
 # Self-Check
 
