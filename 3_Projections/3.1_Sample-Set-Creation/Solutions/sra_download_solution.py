@@ -1,48 +1,49 @@
 ########################################################################
 #...Prompt that generated this program:
 """
-Assuming that the SRA Toolkit is installed and available in the user's system PATH, write a Python script named `sra_download_with_prefetch.py` that automates the process of downloading and processing SRA entries. The script should support the following command-line arguments:
+Write a Python script named "sra_download_with_prefetch.py"
+that automates the download of paired-end SRA data
+and converts it directly into FASTA format without using
+external tools like seqtk. The script should be fully functional
+and ready to run on a system where the SRA Toolkit is installed.
 
-Mandatory arguments:
-- `-i` or `--id-file`: A file containing a list of SRA IDs (one per line).
-- `-d` or `--download-directory`: The directory where the processed FASTQ files should be stored.
+The script must support the following command-line arguments:
+- "-i" or "--id-file": A required argument specifying a file
+   that contains a list of SRA IDs, one per line.
+- "-d" or "--download-directory": A required argument specifying
+   the directory where the processed FASTA files should be stored.
+- "-c" or "--sra-cache": An optional argument specifying a directory
+   to be used as a cache location for SRA downloads.
 
-Optional argument:
-- `-c` or `--sra-cache`: An optional directory to be used as a cache location for `prefetch`.
+### Script Behavior:
+1. Read the list of SRA IDs from the specified file.
+2. Use the "prefetch" command to download the corresponding SRA files
+   into the cache directory (or the default "~/.ncbi/public/sra/" location if no cache directory is provided).
+3. Ensure that the downloaded ".sra" file exists in the expected location
+   before proceeding.
+4. Use "fastq-dump --fasta 0 --split-files" to convert the downloaded
+   SRA file into a pair of FASTA files (for paired-end reads)
+   or a single FASTA file (for single-end reads).
+5. Store the resulting FASTA files in a subdirectory under the specified
+   download directory, named after the corresponding SRA ID.
+6. Perform error handling at every step:
+   - If "prefetch" fails, print a warning and move to the next SRA ID.
+   - If "fastq-dump" fails, print a warning and move to the next SRA ID.
+   - If no FASTA files are created, print a warning.
+7. After processing all SRA IDs, print a summary that includes:
+   - The total number of SRA entries requested.
+   - The number of successful conversions.
+   - The count of single-end and paired-end datasets.
 
-### **Script Behavior**
-1. **Read the SRA IDs** from the input file.
-2. **Fetch each SRA entry using `prefetch`**:
-   - If `--sra-cache` is provided, store the `.sra` file inside `<cache_dir>/<sra_id>/`.
-   - Otherwise, store it in the default `~/.ncbi/public/sra/` location.
-3. **Convert the SRA file into FASTQ format using `fasterq-dump`**:
-   - Ensure that `fasterq-dump` reads from the correct `.sra` file location.
-   - Store the resulting FASTQ files in the specified `--download-directory`, inside a subdirectory named after the SRA ID.
-   - Use the `--split-files` option to handle paired-end reads.
-4. **Check and analyze the downloaded files**:
-   - Determine whether the dataset is single-end or paired-end based on the presence of `_1.fastq` and `_2.fastq` files.
-   - Calculate and display file sizes.
-5. **Print a final summary** of:
-   - Total SRA IDs requested.
-   - Number of successful downloads.
-   - Breakdown of single-end vs paired-end datasets.
+### Implementation Requirements:
+- Use "subprocess.run()" to execute system commands.
+- Ensure all output directories exist before writing files.
+- Capture and log STDERR output for debugging.
+- Use readable function names and modular code organization.
+- Print all informational messages and warnings to STDERR.
 
-### **Implementation Notes**
-- The script should use `subprocess.run()` to execute shell commands (`prefetch` and `fasterq-dump`).
-- Ensure robust error handling:
-  - If `prefetch` fails, print a warning and continue to the next SRA ID.
-  - If the expected `.sra` file is not found in the cache directory, print an error message.
-  - If `fasterq-dump` fails, print a warning.
-  - If no `.fastq` files are found after conversion, print a warning.
-- The script should log all actions to STDERR for debugging.
-- Use `os.makedirs()` to ensure output directories exist before downloading.
-
-The output should include:
-- Informational messages for each step.
-- Warnings in case of failures.
-- A final summary of download statistics.
-
-Write the full, functional Python script that implements this behavior.
+Write the complete, functional Python script with no placeholders
+or missing sections.
 """
 
 ########################################################################
@@ -78,12 +79,12 @@ FUNCTION fetch_sra(sra_id, download_dir, cache_dir):
     SET output_path = download_dir + "/" + sra_id
     CREATE DIRECTORY output_path IF NOT EXISTS
 
-    SET fasterq_cmd = "fasterq-dump " + prefetch_sra_path + " -O " + output_path + " --split-files"
-    PRINT "[INFO] Running fasterq-dump: " + fasterq_cmd TO STDERR
-    success, stdout, stderr = run_command(fasterq_cmd)
+    SET fastq_dump_cmd = "fastq-dump --fasta 0 --split-files " + prefetch_sra_path + " -O " + output_path
+    PRINT "[INFO] Running fastq-dump: " + fastq_dump_cmd TO STDERR
+    success, stdout, stderr = run_command(fastq_dump_cmd)
 
     IF NOT success:
-        PRINT "[WARNING] Failed to convert " + sra_id + " to FASTQ. Error: " + stderr TO STDERR
+        PRINT "[WARNING] Failed to convert " + sra_id + " to FASTA. Error: " + stderr TO STDERR
         RETURN NULL
 
     RETURN output_path
@@ -94,19 +95,19 @@ FUNCTION analyze_download(download_path):
         RETURN NULL, NULL
 
     SET files = LIST FILES IN download_path
-    SET fastq_files = FILTER files WHERE file ENDS WITH ".fastq"
+    SET fasta_files = FILTER files WHERE file ENDS WITH ".fasta"
 
-    IF fastq_files IS EMPTY:
-        PRINT "[WARNING] No FASTQ files found in " + download_path TO STDERR
+    IF fasta_files IS EMPTY:
+        PRINT "[WARNING] No FASTA files found in " + download_path TO STDERR
         RETURN NULL, NULL
 
     SET file_sizes = EMPTY DICTIONARY
-    FOR EACH file IN fastq_files:
+    FOR EACH file IN fasta_files:
         file_sizes[file] = GET FILE SIZE OF (download_path + "/" + file)
 
     SET paired = FALSE
-    FOR EACH file IN fastq_files:
-        IF "_1.fastq" IN file OR "_2.fastq" IN file:
+    FOR EACH file IN fasta_files:
+        IF "_1.fasta" IN file OR "_2.fasta" IN file:
             SET paired = TRUE
             BREAK
 
@@ -170,12 +171,12 @@ def run_command(command):
         return False, "", str(e)
 
 def fetch_sra(sra_id, download_dir, cache_dir):
-    """Fetch SRA entry and ensure correct paths between prefetch and fasterq-dump."""
+    """Fetch SRA entry and ensure correct paths between prefetch and fastq-dump."""
     print(f"[INFO] Fetching SRA ID: {sra_id}", file=sys.stderr)
 
     # Define expected prefetch output path
     prefetch_output_dir = cache_dir or os.path.expanduser("~/.ncbi/public/sra")
-    prefetch_sra_dir = os.path.join(prefetch_output_dir, sra_id)  # Prefetch subdirectory
+    prefetch_sra_dir = os.path.join(prefetch_output_dir, sra_id)
     prefetch_sra_path = os.path.join(prefetch_sra_dir, f"{sra_id}.sra")
 
     # Run prefetch command
@@ -193,17 +194,17 @@ def fetch_sra(sra_id, download_dir, cache_dir):
 
     print(f"[INFO] Prefetch saved SRA file at {prefetch_sra_path}", file=sys.stderr)
 
-    # Define correct output directory for FASTQ conversion
+    # Define correct output directory for FASTA conversion
     output_path = os.path.join(download_dir, sra_id)
     os.makedirs(output_path, exist_ok=True)
 
-    # Run fasterq-dump with correct input path
-    fasterq_cmd = f"fasterq-dump \"{prefetch_sra_path}\" -O \"{output_path}\" --split-files"
-    print(f"[INFO] Running fasterq-dump: {fasterq_cmd}", file=sys.stderr)
-    success, stdout, stderr = run_command(fasterq_cmd)
+    # Convert SRA to FASTA format (splitting paired-end reads)
+    fastq_dump_cmd = f"fastq-dump --fasta 0 --split-files \"{prefetch_sra_path}\" -O \"{output_path}\""
+    print(f"[INFO] Running fastq-dump: {fastq_dump_cmd}", file=sys.stderr)
+    success, stdout, stderr = run_command(fastq_dump_cmd)
 
     if not success:
-        print(f"[WARNING] Failed to convert {sra_id} to FASTQ. Error: {stderr}", file=sys.stderr)
+        print(f"[WARNING] Failed to convert {sra_id} to FASTA. Error: {stderr}", file=sys.stderr)
         return None
 
     return output_path
@@ -215,21 +216,21 @@ def analyze_download(download_path):
         return None, None
 
     files = os.listdir(download_path)
-    fastq_files = [f for f in files if f.endswith(".fastq")]
+    fasta_files = [f for f in files if f.endswith(".fasta")]
 
-    if not fastq_files:
-        print(f"[WARNING] No FASTQ files found in {download_path}.", file=sys.stderr)
+    if not fasta_files:
+        print(f"[WARNING] No FASTA files found in {download_path}.", file=sys.stderr)
         return None, None
-    
-    file_sizes = {f: os.path.getsize(os.path.join(download_path, f)) for f in fastq_files}
+
+    file_sizes = {f: os.path.getsize(os.path.join(download_path, f)) for f in fasta_files}
 
     # Check if the files are paired-end or single-end
-    paired = any("_1.fastq" in f or "_2.fastq" in f for f in fastq_files)
+    paired = any("_1.fasta" in f or "_2.fasta" in f for f in fasta_files)
 
     return file_sizes, "paired-end" if paired else "single-end"
 
 def main():
-    parser = argparse.ArgumentParser(description="Download and process SRA entries using the SRA Toolkit.")
+    parser = argparse.ArgumentParser(description="Download and process SRA entries into FASTA format using the SRA Toolkit.")
     parser.add_argument("-i", "--id-file", required=True, help="File containing a list of SRA IDs.")
     parser.add_argument("-d", "--download-directory", required=True, help="Output directory for downloaded files.")
     parser.add_argument("-c", "--sra-cache", help="Optional cache directory for SRA Toolkit commands.")
