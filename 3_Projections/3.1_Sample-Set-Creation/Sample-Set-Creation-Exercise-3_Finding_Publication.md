@@ -51,6 +51,12 @@ Type `source ~/.bashrc` into your command line to reset your path to the Course 
 
 9. This page has everything we want. The metadata for the process, information on collection, and even all the metadata in a list. Go ahead and find the Select box and download the metadata using the "Metadata" button. 
 
-Notice that the table you just downloaded is also pictured on this website. You can see it has columns like "Age_at_collection", "Bases", "Bytes", and "Case_status". This Case_status column is what we want. It tells us the disease state of the sample. So even if the author had not named each sample with its disease status, we can use this column to help us sort the data.
+Notice that the table you just downloaded is also pictured on this website. You can see it has columns like "Age_at_collection", "Bases", "Bytes", and "Case_status". This Case_status column is what we want; the disease state of the sample. So even if the author had not named each sample with its disease status, we can use this column to help us sort the data.
 
-10. Go ahead and open your new SraRunTable.csv file. Notice that you now have 700+ samples that you could use to run your model. This is the power of finding a publication that is relevant to your topic. They will do a lot of the work of sorting your data for you. However, keep in mind that very few publications will have a Data Availability statement or data that is available in the NCBI database. Some authors don't even have their publications out there for free. So this method of finding data is sometimes frustrating and can take a lot of time to get the results you want. 
+10. Go ahead and open your new SraRunTable.csv file. Notice that you now have 700+ samples that you could use to run your model. This is the power of finding a publication that is relevant to your topic. They will do a lot of the work of sorting your data for you. 
+
+11. Keep in mind that not every publication or academic paper will have the data you need readily available. Many will have data from an alternate source, data upon request, repeated data from a previous publication, or contextualize their data into graphs that are hard to parse. This makes it harder in general to find data through publications and requires more complex problem solving to gather. Below are links to examples of some papers on the Parkinson's Disease topic that have less optimal data availability. Use this to help determine if the publications you find are suitable for your needs.
+    1. https://pubmed.ncbi.nlm.nih.gov/39955398/
+    2. https://pubmed.ncbi.nlm.nih.gov/39955039/
+    3. https://pubmed.ncbi.nlm.nih.gov/39954969/
+    4. https://pubmed.ncbi.nlm.nih.gov/39954798/
