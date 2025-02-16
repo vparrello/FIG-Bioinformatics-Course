@@ -3,22 +3,26 @@
 This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
 
 ## Basics to know when working in a command line
-1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely thrown an error!
-2. Commands are case-sensitive; your commands will throw an error if the wrong case is used.
+1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely throw an error!
+2. Commands are case-sensitive; your commands will throw an error if the wrong case is used. (ex: -d, -D, -l, -L)
 3. Much like spelling and capitals, spaces are also sensitive when using the command line. A missed space or an added space will likely mess up your command.
-4. Within the bash shell, you only use the forward slash (/) and never the back slash.
+4. Within the bash shell, you only use the forward slash (/) and never the back slash. This usually matters based on your operating system but GitBash standardizes it for us.
 5. Viewing files in VSCode in the editing mode can be hard to read. To change the viewing of the file, use the shortcut 'shift + command + v' on Mac and 'shift + control + v' on Windows.
 6. If there is a command you don't understand, just ask Grimoire! Many times Grimoire will give you a very long explanation of a command, but the first couple paragraphs will be the most helpful.
-7. Any command that does not have a file path (we will explain what a file path is later in this document) will assume that you are already in the directory you need to be in. If the file or files you need for your command are in a different directory, your command will need a file path to get there.
+#TODO Explain the file path before this point.
+7. Any command that does not have a file path (we will explain what a file path is later in this document) will assume that you are already in the directory you need to be in. If the file or files you need for your command are in a different folder or directory, your command will need a file path to get there.
 
 # Basic commands to use
 While practice is important, some examples of these commands contain real files and paths. If you want to practice commands, create your own testing files; this is to keep you from removing or losing important files. 
 
-## File and Directory Commands
+## File and Directory Commands 
+#TODO Can we turn this into an exercise?
+
 1. List files and directories in the current directory
 ```
 ls
 ```
+#TODO explain a path before this point
 List all files in a specific directory (we will explain what we mean by 'path' later in this document)
 ```
 ls path/to/directory
