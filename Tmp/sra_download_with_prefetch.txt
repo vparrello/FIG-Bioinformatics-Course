@@ -1,21 +1,26 @@
 Write a Python script named "sra_download_with_prefetch.py"
-that automates the download of paired-end SRA data
-and converts it directly into FASTA format without using
-external tools like seqtk. The script should be fully functional
-and ready to run on a system where the SRA Toolkit is installed.
+that automates the download of paired-end SRA data and converts it
+directly into FASTA format without using external tools like seqtk.
+The script should be fully functional and ready to run on a system
+where the SRA Toolkit is installed.
 
 The script must support the following command-line arguments:
 - "-i" or "--id-file": A required argument specifying a file
    that contains a list of SRA IDs, one per line.
+
 - "-d" or "--download-directory": A required argument specifying
    the directory where the processed FASTA files should be stored.
+
 - "-c" or "--sra-cache": An optional argument specifying a directory
    to be used as a cache location for SRA downloads.
+
+- "-D" or "--Debug": An optional flag to enable debug output.
 
 ### Script Behavior:
 1. Read the list of SRA IDs from the specified file.
 2. Use the "prefetch" command to download the corresponding SRA files
-   into the cache directory (or the default "~/.ncbi/public/sra/" location if no cache directory is provided).
+   into the cache directory (or the default "~/.ncbi/public/sra/" location
+   if no cache directory is provided).
 3. Ensure that the downloaded ".sra" file exists in the expected location
    before proceeding.
 4. Use "fastq-dump --fasta 0 --split-files" to convert the downloaded
@@ -27,7 +32,11 @@ The script must support the following command-line arguments:
    - If "prefetch" fails, print a warning and move to the next SRA ID.
    - If "fastq-dump" fails, print a warning and move to the next SRA ID.
    - If no FASTA files are created, print a warning.
-7. After processing all SRA IDs, print a summary that includes:
+7. Ensure all informational messages (`[INFO]`) and debugging messages
+   (`[DEBUG]`) are printed to STDERR.
+8. Debug messages should only be printed if the script is invoked with the
+   `-D` or `--Debug` flag.
+9. After processing all SRA IDs, print a summary that includes:
    - The total number of SRA entries requested.
    - The number of successful conversions.
    - The count of single-end and paired-end datasets.
@@ -38,6 +47,3 @@ The script must support the following command-line arguments:
 - Capture and log STDERR output for debugging.
 - Use readable function names and modular code organization.
 - Print all informational messages and warnings to STDERR.
-
-Write the complete, functional Python script with no placeholders
-or missing sections.
