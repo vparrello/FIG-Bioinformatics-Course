@@ -1,4 +1,4 @@
-Write a Python script named "sra_download_with_prefetch.py"
+Write a Python script named "sra_download.py"
 that automates the download of paired-end SRA data and converts it
 directly into FASTA format without using external tools like seqtk.
 The script should be fully functional and ready to run on a system
@@ -30,7 +30,8 @@ The script must support the following command-line arguments:
    download directory, named after the corresponding SRA ID.
 6. Perform error handling at every step:
    - If "prefetch" fails, print a warning and move to the next SRA ID.
-   - If "fastq-dump" fails, print a warning and move to the next SRA ID.
+   - If "fastq-dump" succeeds, delete the cached .sra file;
+     elseif "fastq-dump" fails, print a warning and move to the next SRA ID.
    - If no FASTA files are created, print a warning.
 7. Ensure all informational messages (`[INFO]`) and debugging messages
    (`[DEBUG]`) are printed to STDERR.
@@ -42,8 +43,11 @@ The script must support the following command-line arguments:
    - The count of single-end and paired-end datasets.
 
 ### Implementation Requirements:
-- Use "subprocess.run()" to execute system commands.
+- Use "subprocess.run()" to execute system commands;
+   also send STDOUT and STDERR from the system commands
+   to STDOUT and STDERR for the script.
 - Ensure all output directories exist before writing files.
-- Capture and log STDERR output for debugging.
+- Send all informative and progress messages to STDERR,
+   and in "Debug" mode also print all system-commands to STDERR.
 - Use readable function names and modular code organization.
 - Print all informational messages and warnings to STDERR.

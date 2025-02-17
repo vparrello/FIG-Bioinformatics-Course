@@ -1,24 +1,29 @@
 ########################################################################
 #...Prompt that generated this program:
 """
-Write a Python script named "sra_download_with_prefetch.py"
-that automates the download of paired-end SRA data
-and converts it directly into FASTA format without using
-external tools like seqtk. The script should be fully functional
-and ready to run on a system where the SRA Toolkit is installed.
+Write a Python script named "sra_download.py"
+that automates the download of paired-end SRA data and converts it
+directly into FASTA format without using external tools like seqtk.
+The script should be fully functional and ready to run on a system
+where the SRA Toolkit is installed.
 
 The script must support the following command-line arguments:
 - "-i" or "--id-file": A required argument specifying a file
    that contains a list of SRA IDs, one per line.
+
 - "-d" or "--download-directory": A required argument specifying
    the directory where the processed FASTA files should be stored.
+
 - "-c" or "--sra-cache": An optional argument specifying a directory
    to be used as a cache location for SRA downloads.
+
+- "-D" or "--Debug": An optional flag to enable debug output.
 
 ### Script Behavior:
 1. Read the list of SRA IDs from the specified file.
 2. Use the "prefetch" command to download the corresponding SRA files
-   into the cache directory (or the default "~/.ncbi/public/sra/" location if no cache directory is provided).
+   into the cache directory (or the default "~/.ncbi/public/sra/" location
+   if no cache directory is provided).
 3. Ensure that the downloaded ".sra" file exists in the expected location
    before proceeding.
 4. Use "fastq-dump --fasta 0 --split-files" to convert the downloaded
@@ -28,130 +33,133 @@ The script must support the following command-line arguments:
    download directory, named after the corresponding SRA ID.
 6. Perform error handling at every step:
    - If "prefetch" fails, print a warning and move to the next SRA ID.
-   - If "fastq-dump" fails, print a warning and move to the next SRA ID.
+   - If "fastq-dump" succeeds, delete the cached .sra file;
+     elseif "fastq-dump" fails, print a warning and move to the next SRA ID.
    - If no FASTA files are created, print a warning.
-7. After processing all SRA IDs, print a summary that includes:
+7. Ensure all informational messages (`[INFO]`) and debugging messages
+   (`[DEBUG]`) are printed to STDERR.
+8. Debug messages should only be printed if the script is invoked with the
+   `-D` or `--Debug` flag.
+9. After processing all SRA IDs, print a summary that includes:
    - The total number of SRA entries requested.
    - The number of successful conversions.
    - The count of single-end and paired-end datasets.
 
 ### Implementation Requirements:
-- Use "subprocess.run()" to execute system commands.
+- Use "subprocess.run()" to execute system commands;
+   also send STDOUT and STDERR from the system commands
+   to STDOUT and STDERR for the script.
 - Ensure all output directories exist before writing files.
-- Capture and log STDERR output for debugging.
+- Send all informative and progress messages to STDERR,
+   and in "Debug" mode also print all system-commands to STDERR.
 - Use readable function names and modular code organization.
 - Print all informational messages and warnings to STDERR.
-
-Write the complete, functional Python script with no placeholders
-or missing sections.
 """
 
 ########################################################################
 #...Pseudocode for this program:
 """
-FUNCTION run_command(command):
-    TRY:
-        EXECUTE command using system shell
-        RETURN (command was successful, standard output, error output)
-    CATCH exception AS e:
-        RETURN (False, "", error message)
+DEFINE FUNCTION log_message(message, debug=False, level="INFO")
+    IF debug OR level != "DEBUG"
+        PRINT "[", level, "] ", message TO STDERR
 
-FUNCTION fetch_sra(sra_id, download_dir, cache_dir):
-    PRINT "[INFO] Fetching SRA ID: " + sra_id TO STDERR
+DEFINE FUNCTION run_command(command, debug=False)
+    TRY
+        IF debug
+            CALL log_message("Executing: " + command, debug, "DEBUG")
+        EXECUTE command USING SYSTEM SHELL
+        RETURN command_success
+    CATCH EXCEPTION e
+        CALL log_message("Error executing command '" + command + "': " + e.message, True, "ERROR")
+        RETURN False
 
-    SET prefetch_output_dir = cache_dir IF cache_dir IS NOT NULL ELSE HOME_DIRECTORY + "/.ncbi/public/sra"
-    SET prefetch_sra_dir = prefetch_output_dir + "/" + sra_id
-    SET prefetch_sra_path = prefetch_sra_dir + "/" + sra_id + ".sra"
+DEFINE FUNCTION process_sra_id(sra_id, download_dir, cache_dir, debug)
+    CALL log_message("Processing SRA ID: " + sra_id, debug)
 
-    SET prefetch_cmd = "prefetch " + sra_id + " --output-directory " + prefetch_output_dir
-    success, stdout, stderr = run_command(prefetch_cmd)
+    # Determine the SRA file path
+    IF cache_dir EXISTS
+        SET sra_file_path = cache_dir + "/" + sra_id + "/" + sra_id + ".sra"
+    ELSE
+        SET sra_file_path = HOME_DIR + "/.ncbi/public/sra/" + sra_id + ".sra"
 
-    IF NOT success:
-        PRINT "[WARNING] Failed to fetch " + sra_id + ". Error: " + stderr TO STDERR
-        RETURN NULL
+    SET fasta_output_dir = download_dir + "/" + sra_id
+    CREATE DIRECTORY fasta_output_dir IF NOT EXISTS
 
-    IF FILE NOT EXISTS prefetch_sra_path:
-        PRINT "[ERROR] Prefetch did not place " + sra_id + ".sra in expected location: " + prefetch_sra_path TO STDERR
-        RETURN NULL
+    # Step 1: Prefetch the SRA file
+    SET prefetch_cmd = "prefetch " + sra_id
+    IF cache_dir EXISTS
+        APPEND " --output-directory " + cache_dir TO prefetch_cmd
 
-    PRINT "[INFO] Prefetch saved SRA file at " + prefetch_sra_path TO STDERR
+    IF NOT run_command(prefetch_cmd, debug)
+        CALL log_message("Failed to prefetch " + sra_id + ". Skipping...", debug, "WARNING")
+        RETURN False
 
-    SET output_path = download_dir + "/" + sra_id
-    CREATE DIRECTORY output_path IF NOT EXISTS
+    # Step 2: Verify SRA file existence
+    IF NOT EXISTS sra_file_path
+        CALL log_message("SRA file " + sra_file_path + " not found. Skipping...", debug, "ERROR")
+        RETURN False
 
-    SET fastq_dump_cmd = "fastq-dump --fasta 0 --split-files " + prefetch_sra_path + " -O " + output_path
-    PRINT "[INFO] Running fastq-dump: " + fastq_dump_cmd TO STDERR
-    success, stdout, stderr = run_command(fastq_dump_cmd)
+    # Step 3: Convert SRA to FASTA
+    SET fastq_dump_cmd = "fastq-dump --fasta 0 --split-files --outdir " + fasta_output_dir + " " + sra_file_path
+    CALL log_message("Executing: " + fastq_dump_cmd, debug, "DEBUG")
 
-    IF NOT success:
-        PRINT "[WARNING] Failed to convert " + sra_id + " to FASTA. Error: " + stderr TO STDERR
-        RETURN NULL
+    IF NOT run_command(fastq_dump_cmd, debug)
+        CALL log_message("fastq-dump failed for " + sra_id + ". Skipping...", debug, "ERROR")
+        RETURN False
 
-    RETURN output_path
+    # Step 4: Cleanup if conversion was successful
+    IF fasta_output_dir CONTAINS FILES
+        DELETE sra_file_path
+    ELSE
+        CALL log_message("No FASTA files created for " + sra_id, debug, "WARNING")
+        RETURN False
 
-FUNCTION analyze_download(download_path):
-    IF DIRECTORY NOT EXISTS download_path:
-        PRINT "[WARNING] Download directory " + download_path + " does not exist." TO STDERR
-        RETURN NULL, NULL
+    RETURN True
 
-    SET files = LIST FILES IN download_path
-    SET fasta_files = FILTER files WHERE file ENDS WITH ".fasta"
-
-    IF fasta_files IS EMPTY:
-        PRINT "[WARNING] No FASTA files found in " + download_path TO STDERR
-        RETURN NULL, NULL
-
-    SET file_sizes = EMPTY DICTIONARY
-    FOR EACH file IN fasta_files:
-        file_sizes[file] = GET FILE SIZE OF (download_path + "/" + file)
-
-    SET paired = FALSE
-    FOR EACH file IN fasta_files:
-        IF "_1.fasta" IN file OR "_2.fasta" IN file:
-            SET paired = TRUE
-            BREAK
-
-    RETURN (file_sizes, "paired-end" IF paired ELSE "single-end")
-
-FUNCTION main():
+DEFINE FUNCTION main()
     PARSE COMMAND LINE ARGUMENTS:
-        - "-i" OR "--id-file" REQUIRED AS id_file
-        - "-d" OR "--download-directory" REQUIRED AS download_directory
-        - "-c" OR "--sra-cache" OPTIONAL AS sra_cache
+        - REQUIRED: id-file (-i)
+        - REQUIRED: download-directory (-d)
+        - OPTIONAL: sra-cache (-c)
+        - OPTIONAL FLAG: Debug (-D)
 
-    CREATE DIRECTORY download_directory IF NOT EXISTS
-    IF sra_cache IS NOT NULL:
-        CREATE DIRECTORY sra_cache IF NOT EXISTS
+    SET debug = Debug FLAG
 
-    READ id_file AND STORE FIRST COLUMN AS sra_ids
+    CREATE download-directory IF NOT EXISTS
+    IF sra-cache ARGUMENT EXISTS
+        CREATE sra-cache DIRECTORY IF NOT EXISTS
 
-    SET total_count = LENGTH OF sra_ids
-    SET success_count = 0
-    SET single_count = 0
+    TRY
+        OPEN id-file FOR READING
+        READ LINES INTO sra_ids
+    CATCH EXCEPTION e
+        CALL log_message("Error reading ID file: " + e.message, debug, "ERROR")
+        EXIT PROGRAM
+
+    SET total_ids = COUNT(sra_ids)
+    SET successful = 0
     SET paired_count = 0
+    SET single_count = 0
 
-    FOR EACH sra_id IN sra_ids:
-        SET download_path = fetch_sra(sra_id, download_directory, sra_cache)
-        IF download_path IS NULL:
-            CONTINUE
-
-        SET (file_sizes, read_type) = analyze_download(download_path)
-        IF file_sizes IS NOT NULL:
-            INCREMENT success_count
-            IF read_type == "single-end":
-                INCREMENT single_count
-            ELSE:
+    FOR EACH sra_id IN sra_ids
+        IF process_sra_id(sra_id, download_directory, sra_cache, debug)
+            INCREMENT successful
+            SET fasta_files = LIST FILES IN (download_directory + "/" + sra_id)
+            IF ANY FILE IN fasta_files CONTAINS "_2.fasta"
                 INCREMENT paired_count
-            
-            FOR EACH (file, size) IN file_sizes:
-                PRINT "[INFO] Downloaded " + file + ": " + size + " bytes (" + read_type + ")" TO STDERR
-        ELSE:
-            PRINT "[WARNING] No valid files found for " + sra_id TO STDERR
+            ELSE
+                INCREMENT single_count
 
-    PRINT "[SUMMARY] Requested: " + total_count + ", Successful: " + success_count + 
-          ", Single-end: " + single_count + ", Paired-end: " + paired_count TO STDERR
+    # Summary
+    CALL log_message("
+    Processing Summary:
+    -------------------
+    Total SRA IDs: " + total_ids + "
+    Successfully Converted: " + successful + "
+    Paired-End Datasets: " + paired_count + "
+    Single-End Datasets: " + single_count, debug)
 
-IF SCRIPT IS EXECUTED:
+IF SCRIPT EXECUTED AS MAIN
     CALL main()
 """
 
@@ -162,115 +170,113 @@ import sys
 import argparse
 import subprocess
 
-def run_command(command):
-    """Run a shell command and return success status and output."""
+
+def log_message(message, debug=False, level="INFO"):
+    """Logs messages to STDERR with optional debug flag."""
+    if debug or level != "DEBUG":
+        sys.stderr.write(f"[{level}] {message}\n")
+
+
+def run_command(command, debug=False):
+    """Runs a shell command and sends output to STDOUT and STDERR."""
     try:
-        result = subprocess.run(command, shell=True, capture_output=True, text=True)
-        return result.returncode == 0, result.stdout, result.stderr
+        if debug:
+            log_message(f"Executing: {command}", debug, "DEBUG")
+        result = subprocess.run(command, shell=True)
+        return result.returncode == 0
     except Exception as e:
-        return False, "", str(e)
+        log_message(f"Error executing command '{command}': {str(e)}", True, "ERROR")
+        return False
 
-def fetch_sra(sra_id, download_dir, cache_dir):
-    """Fetch SRA entry and ensure correct paths between prefetch and fastq-dump."""
-    print(f"[INFO] Fetching SRA ID: {sra_id}", file=sys.stderr)
 
-    # Define expected prefetch output path
-    prefetch_output_dir = cache_dir or os.path.expanduser("~/.ncbi/public/sra")
-    prefetch_sra_dir = os.path.join(prefetch_output_dir, sra_id)
-    prefetch_sra_path = os.path.join(prefetch_sra_dir, f"{sra_id}.sra")
+def process_sra_id(sra_id, download_dir, cache_dir, debug):
+    """Downloads and converts an SRA file to FASTA format."""
+    log_message(f"Processing SRA ID: {sra_id}", debug)
+    
+    # Determine SRA file path
+    sra_file_path = os.path.join(cache_dir, sra_id, f"{sra_id}.sra") if cache_dir else os.path.expanduser(f"~/.ncbi/public/sra/{sra_id}.sra")
+    fasta_output_dir = os.path.join(download_dir, sra_id)
+    os.makedirs(fasta_output_dir, exist_ok=True)
+    
+    # Step 1: Prefetch the SRA file
+    prefetch_cmd = f"prefetch {sra_id}"
+    if cache_dir:
+        prefetch_cmd += f" --output-directory {cache_dir}"
+    
+    if not run_command(prefetch_cmd, debug):
+        log_message(f"Failed to prefetch {sra_id}. Skipping...", debug, "WARNING")
+        return False
+    
+    # Step 2: Check if SRA file exists
+    if not os.path.exists(sra_file_path):
+        log_message(f"SRA file {sra_file_path} not found. Skipping...", debug, "ERROR")
+        return False
+    
+    # Step 3: Convert SRA to FASTA
+    fastq_dump_cmd = f"fastq-dump --fasta 0 --split-files --outdir {fasta_output_dir} {sra_file_path}"
+    log_message(f"Executing: {fastq_dump_cmd}", debug, "DEBUG")
+    if not run_command(fastq_dump_cmd, debug):
+        log_message(f"fastq-dump failed for {sra_id}. Skipping...", debug, "ERROR")
+        return False
+    
+    # Step 4: Cleanup SRA file if FASTA files were created
+    if os.listdir(fasta_output_dir):
+        os.remove(sra_file_path)
+    else:
+        log_message(f"No FASTA files created for {sra_id}.", debug, "WARNING")
+        return False
+    
+    return True
 
-    # Run prefetch command
-    prefetch_cmd = f"prefetch {sra_id} --output-directory {prefetch_output_dir}"
-    success, stdout, stderr = run_command(prefetch_cmd)
-
-    if not success:
-        print(f"[WARNING] Failed to fetch {sra_id}. Error: {stderr}", file=sys.stderr)
-        return None
-
-    # Check if the expected .sra file exists
-    if not os.path.exists(prefetch_sra_path):
-        print(f"[ERROR] Prefetch did not place {sra_id}.sra in the expected location: {prefetch_sra_path}", file=sys.stderr)
-        return None
-
-    print(f"[INFO] Prefetch saved SRA file at {prefetch_sra_path}", file=sys.stderr)
-
-    # Define correct output directory for FASTA conversion
-    output_path = os.path.join(download_dir, sra_id)
-    os.makedirs(output_path, exist_ok=True)
-
-    # Convert SRA to FASTA format (splitting paired-end reads)
-    fastq_dump_cmd = f"fastq-dump --fasta 0 --split-files \"{prefetch_sra_path}\" -O \"{output_path}\""
-    print(f"[INFO] Running fastq-dump: {fastq_dump_cmd}", file=sys.stderr)
-    success, stdout, stderr = run_command(fastq_dump_cmd)
-
-    if not success:
-        print(f"[WARNING] Failed to convert {sra_id} to FASTA. Error: {stderr}", file=sys.stderr)
-        return None
-
-    return output_path
-
-def analyze_download(download_path):
-    """Determine if the downloaded file is single-end or paired-end and return file sizes."""
-    if not os.path.exists(download_path):
-        print(f"[WARNING] Download directory {download_path} does not exist.", file=sys.stderr)
-        return None, None
-
-    files = os.listdir(download_path)
-    fasta_files = [f for f in files if f.endswith(".fasta")]
-
-    if not fasta_files:
-        print(f"[WARNING] No FASTA files found in {download_path}.", file=sys.stderr)
-        return None, None
-
-    file_sizes = {f: os.path.getsize(os.path.join(download_path, f)) for f in fasta_files}
-
-    # Check if the files are paired-end or single-end
-    paired = any("_1.fasta" in f or "_2.fasta" in f for f in fasta_files)
-
-    return file_sizes, "paired-end" if paired else "single-end"
 
 def main():
-    parser = argparse.ArgumentParser(description="Download and process SRA entries into FASTA format using the SRA Toolkit.")
-    parser.add_argument("-i", "--id-file", required=True, help="File containing a list of SRA IDs.")
-    parser.add_argument("-d", "--download-directory", required=True, help="Output directory for downloaded files.")
-    parser.add_argument("-c", "--sra-cache", help="Optional cache directory for SRA Toolkit commands.")
-    
+    parser = argparse.ArgumentParser(description="Automate SRA downloads and FASTA conversion.")
+    parser.add_argument("-i", "--id-file", required=True, help="File containing list of SRA IDs.")
+    parser.add_argument("-d", "--download-directory", required=True, help="Directory to store FASTA files.")
+    parser.add_argument("-c", "--sra-cache", help="Cache directory for SRA files.")
+    parser.add_argument("-D", "--Debug", action="store_true", help="Enable debug output.")
     args = parser.parse_args()
-
-    # Ensure directories exist
-    os.makedirs(args.download_directory, exist_ok=True)
-    if args.sra_cache:
-        os.makedirs(args.sra_cache, exist_ok=True)
-
+    
+    debug = args.Debug
+    
+    if not os.path.exists(args.download_directory):
+        os.makedirs(args.download_directory)
+    
+    if args.sra_cache and not os.path.exists(args.sra_cache):
+        os.makedirs(args.sra_cache)
+    
     # Read SRA IDs
-    with open(args.id_file, 'r') as file:
-        sra_ids = [line.strip().split()[0] for line in file if line.strip()]
-
-    total_count = len(sra_ids)
-    success_count = 0
-    single_count = 0
+    try:
+        with open(args.id_file, "r") as file:
+            sra_ids = [line.strip() for line in file if line.strip()]
+    except Exception as e:
+        log_message(f"Error reading ID file: {str(e)}", debug, "ERROR")
+        sys.exit(1)
+    
+    total_ids = len(sra_ids)
+    successful = 0
     paired_count = 0
-
+    single_count = 0
+    
     for sra_id in sra_ids:
-        download_path = fetch_sra(sra_id, args.download_directory, args.sra_cache)
-        if not download_path:
-            continue
-
-        file_sizes, read_type = analyze_download(download_path)
-        if file_sizes:
-            success_count += 1
-            if read_type == "single-end":
-                single_count += 1
-            else:
+        if process_sra_id(sra_id, args.download_directory, args.sra_cache, debug):
+            successful += 1
+            fasta_files = os.listdir(os.path.join(args.download_directory, sra_id))
+            if any("_2.fasta" in f for f in fasta_files):
                 paired_count += 1
-            
-            for file, size in file_sizes.items():
-                print(f"[INFO] Downloaded {file}: {size} bytes ({read_type})", file=sys.stderr)
-        else:
-            print(f"[WARNING] No valid files found for {sra_id}.", file=sys.stderr)
+            else:
+                single_count += 1
+    
+    # Summary
+    log_message("""
+Processing Summary:
+-------------------
+Total SRA IDs: {}
+Successfully Converted: {}
+Paired-End Datasets: {}
+Single-End Datasets: {}
+""".format(total_ids, successful, paired_count, single_count), debug)
 
-    # Print summary statistics
-    print(f"[SUMMARY] Requested: {total_count}, Successful: {success_count}, Single-end: {single_count}, Paired-end: {paired_count}", file=sys.stderr)
 
 if __name__ == "__main__":
     main()
