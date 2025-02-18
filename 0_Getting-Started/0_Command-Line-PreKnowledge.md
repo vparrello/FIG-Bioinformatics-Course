@@ -2,6 +2,8 @@
 
 This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
 
+Path is ...
+
 ## Basics to know when working in a command line
 1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely throw an error!
 2. Commands are case-sensitive; your commands will throw an error if the wrong case is used. (ex: -d, -D, -l, -L)
@@ -99,7 +101,7 @@ rm data.tbl
 ```
 history
 ```
-
+### Stop here for exercise
 ## File Viewing and Manipulation
 1. Display the contents of a file
 ```
