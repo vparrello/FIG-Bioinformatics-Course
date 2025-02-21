@@ -1,0 +1,16 @@
+Please write a python script that accepts a base path and
+target directory as arguments, then reads a list of SRA-IDs from STDIN,
+and iterates over the IDs executing the following pair of commands
+to fetch data from a remote repository:
+"""
+p3-cp ws:{base_path}/.{sra_id}/{sra_id}_1_ptrim.fq.gz {target_dir}
+"""
+and
+"""
+p3-cp ws:{base_path}/.{sra_id}/{sra_id}_2_ptrim.fq.gz {target_dir}
+"""
+
+The program should print a progress-message to STDERR
+indicating the SRA-ID that it is currently fetching,
+and should handle failed attempts gracefully while printing
+a warning to STDERR.
