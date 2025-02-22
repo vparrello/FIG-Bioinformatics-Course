@@ -27,7 +27,7 @@ def fetch_samples(base_path, target_dir):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python fetch_samples.py <base_path> <target_dir>")
+        print("Usage: python fetch_job_fastq_from_BVBRC.py <base_path> <target_dir>")
         sys.exit(1)
     
     base_path = sys.argv[1]
