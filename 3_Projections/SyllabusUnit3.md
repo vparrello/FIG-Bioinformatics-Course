@@ -8,6 +8,9 @@ Gather the data for the samples you will be using for this exercise.
 ### Sample Set-2 Sorting Data
 Sort the data into healthy and diseased samples.
 
+### Sample Set-3 Finding Publications
+Find the publications that have the SRA IDs of samples you can use.
+
 ### Sample Set-3 Hammer Report
 Create a sample report of hammers that lists every repgen genome inside of a sample.
     

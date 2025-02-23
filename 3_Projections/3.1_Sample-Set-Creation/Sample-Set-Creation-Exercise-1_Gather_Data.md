@@ -41,7 +41,7 @@ Type `source ~/.bashrc` into your command line to reset your path to the Course 
 
 ![After searching the NCBI for Parkinson's Disease](NCBISearch.png)
 
-Firstly, we have the Literature section. This section will give you research papers and articles that are relevant to your topic. It can give you a good idea of what is currently known about the topic and can help you understand the current state of research. It can also lead us to where data is available within the Data sections of each academic paper published on the topic. If you want to find data this way, click on "PubMed" and a search with all of the papers relevant to your topic will be published. Make sure you pay attention to the Data Availability section of each paper as well as the authors. Often times an author will use the same data set for multiple publications and if they do you might end up with duplicate data if you use both of their papers.
+Firstly, we have the Literature section. This section will give you research papers and articles that are relevant to your topic. It can give you a good idea of what is currently known about the topic and can help you understand the current state of research. It can also lead us to where data is available within the Data sections of each academic paper published on the topic. If you want to find data this way, click on "PubMed" and a search with all of the papers relevant to your topic will be published. Make sure you pay attention to the Data Availability section of each paper as well as the authors. Often times an author will use the same data set for multiple publications and if they do you might end up with duplicate data if you use both of their papers. We will be exploring this area of searching for data in the third lesson of this unit.
 
 Secondly we have the Genomes section. This section will give you any and all genomes that have been tagged with your specific topic. Depending on your need, you can choose to look at the BioProject which has all the samples from a full research project, or a BioSample which contains individual samples from one experiment, or the SRA which contains all of the raw data from a single sample. 
 
@@ -70,7 +70,7 @@ For this purpose, we will keep many of the metadata variables constant. If all o
 
 Once it downloads into your Downloads folder, you can natively unzip it into the Data folder for your research project. Do this by right clicking on the file and selecting "Extract All" in the context menu. This will then prompt you to select a destination folder. Select the Data folder inside this project and click "Extract".
 
-8. Sometimes the FASTQ file is too big to download from the webpage. In that case, you can use the command line to download the data using the SRA run accession number. If you have not already installed the SRA toolkit, now would be a good time to do so. Once you have installed the SRA toolkit, open it and use the following command to download the data **Be sure to replace the SRR28748153 with your SRA run accession number**:
+8. Sometimes the FASTA file is too big to download from the webpage. In that case, you can use the command line to download the data using the SRA run accession number. If you have not already installed the SRA toolkit, now would be a good time to do so. Once you have installed the SRA toolkit, open it and use the following command to download the data **Be sure to replace the SRR28748153 with your SRA run accession number**:
 
 ```
 prefetch SRR28748153
@@ -78,7 +78,7 @@ prefetch SRR28748153
 
 ![alt text](SRAFASTQtoobig.png)
 
-9. After you have downloaded a single SRA run, you can use the following command to convert the data into a FASTA file **Again, be sure to replace the SRR28748153 with your SRA run accession number**:
+9. If you have downloaded a single FASTQ file instead of a FASTA, you can use the following command to convert the data into a FASTA file **Again, be sure to replace the SRR28748153 with your SRA run accession number**:
 
 ```
 fastq-dump --split-files SRR28748153 
