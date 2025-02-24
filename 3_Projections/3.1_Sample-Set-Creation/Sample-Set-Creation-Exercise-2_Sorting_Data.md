@@ -16,10 +16,10 @@ FIG-Bioinformatics-Course/
             └── Sample-Set-Creation Exercise-2_Sorting_Data.md (you are here)
     Data/
 ```
-In previous lessons, we have used FastQ and FastA files when it comes to our data. You might have been wondering what the difference is between the two! In previous excercises, we read files in FastA format. For sequencing data, we use FastQ format, which contains information about sequence quality in addition to sequence data.
+In previous lessons, we have used FastQ and FastA files when it comes to our data. You might have been wondering what the difference is between the two! In previous excercises, we read files in FastA format.
 
 In preperation for this exercise, you will need to check the storage space on your computer. If you are working on Mac, you can click on the Apple incon in the top left of your screen and bring up the "About This Mac" window. If you are working on Windows, (incude windows instructions). To have room for all the samples, you will need approximately 10 GB.
-In addition to the space on your computer, your reading of the FASTQ files will be much eaiser with an extension called Rainbow CSV. If you don't have it already installed, search it up in the extensions tab in your VSCode.
+In addition to the space on your computer, your reading of the FASTA files will be much eaiser with an extension called Rainbow CSV. If you don't have it already installed, search it up in the extensions tab in your VSCode.
 
 *Another helpful tool for viewing this course and the files is Word Wrap, which can be toggled under the View setting at the top of your screen.
 
@@ -69,15 +69,12 @@ Another way to create your folders is using the command line, which you have bee
 
 9. The column "host_disease" says that it is a Healthy Control sample. Therefore, SRR11575976 would be sorted into the Control folder.
 
-10. Note that this sample was a FASTA file for a Parkinson's research model. Therefore unless your topic is Parkinson's, you might not want to include it in your Diseased and Control folders for your model. Also, you will want to have high quality samples moving forward. Therefore, we are going to switch our focus from FASTA to FASTQ files.
-
-FASTQ files have the same data as FASTA files but also include more metadata about the sample. It tells how well each of the reads were sequenced and how much of the sample is of high quality. Considering the better the quality of the sample, the more accurate your model will be, you will want to use FASTQ files moving forward. These files are found in the same SRA Run Selector page as the FASTA files and are labeled as the "FASTQ" button.
+10. Note that this sample was a FASTA file for a Parkinson's research model. Therefore unless your topic is Parkinson's, you might not want to include it in your Diseased and Control folders for your model. You will see a lot of FASTQ files out while looking up FASTA. Know that these files have more metadata about the quality of the sample that we will not be using. If you want to train your model on a specific threshold of quality in the future, you can ask Grimoire to describe the files and what extra information they provide.
 
 11. Sort through your data and try to determine the control or disease status of your data. If you are unsure what the status is of a specific sample, remove it from your data and find a new sample. This is a tedious part of the work, but neglecting this step means that your model will not be accurate.
 
+12. Open each sample and mark it as either Diseased or Control, then put it in the corresponding folder.
 
- Open each sample and mark it as either Diseased or Control, then put it in the corresponding folder.
-
-6. Once you have sorted your 10 FASTQ files, your task will be to find more samples related to your topic. The goal is to have 100 samples toal, 50 for Diseased and 50 for Controls.
+13. Once you have sorted your 10 FASTA files, your task will be to find more samples related to your topic. The goal is to have 100 samples toal, 50 for Diseased and 50 for Controls.
 
 
