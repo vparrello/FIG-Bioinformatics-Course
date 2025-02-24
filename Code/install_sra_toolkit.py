@@ -2,12 +2,17 @@ import subprocess
 import sys
 import os
 import shutil
-import winreg as reg
 from pathlib import Path
 from urllib.request import urlopen
 from zipfile import ZipFile
 from tarfile import open as taropen
 from io import BytesIO
+
+if sys.platform == "win32":
+    from zipfile import ZipFile
+    import winreg as reg
+else:
+    from tarfile import open as taropen
 
 def install_sra_toolkit_user(top_dir):
     """Install the SRA Toolkit and EDirect in user mode if they are not already installed."""
