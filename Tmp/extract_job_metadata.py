@@ -2,42 +2,42 @@ import os
 import sys
 import json
 
+# Define the fields to be extracted
+FIELDS = [
+    "accession", "run_id", "platform_name", "library_strategy",
+    "library_layout", "read_length", "total_spots", "size"
+]
+
 def extract_metadata(directory):
     if not os.path.isdir(directory):
         print(f"Error: The directory '{directory}' does not exist.", file=sys.stderr)
         sys.exit(1)
-    
-    print("accession\trun_id\tplatform_name\tlibrary_strategy\tlibrary_layout\tread_length\tsize")
-    
+
+    # Print the header using the FIELDS list
+    print("\t".join(FIELDS))
+
     for filename in os.listdir(directory):
         if filename.startswith("."):
             continue  # Skip dotfiles
-        
+
         filepath = os.path.join(directory, filename)
-        
+
         if not os.path.isfile(filepath):
             continue  # Skip non-file entries
-        
+
         try:
             with open(filepath, 'r', encoding='utf-8') as file:
                 data = json.load(file)
-                
+
                 if not isinstance(data, list):
                     print(f"Warning: Skipping file '{filename}' as it does not contain a list.", file=sys.stderr)
                     continue
-                
+
                 for record in data:
                     if isinstance(record, dict):
                         try:
-                            print(
-                                f"{record.get('accession', '')}\t"
-                                f"{record.get('run_id', '')}\t"
-                                f"{record.get('platform_name', '')}\t"
-                                f"{record.get('library_strategy', '')}\t"
-                                f"{record.get('library_layout', '')}\t"
-                                f"{record.get('read_length', '')}\t"
-                                f"{record.get('size', '')}"
-                            )
+                            # Extract values using the FIELDS list
+                            print("\t".join(str(record.get(field, '')) for field in FIELDS))
                         except Exception as e:
                             print(f"Error processing record in file '{filename}': {e}", file=sys.stderr)
                     else:
