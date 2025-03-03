@@ -16,13 +16,9 @@ def parse_hammers(hammers_file):
     feature_to_role = {}
     roles = set()
 
-    with open(hammers_file, 'r', buffering=2**20) as f:
+    with open(hammers_file, 'r', buffering=2**16) as f:  # Reduce buffering to 64KB
         reader = csv.DictReader(f, delimiter='\t')
-        headers = reader.fieldnames
         
-        if 'hammer' not in headers or 'fid' not in headers:
-            raise ValueError("The hammers file must contain 'hammer' and 'fid' columns.")
-
         for row in reader:
             hammer = row['hammer']
             feature_id = row['fid']
@@ -44,42 +40,40 @@ def parse_genome_names(genome_names_file):
     """Parses the genome names file and returns a mapping from genome ID to genome name."""
     genome_id_to_name = {}
 
-    with open(genome_names_file, 'r', buffering=2**20) as f:
+    with open(genome_names_file, 'r', buffering=2**16) as f:  # Reduce buffering
         reader = csv.DictReader(f, delimiter='\t')
-        headers = reader.fieldnames
-
-        if 'genome_id' not in headers or 'genome_name' not in headers:
-            raise ValueError("The genome-names file must contain 'genome_id' and 'genome_name' columns.")
 
         for row in reader:
             genome_id_to_name[row['genome_id']] = row['genome_name']
     
     return genome_id_to_name
 
-def process_sequence_chunk(sequence_chunk, kmer_length, hammer_to_feature, feature_to_genome, feature_to_role):
-    """Processes a chunk of DNA sequences to find k-mer matches."""
+def process_fasta_file(fasta_file, kmer_length, hammer_to_feature, feature_to_genome, feature_to_role):
+    """Processes a FASTA file lazily (streaming) to avoid high memory usage."""
     genome_counts = {}
     genome_role_counts = {}
 
-    for sequence in sequence_chunk:
-        rev_comp_sequence = reverse_complement(sequence)
+    with open(fasta_file, 'r', buffering=2**16) as f:  # Reduce buffer size
+        for record in SeqIO.parse(f, 'fasta'):
+            sequence = str(record.seq).lower()
+            rev_comp_sequence = reverse_complement(sequence)
 
-        for i in range(len(sequence) - kmer_length + 1):
-            for kmer in [sequence[i:i + kmer_length], rev_comp_sequence[i:i + kmer_length]]:
-                if kmer in hammer_to_feature:
-                    feature_id = hammer_to_feature[kmer]
-                    genome_id = feature_to_genome.get(feature_id, "unknown")
-                    role = feature_to_role.get(feature_id, "unknown")
+            for i in range(len(sequence) - kmer_length + 1):
+                for kmer in [sequence[i:i + kmer_length], rev_comp_sequence[i:i + kmer_length]]:
+                    if kmer in hammer_to_feature:
+                        feature_id = hammer_to_feature[kmer]
+                        genome_id = feature_to_genome.get(feature_id, "unknown")
+                        role = feature_to_role.get(feature_id, "unknown")
 
-                    genome_counts[genome_id] = genome_counts.get(genome_id, 0) + 1
-                    if genome_id not in genome_role_counts:
-                        genome_role_counts[genome_id] = {}
-                    genome_role_counts[genome_id][role] = genome_role_counts[genome_id].get(role, 0) + 1
-    
+                        genome_counts[genome_id] = genome_counts.get(genome_id, 0) + 1
+                        if genome_id not in genome_role_counts:
+                            genome_role_counts[genome_id] = {}
+                        genome_role_counts[genome_id][role] = genome_role_counts[genome_id].get(role, 0) + 1
+
     return genome_counts, genome_role_counts
 
 def process_sample(sample_dir, sampleID, kmer_length, hammer_to_feature, feature_to_genome, feature_to_role):
-    """Processes all reads for a given sample and aggregates statistics."""
+    """Processes all reads for a given sample while keeping memory usage low."""
     genome_counts = {}
     genome_role_counts = {}
 
@@ -88,28 +82,13 @@ def process_sample(sample_dir, sampleID, kmer_length, hammer_to_feature, feature
     right_reads = [os.path.join(sample_dir, f) for f in fasta_files if re.match(rf"{sampleID}_2_.*", f)]
 
     all_reads = left_reads + right_reads
-    sequences = []
 
     for fasta_file in all_reads:
-        with open(fasta_file, 'r', buffering=2**24) as f:
-            for record in SeqIO.parse(f, 'fasta'):
-                sequences.append(str(record.seq).lower())
+        file_counts, file_role_counts = process_fasta_file(fasta_file, kmer_length, hammer_to_feature, feature_to_genome, feature_to_role)
 
-    num_workers = min(multiprocessing.cpu_count(), 8)
-    chunk_size = max(len(sequences) // num_workers, 1)
-    sequence_chunks = [sequences[i:i + chunk_size] for i in range(0, len(sequences), chunk_size)]
-
-    with ProcessPoolExecutor(max_workers=num_workers) as executor:
-        results = executor.map(process_sequence_chunk, sequence_chunks, 
-                               [kmer_length] * len(sequence_chunks),
-                               [hammer_to_feature] * len(sequence_chunks),
-                               [feature_to_genome] * len(sequence_chunks),
-                               [feature_to_role] * len(sequence_chunks))
-
-    for partial_counts, partial_role_counts in results:
-        for genome_id, count in partial_counts.items():
+        for genome_id, count in file_counts.items():
             genome_counts[genome_id] = genome_counts.get(genome_id, 0) + count
-        for genome_id, role_dict in partial_role_counts.items():
+        for genome_id, role_dict in file_role_counts.items():
             if genome_id not in genome_role_counts:
                 genome_role_counts[genome_id] = {}
             for role, count in role_dict.items():
@@ -132,7 +111,7 @@ def main():
     sampleIDs = [os.path.basename(d) for d in sample_dirs]
 
     all_results = []
-    with ProcessPoolExecutor(max_workers=min(multiprocessing.cpu_count(), 8)) as executor:
+    with ProcessPoolExecutor(max_workers=min(multiprocessing.cpu_count(), 4)) as executor:  # Reduce parallelism
         with tqdm.tqdm(total=len(sampleIDs), file=sys.stderr, desc="Processing Samples") as pbar:
             futures = {executor.submit(process_sample, sample_dirs[i], sampleIDs[i], kmer_length, 
                                        hammer_to_feature, feature_to_genome, feature_to_role): sampleIDs[i]
