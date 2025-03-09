@@ -10,13 +10,13 @@ prompt still under development.
 """
 # Parse command-line arguments
 DEFINE parser AS ArgumentParser()
-ADD argument parser for "disease_file" (TSV format)
-ADD argument parser for "control_file" (TSV format)
+ADD argument "disease_file" (TSV file containing disease sample data)
+ADD argument "control_file" (TSV file containing control sample data)
 PARSE arguments
 
 # Load disease and control datasets
-LOAD disease_file INTO disease_df (TSV format)
-LOAD control_file INTO control_df (TSV format)
+SET disease_df = READ_TSV(arguments.disease_file)
+SET control_df = READ_TSV(arguments.control_file)
 
 # Assign labels (1 for disease, 0 for control)
 SET disease_df["label"] = 1
@@ -25,61 +25,100 @@ SET control_df["label"] = 0
 # Combine both datasets
 SET df = CONCATENATE(disease_df, control_df)
 
-# Drop genome_name column (not needed)
+# Drop "genome_name" column (not needed)
 REMOVE column "genome_name" from df
 
-# Ensure correct data types
+# Convert data types
 CONVERT df["sampleID"] TO STRING
 CONVERT df["genome_id"] TO STRING
 CONVERT df["score"] TO FLOAT
 CONVERT df["num_roles"] TO INTEGER
 
-# Function to fit power-law distribution and determine threshold
-FUNCTION fit_power_law(scores):
-    SORT scores in descending order
-    DEFINE power_law(x, a, b) AS b * x^(-a)
-    
-    TRY:
-        FIT curve using power_law function
-        SET alpha = estimated exponent
-        RETURN percentile threshold based on (1 - 1/alpha)
-    EXCEPT:
-        RETURN 90th percentile threshold as fallback
+### Compute Summary Statistics ###
+SET summary_stats = {
+    "Total Samples": COUNT UNIQUE(df["sampleID"]),
+    "Total Genomes": COUNT UNIQUE(df["genome_id"]),
+    "Mean Score": MEAN(df["score"]),
+    "Median Score": MEDIAN(df["score"]),
+    "Std Dev Score": STANDARD_DEVIATION(df["score"]),
+    "Mean Num Roles": MEAN(df["num_roles"]),
+    "Median Num Roles": MEDIAN(df["num_roles"])
+}
 
-# Feature Extraction
+# Output summary statistics as TSV
+PRINT "Metric\tValue"
+FOR EACH key, value IN summary_stats:
+    PRINT key + "\t" + value
+PRINT "//"  # End of summary statistics block
+
+### Adaptive Threshold Selection Function ###
+FUNCTION fit_power_law(scores):
+    SORT scores IN DESCENDING ORDER
+    DEFINE power_law(x, a, b) AS b * x^(-a)
+
+    TRY:
+        FIT power_law TO scores
+        SET alpha = fitted exponent
+        RETURN PERCENTILE(scores, 100 * (1 - 1/alpha))  # Determine cutoff
+    EXCEPT:
+        RETURN PERCENTILE(scores, 90)  # Fallback threshold
+
+### Feature Extraction ###
 SET features = EMPTY LIST
+SET significant_genomes = EMPTY LIST  # Store significant genomes per sample
+
 GROUP df BY "sampleID"
 
 FOR EACH (sample, group) IN sample_groups:
-    GET scores from group["score"]
-    GET num_roles from group["num_roles"]
+    SET scores = group["score"]
+    SET genome_ids = group["genome_id"]
+    SET num_roles = group["num_roles"]
 
-    # Determine adaptive threshold for significant genomes
+    # Determine adaptive threshold
     SET threshold = fit_power_law(scores)
 
-    # Extract significant genomes
-    SET significant = scores WHERE scores >= threshold
-    SET high_confidence = scores WHERE num_roles >= 4
+    # Identify significant genomes
+    SET significant_indices = FIND INDICES WHERE scores >= threshold
+    SET significant = scores[significant_indices]
+    SET significant_genome_ids = genome_ids[significant_indices]
 
-    # Compute feature values
+    # Identify high-confidence genomes
+    SET high_confidence = FILTER scores WHERE num_roles >= 4
+
+    # Compute statistical features
+    SET mean_significant = GEOMETRIC_MEAN(significant) IF COUNT(significant) > 0 ELSE 0
+    SET mean_high_conf = GEOMETRIC_MEAN(high_confidence) IF COUNT(high_confidence) > 0 ELSE 0
     SET num_significant = COUNT(significant)
-    SET mean_significant = MEAN(significant) IF num_significant > 0 ELSE 0
     SET num_high_conf = COUNT(high_confidence)
-    SET mean_high_conf = MEAN(high_confidence) IF num_high_conf > 0 ELSE 0
-    SET score_entropy = -SUM((scores / SUM(scores)) * LOG2(scores / SUM(scores)))
+    SET score_entropy = -SUM((scores / SUM(scores)) * LOG2(scores / SUM(scores)))  # Diversity metric
 
     # Store extracted features
     APPEND [sample, num_significant, mean_significant, num_high_conf, mean_high_conf, score_entropy] TO features
 
-# Convert features to a structured dataset
-SET feature_df = CREATE DATAFRAME(features, columns=["sampleID", "num_significant", "mean_significant", "num_high_conf", "mean_high_conf", "score_entropy"])
+    # Store significant genome selections
+    FOR EACH genome_id IN significant_genome_ids:
+        APPEND [sample, genome_id] TO significant_genomes
 
-# Merge with sample labels
+# Convert features to structured dataset
+SET feature_df = CREATE DATAFRAME(features, COLUMNS=["sampleID", "num_significant", "mean_significant", "num_high_conf", "mean_high_conf", "score_entropy"])
+
+# Merge sample labels
 SET sample_labels = DISTINCT df[["sampleID", "label"]]
 SET feature_df = MERGE feature_df WITH sample_labels ON "sampleID"
 
-# Output extracted features as TSV to STDOUT
-WRITE feature_df TO STDOUT AS TSV (TAB-SEPARATED FORMAT)
+# Output extracted features as TSV
+PRINT feature_df AS TSV
+
+# End of extracted features block
+PRINT "//"
+
+# Output significant genomes as TSV
+PRINT "sampleID\tgenome_id"
+FOR EACH row IN significant_genomes:
+    PRINT row[0] + "\t" + row[1]
+
+# End of significant genomes block
+PRINT "//"
 """
 
 ########################################################################
@@ -117,6 +156,23 @@ df["genome_id"] = df["genome_id"].astype(str)
 df["score"] = df["score"].astype(float)
 df["num_roles"] = df["num_roles"].astype(int)
 
+### Compute Summary Statistics ###
+summary_stats = {
+    "Total Samples": len(df["sampleID"].unique()),
+    "Total Genomes": len(df["genome_id"].unique()),
+    "Mean Score": df["score"].mean(),
+    "Median Score": df["score"].median(),
+    "Std Dev Score": df["score"].std(),
+    "Mean Num Roles": df["num_roles"].mean(),
+    "Median Num Roles": df["num_roles"].median()
+}
+
+# Output summary statistics as TSV
+sys.stdout.write("Metric\tValue\n")
+for key, value in summary_stats.items():
+    sys.stdout.write(f"{key}\t{value}\n")
+sys.stdout.write("//\n")  # End of summary statistics block
+
 ### Adaptive Threshold Selection ###
 def fit_power_law(scores):
     """Fits a Zipf/Pareto distribution to genome scores and finds threshold."""
@@ -137,36 +193,38 @@ def fit_power_law(scores):
 
 ### Feature Extraction ###
 features = []
+significant_genomes = []  # To store significant genomes per sample
 sample_groups = df.groupby("sampleID")
 
 for sample, group in sample_groups:
     scores = group["score"].values
+    genome_ids = group["genome_id"].values  # Genome IDs for mapping
     num_roles = group["num_roles"].values
 
     # Determine adaptive threshold
     threshold = fit_power_law(scores)
 
     # Extract significant genomes
-    significant = scores[scores >= threshold]
+    significant_indices = np.where(scores >= threshold)[0]  # Indices of significant genomes
+    significant = scores[significant_indices]
+    significant_genome_ids = genome_ids[significant_indices]  # Extract genome IDs
+
     high_confidence = scores[num_roles >= 4]  # Confidence-based filtering
 
     # Compute feature values using geometric mean
-    if len(significant) > 0:
-        mean_significant = gmean(significant)
-    else:
-        mean_significant = 0
-
-    if len(high_confidence) > 0:
-        mean_high_conf = gmean(high_confidence)
-    else:
-        mean_high_conf = 0
+    mean_significant = gmean(significant) if len(significant) > 0 else 0
+    mean_high_conf = gmean(high_confidence) if len(high_confidence) > 0 else 0
 
     num_significant = len(significant)  # How many genomes exceed threshold?
     num_high_conf = len(high_confidence)  # Count of confident genomes
     score_entropy = -np.sum((scores / np.sum(scores)) * np.log2(scores / np.sum(scores)))  # Diversity metric
 
-    # Store extracted features
+    # Store extracted features for classification
     features.append([sample, num_significant, mean_significant, num_high_conf, mean_high_conf, score_entropy])
+
+    # Store significant genome records
+    for genome_id in significant_genome_ids:
+        significant_genomes.append([sample, genome_id])
 
 # Convert features to a structured dataset
 feature_df = pd.DataFrame(features, columns=["sampleID", "num_significant", "mean_significant", "num_high_conf", "mean_high_conf", "score_entropy"])
@@ -175,5 +233,16 @@ feature_df = pd.DataFrame(features, columns=["sampleID", "num_significant", "mea
 sample_labels = df[["sampleID", "label"]].drop_duplicates()
 feature_df = feature_df.merge(sample_labels, on="sampleID")
 
-# Output as TSV to STDOUT
+# Output extracted features as TSV
 feature_df.to_csv(sys.stdout, sep="\t", index=False)
+
+# End of extracted features block
+sys.stdout.write("//\n")
+
+# Output significant genomes as TSV
+sys.stdout.write("sampleID\tgenome_id\n")
+for row in significant_genomes:
+    sys.stdout.write(f"{row[0]}\t{row[1]}\n")
+
+# End of significant genomes block
+sys.stdout.write("//\n")

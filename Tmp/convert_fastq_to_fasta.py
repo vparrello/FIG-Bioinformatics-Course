@@ -1,28 +1,16 @@
 #!/usr/bin/env python3
-
 import argparse
+import os
+import gzip
 import re
 import sys
 
-def main():
-    parser = argparse.ArgumentParser(description='Convert FASTQ to FASTA format')
-
-    parser.add_argument('-i', '--input_file', type=str, required=False, help='Path to an input file to be read')
-    parser.add_argument('-o', '--output_file', type=str, required=False, help='Path to an output file to be created')
-    parser.add_argument('-d', '--detect_direction', action='store_true', help='Auto-detect mate pair direction')
-    parser.add_argument('-w', '--width', type=int, required=False, help='Defines the width of FASTA sequence lines')
-    args = parser.parse_args()
-
-    # Use STDIN if no input file is provided
-    input_stream = sys.stdin if args.input_file is None else open(args.input_file, 'r')
-    # Use STDOUT if no output file is provided
-    output_stream = sys.stdout if args.output_file is None else open(args.output_file, 'wt')
-    
+def process_fastq(input_stream, output_stream, detect_direction, width):
     line_count = 0
     record_count = 0
     last_header = ""
     dot_count = 0  # Track dots printed in the current row
-    
+
     for line in input_stream:
         line = line.strip()
         line_count += 1
@@ -38,7 +26,7 @@ def main():
                     dot_count = 0
                 sys.stderr.flush()
             
-            if args.detect_direction:
+            if detect_direction:
                 m = re.search(r'^@(\S+?)[ .](1|2)(\s+(.*))?$', line)
                 if m:
                     read_id = m.group(1)  # Base read ID
@@ -51,26 +39,46 @@ def main():
                 last_header = f">{line[1:]}"  # Remove leading '@' properly
         
         elif line_count % 4 == 2:  # Sequence line
-            if args.width:
-                output_stream.write(f"{last_header}\n{wrapped(line, args.width)}\n")
+            if width:
+                output_stream.write(f"{last_header}\n{wrapped(line, width)}\n")
             else:
                 output_stream.write(f"{last_header}\n{line}\n")
     
-    # Print a final newline if the last row of dots wasn't already a complete row
     if dot_count > 0:
         sys.stderr.write("\n")
     
-    # Close file handles if files were opened
-    if args.input_file is not None:
-        input_stream.close()
-    if args.output_file is not None:
-        output_stream.close()
-    
-    print(f"{record_count} records written to the output FASTA file", file=sys.stderr)
+    return record_count
 
 def wrapped(string, every=60):
     string = string.rstrip()
     return '\n'.join(string[i:i+every] for i in range(0, len(string), every))
+
+def main():
+    parser = argparse.ArgumentParser(description='Convert FASTQ to FASTA format')
+    parser.add_argument('-i', '--input', type=str, required=True, help='Path to an input file or directory')
+    parser.add_argument('-o', '--output', type=str, required=True, help='Path to an output file or directory')
+    parser.add_argument('-d', '--detect_direction', action='store_true', help='Auto-detect mate pair direction')
+    parser.add_argument('-w', '--width', type=int, required=False, help='Defines the width of FASTA sequence lines')
+    args = parser.parse_args()
+
+    if os.path.isdir(args.input) and os.path.isdir(args.output):
+        input_files = [f for f in os.listdir(args.input) if f.endswith(('.fq', '.fastq', '.fq.gz', '.fastq.gz'))]
+        
+        for filename in input_files:
+            input_path = os.path.join(args.input, filename)
+            basename = re.sub(r'(.fq|.fastq)(.gz)?$', '', filename)
+            output_path = os.path.join(args.output, f"{basename}.fna")
+            
+            sys.stderr.write(f"Processing file '{filename}'\n")
+            sys.stderr.flush()
+            
+            with (gzip.open(input_path, 'rt') if filename.endswith('.gz') else open(input_path, 'r')) as input_stream, open(output_path, 'w') as output_stream:
+                record_count = process_fastq(input_stream, output_stream, args.detect_direction, args.width)
+                print(f"{record_count} records written to {output_path}", file=sys.stderr)
+    else:
+        with (gzip.open(args.input, 'rt') if args.input.endswith('.gz') else open(args.input, 'r')) as input_stream, open(args.output, 'w') as output_stream:
+            record_count = process_fastq(input_stream, output_stream, args.detect_direction, args.width)
+            print(f"{record_count} records written to {args.output}", file=sys.stderr)
 
 if __name__ == '__main__':
     main()

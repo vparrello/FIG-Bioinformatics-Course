@@ -67,17 +67,45 @@ from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 # Parse command-line arguments
-parser = argparse.ArgumentParser(description="Train a classifier and save the model with training statistics.")
-parser.add_argument("stats_file", type=str, help="Filename to save training statistics.")
-parser.add_argument("model_file", type=str, help="Filename to save the trained model as a pickle file.")
+parser = argparse.ArgumentParser(description="Train a Random Forest classifier and save the model.")
+parser.add_argument("-F", "--feature-file", type=str, required=True, help="Filename of extracted feature dataset (TSV format).")
+parser.add_argument("-C", "--classifier-file", type=str, required=True, help="Filename to save the trained classifier as a pickle file.")
+parser.add_argument("-T", "--training-statistics", type=str, help="Optional: Filename to save training statistics. If omitted, stats are printed to STDOUT.")
 args = parser.parse_args()
 
 # Print progress message to STDERR
-sys.stderr.write("Loading extracted features from STDIN...\n")
+sys.stderr.write(f"Loading extracted features from {args.feature_file}...\n")
 sys.stderr.flush()
 
-# Load extracted feature dataset from STDIN
-feature_df = pd.read_csv(sys.stdin, sep="\t")
+### **Step 1: Extract the Correct Block from the TSV File**
+with open(args.feature_file, "r") as f:
+    lines = f.readlines()
+
+# Find the block containing the extracted features
+feature_lines = []
+inside_features_block = False
+
+for line in lines:
+    if "//" in line:  # End of a TSV block
+        if inside_features_block:
+            break  # Stop when the extracted features block ends
+        inside_features_block = True  # Start reading the next block
+    elif inside_features_block:
+        feature_lines.append(line)
+
+# Convert extracted feature lines to a DataFrame
+from io import StringIO
+feature_data = StringIO("".join(feature_lines))
+
+sys.stderr.write(f"Parsing extracted features...\n")
+sys.stderr.flush()
+
+# Read extracted features, ensuring it has the correct column structure
+try:
+    feature_df = pd.read_csv(feature_data, sep="\t")
+except pd.errors.ParserError as e:
+    sys.stderr.write(f"Error reading features file: {e}\n")
+    sys.exit(1)
 
 sys.stderr.write(f"Dataset loaded with {len(feature_df)} samples.\n")
 sys.stderr.flush()
@@ -124,20 +152,27 @@ test_auc = roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1])
 sys.stderr.write(f"Test Accuracy: {test_accuracy:.4f}, Test AUC-ROC: {test_auc:.4f}\n")
 sys.stderr.flush()
 
-sys.stderr.write(f"Saving training statistics to {args.stats_file}...\n")
-sys.stderr.flush()
+# Generate training statistics output
+training_stats = (
+    f"Cross-Validation AUC: {np.mean(cv_scores):.4f} ± {np.std(cv_scores):.4f}\n"
+    f"Test Accuracy: {test_accuracy:.4f}\n"
+    f"Test AUC-ROC: {test_auc:.4f}\n"
+)
 
-# Save training statistics
-with open(args.stats_file, "w") as f:
-    f.write(f"Cross-Validation AUC: {np.mean(cv_scores):.4f} ± {np.std(cv_scores):.4f}\n")
-    f.write(f"Test Accuracy: {test_accuracy:.4f}\n")
-    f.write(f"Test AUC-ROC: {test_auc:.4f}\n")
+# Save or print training statistics
+if args.training_statistics:
+    sys.stderr.write(f"Saving training statistics to {args.training_statistics}...\n")
+    sys.stderr.flush()
+    with open(args.training_statistics, "w") as f:
+        f.write(training_stats)
+else:
+    sys.stdout.write(training_stats)
 
-sys.stderr.write(f"Saving trained classifier to {args.model_file}...\n")
+sys.stderr.write(f"Saving trained classifier to {args.classifier_file}...\n")
 sys.stderr.flush()
 
 # Save trained classifier model to a pickle file
-with open(args.model_file, "wb") as f:
+with open(args.classifier_file, "wb") as f:
     pickle.dump(clf, f)
 
 sys.stderr.write("Training complete! Model and statistics saved successfully.\n")

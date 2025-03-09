@@ -1,1 +1,1 @@
-Translate the code to pseudocode in a structured, language-agnostic format.
+Please translate your code to pseudocode in a structured, language-agnostic format.
