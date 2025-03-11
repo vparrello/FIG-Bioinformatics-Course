@@ -19,6 +19,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercises
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. We need to compare the DNA sequences in `MysteryGenome1.fna`
 to the set of hammers that you generated in the previous exercise.
 Ask Grimoire to write a program named `hammer_compare.py` that will:

@@ -16,6 +16,7 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 FIG-Bioinformatics-Course/
 ├── Code/
 │   └── python_datatypes_interactive_exercise.py
+│   └── dictionary_interactive_exercise.py
 └── 1_Representative-Genomes/
     └── 1.1_Tab-Separated-Value_(TSV)_Files/
         ├── TSV-Exercise-Exercise-2_Python-Datatypes.md  (you are here)
@@ -25,6 +26,11 @@ FIG-Bioinformatics-Course/
 
 
 ## Exercises: 
+
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 
 1. The following is the list of data types that we will be discussing in this lesson. Ask Grimoire to explain each type and its uses to you. Make sure you specify that they are Python Datatypes.
     * Boolean

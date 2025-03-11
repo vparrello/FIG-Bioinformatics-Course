@@ -34,6 +34,11 @@ In this exercise, you will also be using the `BV-BRC Command-Line Interface` app
 You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then compare it to the `rep200` data using the tool `find_nearest_reference.py` that you constructed in Kmer-Exercise-3. You will then fetch the actual biological name of the "Mystery Genome" from BV-BRC and compare it to the biological name of nearest representative genomne that your tool selected.
 
 ## Exercises:
+
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Please install the `BV-BRC Command-Line Interface` application if you have not already done so.
 Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.
 

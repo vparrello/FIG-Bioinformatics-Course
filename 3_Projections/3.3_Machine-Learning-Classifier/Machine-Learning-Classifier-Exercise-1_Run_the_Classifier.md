@@ -22,6 +22,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Start by asking Grimoire to describe how a random forest classifier works and how it is used in machine learning.
 
 2. Open a new file in your `Code` folder and name it `run_classifier.py`. This will be the file that we use to run our classifier. 

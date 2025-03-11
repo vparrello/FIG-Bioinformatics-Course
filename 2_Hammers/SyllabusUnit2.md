@@ -13,31 +13,27 @@ Use your hammer tool to attempt to identify a "mystery genome".
 ### Hammer Exercise 3 - Using Hammers on a Metagenomic Sample
 Use your hammer tool to identify which genomes are present within a "metagenomic sample", i.e., a sample that contains several genomes.
 
-## 2.2 Hammer Tuning
+### Hammer Exercise 4 - Hammer Quality-Control
 
-### Hammer Tuning-1 Precision
-Make sure the hammer doesn't occur in other representative genomes
+So far we have only looked at the Kmers in the PheS SOUR sequences.
+Now we must make sure that a hammer doesn't occur outside of a SOUR in any of the representative genomes.
 
-### Hammer Tuning-2 Accuracy
-Picking the correct roles mean that the hammers are more accurate for your purpose.  
+## 2.2 Hammers Using More Than One Role
 
-### Hammer Tuning-3 Worthiness
-How many "peer genomes" of a representative are hit by the hammer you chose?
+So far we have built hammers for a RepGenSet
+using only its PheS SOUR sequences.
+We can obtain more reliable genome assignments by requiring a consensus on which genomes are present
+within a sample, by allowing a "jury" of several different SOURs
+to "vote" on which RepGen genomes are closest
+to a sample.
 
-* Hitting a wide area is good for classification - lots of hits means lots of peers are hit which is good for classifying a genome
+### Multirole Hammer Sets Exercise 1 - Building Hammers Using More Than One SOUR
 
-* Hitting a small area is good for antibiotics - few hits means less collateral damage from the antibiotic in your system
+Enhancing the Hammer-Creation algorithm to support hammers
+that are signatures of particular roles within a RepGen.
 
-## 2.3 Creation of the Hammer Set
+### Multirole Hammer Sets Exercise 2 - Applying Multirole Hammers
 
-### Creation-1 Create a hammer set
-Create a set for all available repgen genomes to use for both classification, and antibiotics
+Enhancing the Hammer-Application algorithm to implement
+"Jury Voting" for whether a RepGen is present within a sample.
 
-### Creation-2 Use Case: Classification
-Use the hammer set to classify genomes inside of a sample.
-
-### Creation-3 Use Case: Antibiotics
-Use the hammer set to target a group for antibiotics
-
-### Creation-4 Use Case: Closest Genome
-Use the hammer set to find the genome closest to the mystery genome

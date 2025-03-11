@@ -50,6 +50,10 @@ FIG-Bioinformatics-Course/
 
 ## Exercises: 
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Ask Grimoire to explain the concepts of "Directories", "Directory Trees", and "File Paths" to you. In particular, ask it to explain the concept of the directories "dot" and "double-dot" if it did not already do so.
 
 2. It is conventional to end a filename with a "extension" that indicates to the user what kind of file it is and what programs can open it. Ask Grimoire to explain the concept of a "file extension" to you.

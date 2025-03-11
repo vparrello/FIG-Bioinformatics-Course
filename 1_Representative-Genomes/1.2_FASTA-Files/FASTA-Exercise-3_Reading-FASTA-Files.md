@@ -25,6 +25,10 @@ FIG-Bioinformatics-Course/
 
 #### Exercise:
 
+*ALWAYS RESET YOUR PATH* 
+
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+
 1. Ask Grimoire to explain in pseudocode how to read and parse the sequence of records within a FASTA-format file into a list containing "ID", "Description", and "Sequence" data.
 
 2. Ask Grimoire to convert its pseudocode into python code, and then explain to you how the code works line-by-line if it did not already do so.
@@ -53,9 +57,9 @@ pip install biopython
 
 9. Ask Grimoire to rewrite your program to use the BioPython module. 
 
-* Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_protein.faa`. Run `fasta_reader.py` on `rep10.seed_protein.faa`, and save the TSV-output as follows:
+* Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_proteins.faa`. Run `fasta_reader.py` on `rep10.seed_proteins.faa`, and save the TSV-output as follows:
 ```
-python3 Code/fasta_reader.py < Data/rep10.seed_protein.faa > Data/rep10.seed_protein.genomes-and-lengths.tab
+python3 Code/fasta_reader.py < Data/rep10.seed_proteins.faa > Data/rep10.seed_proteins.genomes-and-lengths.tab
 ```
 
 * Bonus Exercise 2: Repeat the procedure from FASTA-Ex-2, but this time extract the field `seed_dna` instead of `seed_protein`:
@@ -68,7 +72,7 @@ Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 ```
 python3 Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.genomes-and-lengths.tab
 ```
-Compare the files `rep10.seed_protein.genomes-and-lengths.tab` to `rep10.seed_dna.genomes-and-lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
+Compare the files `rep10.seed_proteins.genomes-and-lengths.tab` to `rep10.seed_dna.genomes-and-lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
 
 # Solution Check instructions:
 Use the solution code provided to check your results.

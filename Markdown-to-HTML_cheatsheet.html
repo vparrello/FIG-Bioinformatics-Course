@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to HTML Cheat-Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown to HTML Cheat-Sheet</h1>
+
+    <h2>Headers</h2>
+    <ul>
+        <li><b>Markdown:</b> <code># Header 1</code></li>
+        <li><b>HTML:</b> <code>&lt;h1&gt;Header 1&lt;/h1&gt;</code></li>
+    </ul>
+    <ul>
+        <li><b>Markdown:</b> <code>## Header 2</code></li>
+        <li><b>HTML:</b> <code>&lt;h2&gt;Header 2&lt;/h2&gt;</code></li>
+    </ul>
+
+    <h2>Emphasis</h2>
+    <ul>
+        <li><b>Bold</b></li>
+        <li><b>Markdown:</b> <code>**Bold Text**</code></li>
+        <li><b>HTML:</b> <code>&lt;strong&gt;Bold Text&lt;/strong&gt;</code></li>
+    </ul>
+    <ul>
+        <li><b>Italic</b></li>
+        <li><b>Markdown:</b> <code>*Italic Text*</code></li>
+        <li><b>HTML:</b> <code>&lt;em&gt;Italic Text&lt;/em&gt;</code></li>
+    </ul>
+
+    <h2>Lists</h2>
+    <h3>Unordered List</h3>
+    <ul>
+        <li><b>Markdown:</b></li>
+        <pre>
+- Item 1
+- Item 2
+  - Sub-item 1
+        </pre>
+        <li><b>HTML:</b></li>
+        <pre>
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ul&gt;
+            &lt;li&gt;Sub-item 1&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+        </pre>
+    </ul>
+
+    <h3>Ordered List</h3>
+    <ul>
+        <li><b>Markdown:</b></li>
+        <pre>
+1. Item 1
+2. Item 2
+   1. Sub-item 1
+        </pre>
+        <li><b>HTML:</b></li>
+        <pre>
+&lt;ol&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ol&gt;
+            &lt;li&gt;Sub-item 1&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;
+        </pre>
+    </ul>
+
+    <h2>Links</h2>
+    <ul>
+        <li><b>Markdown:</b> <code>[Link Text](https://example.com)</code></li>
+        <li><b>HTML:</b> <code>&lt;a href="https://example.com"&gt;Link Text&lt;/a&gt;</code></li>
+    </ul>
+
+    <h2>Images</h2>
+    <ul>
+        <li><b>Markdown:</b> <code>![Alt Text](https://example.com/image.jpg)</code></li>
+        <li><b>HTML:</b> <code>&lt;img src="https://example.com/image.jpg" alt="Alt Text"&gt;</code></li>
+    </ul>
+
+    <h2>Blockquotes</h2>
+    <ul>
+        <li><b>Markdown:</b></li>
+        <pre>
+&gt; This is a blockquote
+&gt;&gt; Nested blockquote
+        </pre>
+        <li><b>HTML:</b></li>
+        <pre>
+&lt;blockquote&gt;
+    This is a blockquote
+    &lt;blockquote&gt;
+        Nested blockquote
+    &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+        </pre>
+    </ul>
+
+    <h2>Code</h2>
+    <h3>Inline Code</h3>
+    <ul>
+        <li><b>Markdown:</b> <code>`Inline Code`</code></li>
+        <li><b>HTML:</b> <code>&lt;code&gt;Inline Code&lt;/code&gt;</code></li>
+    </ul>
+    <h3>Code Block</h3>
+    <ul>
+        <li><b>Markdown:</b></li>
+        <pre>
+```
+code-block content
+```
+        </pre>
+        <li><b>HTML:</b></li>
+        <pre>
+&lt;pre&gt;&lt;code&gt;
+Code block content
+&lt;/code&gt;&lt;/pre&gt;
+        </pre>
+    </ul>
+
+    <h2>Horizontal Rule</h2>
+    <ul>
+        <li><b>Markdown:</b> <code>---</code> or <code>***</code> or <code>___</code></li>
+        <li><b>HTML:</b> <code>&lt;hr&gt;</code></li>
+    </ul>
+
+    <h2>Tables</h2>
+    <ul>
+        <li><b>Markdown:</b></li>
+        <pre>
+| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+        </pre>
+        <li><b>HTML:</b></li>
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Header 1&lt;/th&gt;
+            &lt;th&gt;Header 2&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Cell 1&lt;/td&gt;
+            &lt;td&gt;Cell 2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+    </ul>
+</body>
+</html>
