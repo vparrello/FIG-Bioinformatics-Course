@@ -37,12 +37,7 @@ Type `source ~/.bashrc` into your command line to reset your path to the Course 
 
 1. In this lesson, you will be downloading more data, then sorting it into two categories. You will need places to put all that data you will sort, so you will be creating two folders in the data directory of your course: one folder for 'Diseased' and one folder for 'Controls'. This classification is based on the metadata of the samples, which you will be using to sort the data.
 
-2. To create these directories, click on the data directory
-if it is not already open, so that you can see all the files and subdirectories within (the data directory should also be highlighted).
-At the top of the menu, there are two buttons for adding something to your directory: new file and new folder. "New file" looks like
-a sheet of paper with a `+` in the lower-right corner,
-while "New folder" looks like a file-folder with a `+` in the
-lower-right corner. 
+2. To create these directories, click on the data directory if it is not already open, so that you can see all the files and subdirectories within (the data directory should also be highlighted). At the top of the menu, there are two buttons for adding something to your directory: new file and new folder. "New file" looks like a sheet of paper with a `+` in the lower-right corner, while "New folder" looks like a file-folder with a `+` in the lower-right corner. 
 
 3. You will click on the button for New Folder and name it 'Diseased', then create another folder and name it 'Control'. Make sure these two folders are under the Data directory! Wherever your highlight is, that is where the new folder will go under!
 
