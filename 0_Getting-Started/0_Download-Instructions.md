@@ -71,3 +71,5 @@ In this course, we will be calling programs from the command line. This tool req
 
 7. Check to make sure that the .bashrc file worked by typing `echo $COURSE_DIR` in the terminal. It should return the path to the Course directory and should match the same print out you had when you used `pwd`. If these are different, start over from step 2 and ensure that you have used the correct path. If you get a `404 file not found` error, then you should go back to step 3 and recreate the .bashrc file.
 
+8. A sample bashrc file has been added to the Getting Started directory. If you would rather use VSCode or a File Explorer, you can copy that file. Just make sure that you replace the COURSE_DIR variable to your own path. 
+
