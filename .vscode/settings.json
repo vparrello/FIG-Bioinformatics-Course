@@ -1,0 +1,28 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [
+        "--login",
+        "-i"
+      ],
+      "env": {
+        "HOME": "${workspaceFolder}"
+      }
+    }
+  },
+  "terminal.integrated.profiles.linux": {
+    "Bash": {
+      "path": "/bin/bash",
+      "args": [
+        "--login",
+        "-i"
+      ],
+      "env": {
+        "HOME": "${workspaceFolder}"
+      }
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "Bash"
+}
